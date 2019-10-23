@@ -16,7 +16,9 @@ create table user(
 );
 
 create table resource(
-	resourceTitle varchar(64) not null,
+   resourceId binary(16) not null,
+   resourceUserId binary(16) not null,
+   resourceAddress varchar(64),
 	-- resourceApprovalStatus is a bit 0 meaning not approved, 1 meaning approved
 	resourceApprovalStatus bit not null,
 	-- resourceCategory will be selected from a drop down list in gui and will be checked if it's one of
@@ -25,11 +27,15 @@ create table resource(
 	-- resource description needs to be short brief and descriptive of what is provided and how
 	resourceDescription varchar(300) not null,
 	-- resourceImageUrl is an image to be used as a descriptive image or logo for resource for front end use.*/
+	resourceEmail varchar(124),
 	resourceImageUrl varchar(255),
+	resourceOrganization varchar(124),
 	resourcePhone char(11),
+	resourceTitle varchar(64) not null,
 	resourceUrl varchar(255) not null,
 	index(resourceCategory),
-	primary key(resourceTitle)
+	foreign key(resourceUserId) references user(userId),
+	primary key(resourceId)
 );
 
 /*

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Conceptual Model</title>
+</head>
+<body>
+<h2>Conceptual Model</h2>
+<h3>user</h3>
+<ul>
+	<li>userId (PK)</li>
+	<li>userActivationToken</li>
+	<li>userEmail</li>
+	<li>userHash</li>
+	<li>userName</li>
+	<li>userUsername</li>
+</ul>
+<h3>Resource</h3>
+<ul>
+	<li>resourceId (PK)</li>
+	<li>resourceUserId (FK)</li>
+	<li>resourceAddress</li>
+	<li>resourceApprovalStatus</li>
+	<li>resourceCategory (index)</li>
+	<li>resourceDescription</li>
+	<li>resourceEmail</li>
+	<li>resourceImageUrl</li>
+	<li>resourceOrganization</li>
+	<li>resourcePhone</li>
+	<li>resourceTitle</li>
+	<li>resourceUrl</li>
+</ul>
+<h3>useful</h3>
+<ul>
+	<li>usefulResourceId (FK)</li>
+	<li>usefulUserId (FK)</li>
+</ul>
+<h2>Relations</h2>
+<p>One user can have many usefuls (1 to m)</p>
+<p>One user can have many resources (1 to m)</p>
+<p>One resource can have many usefuls (1 to m)</p>
+</body>
+</html>

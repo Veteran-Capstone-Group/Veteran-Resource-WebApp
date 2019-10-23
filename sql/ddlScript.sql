@@ -62,5 +62,8 @@ create table opportunity(
 */
 
 create table useful(
-  usefulResourceId
+  usefulResourceId binary(16) not null,
+  usefulUserId binary(16) not null,
+  foreign key(usefulUserId) references user(userId),
+  foreign key(usefulResourceId) references resource(resourceId)
 );

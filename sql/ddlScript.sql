@@ -1,5 +1,19 @@
+drop table if exists useful;
 drop table if exists opportunity;
 drop table if exists resource;
+drop table if exists user;
+
+create table user(
+   userId binary(16) not null,
+   userActivationToken not null,
+   userEmail varchar(124) not null,
+   userHash char(97) not null,
+   userName varchar(32) not null,
+   userUsername varchar(24) not null,
+   unique(userUsername),
+   unique(userEmail),
+   primary key(userId)
+);
 
 create table resource(
 	resourceTitle varchar(64) not null,
@@ -17,6 +31,7 @@ create table resource(
 	index(resourceCategory),
 	primary key(resourceTitle)
 );
+
 /*
 create table opportunity(
 	opportunityCompanyName varchar(64) not null,
@@ -39,3 +54,7 @@ create table opportunity(
 	primary key(opportunityCompanyName)
 );
 */
+
+create table useful(
+  usefulResourceId
+);

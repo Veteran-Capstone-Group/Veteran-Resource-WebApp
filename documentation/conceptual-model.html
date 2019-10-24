@@ -15,13 +15,18 @@
 	<li>userName</li>
 	<li>userUsername</li>
 </ul>
+<h3>Catagory</h3>
+<ul>
+	<li>catagoryId (PK)</li>
+	<li>catagoryType</li>
+</ul>
 <h3>Resource</h3>
 <ul>
 	<li>resourceId (PK)</li>
+	<li>resourceCategoryId (FK)</li>
 	<li>resourceUserId (FK)</li>
 	<li>resourceAddress</li>
 	<li>resourceApprovalStatus</li>
-	<li>resourceCategory (index)</li>
 	<li>resourceDescription</li>
 	<li>resourceEmail</li>
 	<li>resourceImageUrl</li>
@@ -39,5 +44,6 @@
 <p>One user can have many usefuls (1 to m)</p>
 <p>One user can have many resources (1 to m)</p>
 <p>One resource can have many usefuls (1 to m)</p>
+<p>One catagory can have many resources (1 to m)</p>
 </body>
 </html>

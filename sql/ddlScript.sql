@@ -1,6 +1,7 @@
 drop table if exists useful;
 drop table if exists opportunity;
 drop table if exists resource;
+drop table if exists catagory;
 drop table if exists user;
 
 create table user(
@@ -15,8 +16,14 @@ create table user(
    primary key(userId)
 );
 
+create table category(
+	categoryId binary(16) not null,
+	categoryType varchar(16) not null,
+);
+
 create table resource(
    resourceId binary(16) not null,
+	resourceCategoryId binary(16) not null,
    resourceUserId binary(16) not null,
    resourceAddress varchar(124),
 	-- resourceApprovalStatus is a bit 0 meaning not approved, 1 meaning approved
@@ -34,6 +41,7 @@ create table resource(
 	resourceTitle varchar(64) not null,
 	resourceUrl varchar(255) not null,
 	index(resourceCategory),
+	foreign key(resourceCategoryId) references category(categoryId),
 	foreign key(resourceUserId) references user(userId),
 	primary key(resourceId)
 );

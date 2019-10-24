@@ -25,11 +25,25 @@ class Resource {
 	 * @var Uuid $resourceId
 	 */
 	private $resourceId;
-
+	/**
+	 * Foreign Key resourceUserID refers to userId
+	 * @var Uuid $resourceUserId
+	 */
 	private $resourceUserId;
-
+	/**
+	 * Foreign Key resourceCategoryId refers to categoryId Not Null, Indexed
+	 * @var Uuid $resourceCategoryId
+	 */
+	private $resourceCategoryId;
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceAddress;
-
+	/**
+	 * contains true if approved, false
+	 * @var boolean $resourceApprovalStatus
+	 */
 	private $resourceApprovalStatus;
 
 	private $resourceCategory;

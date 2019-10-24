@@ -8,7 +8,7 @@ create table user(
    userActivationToken char(32) not null,
    userEmail varchar(124) not null,
    userHash char(97) not null,
-   userName varchar(32) not null,
+   userName varchar(64) not null,
    userUsername varchar(24) not null,
    unique(userUsername),
    unique(userEmail),
@@ -18,9 +18,9 @@ create table user(
 create table resource(
    resourceId binary(16) not null,
    resourceUserId binary(16) not null,
-   resourceAddress varchar(64),
+   resourceAddress varchar(124),
 	-- resourceApprovalStatus is a bit 0 meaning not approved, 1 meaning approved
-	resourceApprovalStatus bit not null,
+	resourceApprovalStatus boolean not null,
 	-- resourceCategory will be selected from a drop down list in gui and will be checked if it's one of
 	-- a limited selection of categories. Education, Healthcare, food, housing, ect.
 	resourceCategory varchar(32) not null,
@@ -38,32 +38,10 @@ create table resource(
 	primary key(resourceId)
 );
 
-/*
-create table opportunity(
-	opportunityCompanyName varchar(64) not null,
-	opportunityJobTitle varchar(144) not null,
-	opportunityJobDescription varchar (3000) not null,
-	opportunityJobRequirments varchar(500) not null,
-	-- Job Types are full-time, part-time, temp, intern
-	opportunityJobType varchar(10) not null,
-	-- Phone numbers must be 11 digit phone numbers
-	opportunityContactPhone char(11) not null,
-	opportunityContactEmail varchar(64) not null,
-	opportunityAddress varchar(124) not null,
-	opportunityZipCode char(5) not null,
-	opportunityImageUrl varchar(255) not null,
-	opportunityApprovalStatus BIT not null,
-	-- job type index for filtering jobs by type.
-	index(opportunityJobType),
-	-- Zipcode indexed for searching jobs by zipcode
-	index(opportunityZipCode),
-	primary key(opportunityCompanyName)
-);
-*/
-
 create table useful(
   usefulResourceId binary(16) not null,
   usefulUserId binary(16) not null,
   foreign key(usefulUserId) references user(userId),
-  foreign key(usefulResourceId) references resource(resourceId)
+  foreign key(usefulResourceId) references resource(resourceId),
+  primary key(usefulResourceId, usefulUserId)
 );

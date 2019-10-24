@@ -19,6 +19,7 @@ create table user(
 create table category(
 	categoryId binary(16) not null,
 	categoryType varchar(16) not null,
+	primary key(categoryId)
 );
 
 create table resource(

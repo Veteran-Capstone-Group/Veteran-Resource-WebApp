@@ -7,6 +7,7 @@ namespace VeteranResource\Resource;
 //require_once(dirname(__DIR__) . "/lib/vendor/autoload.php");
 
 //use Ramsey\Uuid\Uuid;
+use http\Exception\BadMessageException;
 
 /**
  * Class Resource for Veteran Resource WebApp
@@ -193,4 +194,65 @@ class Resource {
 		//convert and store Resource User Id
 		$this->resourceUserId = $uuid;
 	}
+
+	/**
+	 * Accessor for resourceAddress
+	 *
+	 * @return string
+	 */
+	public function getResourceAddress(): string {
+		return ($this->resourceAddress);
+	}
+
+	/**
+	 * Mutator method for resourceAddress
+	 *
+	 * @param $newResourceAddress
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceAddress(string $newResourceAddress): void {
+		//trims whitespace
+		$newResourceAddress=trim($newResourceAddress);
+		//sanitizes string to get rid of harmful attacks
+		$newResourceAddress=filter_var($newResourceAddress, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceAddress)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Address is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceAddress)>124) {
+			throw(new \RangeException("Address contains too many characters"));
+		}
+		//store content
+		$this->resourceAddress=$newResourceAddress;
+	}
+
+	/**
+	 * Accessor for resourceApprovalStatus
+	 *
+	 * @return bool
+	 */
+	public function getResourceApprovalStatus():bool {
+	return ($this->resourceApprovalStatus);
+	}
+
+	/**
+	 * Mutator Method for resourceApprovalStatus
+	 *
+	 * @param bool $newResourceApprovalStatus
+	 */
+	public function setResourceApprovalStatus(bool $newResourceApprovalStatus=false):void {
+		$newResourceApprovalStatus=filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+		//Checks if null
+		if(empty($newResourceApprovalStatus)===true) {
+			//if approval status is null, set to false
+			$this->resourceApprovalStatus=false;
+		}
+	$this->resourceApprovalStatus=$newResourceApprovalStatus;
+	}
+
+
 }

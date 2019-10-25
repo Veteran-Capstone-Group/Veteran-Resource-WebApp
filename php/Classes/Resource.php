@@ -110,11 +110,87 @@ class Resource {
 			$this->setResourcePhone($newResourcePhone);
 			$this->setResourceTitle($newResourceTitle);
 			$this->setResourceUrl($newResourceUrl);
-	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 101, $exception));
 		}
 	}
 
+	/**
+	 * Accessor for resourceId
+	 *
+	 * @return Uuid
+	 */
+	public function getResourceId(): Uuid {
+		return ($this->resourceId);
+	}
 
+	/**
+	 * Mutator for resourceId
+	 *
+	 * @param $newResourceId
+	 * @throws \Exception if $newResourceId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
+	 */
+	public function setResourceId($newResourceId): void {
+		try {
+			$uuid = self::validateUuid($newResourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//convert and store Resource Id
+		$this->resourceId = $uuid;
+	}
+
+	/**
+	 * Accessor for resourceCategoryId
+	 *
+	 * @return Uuid
+	 */
+	public function getResourceCategoryId(): Uuid {
+		return ($this->resourceCategoryId);
+	}
+
+	/**
+	 * Mutator for resourceCategoryId
+	 *
+	 * @param $newResourceCategoryId
+	 * @throws \Exception if $newResourceCategoryId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
+	 */
+	public function setResourceCategoryId($newResourceCategoryId): void {
+		try {
+			$uuid = self::validateUuid($newResourceCategoryId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//convert and store Resource Id
+		$this->resourceCategoryId = $uuid;
+	}
+
+	/**
+	 * Accessor for resourceUserId
+	 *
+	 * @return Uuid
+	 */
+	public function getResourceUserId(): Uuid {
+		return ($this->resourceUserId);
+	}
+
+	/**
+	 * Mutator for resourceUserId
+	 *
+	 * @param $newResourceUserId
+	 * @throws \Exception if $newResourceUserId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
+	 */
+	public function setResourceUserId($newResourceUserId): void {
+		try {
+			$uuid = self::validateUuid($newResourceUserId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//convert and store Resource User Id
+		$this->resourceUserId = $uuid;
+	}
 }

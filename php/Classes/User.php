@@ -77,6 +77,14 @@ public function setUserId($newUserId) {
 	$this->userId = $uuid;
 }
 
+/**
+ * getter method for userActivationToken
+ *
+ * @return string value of user activation token
+ */
+public function getUserActivationToken(): string {
+
+}
 
 
 //methods

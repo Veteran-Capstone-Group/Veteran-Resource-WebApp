@@ -114,6 +114,48 @@ public function setUserActivationToken(?string $newUserActivationToken): void {
 	$this->userActivationToken = $newUserActivationToken;
 }
 
+/**
+ *getter method for userhash
+ *
+ *@return string value for userHash
+ */
+public function getUserHash(): string {
+	return ($this->userHash);
+}
+
+/**
+ * setter method for user hash
+ *
+ * @param string $newUserHAsh
+ * @throws \InvalidArgumentException if hash is insecure or invalid
+ * @throws \RangeException if has is not x characters
+ * @throws \TypeError if hash is not a string
+ */
+public function setUserHash(string $newUserHash): void {
+	//check if hash is empty
+
+	//check if hash is hexi
+
+	//check type of hash
+
+	//check character length of hash
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //methods
 
 

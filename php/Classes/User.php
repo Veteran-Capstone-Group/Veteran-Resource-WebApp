@@ -16,5 +16,26 @@ class User {
 	 */
 private $userId;
 
+/**
+ * activationToken for this user;
+ * @var string $userActivationToken
+ */
+private $userActivationToken;
+
+/**
+ * Email for this user;
+ * @var string $userEmail
+ */
+private $userEmail;
+
+/**
+ * Hash for this user;
+ * @var string $userHash
+ */
+private $userHash;
+
+
+
+
 	//JsonSerialize
 }

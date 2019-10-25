@@ -29,9 +29,6 @@ create table resource(
    resourceAddress varchar(124),
 	-- resourceApprovalStatus is a bit 0 meaning not approved, 1 meaning approved
 	resourceApprovalStatus boolean not null,
-	-- resourceCategory will be selected from a drop down list in gui and will be checked if it's one of
-	-- a limited selection of categories. Education, Healthcare, food, housing, ect.
-	resourceCategory varchar(32) not null,
 	-- resource description needs to be short brief and descriptive of what is provided and how
 	resourceDescription varchar(300) not null,
 	-- resourceImageUrl is an image to be used as a descriptive image or logo for resource for front end use.*/
@@ -41,7 +38,6 @@ create table resource(
 	resourcePhone char(11),
 	resourceTitle varchar(64) not null,
 	resourceUrl varchar(255) not null,
-	index(resourceCategory),
 	foreign key(resourceCategoryId) references category(categoryId),
 	foreign key(resourceUserId) references user(userId),
 	primary key(resourceId)

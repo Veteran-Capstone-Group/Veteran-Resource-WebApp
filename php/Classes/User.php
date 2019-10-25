@@ -127,19 +127,28 @@ public function getUserHash(): string {
  * setter method for user hash
  *
  * @param string $newUserHAsh
- * @throws \InvalidArgumentException if hash is insecure or invalid
- * @throws \RangeException if has is not x characters
+ * @throws \InvalidArgumentException if hash is insecure or invalid or not a bcrypt hash
+ * @throws \RangeException if has is not 30 characters
  * @throws \TypeError if hash is not a string
  */
 public function setUserHash(string $newUserHash): void {
 	//check if hash is empty
-
-	//check if hash is hexi
-
+	$newUserHash = str_replace("$", "\$", $newUserHash);
+	$newUserHash = trim($newUserHash);
+	if(empty($newUserHash) !== true) {
+	throw(new \InvalidArgumentException("hash is insecure or invalid"));
+	}
 	//check type of hash
-
+	$userHashInfo = password_get_info($newUserHash);
+	if($userHashInfo["algoName"] !== "bcrypt") {
+		throw(new \InvalidArgumentException("author hash is not a valid hash"));
+	}
 	//check character length of hash
-
+	if(strlen($newUserHash) !== 30) {
+		throw(new \InvalidArgumentException("hash must be the correct length"));
+	}
+	//return hash
+	$this->userHash = $newUserHash;
 }
 
 

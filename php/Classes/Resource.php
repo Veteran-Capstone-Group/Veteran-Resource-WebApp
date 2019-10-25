@@ -36,7 +36,7 @@ class Resource {
 	 */
 	private $resourceUserId;
 	/**
-	 * contains address for the resource, <=124 Nullable
+	 * contains address for the resource, <=124, Nullable
 	 * @var string $resourceAddress
 	 */
 	private $resourceAddress;
@@ -46,43 +46,38 @@ class Resource {
 	 */
 	private $resourceApprovalStatus;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
-	 */
-	private $resourceCategory;
-	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains description of the resource, <=300, Not Null
+	 * @var string $resourceDescription
 	 */
 	private $resourceDescription;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains email address for the resource, <=124, Nullable
+	 * @var string $resourceEmail
 	 */
 	private $resourceEmail;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains Image Url for the resource, <=255, Nullable
+	 * @var string $resourceImageUrl
 	 */
 	private $resourceImageUrl;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains organization for the resource, <=124, Nullable
+	 * @var string $resourceOrganization
 	 */
 	private $resourceOrganization;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains phone number for the resource, <=11, Nullable
+	 * @var string $resourcePhone
 	 */
 	private $resourcePhone;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains title for the resource, <=64, Not Null
+	 * @var string $resourceTitle
 	 */
 	private $resourceTitle;
 	/**
-	 * contains address for the resource, Nullable
-	 * @var string $resourceAddress
+	 * contains Url for the resource, <=255, Not Null
+	 * @var string $resourceUrl
 	 */
 	private $resourceUrl;
 

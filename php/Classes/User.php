@@ -2,6 +2,7 @@
 
 
 namespace VeteranResource\Resource;
+use http\Exception\BadQueryStringException;
 use Ramsey\Uuid\Uuid;
 /**
  * Creating Class User for generating new users
@@ -83,9 +84,35 @@ public function setUserId($newUserId) {
  * @return string value of user activation token
  */
 public function getUserActivationToken(): string {
-
+	return ($this->userActivationToken);
 }
 
+/**
+ * setter method for userActivationToken
+ *
+ * @param string $newUserActivationToken
+ * @throws \InvalidArgumentException if token is not a string or insecure
+ * @throws \RangeException if token is not exactly 32 chars
+ * @throws \TypeError if the token is not a string
+ */
+public function setUserActivationToken(?string $newUserActivationToken): void {
+	//if null return null
+	if($newUserActivationToken === null) {
+		$this->userActivationToken =null;
+		return;
+	}
+	//checks if token is valid
+	$newUserActivationToken = strtolower(trim($newUserActivationToken));
+	if(ctype_xdigit($newUserActivationToken) === false) {
+		throw(new \InvalidArgumentException('activation token is not valid'));
+	}
+	//checks if token is 32 characters
+	if(strlen($newUserActivationToken) !== 32) {
+		throw(new \RangeException('token must be 32 characters in length'));
+	}
+	//set the valid activation token
+	$this->userActivationToken = $newUserActivationToken;
+}
 
 //methods
 

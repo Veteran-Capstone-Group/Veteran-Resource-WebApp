@@ -81,21 +81,40 @@ class Resource {
 	 */
 	private $resourceUrl;
 
-	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, string $newResourceImageUrl, string $newResourceOrganization, string $newResourcePhone, string $newResourceTitle, string $newResourceUrl){
-	try {
-		$this->setResourceId($newResourceId);
+	/**
+	 * Resource constructor.
+	 * @param string|Uuid $newResourceId id for this resource or null if new resource
+	 * @param string|Uuid $newResourceCategoryId ResourceCategory for this resource or null if new resource
+	 * @param string|Uuid $newResourceUserId UserId for the person who created resource or null if new resource
+	 * @param string $newResourceAddress Physical Address for this resource or null if new resource
+	 * @param bool $newResourceApprovalStatus Approval Status for this resource or null if new resource
+	 * @param string $newResourceDescription Description for this resource or null if new resource
+	 * @param string $newResourceEmail Email Address for this resource or null if new resource
+	 * @param string $newResourceImageUrl Image Url for this resource or null if new resource
+	 * @param string $newResourceOrganization Organization associated with this resource or null if new resource
+	 * @param string $newResourcePhone phone number for this resource or null if new resource
+	 * @param string $newResourceTitle Title for this resource or null if new resource
+	 * @param string $newResourceUrl URL source for this resource or null if new resource
+	 */
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, string $newResourceImageUrl, string $newResourceOrganization, string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
+		try {
+			$this->setResourceId($newResourceId);
 			$this->setResourceCategoryId($newResourceCategoryId);
-				$this->setResourceUserId($newResourceUserId);
-					$this->setResourceAddress($newResourceAddress);
-						$this
-							$this
-								$this
-									$this
-										$this
-											$this
-												$this
-													$this
+			$this->setResourceUserId($newResourceUserId);
+			$this->setResourceAddress($newResourceAddress);
+			$this->setResourceApprovalStatus($newResourceApprovalStatus);
+			$this->setResourceDescription($newResourceDescription);
+			$this->setResourceEmail($newResourceEmail);
+			$this->setResourceImageUrl($newResourceImageUrl);
+			$this->setResourceOrganization($newResourceOrganization);
+			$this->setResourcePhone($newResourcePhone);
+			$this->setResourceTitle($newResourceTitle);
+			$this->setResourceUrl($newResourceUrl);
+	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 101, $exception));
+		}
+	}
 
-	}
-	}
+
 }

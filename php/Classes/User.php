@@ -23,7 +23,7 @@ private $userId;
 private $userActivationToken;
 
 /**
- * Email for this user;
+ * Email for this user; this is unique data
  * @var string $userEmail
  */
 private $userEmail;
@@ -34,8 +34,17 @@ private $userEmail;
  */
 private $userHash;
 
+/**
+ * Name for this user;
+ * @var string $userName
+ */
+private $userName;
 
-
+	/**
+	 * username for this user, this is unique data
+	 * @var string $userUsername
+	 */
+private $userUsername;
 
 	//JsonSerialize
 }

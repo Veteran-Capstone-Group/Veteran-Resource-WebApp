@@ -81,4 +81,21 @@ class Resource {
 	 */
 	private $resourceUrl;
 
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, string $newResourceImageUrl, string $newResourceOrganization, string $newResourcePhone, string $newResourceTitle, string $newResourceUrl){
+	try {
+		$this->setResourceId($newResourceId);
+			$this->setResourceCategoryId($newResourceCategoryId);
+				$this->setResourceUserId($newResourceUserId);
+					$this->setResourceAddress($newResourceAddress);
+						$this
+							$this
+								$this
+									$this
+										$this
+											$this
+												$this
+													$this
+
+	}
+	}
 }

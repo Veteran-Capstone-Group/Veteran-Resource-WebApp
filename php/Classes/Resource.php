@@ -26,17 +26,17 @@ class Resource {
 	 */
 	private $resourceId;
 	/**
-	 * Foreign Key resourceUserID refers to userId
-	 * @var Uuid $resourceUserId
-	 */
-	private $resourceUserId;
-	/**
 	 * Foreign Key resourceCategoryId refers to categoryId Not Null, Indexed
 	 * @var Uuid $resourceCategoryId
 	 */
 	private $resourceCategoryId;
 	/**
-	 * contains address for the resource, Nullable
+	 * Foreign Key resourceUserID refers to userId
+	 * @var Uuid $resourceUserId
+	 */
+	private $resourceUserId;
+	/**
+	 * contains address for the resource, <=124 Nullable
 	 * @var string $resourceAddress
 	 */
 	private $resourceAddress;
@@ -45,21 +45,45 @@ class Resource {
 	 * @var boolean $resourceApprovalStatus
 	 */
 	private $resourceApprovalStatus;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceCategory;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceDescription;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceEmail;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceImageUrl;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceOrganization;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourcePhone;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceTitle;
-
+	/**
+	 * contains address for the resource, Nullable
+	 * @var string $resourceAddress
+	 */
 	private $resourceUrl;
 
 }

@@ -3,6 +3,7 @@
 
 namespace VeteranResource\Resource;
 use http\Exception\BadQueryStringException;
+use http\Exception\InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 /**
  * Creating Class User for generating new users
@@ -214,7 +215,23 @@ public function setUserName(string $newUserName): void {
 	$this->userName = $newUserName;
 }
 
+/**
+ * getter method for userUserName
+ *
+ * @return string userUserName
+ */
+public function getUserUsername(): string {
+	return ($this->userUsername);
+}
 
+/**
+ * setter for userUsername
+ *
+ * @param string $newUserUsername
+ * @throws /InvalidArgumentException if username is insecure or Invalid
+ * @throws /RangeException is username is longer than 24 characters
+ * @throws /TypeError if username is not a string
+ */
 
 
 

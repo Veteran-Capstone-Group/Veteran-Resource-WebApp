@@ -96,7 +96,18 @@ public function getUserEmail(): string {
 	 * @throws \TypeError if Email is not a string
 	 */
 public function setUserEmail($newUserEmail): void{
-	
+	//sanitize email
+	$newUserEmail = trim($newUserEmail);
+	$newUserEmail = filter_var($newUserEmail, FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE);
+	if(empty($newUserEmail) !== false) {
+		throw(new \InvalidArgumentException("This email is not valid"));
+	}
+	//check if email is valid length
+	if(strlen($newUserEmail) > 128) {
+		throw(new \RangeException("Email needs to be less than 128 UNICODE characters"));
+	}
+	//set return new email
+	$this->userEmail = $newUserEmail;
 }
 
 /**

@@ -78,6 +78,27 @@ public function setUserId($newUserId) {
 	$this->userId = $uuid;
 }
 
+	/**
+	 * setter for userEmail
+	 *
+	 * @return string value of user Email
+	 */
+public function getUserEmail(): string {
+	return ($this->userEmail);
+}
+
+	/**
+	 * setter method for userEmail
+	 *
+	 * @param string $newUserEmail
+	 * @throws \InvalidArgumentException if email is not a string or is insecure
+	 * @throws \RangeException if string is longer than 128 characters
+	 * @throws \TypeError if Email is not a string
+	 */
+public function setUserEmail($newUserEmail): void{
+	
+}
+
 /**
  * getter method for userActivationToken
  *

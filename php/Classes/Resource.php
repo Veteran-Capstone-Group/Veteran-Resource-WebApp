@@ -254,5 +254,224 @@ class Resource {
 	$this->resourceApprovalStatus=$newResourceApprovalStatus;
 	}
 
+	/**
+	 * Accessor for resourceDescription
+	 *
+	 * @return string
+	 */
+	public function getResourceDescription(): string {
+		return ($this->resourceDescription);
+	}
+
+	/**
+	 * Mutator method for resourceDescription
+	 *
+	 * @param $newResourceDescription
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceDescription(string $newResourceDescription): void {
+		//trims whitespace
+		$newResourceDescription=trim($newResourceDescription);
+		//sanitizes string to get rid of harmful attacks
+		$newResourceDescription=filter_var($newResourceDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceDescription)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Description is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceDescription)>300) {
+			throw(new \RangeException("Description contains too many characters"));
+		}
+		//store content
+		$this->resourceDescription=$newResourceDescription;
+	}
+	/**
+	 * Accessor for resourceEmail
+	 *
+	 * @return string
+	 */
+	public function getResourceEmail(): string {
+		return ($this->resourceEmail);
+	}
+
+	/**
+	 * Mutator method for resourceEmail
+	 *
+	 * @param $newResourceEmail
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceEmail(string $newResourceEmail): void {
+		//trims whitespace
+		$newResourceEmail=trim($newResourceEmail);
+		//sanitizes email to get rid of harmful attacks and ensure valid email address
+		$newResourceEmail=filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if email still has content after sanitization
+		if(empty($newResourceEmail)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Email is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceEmail)>124) {
+			throw(new \RangeException("Email contains too many characters"));
+		}
+		//store content
+		$this->resourceEmail=$newResourceEmail;
+	}
+	/**
+	 * Accessor for resourceImageUrl
+	 *
+	 * @return string
+	 */
+	public function getResourceImageUrl(): string {
+		return ($this->resourceImageUrl);
+	}
+
+	/**
+	 * Mutator method for resourceImageUrl
+	 *
+	 * @param $newResourceImageUrl
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceImageUrl(string $newResourceImageUrl): void {
+		//trims whitespace
+		$newResourceImageUrl=trim($newResourceImageUrl);
+		//sanitizes URL to get rid of harmful attacks
+		$newResourceImageUrl=filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceImageUrl)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Image Url is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceImageUrl)>255) {
+			throw(new \RangeException("Image Url contains too many characters"));
+		}
+		//store content
+		$this->resourceImageUrl=$newResourceImageUrl;
+	}
+	/**
+	 * Accessor for resourceOrganization
+	 *
+	 * @return string
+	 */
+	public function getResourceOrganization(): string {
+		return ($this->resourceOrganization);
+	}
+
+	/**
+	 * Mutator method for resourceOrganization
+	 *
+	 * @param $newResourceOrganization
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceOrganization(string $newResourceOrganization): void {
+		//trims whitespace
+		$newResourceOrganization=trim($newResourceOrganization);
+		//sanitizes string to get rid of harmful attacks
+		$newResourceOrganization=filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceOrganization)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Organization is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceOrganization)>124) {
+			throw(new \RangeException("Organization contains too many characters"));
+		}
+		//store content
+		$this->resourceOrganization=$newResourceOrganization;
+	}
+
+	/**
+	 * Accessor for resourcePhone
+	 *
+	 * @return string
+	 */
+	public function getResourcePhone(): string {
+		return ($this->resourcePhone);
+	}
+
+	/**
+	 * Mutator method for resourcePhone
+	 *
+	 * @param $newResourcePhone
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourcePhone(string $newResourcePhone): void {
+		//trims whitespace
+		$newResourcePhone=trim($newResourcePhone);
+		//Removes all special characters and letters.
+		$newSanitizedResourcePhone = preg_replace('/[^0-9]/', '', $newResourcePhone);
+		//Checks if string still has content after sanitization
+		if(empty($newSanitizedResourcePhone)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Phone contains no numbers"));
+		}
+		//check if string length is appropriate
+		if(strlen($newSanitizedResourcePhone)>11) {
+			throw(new \RangeException("Phone contains too many characters"));
+		}
+		//If phone number is ten digits, add US International Area code 1
+		if(strlen($newSanitizedResourcePhone)===10) {
+			$newSanitizedResourcePhone = "1".$newSanitizedResourcePhone;
+		}
+		//Special "needs area code" exception
+		if(strlen($newSanitizedResourcePhone)===7) {
+			throw(new \RangeException("Phone Number Needs an Area Code."));
+		}
+		if(strlen($newSanitizedResourcePhone)<11) {
+			throw(new \RangeException("Phone contains too few characters"));
+		}
+		//
+		//store content
+		$this->resourcePhone=$newResourcePhone;
+	}
+
+	/**
+	 * Accessor for resourceTitle
+	 *
+	 * @return string
+	 */
+	public function getResourceTitle(): string {
+		return ($this->resourceTitle);
+	}
+
+	/**
+	 * Mutator method for resourceTitle
+	 *
+	 * @param $newResourceTitle
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceTitle(string $newResourceTitle): void {
+		//trims whitespace
+		$newResourceTitle=trim($newResourceTitle);
+		//sanitizes string to get rid of harmful attacks
+		$newResourceTitle=filter_var($newResourceTitle, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceTitle)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Title is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceTitle)>64) {
+			throw(new \RangeException("Title contains too many characters"));
+		}
+		//store content
+		$this->resourceTitle=$newResourceTitle;
+	}
+
 
 }

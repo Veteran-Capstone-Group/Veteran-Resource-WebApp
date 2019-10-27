@@ -241,7 +241,7 @@ public function setUserUsername(string $newUserUsername): void {
 	}
 	// check is string is >24 characters
 	if(strlen($newUserUsername) > 24) {
-		throw(new \RangeException("Username must include less than 24 characters"))
+		throw(new \RangeException("Username must include less than 24 characters"));
 	}
 	//return new username as username
 	$this->userUsername = $newUserUsername;

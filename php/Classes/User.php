@@ -200,8 +200,18 @@ public function getUserName(): string {
  * @throws \RangeException if name is longer than 64 characters
  * @throws \TypeError if name is not a string
  */
-public function setUserName($newUserName): string {
-	
+public function setUserName(string $newUserName): void {
+	//checks if username is string and sanitizes
+	$newUserName = trim($newUserName);
+	$newUserName = filter_var($newUserName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newUserName) !== false) {
+		throw(new \InvalidArgumentException("Name is either empty or contains invalid characters"));
+	}
+	//checks if username is less than 64 characters
+	if(strlen($newUserName) > 64) {
+		throw(new \RangeException("Name needs to be shorter than 64 characters"));
+	}
+	$this->userName = $newUserName;
 }
 
 

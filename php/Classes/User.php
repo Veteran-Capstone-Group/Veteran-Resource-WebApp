@@ -92,7 +92,7 @@ public function getUserEmail(): string {
 	 *
 	 * @param string $newUserEmail
 	 * @throws \InvalidArgumentException if email is not a string or is insecure
-	 * @throws \RangeException if string is longer than 128 characters
+	 * @throws \RangeException if string is longer than 124 characters
 	 * @throws \TypeError if Email is not a string
 	 */
 public function setUserEmail($newUserEmail): void{
@@ -104,7 +104,7 @@ public function setUserEmail($newUserEmail): void{
 	}
 	//check if email is valid length
 	if(strlen($newUserEmail) > 128) {
-		throw(new \RangeException("Email needs to be less than 128 UNICODE characters"));
+		throw(new \RangeException("Email needs to be less than 124 UNICODE characters"));
 	}
 	//set return new email
 	$this->userEmail = $newUserEmail;
@@ -183,7 +183,26 @@ public function setUserHash(string $newUserHash): void {
 	$this->userHash = $newUserHash;
 }
 
+/**
+ * getter for userName
+ *
+ * @return string $userName
+ */
+public function getUserName(): string {
+	return ($this->userName);
+}
 
+/**
+ * setter for userName
+ *
+ * @param string $newUserName
+ * @throws \InvalidArgumentException name is not secure or contains invalid characters
+ * @throws \RangeException if name is longer than 64 characters
+ * @throws \TypeError if name is not a string
+ */
+public function setUserName($newUserName): string {
+	
+}
 
 
 

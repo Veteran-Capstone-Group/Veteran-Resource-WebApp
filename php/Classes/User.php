@@ -232,7 +232,20 @@ public function getUserUsername(): string {
  * @throws /RangeException is username is longer than 24 characters
  * @throws /TypeError if username is not a string
  */
-
+public function setUserUsername(string $newUserUsername): void {
+	//sanitize string
+	$newUserUsername = trim($newUserUsername);
+	$newUserUsername = filter_var($newUserUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($newUserUsername) !== false) {
+		throw(new \InvalidArgumentException("Username is either empty or invalid"));
+	}
+	// check is string is >24 characters
+	if(strlen($newUserUsername) > 24) {
+		throw(new \RangeException("Username must include less than 24 characters"))
+	}
+	//return new username as username
+	$this->userUsername = $newUserUsername;
+}
 
 
 

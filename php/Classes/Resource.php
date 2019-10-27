@@ -473,5 +473,38 @@ class Resource {
 		$this->resourceTitle=$newResourceTitle;
 	}
 
+	/**
+	 * Accessor for resourceUrl
+	 *
+	 * @return string
+	 */
+	public function getResourceUrl(): string {
+		return ($this->resourceUrl);
+	}
 
+	/**
+	 * Mutator method for resourceUrl
+	 *
+	 * @param $newResourceUrl
+	 * @throws \InvalidArgumentException if empty or not safe
+	 * @throws \RangeException if too long
+	 * @throws \TypeError if not a string
+	 */
+	public function setResourceUrl(string $newResourceUrl): void {
+		//trims whitespace
+		$newResourceUrl=trim($newResourceUrl);
+		//sanitizes URL to get rid of harmful attacks
+		$newResourceUrl=filter_var($newResourceUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		//Checks if string still has content after sanitization
+		if(empty($newResourceUrl)===true) {
+			//if string is empty, output error
+			throw(new \InvalidArgumentException("Image Url is empty or insecure"));
+		}
+		//check if string length is appropriate
+		if(strlen($newResourceUrl)>255) {
+			throw(new \RangeException("Image Url contains too many characters"));
+		}
+		//store content
+		$this->resourceUrl=$newResourceUrl;
+	}
 }

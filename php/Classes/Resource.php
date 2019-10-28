@@ -214,20 +214,20 @@ class Resource {
 	 */
 	public function setResourceAddress(string $newResourceAddress): void {
 		//trims whitespace
-		$newResourceAddress=trim($newResourceAddress);
+		$newResourceAddress = trim($newResourceAddress);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceAddress=filter_var($newResourceAddress, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceAddress)===true) {
+		if(empty($newResourceAddress) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Address is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceAddress)>124) {
+		if(strlen($newResourceAddress) > 124) {
 			throw(new \RangeException("Address contains too many characters"));
 		}
 		//store content
-		$this->resourceAddress=$newResourceAddress;
+		$this->resourceAddress = $newResourceAddress;
 	}
 
 	/**
@@ -235,8 +235,8 @@ class Resource {
 	 *
 	 * @return bool
 	 */
-	public function getResourceApprovalStatus():bool {
-	return ($this->resourceApprovalStatus);
+	public function getResourceApprovalStatus(): bool {
+		return ($this->resourceApprovalStatus);
 	}
 
 	/**
@@ -244,14 +244,14 @@ class Resource {
 	 *
 	 * @param bool $newResourceApprovalStatus
 	 */
-	public function setResourceApprovalStatus(bool $newResourceApprovalStatus=false):void {
-		$newResourceApprovalStatus=filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+	public function setResourceApprovalStatus(bool $newResourceApprovalStatus = false): void {
+		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 		//Checks if null
-		if(empty($newResourceApprovalStatus)===true) {
+		if(empty($newResourceApprovalStatus) === true) {
 			//if approval status is null, set to false
-			$this->resourceApprovalStatus=false;
+			$this->resourceApprovalStatus = false;
 		}
-	$this->resourceApprovalStatus=$newResourceApprovalStatus;
+		$this->resourceApprovalStatus = $newResourceApprovalStatus;
 	}
 
 	/**
@@ -273,21 +273,22 @@ class Resource {
 	 */
 	public function setResourceDescription(string $newResourceDescription): void {
 		//trims whitespace
-		$newResourceDescription=trim($newResourceDescription);
+		$newResourceDescription = trim($newResourceDescription);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceDescription=filter_var($newResourceDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceDescription)===true) {
+		if(empty($newResourceDescription) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Description is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceDescription)>300) {
+		if(strlen($newResourceDescription) > 300) {
 			throw(new \RangeException("Description contains too many characters"));
 		}
 		//store content
-		$this->resourceDescription=$newResourceDescription;
+		$this->resourceDescription = $newResourceDescription;
 	}
+
 	/**
 	 * Accessor for resourceEmail
 	 *
@@ -307,21 +308,22 @@ class Resource {
 	 */
 	public function setResourceEmail(string $newResourceEmail): void {
 		//trims whitespace
-		$newResourceEmail=trim($newResourceEmail);
+		$newResourceEmail = trim($newResourceEmail);
 		//sanitizes email to get rid of harmful attacks and ensure valid email address
-		$newResourceEmail=filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if email still has content after sanitization
-		if(empty($newResourceEmail)===true) {
+		if(empty($newResourceEmail) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Email is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceEmail)>124) {
+		if(strlen($newResourceEmail) > 124) {
 			throw(new \RangeException("Email contains too many characters"));
 		}
 		//store content
-		$this->resourceEmail=$newResourceEmail;
+		$this->resourceEmail = $newResourceEmail;
 	}
+
 	/**
 	 * Accessor for resourceImageUrl
 	 *
@@ -341,21 +343,22 @@ class Resource {
 	 */
 	public function setResourceImageUrl(string $newResourceImageUrl): void {
 		//trims whitespace
-		$newResourceImageUrl=trim($newResourceImageUrl);
+		$newResourceImageUrl = trim($newResourceImageUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceImageUrl=filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceImageUrl)===true) {
+		if(empty($newResourceImageUrl) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Image Url is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceImageUrl)>255) {
+		if(strlen($newResourceImageUrl) > 255) {
 			throw(new \RangeException("Image Url contains too many characters"));
 		}
 		//store content
-		$this->resourceImageUrl=$newResourceImageUrl;
+		$this->resourceImageUrl = $newResourceImageUrl;
 	}
+
 	/**
 	 * Accessor for resourceOrganization
 	 *
@@ -375,20 +378,20 @@ class Resource {
 	 */
 	public function setResourceOrganization(string $newResourceOrganization): void {
 		//trims whitespace
-		$newResourceOrganization=trim($newResourceOrganization);
+		$newResourceOrganization = trim($newResourceOrganization);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceOrganization=filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceOrganization)===true) {
+		if(empty($newResourceOrganization) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Organization is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceOrganization)>124) {
+		if(strlen($newResourceOrganization) > 124) {
 			throw(new \RangeException("Organization contains too many characters"));
 		}
 		//store content
-		$this->resourceOrganization=$newResourceOrganization;
+		$this->resourceOrganization = $newResourceOrganization;
 	}
 
 	/**
@@ -410,32 +413,32 @@ class Resource {
 	 */
 	public function setResourcePhone(string $newResourcePhone): void {
 		//trims whitespace
-		$newResourcePhone=trim($newResourcePhone);
+		$newResourcePhone = trim($newResourcePhone);
 		//Removes all special characters and letters.
 		$newSanitizedResourcePhone = preg_replace('/[^0-9]/', '', $newResourcePhone);
 		//Checks if string still has content after sanitization
-		if(empty($newSanitizedResourcePhone)===true) {
+		if(empty($newSanitizedResourcePhone) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Phone contains no numbers"));
 		}
 		//check if string length is appropriate
-		if(strlen($newSanitizedResourcePhone)>11) {
+		if(strlen($newSanitizedResourcePhone) > 11) {
 			throw(new \RangeException("Phone contains too many characters"));
 		}
 		//If phone number is ten digits, add US International Area code 1
-		if(strlen($newSanitizedResourcePhone)===10) {
-			$newSanitizedResourcePhone = "1".$newSanitizedResourcePhone;
+		if(strlen($newSanitizedResourcePhone) === 10) {
+			$newSanitizedResourcePhone = "1" . $newSanitizedResourcePhone;
 		}
 		//Special "needs area code" exception
-		if(strlen($newSanitizedResourcePhone)===7) {
+		if(strlen($newSanitizedResourcePhone) === 7) {
 			throw(new \RangeException("Phone Number Needs an Area Code."));
 		}
-		if(strlen($newSanitizedResourcePhone)<11) {
+		if(strlen($newSanitizedResourcePhone) < 11) {
 			throw(new \RangeException("Phone contains too few characters"));
 		}
 		//
 		//store content
-		$this->resourcePhone=$newResourcePhone;
+		$this->resourcePhone = $newResourcePhone;
 	}
 
 	/**
@@ -457,20 +460,20 @@ class Resource {
 	 */
 	public function setResourceTitle(string $newResourceTitle): void {
 		//trims whitespace
-		$newResourceTitle=trim($newResourceTitle);
+		$newResourceTitle = trim($newResourceTitle);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceTitle=filter_var($newResourceTitle, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceTitle)===true) {
+		if(empty($newResourceTitle) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Title is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceTitle)>64) {
+		if(strlen($newResourceTitle) > 64) {
 			throw(new \RangeException("Title contains too many characters"));
 		}
 		//store content
-		$this->resourceTitle=$newResourceTitle;
+		$this->resourceTitle = $newResourceTitle;
 	}
 
 	/**
@@ -492,20 +495,20 @@ class Resource {
 	 */
 	public function setResourceUrl(string $newResourceUrl): void {
 		//trims whitespace
-		$newResourceUrl=trim($newResourceUrl);
+		$newResourceUrl = trim($newResourceUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceUrl=filter_var($newResourceUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
 		//Checks if string still has content after sanitization
-		if(empty($newResourceUrl)===true) {
+		if(empty($newResourceUrl) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Image Url is empty or insecure"));
 		}
 		//check if string length is appropriate
-		if(strlen($newResourceUrl)>255) {
+		if(strlen($newResourceUrl) > 255) {
 			throw(new \RangeException("Image Url contains too many characters"));
 		}
 		//store content
-		$this->resourceUrl=$newResourceUrl;
+		$this->resourceUrl = $newResourceUrl;
 	}
 
 	/**
@@ -515,13 +518,13 @@ class Resource {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
-	public function insert(\PDO $pdo):void {
+	public function insert(\PDO $pdo): void {
 		//create query template
 		$query = "INSERT INTO resource(resourceId, resourceUserId, resourceCategoryId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceURL) VALUES(:resourceId, :resourceUserId, :resourceCategoryId, :resourceAddress, :resourceApprovalStatus, :resourceDescription, :resourceEmail, :resourceImageUrl, :resourceOrganization, :resourcePhone, :resourceTitle, :resourceUrl)";
-		$statement =$pdo->prepare($query);
+		$statement = $pdo->prepare($query);
 
 		//bind the member variables to the place holders in the template
-		$parameters = ["resourceId"=> $this->resourceId->getBytes(), "resourceUserId"=> $this->resourceUserId->getBytes(), "resourceCategoryId"=> $this->resourceCategoryId->getBytes(), "resourceAddress"=> $this->resourceAddress, "resourceApprovalStatus"=> $this->resourceApprovalStatus, "resourceDescription"=> $this->resourceDescription, "resourceEmail"=> $this->resourceEmail, "resourceImageUrl"=> $this->resourceImageUrl, "resourceOrganization"=> $this->resourceOrganization, "resourcePhone"=> $this->resourcePhone, "resourceTitle"=> $this->resourceTitle, "resourceUrl"=> $this->resourceUrl];
+		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
 		$statement->execute($parameters);
 	}
 
@@ -532,7 +535,7 @@ class Resource {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
-	public function delete(\PDO $pdo):void {
+	public function delete(\PDO $pdo): void {
 		//create query template
 		$query = "DELETE FROM resource WHERE resourceId = :resourceId";
 		$statement = $pdo->prepare($query);
@@ -541,6 +544,7 @@ class Resource {
 		$parameters = ["resourceId" => $this->resourceId->getBytes()];
 		$statement->execute($parameters);
 	}
+
 	/**
 	 * updates this Resource in mySQL
 	 *
@@ -548,11 +552,12 @@ class Resource {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 **/
-	public function update(\PDO $pdo) : void {
+	public function update(\PDO $pdo): void {
 		//create query template
-		$query = "UPDATE resource SET resourceUserId = :resourceUserId, resourceCategoryId = :resourceCategoryId, resourceAddress = :resourceAddress, resourceApprovalStatus = :resourceApprovalStatus, resourceDescription = :resourceDescription, resourceEmail = :resourceEmail, resourceImageUrl = :resourceImageUrl, resourceOrganization = :resourceOrganization, resourcePhone = :resourcePhone, resourceTitle = :resourceTitle) VALUES(:resourceId, :resourceUserId, :resourceCategoryId, :resourceAddress, :resourceApprovalStatus, :resourceDescription, :resourceEmail, :resourceImageUrl, :resourceOrganization, :resourcePhone, :resourceTitle WHERE resourceId = :resourceId";
+		$query = "UPDATE resource SET resourceUserId = :resourceUserId, resourceCategoryId = :resourceCategoryId, resourceAddress = :resourceAddress, resourceApprovalStatus = :resourceApprovalStatus, resourceDescription = :resourceDescription, resourceEmail = :resourceEmail, resourceImageUrl = :resourceImageUrl, resourceOrganization = :resourceOrganization, resourcePhone = :resourcePhone, resourceTitle = :resourceTitle WHERE resourceId = :resourceId";
 		$statement = $pdo->prepare($query);
-
-
+//bind member variables to the placeholders in the template
+		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
+		$statement->execute($parameters);
 	}
 }

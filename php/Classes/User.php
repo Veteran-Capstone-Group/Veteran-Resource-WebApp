@@ -337,5 +337,49 @@ public function delete(\PDO $pdo): void {
 }
 //PDO getFOObyBAR methods
 
+	/**
+	 * get user information by username and hash for login process
+	 *
+	 * @param \PDO $pdo
+	 * @param string $userUsername
+	 * @param string $userHash
+	 */
+public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $userHash): void {
+	//sanitize username
+//sanitize string
+	$userUsername = trim($userUsername);
+	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	if(empty($userUsername) !== false) {
+		throw(new \InvalidArgumentException("Username is either empty or invalid"));
+	}
+	// check is string is >24 characters
+	if(strlen($userUsername) > 24) {
+		throw(new \RangeException("Username must include less than 24 characters"));
+	}
+	//sanitize hash
+	//check if hash is empty
+	$userHash = str_replace("$", "\$", $userHash);
+	$userHash = trim($userHash);
+	if(empty($userHash) !== true) {
+		throw(new \InvalidArgumentException("hash is insecure or invalid"));
+	}
+	//check type of hash
+	$userHashInfo = password_get_info($userHash);
+	if($userHashInfo["algoName"] !== "bcrypt") {
+		throw(new \InvalidArgumentException("author hash is not a valid hash"));
+	}
+	//check character length of hash
+	if(strlen($userHash) !== 30) {
+		throw(new \InvalidArgumentException("hash must be the correct length"));
+	}
+	//create query template
+	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername AND 'userHash' = :userHash";
+	$statement = $pdo->prepare($query);
+	//set parameters to execute
+	$parameters =;
+	$statement->execute($parameters);
+	//grab user from MySQL
+
+}
 	//JsonSerialize
 }

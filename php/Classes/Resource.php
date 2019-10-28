@@ -560,4 +560,13 @@ class Resource {
 		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
 		$statement->execute($parameters);
 	}
+
+	public function getResourceByResourceCategoryId (\PDO $pdo, $resourceCategoryId) {
+		try {
+			$resourceCategoryId = self::validateUuid($resourceCategoryId);
+		} catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+
+	}
 }

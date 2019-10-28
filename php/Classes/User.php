@@ -298,6 +298,27 @@ public function insert(\PDO $pdo): void {
 	$statement->execute($parameters);
 }
 //Update
+/**
+ * updates user in MySQL database
+ *
+ *@param \PDO $pdo PDO connection object
+ *@throws \PDOException when MySQL related error occurs
+ *@throws \TypeError if $pdo is not pdo connection object
+ */
+public function update(\PDO $pdo): void {
+	//create query template
+	$query = "UPDATE user SET userId = :userId, userActivationToken = :userActivationToken, userEmail = :userEmail, userHash = :userHash, userName = :userName, userUsername = :userUsername WHERE userId = :userId";
+	$statement = $pdo->prepare($query);
+	// set parameters to execute query
+	$parameters = [
+		"userId" => $this->userId->getBytes(),
+		"userActivationToken" => $this->userActivationToken,
+		"userEmail" => $this->userEmail,
+		"userHash" => $this->userHash,
+		"userName" => $this->userName,
+		"userUsername" => $this->userUsername];
+	$statement->execute($parameters);
+}
 //Delete
 
 //PDO getFOObyBAR methods

@@ -7,7 +7,7 @@ create table user(
    userId binary(16) not null,
    userActivationToken char(32) not null,
    userEmail varchar(124) not null,
-   userHash char(30) not null,
+   userHash char(97) not null,
    userName varchar(64) not null,
    userUsername varchar(24) not null,
    unique(userUsername),

@@ -15,7 +15,7 @@ class User {
 	use ValidateUuid;
 	/**
 	 * id for this user, this is the primary key
-	 * @var Uuid $userId
+	 * @var Uuid|string $userId
 	 */
 private $userId;
 
@@ -53,7 +53,7 @@ private $userUsername;
 	/**
 	 * constructor for this user
 	 *
-	 * @param Uuid $newUserId
+	 * @param Uuid|string $newUserId
 	 * @param string $newUserActivationToken
 	 * @param string $newUserEmail
 	 * @param string $newUserHash
@@ -63,7 +63,8 @@ private $userUsername;
 	 * @throws \RangeException if data is not the correct length
 	 * @throws \TypeError if data types violate type hints
 	 */
-	public function __construct($newUserId, $newUserActivationToken, $newUserEmail, $newUserHash, $newUserName, $newUserUsername) {
+	//
+	public function __construct(Uuid $newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
 		try {
 			$this->setUserId($newUserId);
 			$this->setUserActivationToken($newUserActivationToken);
@@ -94,7 +95,7 @@ public function getUserId(): Uuid {
  * @param Uuid $newUserId new value of userId
  * @throws \TypeError if $newUserId is not a uuid or string
  */
-public function setUserId($newUserId) {
+public function setUserId(Uuid $newUserId) {
 	//verify if userId is valid
 	try {
 		$uuid = self::validateUuid($newUserId);
@@ -123,7 +124,7 @@ public function getUserEmail(): string {
 	 * @throws \RangeException if string is longer than 124 characters
 	 * @throws \TypeError if Email is not a string
 	 */
-public function setUserEmail($newUserEmail): void{
+public function setUserEmail(string $newUserEmail): void{
 	//sanitize email
 	$newUserEmail = trim($newUserEmail);
 	$newUserEmail = filter_var($newUserEmail, FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE);
@@ -131,7 +132,7 @@ public function setUserEmail($newUserEmail): void{
 		throw(new \InvalidArgumentException("This email is not valid"));
 	}
 	//check if email is valid length
-	if(strlen($newUserEmail) > 128) {
+	if(strlen($newUserEmail) > 124) {
 		throw(new \RangeException("Email needs to be less than 124 UNICODE characters"));
 	}
 	//set return new email
@@ -155,7 +156,7 @@ public function getUserActivationToken(): string {
  * @throws \RangeException if token is not exactly 32 chars
  * @throws \TypeError if the token is not a string
  */
-public function setUserActivationToken(?string $newUserActivationToken): void {
+public function setUserActivationToken(string $newUserActivationToken): void {
 	//if null return null
 	if($newUserActivationToken === null) {
 		$this->userActivationToken =null;
@@ -193,18 +194,17 @@ public function getUserHash(): string {
  */
 public function setUserHash(string $newUserHash): void {
 	//check if hash is empty
-	$newUserHash = str_replace("$", "\$", $newUserHash);
 	$newUserHash = trim($newUserHash);
 	if(empty($newUserHash) !== true) {
 	throw(new \InvalidArgumentException("hash is insecure or invalid"));
 	}
 	//check type of hash
 	$userHashInfo = password_get_info($newUserHash);
-	if($userHashInfo["algoName"] !== "bcrypt") {
+	if($userHashInfo["algoName"] !== "argon2i") {
 		throw(new \InvalidArgumentException("author hash is not a valid hash"));
 	}
 	//check character length of hash
-	if(strlen($newUserHash) !== 30) {
+	if(strlen($newUserHash) !== 97) {
 		throw(new \InvalidArgumentException("hash must be the correct length"));
 	}
 	//return hash
@@ -231,10 +231,7 @@ public function getUserName(): string {
 public function setUserName(string $newUserName): void {
 	//checks if username is string and sanitizes
 	$newUserName = trim($newUserName);
-	$newUserName = filter_var($newUserName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($newUserName) !== false) {
-		throw(new \InvalidArgumentException("Name is either empty or contains invalid characters"));
-	}
+	$newUserName = filter_var($newUserName, FILTER_SANITIZE_STRING);
 	//checks if username is less than 64 characters
 	if(strlen($newUserName) > 64) {
 		throw(new \RangeException("Name needs to be shorter than 64 characters"));
@@ -262,10 +259,7 @@ public function getUserUsername(): string {
 public function setUserUsername(string $newUserUsername): void {
 	//sanitize string
 	$newUserUsername = trim($newUserUsername);
-	$newUserUsername = filter_var($newUserUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($newUserUsername) !== false) {
-		throw(new \InvalidArgumentException("Username is either empty or invalid"));
-	}
+	$newUserUsername = filter_var($newUserUsername, FILTER_SANITIZE_STRING);
 	// check is string is >24 characters
 	if(strlen($newUserUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));
@@ -344,39 +338,22 @@ public function delete(\PDO $pdo): void {
 	 * @param string $userUsername
 	 * @param string $userHash
 	 */
-public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $userHash) {
+public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
 //sanitize string
 	$userUsername = trim($userUsername);
-	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($userUsername) !== false) {
-		throw(new \InvalidArgumentException("Username is either empty or invalid"));
-	}
+	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING);
 	// check is string is >24 characters
 	if(strlen($userUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));
 	}
-	//sanitize hash
-	//check if hash is empty
-	$userHash = str_replace("$", "\$", $userHash);
-	$userHash = trim($userHash);
-	if(empty($userHash) !== true) {
-		throw(new \InvalidArgumentException("hash is insecure or invalid"));
-	}
-	//check type of hash
-	$userHashInfo = password_get_info($userHash);
-	if($userHashInfo["algoName"] !== "bcrypt") {
-		throw(new \InvalidArgumentException("author hash is not a valid hash"));
-	}
-	//check character length of hash
-	if(strlen($userHash) !== 30) {
-		throw(new \InvalidArgumentException("hash must be the correct length"));
-	}
+
+
 	//create query template
-	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername AND 'userHash' = :userHash";
+	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername";
 	$statement = $pdo->prepare($query);
 	//set parameters to execute
-	$parameters = ['userUsername' => $userUsername, 'userHash' => $userHash];
+	$parameters = ['userUsername' => $userUsername];
 	$statement->execute($parameters);
 	//grab user from MySQL
 	try {
@@ -393,4 +370,14 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $u
 	return($user);
 }
 	//JsonSerialize
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() : array {
+		$fields = get_object_vars($this);
+		$fields["userId"] = $this->userId->toString();
+		return($fields);
+	}
 }

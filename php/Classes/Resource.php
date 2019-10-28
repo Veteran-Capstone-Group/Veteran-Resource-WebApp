@@ -30,7 +30,7 @@ class Resource {
 	 */
 	private $resourceCategoryId;
 	/**
-	 * Foreign Key resourceUserID refers to userId
+	 * Foreign Key resourceUserID refers to userId, Not Null
 	 * @var Uuid $resourceUserId
 	 */
 	private $resourceUserId;
@@ -40,7 +40,7 @@ class Resource {
 	 */
 	private $resourceAddress;
 	/**
-	 * contains true if approved, false
+	 * contains true if approved, false otherwise, Not Null
 	 * @var boolean $resourceApprovalStatus
 	 */
 	private $resourceApprovalStatus;
@@ -95,7 +95,7 @@ class Resource {
 	 * @param string $newResourceTitle Title for this resource or null if new resource
 	 * @param string $newResourceUrl URL source for this resource or null if new resource
 	 */
-	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, string $newResourceImageUrl, string $newResourceOrganization, string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
 		try {
 			$this->setResourceId($newResourceId);
 			$this->setResourceCategoryId($newResourceCategoryId);
@@ -116,16 +116,18 @@ class Resource {
 	}
 
 	/**
-	 * Accessor for resourceId
+	 * Accessor for resourceId Not Null
+	 * Primary Key
 	 *
-	 * @return Uuid
+	 * @return Uuid Primary Key resourceId
 	 */
 	public function getResourceId(): Uuid {
 		return ($this->resourceId);
 	}
 
 	/**
-	 * Mutator for resourceId
+	 * Mutator for resourceId Not Null
+	 * Primary Key
 	 *
 	 * @param $newResourceId
 	 * @throws \Exception if $newResourceId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
@@ -142,16 +144,18 @@ class Resource {
 	}
 
 	/**
-	 * Accessor for resourceCategoryId
+	 * Accessor for resourceCategoryId Not Null
+	 * foreign Key
 	 *
-	 * @return Uuid
+	 * @return Uuid Foreign Key relates to categoryId
 	 */
 	public function getResourceCategoryId(): Uuid {
 		return ($this->resourceCategoryId);
 	}
 
 	/**
-	 * Mutator for resourceCategoryId
+	 * Mutator for resourceCategoryId Not Null
+	 * foreign Key
 	 *
 	 * @param $newResourceCategoryId
 	 * @throws \Exception if $newResourceCategoryId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
@@ -168,16 +172,18 @@ class Resource {
 	}
 
 	/**
-	 * Accessor for resourceUserId
+	 * Accessor for resourceUserId Not Null
+	 * foreign Key
 	 *
-	 * @return Uuid
+	 * @return Uuid Foreign Key relates to userId
 	 */
 	public function getResourceUserId(): Uuid {
 		return ($this->resourceUserId);
 	}
 
 	/**
-	 * Mutator for resourceUserId
+	 * Mutator for resourceUserId Not Null
+	 * foreign Key
 	 *
 	 * @param $newResourceUserId
 	 * @throws \Exception if $newResourceUserId is an invalid argument, in an invalid range, is a type error, or is another type of exception.
@@ -196,30 +202,25 @@ class Resource {
 	/**
 	 * Accessor for resourceAddress
 	 *
-	 * @return string
+	 * @return string for Resource Address can be null
 	 */
 	public function getResourceAddress(): string {
 		return ($this->resourceAddress);
 	}
 
 	/**
-	 * Mutator method for resourceAddress
+	 * Mutator method for resourceAddress can be null
 	 *
 	 * @param $newResourceAddress
 	 * @throws \InvalidArgumentException if empty or not safe
 	 * @throws \RangeException if too long
 	 * @throws \TypeError if not a string
 	 */
-	public function setResourceAddress(string $newResourceAddress): void {
+	public function setResourceAddress(?string $newResourceAddress): void {
 		//trims whitespace
 		$newResourceAddress = trim($newResourceAddress);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		//Checks if string still has content after sanitization
-		if(empty($newResourceAddress) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Address is empty or insecure"));
-		}
+		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING, );
 		//check if string length is appropriate
 		if(strlen($newResourceAddress) > 124) {
 			throw(new \RangeException("Address contains too many characters"));
@@ -231,7 +232,7 @@ class Resource {
 	/**
 	 * Accessor for resourceApprovalStatus
 	 *
-	 * @return bool
+	 * @return bool pertaining to the approval of the resource
 	 */
 	public function getResourceApprovalStatus(): bool {
 		return ($this->resourceApprovalStatus);
@@ -240,15 +241,16 @@ class Resource {
 	/**
 	 * Mutator Method for resourceApprovalStatus
 	 *
-	 * @param bool $newResourceApprovalStatus
+	 * @param bool $newResourceApprovalStatus not null
 	 */
 	public function setResourceApprovalStatus(bool $newResourceApprovalStatus = false): void {
-		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-		//Checks if null
 		if(empty($newResourceApprovalStatus) === true) {
 			//if approval status is null, set to false
 			$this->resourceApprovalStatus = false;
+			return;
 		}
+		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+		//Checks if null
 		$this->resourceApprovalStatus = $newResourceApprovalStatus;
 	}
 
@@ -273,12 +275,7 @@ class Resource {
 		//trims whitespace
 		$newResourceDescription = trim($newResourceDescription);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		//Checks if string still has content after sanitization
-		if(empty($newResourceDescription) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Description is empty or insecure"));
-		}
+		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING, );
 		//check if string length is appropriate
 		if(strlen($newResourceDescription) > 300) {
 			throw(new \RangeException("Description contains too many characters"));
@@ -308,12 +305,7 @@ class Resource {
 		//trims whitespace
 		$newResourceEmail = trim($newResourceEmail);
 		//sanitizes email to get rid of harmful attacks and ensure valid email address
-		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_NO_ENCODE_QUOTES);
-		//Checks if email still has content after sanitization
-		if(empty($newResourceEmail) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Email is empty or insecure"));
-		}
+		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, );
 		//check if string length is appropriate
 		if(strlen($newResourceEmail) > 124) {
 			throw(new \RangeException("Email contains too many characters"));
@@ -343,12 +335,7 @@ class Resource {
 		//trims whitespace
 		$newResourceImageUrl = trim($newResourceImageUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
-		//Checks if string still has content after sanitization
-		if(empty($newResourceImageUrl) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Image Url is empty or insecure"));
-		}
+		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, );
 		//check if string length is appropriate
 		if(strlen($newResourceImageUrl) > 255) {
 			throw(new \RangeException("Image Url contains too many characters"));
@@ -378,12 +365,7 @@ class Resource {
 		//trims whitespace
 		$newResourceOrganization = trim($newResourceOrganization);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-		//Checks if string still has content after sanitization
-		if(empty($newResourceOrganization) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Organization is empty or insecure"));
-		}
+		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, );
 		//check if string length is appropriate
 		if(strlen($newResourceOrganization) > 124) {
 			throw(new \RangeException("Organization contains too many characters"));
@@ -409,6 +391,7 @@ class Resource {
 	 * @throws \RangeException if too long
 	 * @throws \TypeError if not a string
 	 */
+	// todo Rewrite validation once table is updated to have input be a string of 25 characters
 	public function setResourcePhone(string $newResourcePhone): void {
 		//trims whitespace
 		$newResourcePhone = trim($newResourcePhone);
@@ -418,14 +401,6 @@ class Resource {
 		if(empty($newSanitizedResourcePhone) === true) {
 			//if string is empty, output error
 			throw(new \InvalidArgumentException("Phone contains no numbers"));
-		}
-		//check if string length is appropriate
-		if(strlen($newSanitizedResourcePhone) > 11) {
-			throw(new \RangeException("Phone contains too many characters"));
-		}
-		//If phone number is ten digits, add US International Area code 1
-		if(strlen($newSanitizedResourcePhone) === 10) {
-			$newSanitizedResourcePhone = "1" . $newSanitizedResourcePhone;
 		}
 		//Special "needs area code" exception
 		if(strlen($newSanitizedResourcePhone) === 7) {
@@ -460,7 +435,7 @@ class Resource {
 		//trims whitespace
 		$newResourceTitle = trim($newResourceTitle);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING, );
 		//Checks if string still has content after sanitization
 		if(empty($newResourceTitle) === true) {
 			//if string is empty, output error
@@ -495,7 +470,7 @@ class Resource {
 		//trims whitespace
 		$newResourceUrl = trim($newResourceUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL, );
 		//Checks if string still has content after sanitization
 		if(empty($newResourceUrl) === true) {
 			//if string is empty, output error

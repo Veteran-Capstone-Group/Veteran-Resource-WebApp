@@ -560,4 +560,43 @@ class Resource {
 		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
 		$statement->execute($parameters);
 	}
+
+	/**
+	 * Gets resource by category id, using foreign key to relate to category.
+	 *
+	 * @param \PDO $pdo
+	 * @param $resourceCategoryId
+	 * @return \SplFixedArray
+	 * @throws \PDOException when MySQL Errors happen
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public function getResourceByResourceCategoryId(\PDO $pdo, $resourceCategoryId): \SplFixedArray {
+		//Validate resourceCategoryId
+		try {
+			$resourceCategoryId = self::validateUuid($resourceCategoryId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceCategoryId = :resourceCategoryId";
+		$statement = $pdo->prepare($query);
+		//bind the resourceCategoryId to the place holder in MySQL
+		$parameters = ["resourceCategoryId" => $resourceCategoryId->getBytes()];
+		$statement->execute($parameters);
+		//build an array of resources
+		$resources = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
+				$resources[$resources->key()] = $resource;
+				$resources->next();
+			} catch(\Exception $exception) {
+				//if the row can't be converted, throw it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($resources);
+	}
+
 }

@@ -1,5 +1,4 @@
 drop table if exists useful;
-drop table if exists opportunity;
 drop table if exists resource;
 drop table if exists catagory;
 drop table if exists user;

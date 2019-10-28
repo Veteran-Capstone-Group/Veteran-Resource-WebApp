@@ -336,5 +336,6 @@ public function delete(\PDO $pdo): void {
 	$statement->execute($parameters);
 }
 //PDO getFOObyBAR methods
+
 	//JsonSerialize
 }

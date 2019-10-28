@@ -370,4 +370,14 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	return($user);
 }
 	//JsonSerialize
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() : array {
+		$fields = get_object_vars($this);
+		$fields["userId"] = $this->userId->toString();
+		return($fields);
+	}
 }

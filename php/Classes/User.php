@@ -50,6 +50,33 @@ private $userName;
 private $userUsername;
 
 //constructor goes here
+	/**
+	 * constructor for this user
+	 *
+	 * @param Uuid $newUserId
+	 * @param string $newUserActivationToken
+	 * @param string $newUserEmail
+	 * @param string $newUserHash
+	 * @param string $newUserName
+	 * @param string $newUserUsername
+	 * @throws \InvalidArgumentException if datq is empty or Invalid
+	 * @throws \RangeException if data is not the correct length
+	 * @throws \TypeError if data types violate type hints
+	 */
+	public function __construct($newUserId, $newUserActivationToken, $newUserEmail, $newUserHash, $newUserName, $newUserUsername) {
+		try {
+			$this->setUserId($newUserId);
+			$this->setUserActivationToken($newUserActivationToken);
+			$this->setUserEmail($newUserEmail);
+			$this->setUserHash($newUserHash);
+			$this->setUserName($newUserName);
+			$this->setUserUsername($newUserUsername);
+		} // determine if and what exception was thrown
+		catch(\InvalidArgumentException | \RangeException | \TypeError | \Exception $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+	}
 
 //getters and setters
 /**
@@ -246,15 +273,6 @@ public function setUserUsername(string $newUserUsername): void {
 	//return new username as username
 	$this->userUsername = $newUserUsername;
 }
-
-
-
-
-
-
-
-
-
 
 //methods
 

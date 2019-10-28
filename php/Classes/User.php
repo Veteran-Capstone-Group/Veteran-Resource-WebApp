@@ -63,8 +63,8 @@ private $userUsername;
 	 * @throws \RangeException if data is not the correct length
 	 * @throws \TypeError if data types violate type hints
 	 */
-	// TODO add typehints
-	public function __construct($newUserId, $newUserActivationToken, $newUserEmail, $newUserHash, $newUserName, $newUserUsername) {
+	//
+	public function __construct(Uuid|string $newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
 		try {
 			$this->setUserId($newUserId);
 			$this->setUserActivationToken($newUserActivationToken);
@@ -95,7 +95,7 @@ public function getUserId(): Uuid {
  * @param Uuid $newUserId new value of userId
  * @throws \TypeError if $newUserId is not a uuid or string
  */
-public function setUserId($newUserId) {
+public function setUserId(Uuid|string $newUserId) {
 	//verify if userId is valid
 	try {
 		$uuid = self::validateUuid($newUserId);

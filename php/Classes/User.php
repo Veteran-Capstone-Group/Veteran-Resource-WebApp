@@ -64,7 +64,7 @@ private $userUsername;
 	 * @throws \TypeError if data types violate type hints
 	 */
 	//
-	public function __construct(Uuid|string $newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
+	public function __construct(Uuid $newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
 		try {
 			$this->setUserId($newUserId);
 			$this->setUserActivationToken($newUserActivationToken);
@@ -95,7 +95,7 @@ public function getUserId(): Uuid {
  * @param Uuid $newUserId new value of userId
  * @throws \TypeError if $newUserId is not a uuid or string
  */
-public function setUserId(Uuid|string $newUserId) {
+public function setUserId(Uuid $newUserId) {
 	//verify if userId is valid
 	try {
 		$uuid = self::validateUuid($newUserId);
@@ -231,10 +231,7 @@ public function getUserName(): string {
 public function setUserName(string $newUserName): void {
 	//checks if username is string and sanitizes
 	$newUserName = trim($newUserName);
-	$newUserName = filter_var($newUserName, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($newUserName) !== false) {
-		throw(new \InvalidArgumentException("Name is either empty or contains invalid characters"));
-	}
+	$newUserName = filter_var($newUserName, FILTER_SANITIZE_STRING);
 	//checks if username is less than 64 characters
 	if(strlen($newUserName) > 64) {
 		throw(new \RangeException("Name needs to be shorter than 64 characters"));
@@ -262,10 +259,7 @@ public function getUserUsername(): string {
 public function setUserUsername(string $newUserUsername): void {
 	//sanitize string
 	$newUserUsername = trim($newUserUsername);
-	$newUserUsername = filter_var($newUserUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($newUserUsername) !== false) {
-		throw(new \InvalidArgumentException("Username is either empty or invalid"));
-	}
+	$newUserUsername = filter_var($newUserUsername, FILTER_SANITIZE_STRING);
 	// check is string is >24 characters
 	if(strlen($newUserUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));
@@ -348,10 +342,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
 //sanitize string
 	$userUsername = trim($userUsername);
-	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(empty($userUsername) !== false) {
-		throw(new \InvalidArgumentException("Username is either empty or invalid"));
-	}
+	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING);
 	// check is string is >24 characters
 	if(strlen($userUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));

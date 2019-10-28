@@ -344,7 +344,7 @@ public function delete(\PDO $pdo): void {
 	 * @param string $userUsername
 	 * @param string $userHash
 	 */
-public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $userHash): void {
+public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $userHash) {
 	//sanitize username
 //sanitize string
 	$userUsername = trim($userUsername);
@@ -376,10 +376,21 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername, string $u
 	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername AND 'userHash' = :userHash";
 	$statement = $pdo->prepare($query);
 	//set parameters to execute
-	$parameters =;
+	$parameters = ['userUsername' => $userUsername, 'userHash' => $userHash];
 	$statement->execute($parameters);
 	//grab user from MySQL
-
+	try {
+		$user = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row =$statement->fetch();
+		if($row !== false) {
+			$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+		}
+	} catch(\Exception $exception) {
+		//if row can't be converted rethrow it
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	return($user);
 }
 	//JsonSerialize
 }

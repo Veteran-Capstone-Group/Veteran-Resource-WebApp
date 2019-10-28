@@ -1,12 +1,10 @@
 <?php
 
-namespace VeteranResource\Resource;
-//check this out when autoload is created
 //require_once("autoload.php");
-//Check this out once vendor is implemented
-//require_once(dirname(__DIR__) . "/lib/vendor/autoload.php");
+require_once(dirname(__DIR__) . "/lib/vendor/autoload.php");
 
-//use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
+use VeteranResource\Resource\ValidateUuid;
 use http\Exception\BadMessageException;
 
 /**
@@ -20,7 +18,7 @@ use http\Exception\BadMessageException;
  * @version 1.0.0
  */
 class Resource {
-	//use ValidateUuid;
+	use ValidateUuid;
 	/**
 	 * id for resource; Primary Key Not Null
 	 * @var Uuid $resourceId

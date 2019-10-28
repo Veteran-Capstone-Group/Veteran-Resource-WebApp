@@ -320,7 +320,21 @@ public function update(\PDO $pdo): void {
 	$statement->execute($parameters);
 }
 //Delete
-
+/**
+ * deletes user from MySQL database
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when myswl related errors occur
+ * @throws \TypeError when $pdo is not a PDO object
+ */
+public function delete(\PDO $pdo): void {
+	//create query template
+	$query = "DELETE FROM user WHERE userId = :userId";
+	$statement = $pdo->prepare($query);
+	//set parameters to execute query
+	$parameters = ["userId" => $this->userId->getBytes()];
+	$statement->execute($parameters);
+}
 //PDO getFOObyBAR methods
 	//JsonSerialize
 }

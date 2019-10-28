@@ -275,7 +275,31 @@ public function setUserUsername(string $newUserUsername): void {
 }
 
 //methods
+//Insert
+/**
+ * Inserts user to MySQL
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException if MySQL errors occur
+ * @throws \TypeError if $PDO is not a PDO connection object
+ */
+public function insert(\PDO $pdo): void {
+	//create query template
+	$query = "INSERT INTO user(userId, userActivationToken, userEmail, userHash, userName, userUsername) VALUES(:userId, :userActivationToken, :userEmail, :userHash, :userName, :userUsername)";
+	$statement = $pdo->prepare($query);
+	//create parameters for query
+	$parameters = [
+		"userId" => $this->userId->getBytes(),
+		"userActivationToken" => $this->userActivationToken,
+		"userEmail" => $this->userEmail,
+		"userHash" => $this->userHash,
+		"userName" => $this->userName,
+		"userUsername" => $this->userUsername];
+	$statement->execute($parameters);
+}
+//Update
+//Delete
 
-
+//PDO getFOObyBAR methods
 	//JsonSerialize
 }

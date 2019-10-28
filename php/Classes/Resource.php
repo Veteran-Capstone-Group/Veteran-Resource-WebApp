@@ -561,11 +561,30 @@ class Resource {
 		$statement->execute($parameters);
 	}
 
-	public function getResourceByResourceCategoryId (\PDO $pdo, $resourceCategoryId) {
+	public function getResourceByResourceCategoryId (\PDO $pdo, $resourceCategoryId) : \SplFixedArray {
+		//Validate resourceCategoryId
 		try {
 			$resourceCategoryId = self::validateUuid($resourceCategoryId);
 		} catch (\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception){
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceCategoryId = :resourceCategoryId";
+		$statement = $pdo->prepare($query);
+		//bind the resourceCategoryId to the place holder in MySQL
+		$parameters = ["resourceCategoryId"=>$resourceCategoryId->getBytes()];
+		$statement->execute($parameters);
+		//build an array of resources
+		$resources = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+			$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
+
+
+			} catch(){
+
+			}
 		}
 
 	}

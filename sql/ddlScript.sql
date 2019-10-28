@@ -34,7 +34,7 @@ create table resource(
 	resourceEmail varchar(124),
 	resourceImageUrl varchar(255),
 	resourceOrganization varchar(124),
-	resourcePhone char(11),
+	resourcePhone char(20),
 	resourceTitle varchar(64) not null,
 	resourceUrl varchar(255) not null,
 	foreign key(resourceCategoryId) references category(categoryId),

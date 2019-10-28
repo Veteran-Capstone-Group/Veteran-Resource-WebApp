@@ -507,4 +507,52 @@ class Resource {
 		//store content
 		$this->resourceUrl=$newResourceUrl;
 	}
+
+	/**
+	 * inserts this Resource into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection Object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo):void {
+		//create query template
+		$query = "INSERT INTO resource(resourceId, resourceUserId, resourceCategoryId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceURL) VALUES(:resourceId, :resourceUserId, :resourceCategoryId, :resourceAddress, :resourceApprovalStatus, :resourceDescription, :resourceEmail, :resourceImageUrl, :resourceOrganization, :resourcePhone, :resourceTitle, :resourceUrl)";
+		$statement =$pdo->prepare($query);
+
+		//bind the member variables to the place holders in the template
+		$parameters = ["resourceId"=> $this->resourceId->getBytes(), "resourceUserId"=> $this->resourceUserId->getBytes(), "resourceCategoryId"=> $this->resourceCategoryId->getBytes(), "resourceAddress"=> $this->resourceAddress, "resourceApprovalStatus"=> $this->resourceApprovalStatus, "resourceDescription"=> $this->resourceDescription, "resourceEmail"=> $this->resourceEmail, "resourceImageUrl"=> $this->resourceImageUrl, "resourceOrganization"=> $this->resourceOrganization, "resourcePhone"=> $this->resourcePhone, "resourceTitle"=> $this->resourceTitle, "resourceUrl"=> $this->resourceUrl];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * deletes this Resource from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public function delete(\PDO $pdo):void {
+		//create query template
+		$query = "DELETE FROM resource WHERE resourceId = :resourceId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the placeholder in the template
+		$parameters = ["resourceId" => $this->resourceId->getBytes()];
+		$statement->execute($parameters);
+	}
+	/**
+	 * updates this Resource in mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public function update(\PDO $pdo) : void {
+		//create query template
+		$query = "UPDATE resource SET resourceUserId = :resourceUserId, resourceCategoryId = :resourceCategoryId, resourceAddress = :resourceAddress, resourceApprovalStatus = :resourceApprovalStatus, resourceDescription = :resourceDescription, resourceEmail = :resourceEmail, resourceImageUrl = :resourceImageUrl, resourceOrganization = :resourceOrganization, resourcePhone = :resourcePhone, resourceTitle = :resourceTitle) VALUES(:resourceId, :resourceUserId, :resourceCategoryId, :resourceAddress, :resourceApprovalStatus, :resourceDescription, :resourceEmail, :resourceImageUrl, :resourceOrganization, :resourcePhone, :resourceTitle WHERE resourceId = :resourceId";
+		$statement = $pdo->prepare($query);
+
+
+	}
 }

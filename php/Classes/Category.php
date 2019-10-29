@@ -46,6 +46,7 @@ class Category{
 
 	/**
 	 * this is the setter for category Id
+	 * @param Uuid $newCategoryId
 	 */
 	public function setCategoryId(Uuid $newCategoryId): void {
 		//verify Uuid
@@ -57,5 +58,29 @@ class Category{
 		}
 		//return Uuid
 		$this->categoryId = $uuid;
+	}
+
+	/**
+	 * this is the getter method for categoryType
+	 * @var string $categoryType
+	 */
+	public function getCategoryType(): string {
+		return($this->categoryType);
+	}
+
+	/**
+	 * this is the setter method for categoryType
+	 * @param string $newCategoryType
+	 */
+	public function setCategoryType(string $newCategoryType): void {
+		//sanitize string
+		$newCategoryType = trim($newCategoryType);
+		$newCategoryType = filter_var($newCategoryType, FILTER_SANITIZE_STRING);
+		// check is string is >16 characters
+		if(strlen($newCategoryType) > 16) {
+			throw(new \RangeException("Username must include less than 16 characters"));
+		}
+		//return string
+		$this->categoryType = $newCategoryType;
 	}
 }

@@ -1,12 +1,12 @@
 <?php
 
+
+
+
+namespace VeteranResource\Resource;
+use Ramsey\Uuid\Uuid;
 //require_once("autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
-
-use Ramsey\Uuid\Uuid;
-use VeteranResource\Resource\ValidateUuid;
-use http\Exception\BadMessageException;
-
 /**
  * Class Resource for Veteran Resource WebApp
  * @package VeteranResource\Resource
@@ -643,6 +643,19 @@ class Resource {
 			}
 		}
 		return ($resources);
+	}
+
+	/**
+	 * converts Uuids to strings to serialize
+	 *
+	 * @return array converts Uuids to strings
+	 */
+	public function jsonSerialize() : array {
+		$fields = get_object_vars( $this );
+		$fields["resourceId"] = $this->resourceId->toString();
+		$fields["resourceCategoryId"] = $this->resourceCategoryId->toString();
+		$fields["resourceUserId"] = $this->resourceUserId->toString();
+		return($fields);
 	}
 }
 

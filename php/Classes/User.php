@@ -339,7 +339,6 @@ public function delete(\PDO $pdo): void {
 	 */
 public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
-//sanitize string
 	$userUsername = trim($userUsername);
 	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING);
 	// check is string is >24 characters
@@ -374,10 +373,9 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 * @param Uuid $userId
 	 */
 	public function getUserByUserId(\PDO $pdo, Uuid $userId) {
-		//sanitize username
-//sanitize uuid
+		//sanitize uuid
 		try {
-			$uuid = self::validateUuid($userId);
+			$userId = self::validateUuid($userId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
@@ -411,17 +409,17 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 */
 	public function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
 		//sanitize activationToken
-		if($newUserActivationToken === null) {
+		if($userActivationToken === null) {
 			$this->userActivationToken =null;
 			throw(new\TypeError("token is null"));
 		}
 		//checks if token is valid
-		$newUserActivationToken = strtolower(trim($newUserActivationToken));
-		if(ctype_xdigit($newUserActivationToken) === false) {
+		$userActivationToken = strtolower(trim($userActivationToken));
+		if(ctype_xdigit($userActivationToken) === false) {
 			throw(new \InvalidArgumentException('activation token is not valid'));
 		}
 		//checks if token is 32 characters
-		if(strlen($newUserActivationToken) !== 32) {
+		if(strlen($userActivationToken) !== 32) {
 			throw(new \RangeException('token must be 32 characters in length'));
 		}
 		//create query template

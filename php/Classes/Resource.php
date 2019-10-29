@@ -584,5 +584,10 @@ class Resource {
 			$statement = $pdo->prepare($query);
 
 			//bind the resource Id to the placeholder
+			$parameters = ["resourceId" => $resourceId->getBytes()];
+			$statement->execute($parameters);
+
+			// grab the resource from mySQL
+
 		}
 }

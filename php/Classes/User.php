@@ -409,17 +409,17 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 */
 	public function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
 		//sanitize activationToken
-		if($newUserActivationToken === null) {
+		if($userActivationToken === null) {
 			$this->userActivationToken =null;
 			throw(new\TypeError("token is null"));
 		}
 		//checks if token is valid
-		$newUserActivationToken = strtolower(trim($newUserActivationToken));
-		if(ctype_xdigit($newUserActivationToken) === false) {
+		$userActivationToken = strtolower(trim($userActivationToken));
+		if(ctype_xdigit($userActivationToken) === false) {
 			throw(new \InvalidArgumentException('activation token is not valid'));
 		}
 		//checks if token is 32 characters
-		if(strlen($newUserActivationToken) !== 32) {
+		if(strlen($userActivationToken) !== 32) {
 			throw(new \RangeException('token must be 32 characters in length'));
 		}
 		//create query template

@@ -34,4 +34,28 @@ class Category{
 		}
 	}
 
+	//getters and setters
+
+	/**
+	 * this is the getter method for categoryId
+	 * @return Uuid $categoryId
+	 */
+	public function getCategoryId(): Uuid {
+		return($this->categoryId);
+	}
+
+	/**
+	 * this is the setter for category Id
+	 */
+	public function setCategoryId(Uuid $newCategoryId): void {
+		//verify Uuid
+		try {
+			$uuid = self::validateUuid($newCategoryId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//return Uuid
+		$this->categoryId = $uuid;
+	}
 }

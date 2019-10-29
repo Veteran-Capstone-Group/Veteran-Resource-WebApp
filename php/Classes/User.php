@@ -378,7 +378,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 		//sanitize username
 //sanitize uuid
 		try {
-			$uuid = self::validateUuid($newUserId);
+			$uuid = self::validateUuid($userId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
@@ -387,7 +387,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userId' = :userId";
 		$statement = $pdo->prepare($query);
 		//set parameters to execute
-		$parameters = ['userId' => $userId];
+		$parameters = ['userId' => $userId->getBytes()];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {

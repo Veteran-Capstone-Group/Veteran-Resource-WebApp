@@ -332,11 +332,10 @@ public function delete(\PDO $pdo): void {
 //PDO getFOObyBAR methods
 
 	/**
-	 * get user information by username and hash for login process
+	 * get user information by username
 	 *
 	 * @param \PDO $pdo
 	 * @param string $userUsername
-	 * @param string $userHash
 	 */
 public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
@@ -372,7 +371,6 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 *
 	 * @param \PDO $pdo
 	 * @param Uuid $userId
-	 * @param string $userHash
 	 */
 	public function getUserByUserId(\PDO $pdo, Uuid $userId) {
 		//sanitize username

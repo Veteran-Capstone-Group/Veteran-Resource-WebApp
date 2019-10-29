@@ -602,7 +602,7 @@ class Resource {
 			$statement->setFetchMode(PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"])
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
 				}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted, rethrow it
@@ -610,4 +610,43 @@ class Resource {
 		}
 		return ($resource);
 	}
+
+	/**
+	 * Gets resource by category id, using foreign key to relate to category.
+	 *
+	 * @param \PDO $pdo
+	 * @param $resourceUserId
+	 * @return \SplFixedArray
+	 * @throws \PDOException when MySQL Errors happen
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public function getResourceByResourceUserId(\PDO $pdo, $resourceUserId): \SplFixedArray {
+		//Validate resourceUserId
+		try {
+			$resourceUserId = self::validateUuid($resourceUserId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceUserId = :resourceUserId";
+		$statement = $pdo->prepare($query);
+		//bind the resourceUserId to the place holder in MySQL
+		$parameters = ["resourceUserId" => $resourceUserId->getBytes()];
+		$statement->execute($parameters);
+		//build an array of Users
+		$resources = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
+				$resources[$resources->key()] = $resource;
+				$resources->next();
+			} catch(\Exception $exception) {
+				//if the row can't be converted, throw it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($resources);
+	}
 }
+

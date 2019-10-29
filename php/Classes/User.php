@@ -366,6 +366,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	}
 	return($user);
 }
+
 	/**
 	 * get user information by userId
 	 *
@@ -386,6 +387,48 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 		$statement = $pdo->prepare($query);
 		//set parameters to execute
 		$parameters = ['userId' => $userId->getBytes()];
+		$statement->execute($parameters);
+		//grab user from MySQL
+		try {
+			$user = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row =$statement->fetch();
+			if($row !== false) {
+				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($user);
+	}
+
+	/**
+	 * get user information by userActivationToken
+	 *
+	 * @param \PDO $pdo
+	 * @param string userActivationToken
+	 */
+	public function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
+		//sanitize activationToken
+		if($newUserActivationToken === null) {
+			$this->userActivationToken =null;
+			throw(new\TypeError("token is null"));
+		}
+		//checks if token is valid
+		$newUserActivationToken = strtolower(trim($newUserActivationToken));
+		if(ctype_xdigit($newUserActivationToken) === false) {
+			throw(new \InvalidArgumentException('activation token is not valid'));
+		}
+		//checks if token is 32 characters
+		if(strlen($newUserActivationToken) !== 32) {
+			throw(new \RangeException('token must be 32 characters in length'));
+		}
+		//create query template
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userActivationToken' = :userActivationToken";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute
+		$parameters = ['userActivationToken' => $userActivationToken];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {

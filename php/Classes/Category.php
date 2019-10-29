@@ -62,7 +62,7 @@ class Category{
 
 	/**
 	 * this is the getter method for categoryType
-	 * @var string $categoryType
+	 * @return string $categoryType
 	 */
 	public function getCategoryType(): string {
 		return($this->categoryType);

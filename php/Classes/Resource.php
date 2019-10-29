@@ -244,13 +244,13 @@ class Resource {
 	 * @param bool $newResourceApprovalStatus not null
 	 */
 	public function setResourceApprovalStatus(bool $newResourceApprovalStatus = false): void {
-		if(empty($newResourceApprovalStatus) === true) {
+		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+		//Checks if null
+		if($newResourceApprovalStatus === null) {
 			//if approval status is null, set to false
 			$this->resourceApprovalStatus = false;
 			return;
 		}
-		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-		//Checks if null
 		$this->resourceApprovalStatus = $newResourceApprovalStatus;
 	}
 
@@ -395,19 +395,15 @@ class Resource {
 	public function setResourcePhone(string $newResourcePhone): void {
 		//trims whitespace
 		$newResourcePhone = trim($newResourcePhone);
-		//Removes all special characters and letters.
-		$newSanitizedResourcePhone = preg_replace('/[^0-9]/', '', $newResourcePhone);
-		//Checks if string still has content after sanitization
-		if(empty($newSanitizedResourcePhone) === true) {
-			//if string is empty, output error
-			throw(new \InvalidArgumentException("Phone contains no numbers"));
-		}
+		//sanitizes string to get rid of harmful attacks
+		$newResourcePhone = filter_var($newResourcePhone, FILTER_SANITIZE_STRING,);
 		//Special "needs area code" exception
-		if(strlen($newSanitizedResourcePhone) === 7) {
+		if(strlen($newResourcePhone) === 7|strlen($newResourcePhone) === 8) {
 			throw(new \RangeException("Phone Number Needs an Area Code."));
 		}
-		if(strlen($newSanitizedResourcePhone) < 11) {
-			throw(new \RangeException("Phone contains too few characters"));
+		//General too many characters exception
+		if(strlen($newResourcePhone) > 20) {
+			throw(new \RangeException("Phone contains too many characters"));
 		}
 		//
 		//store content

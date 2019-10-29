@@ -84,6 +84,36 @@ class Category{
 		$this->categoryType = $newCategoryType;
 	}
 
+	public function getCategoryByCategoryId(\PDO $pdo, Uuid $categoryId) {
+		//sanitize uuid
+		try {
+			$categoryId = self::validateUuid($categoryId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT categoryId, categoryType FROM category WHERE 'categoryId' = :categoryId";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute
+		$parameters = ['categoryId' => $categoryId->getBytes()];
+		$statement->execute($parameters);
+		//grab user from MySQL
+		try {
+			$category = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row =$statement->fetch();
+			if($row !== false) {
+				$category = new Category($row['$categoryId'], $row['$categoryType']);
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($category);
+	}
+
+
 	//JsonSerialize
 	/**
 	 * formats the state variables for JSON serialization

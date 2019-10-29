@@ -332,11 +332,10 @@ public function delete(\PDO $pdo): void {
 //PDO getFOObyBAR methods
 
 	/**
-	 * get user information by username and hash for login process
+	 * get user information by username
 	 *
 	 * @param \PDO $pdo
 	 * @param string $userUsername
-	 * @param string $userHash
 	 */
 public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
@@ -347,8 +346,6 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	if(strlen($userUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));
 	}
-
-
 	//create query template
 	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername";
 	$statement = $pdo->prepare($query);
@@ -369,6 +366,84 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	}
 	return($user);
 }
+
+	/**
+	 * get user information by userId
+	 *
+	 * @param \PDO $pdo
+	 * @param Uuid $userId
+	 */
+	public function getUserByUserId(\PDO $pdo, Uuid $userId) {
+		//sanitize username
+//sanitize uuid
+		try {
+			$uuid = self::validateUuid($userId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userId' = :userId";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute
+		$parameters = ['userId' => $userId->getBytes()];
+		$statement->execute($parameters);
+		//grab user from MySQL
+		try {
+			$user = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row =$statement->fetch();
+			if($row !== false) {
+				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($user);
+	}
+
+	/**
+	 * get user information by userActivationToken
+	 *
+	 * @param \PDO $pdo
+	 * @param string userActivationToken
+	 */
+	public function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
+		//sanitize activationToken
+		if($newUserActivationToken === null) {
+			$this->userActivationToken =null;
+			throw(new\TypeError("token is null"));
+		}
+		//checks if token is valid
+		$newUserActivationToken = strtolower(trim($newUserActivationToken));
+		if(ctype_xdigit($newUserActivationToken) === false) {
+			throw(new \InvalidArgumentException('activation token is not valid'));
+		}
+		//checks if token is 32 characters
+		if(strlen($newUserActivationToken) !== 32) {
+			throw(new \RangeException('token must be 32 characters in length'));
+		}
+		//create query template
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userActivationToken' = :userActivationToken";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute
+		$parameters = ['userActivationToken' => $userActivationToken];
+		$statement->execute($parameters);
+		//grab user from MySQL
+		try {
+			$user = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row =$statement->fetch();
+			if($row !== false) {
+				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($user);
+	}
 	//JsonSerialize
 	/**
 	 * formats the state variables for JSON serialization

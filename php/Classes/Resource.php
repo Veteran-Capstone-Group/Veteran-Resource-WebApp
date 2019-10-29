@@ -220,7 +220,7 @@ class Resource {
 		//trims whitespace
 		$newResourceAddress = trim($newResourceAddress);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING, );
+		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING,);
 		//check if string length is appropriate
 		if(strlen($newResourceAddress) > 124) {
 			throw(new \RangeException("Address contains too many characters"));
@@ -275,7 +275,7 @@ class Resource {
 		//trims whitespace
 		$newResourceDescription = trim($newResourceDescription);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING, );
+		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING,);
 		//check if string length is appropriate
 		if(strlen($newResourceDescription) > 300) {
 			throw(new \RangeException("Description contains too many characters"));
@@ -305,7 +305,7 @@ class Resource {
 		//trims whitespace
 		$newResourceEmail = trim($newResourceEmail);
 		//sanitizes email to get rid of harmful attacks and ensure valid email address
-		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL, );
+		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL,);
 		//check if string length is appropriate
 		if(strlen($newResourceEmail) > 124) {
 			throw(new \RangeException("Email contains too many characters"));
@@ -335,7 +335,7 @@ class Resource {
 		//trims whitespace
 		$newResourceImageUrl = trim($newResourceImageUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL, );
+		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL,);
 		//check if string length is appropriate
 		if(strlen($newResourceImageUrl) > 255) {
 			throw(new \RangeException("Image Url contains too many characters"));
@@ -365,7 +365,7 @@ class Resource {
 		//trims whitespace
 		$newResourceOrganization = trim($newResourceOrganization);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING, );
+		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING,);
 		//check if string length is appropriate
 		if(strlen($newResourceOrganization) > 124) {
 			throw(new \RangeException("Organization contains too many characters"));
@@ -435,7 +435,7 @@ class Resource {
 		//trims whitespace
 		$newResourceTitle = trim($newResourceTitle);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING, );
+		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING,);
 		//Checks if string still has content after sanitization
 		if(empty($newResourceTitle) === true) {
 			//if string is empty, output error
@@ -470,7 +470,7 @@ class Resource {
 		//trims whitespace
 		$newResourceUrl = trim($newResourceUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL, );
+		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL,);
 		//Checks if string still has content after sanitization
 		if(empty($newResourceUrl) === true) {
 			//if string is empty, output error
@@ -572,22 +572,42 @@ class Resource {
 		return ($resources);
 	}
 
-		public function getResourceByResourceId (\PDO $pdo, $resourceId) : ?Resource {
-			// Checks to see if it is a Uuid or changes string to Uuid
+	/**
+	 * Gets resource object from the primary key, resourceId.
+	 *
+	 * @param PDO $pdo
+	 * @param $resourceId
+	 * @return Resource|null
+	 * @throws /PDOException when MySQL related errors occur
+	 * @throws /TypeError when a variable is not the correct type
+	 */
+	public function getResourceByResourceId(\PDO $pdo, $resourceId): ?Resource {
+		// Checks to see if it is a Uuid or changes string to Uuid
 		try {
-				$resourceId = self::validateUuid($resourceId);
-			} catch (\InvalidArgumentException | \RangeException | \Exception |\TypeError $exception){
-				throw(new \PDOException($exception->getMessage(), 0, $exception));
-			}
-			//create query template
-			$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceId = :resourceId";
-			$statement = $pdo->prepare($query);
-
-			//bind the resource Id to the placeholder
-			$parameters = ["resourceId" => $resourceId->getBytes()];
-			$statement->execute($parameters);
-
-			// grab the resource from mySQL
-
+			$resourceId = self::validateUuid($resourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception |\TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
+		//create query template
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceId = :resourceId";
+		$statement = $pdo->prepare($query);
+
+		//bind the resource Id to the placeholder
+		$parameters = ["resourceId" => $resourceId->getBytes()];
+		$statement->execute($parameters);
+
+		// grab the resource from mySQL
+		try {
+			$resource = null;
+			$statement->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"])
+				}
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($resource);
+	}
 }

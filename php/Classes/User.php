@@ -347,8 +347,6 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	if(strlen($userUsername) > 24) {
 		throw(new \RangeException("Username must include less than 24 characters"));
 	}
-
-
 	//create query template
 	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername";
 	$statement = $pdo->prepare($query);
@@ -369,6 +367,42 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	}
 	return($user);
 }
+	/**
+	 * get user information by userId
+	 *
+	 * @param \PDO $pdo
+	 * @param Uuid $userId
+	 * @param string $userHash
+	 */
+	public function getUserByUserId(\PDO $pdo, Uuid $userId) {
+		//sanitize username
+//sanitize uuid
+		try {
+			$uuid = self::validateUuid($newUserId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userId' = :userId";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute
+		$parameters = ['userId' => $userId];
+		$statement->execute($parameters);
+		//grab user from MySQL
+		try {
+			$user = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row =$statement->fetch();
+			if($row !== false) {
+				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($user);
+	}
 	//JsonSerialize
 	/**
 	 * formats the state variables for JSON serialization

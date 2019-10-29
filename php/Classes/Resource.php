@@ -1,7 +1,7 @@
 <?php
 
 //require_once("autoload.php");
-require_once(dirname(__DIR__) . "/lib/vendor/autoload.php");
+require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
 use Ramsey\Uuid\Uuid;
 use VeteranResource\Resource\ValidateUuid;
@@ -572,4 +572,17 @@ class Resource {
 		return ($resources);
 	}
 
+		public function getResourceByResourceId (\PDO $pdo, $resourceId) : ?Resource {
+			// Checks to see if it is a Uuid or changes string to Uuid
+		try {
+				$resourceId = self::validateUuid($resourceId);
+			} catch (\InvalidArgumentException | \RangeException | \Exception |\TypeError $exception){
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			//create query template
+			$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceId = :resourceId";
+			$statement = $pdo->prepare($query);
+
+			//bind the resource Id to the placeholder
+		}
 }

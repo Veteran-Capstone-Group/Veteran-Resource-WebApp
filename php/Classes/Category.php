@@ -83,4 +83,16 @@ class Category{
 		//return string
 		$this->categoryType = $newCategoryType;
 	}
+
+	//JsonSerialize
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() : array {
+		$fields = get_object_vars($this);
+		$fields["categoryId"] = $this->categoryId->toString();
+		return($fields);
+	}
 }

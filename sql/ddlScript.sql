@@ -1,6 +1,6 @@
 drop table if exists useful;
 drop table if exists resource;
-drop table if exists catagory;
+drop table if exists category;
 drop table if exists user;
 
 create table user(

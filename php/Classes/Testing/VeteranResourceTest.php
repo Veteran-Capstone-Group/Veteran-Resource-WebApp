@@ -29,3 +29,35 @@ require_once(dirname(__DIR__, 2) . "../vendor/autoload.php");
 //todo Modify DataDesignTest::getConnection() to include our mySQL property files.
 
 //todo Have table specific tests included in this class
+
+abstract class VeteranResourceTest extends TestCase {
+	use TestCaseTrait;
+
+	/**
+	 * PHPUnit Connection Interface
+	 * @var  Connection $connection
+	 */
+	protected $connection = null;
+
+	/**
+	  * Assembles table from schema and provides it to PHPUnit
+	  *
+	  * @return QueryDataSet assembled schema for PHPUnit
+	  */
+	public final function getDataSet() : QueryDataSet {
+		$dataset = new QueryDataSet($this->getConnection());
+
+		//all tables go here IN THE ORDER THEY ARE CREATED
+		//user Needs second parameter because user is a reserved word in mySql
+		$dataset->addTable("user", "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM 'user'");
+		//category
+		$dataset->addTable("category");
+		//resource
+		$dataset->addTable("resource");
+		//useful
+		$dataset->addTable("useful");
+		return($dataset);
+	}
+
+
+}

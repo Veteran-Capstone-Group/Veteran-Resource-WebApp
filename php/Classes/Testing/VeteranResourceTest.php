@@ -91,6 +91,15 @@ public final function getTearDownOperation() :Operation {
  * @return Connection PHPUnit database connection interface
  */
 public final function getConnection() : Connection {
-
+	//if the connection hasn't been established, create it
+	if($this->connection===null) {
+		// connect to mySQL and provide the interface for PHPUnit
+		$secrets = new Secrets("/etc/apache2/capstone_mysql/veteran.ini");
+		$pdo = $secrets->getPdoObject();
+		$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
+	}
+	return ($this->connection);
 }
+
+
 }

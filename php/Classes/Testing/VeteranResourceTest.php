@@ -21,6 +21,8 @@ require_once(dirname(__DIR__, 2) . "../vendor/autoload.php");
  *
  * IMPORTANT: Tables must be added in the order they were created!
  *
+ ** @see https://bootcamp-coders.cnm.edu/class-materials/unit-testing/phpunit/ to check if written correctly
+ *
  * @author John Johnson-Rodgers <john@johnthe.dev
  */
 
@@ -59,5 +61,18 @@ abstract class VeteranResourceTest extends TestCase {
 		return($dataset);
 	}
 
+	/**
+	 * templates the setup method that runs before every test; this expunges the database before each run
+	 *
+	 * @see https://phpunit.de/manual/current/en/fixtures.html#fixtures.more-setup-than-teardown PHPUnit Fixtures: setUp and tearDown
+	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
+	 * @return Composite array containing delete and insert commands
+	 */
+public final function getSetUpOperation() : Composite {
+	return new Composite([
+		Factory::DELETE_ALL(),
+		Factory::INSERT()
+	]);
+}
 
 }

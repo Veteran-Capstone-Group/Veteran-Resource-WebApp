@@ -75,4 +75,22 @@ public final function getSetUpOperation() : Composite {
 	]);
 }
 
+/**
+ *templates the teardown method that runs after every test, this method expunges the database after every run
+ *
+ *@return Operation delete command for the database
+ */
+public final function getTearDownOperation() :Operation {
+	return (Factory::DELETE_ALL());
+}
+
+	/**
+ * Sets up database connection for PHPUnit
+ *
+ * @see <https://phpunit.de/manual/current/en/database.html#database.configuration-of-a-phpunit-database-testcase>
+ * @return Connection PHPUnit database connection interface
+ */
+public final function getConnection() : Connection {
+
+}
 }

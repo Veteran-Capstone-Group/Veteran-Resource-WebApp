@@ -25,13 +25,6 @@ require_once(dirname(__DIR__, 2) . "../vendor/autoload.php");
  *
  * @author John Johnson-Rodgers <john@johnthe.dev
  */
-
-//todo Modify DataDesignTest::getDataSet to include our tables
-
-//todo Modify DataDesignTest::getConnection() to include our mySQL property files.
-
-//todo Have table specific tests included in this class
-
 abstract class VeteranResourceTest extends TestCase {
 	use TestCaseTrait;
 
@@ -42,11 +35,11 @@ abstract class VeteranResourceTest extends TestCase {
 	protected $connection = null;
 
 	/**
-	  * Assembles table from schema and provides it to PHPUnit
-	  *
-	  * @return QueryDataSet assembled schema for PHPUnit
-	  */
-	public final function getDataSet() : QueryDataSet {
+	 * Assembles table from schema and provides it to PHPUnit
+	 *
+	 * @return QueryDataSet assembled schema for PHPUnit
+	 */
+	public final function getDataSet(): QueryDataSet {
 		$dataset = new QueryDataSet($this->getConnection());
 
 		//all tables go here IN THE ORDER THEY ARE CREATED
@@ -58,7 +51,7 @@ abstract class VeteranResourceTest extends TestCase {
 		$dataset->addTable("resource");
 		//useful
 		$dataset->addTable("useful");
-		return($dataset);
+		return ($dataset);
 	}
 
 	/**
@@ -68,38 +61,46 @@ abstract class VeteranResourceTest extends TestCase {
 	 * @see https://github.com/sebastianbergmann/dbunit/issues/37 TRUNCATE fails on tables which have foreign key constraints
 	 * @return Composite array containing delete and insert commands
 	 */
-public final function getSetUpOperation() : Composite {
-	return new Composite([
-		Factory::DELETE_ALL(),
-		Factory::INSERT()
-	]);
-}
-
-/**
- *templates the teardown method that runs after every test, this method expunges the database after every run
- *
- *@return Operation delete command for the database
- */
-public final function getTearDownOperation() :Operation {
-	return (Factory::DELETE_ALL());
-}
+	public final function getSetUpOperation(): Composite {
+		return new Composite([
+			Factory::DELETE_ALL(),
+			Factory::INSERT()
+		]);
+	}
 
 	/**
- * Sets up database connection for PHPUnit
- *
- * @see <https://phpunit.de/manual/current/en/database.html#database.configuration-of-a-phpunit-database-testcase>
- * @return Connection PHPUnit database connection interface
- */
-public final function getConnection() : Connection {
-	//if the connection hasn't been established, create it
-	if($this->connection===null) {
-		// connect to mySQL and provide the interface for PHPUnit
-		$secrets = new Secrets("/etc/apache2/capstone_mysql/veteran.ini");
-		$pdo = $secrets->getPdoObject();
-		$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
+	 *templates the teardown method that runs after every test, this method expunges the database after every run
+	 *
+	 * @return Operation delete command for the database
+	 */
+	public final function getTearDownOperation(): Operation {
+		return (Factory::DELETE_ALL());
 	}
-	return ($this->connection);
-}
 
+	/**
+	 * Sets up database connection for PHPUnit
+	 *
+	 * @see <https://phpunit.de/manual/current/en/database.html#database.configuration-of-a-phpunit-database-testcase>
+	 * @return Connection PHPUnit database connection interface
+	 */
+	public final function getConnection(): Connection {
+		//if the connection hasn't been established, create it
+		if($this->connection === null) {
+			// connect to mySQL and provide the interface for PHPUnit
+			$secrets = new Secrets("/etc/apache2/capstone_mysql/veteran.ini");
+			$pdo = $secrets->getPdoObject();
+			$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
+		}
+		return ($this->connection);
+	}
+
+	/**
+	 * returns the actual PDO object, it is a convenience method
+	 *
+	 * @return \PDO active PDO object
+	 */
+	public final function getPDO() {
+		return ($this->getConnection()->getConnection());
+	}
 
 }

@@ -25,8 +25,8 @@ class CategoryTest extends VeteranResourceTest {
 	/**
 	 * Invalid and valid test names for categoryName
 	 */
-	protected $VALID_CATEGORY_NAME = "Mental Health";
-	protected $INVALID_CATEGORY_NAME = 234;
+	protected $VALID_CATEGORY_NAME = "Test";
+	protected $INVALID_CATEGORY_NAME = 1234;
 	/**
 	 * Invalid test uuid for categoryId
 	 */
@@ -41,5 +41,17 @@ class CategoryTest extends VeteranResourceTest {
 		//this is a strong entity, so no need to create other objects during setUp()
 	}
 
+	/**
+	 * test inserting a valid category and verify that mySQL data matches
+	 */
+public function testInsertValidCategory(): void {
+	//count rows and save for later
+	$num_rows = $this->getConnection()->getRowCount("category");
 
+	//create a new Category and insert it into mySQL
+	$categoryId = generateUuidV4();
+	$category = new Category($categoryId, $this->VALID_CATEGORY_NAME);
+	$category->insert($this->getPDO());
+
+}
 }

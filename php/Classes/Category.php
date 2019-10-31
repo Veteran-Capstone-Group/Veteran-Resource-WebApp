@@ -86,6 +86,62 @@ class Category{
 		$this->categoryType = $newCategoryType;
 	}
 
+	//methods
+//Insert
+	/**
+	 * Inserts category to MySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException if MySQL errors occur
+	 * @throws \TypeError if $PDO is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo): void {
+		//create query template
+		$query = "INSERT INTO category(categoryId, categoryType) VALUES(:categoryId, :categoryType)";
+		$statement = $pdo->prepare($query);
+		//create parameters for query
+		$parameters = [
+			"categoryId" => $this->categoryId->getBytes(),
+			"categoryType" => $this->categoryType
+			];
+		$statement->execute($parameters);
+	}
+//Update
+	/**
+	 * updates category in MySQL database
+	 *
+	 *@param \PDO $pdo PDO connection object
+	 *@throws \PDOException when MySQL related error occurs
+	 *@throws \TypeError if $pdo is not pdo connection object
+	 */
+	public function update(\PDO $pdo): void {
+		//create query template
+		$query = "UPDATE category SET categoryId = :categoryId, categoryType = :categoryType WHERE categoryId = :categoryId";
+		$statement = $pdo->prepare($query);
+		// set parameters to execute query
+		$parameters = [
+			"categoryId" => $this->categoryId->getBytes(),
+			"categoryType" => $this->categoryType
+		];
+		$statement->execute($parameters);
+	}
+//Delete
+	/**
+	 * deletes category from MySQL database
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mysql related errors occur
+	 * @throws \TypeError when $pdo is not a PDO object
+	 */
+	public function delete(\PDO $pdo): void {
+		//create query template
+		$query = "DELETE FROM category WHERE categoryId = :categoryId";
+		$statement = $pdo->prepare($query);
+		//set parameters to execute query
+		$parameters = ["categoryId" => $this->categoryId->getBytes()];
+		$statement->execute($parameters);
+	}
+
 	public function getCategoryByCategoryId(\PDO $pdo, Uuid $categoryId) {
 		//sanitize uuid
 		try {

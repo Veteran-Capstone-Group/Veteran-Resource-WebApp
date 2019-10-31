@@ -23,8 +23,23 @@ require_once(dirname(__DIR__, 2) . "../lib/uuid.php");
  */
 class CategoryTest extends VeteranResourceTest {
 	/**
-	 * Invalid and valid test names for the category
+	 * Invalid and valid test names for categoryName
 	 */
 	protected $VALID_CATEGORY_NAME = "Mental Health";
 	protected $INVALID_CATEGORY_NAME = 234;
+	/**
+	 * Invalid test uuid for categoryId
+	 */
+	protected $INVALID_CATEGORY_ID = "Bobby Bo Horseman";
+	/**
+	 * The valid categoryId is generated in the methods and is an UUID
+	 */
+	public final function setUp(): void {
+		//run the default setUp() method
+		parent::setUp();
+
+		//this is a strong entity, so no need to create other objects during setUp()
+	}
+
+
 }

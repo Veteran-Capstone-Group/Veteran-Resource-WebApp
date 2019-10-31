@@ -99,6 +99,41 @@ class Useful {
 		$this->usefulUserId = $uuid;
 	}
 
+
+	/**
+	 * inserts this Useful into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection Object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo): void {
+		//create query template
+		$query = "INSERT INTO useful(usefulResourceId, usefulUserId) VALUES(:usefulResourceId, :usefulUserId)";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the place holders in the template
+		$parameters = ["usefulResourceId" => $this->usefulResourceId->getBytes(), "usefulUserId" => $this->usefulUserId->getBytes()];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * deletes this Useful from mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 **/
+	public function delete(\PDO $pdo): void {
+		//create query template
+		$query = "DELETE FROM useful WHERE usefulResourceId = :usefulResourceId AND usefulUserId = :usefulUserId";
+		$statement = $pdo->prepare($query);
+
+		//bind the member variables to the placeholder in the template
+		$parameters = ["usefulResourceId" => $this->usefulResourceId->getBytes(), "usefulUserId" => $this->usefulUserId->getBytes()];
+		$statement->execute($parameters);
+	}
+
 	/**
 	 * converts Uuids to strings to serialize
 	 *

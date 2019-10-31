@@ -13,4 +13,64 @@ require_once (dirname(__DIR__) . "/vendor/autoload.php");
  *
  * @author John Johnson-Rodgers
  */
+class Useful {
+	use ValidateUuid;
+	/**
+	 * usefulResourceId, Foreign key that relates to resourceId, one of two foreign keys, Not Null
+	 * @var Uuid usefulResourceId
+	 */
+	private $usefulResourceId;
 
+	/**
+	 * usefulUserId, Foreign key that relates to userId, one of two foreign keys, Not Null
+	 * @var Uuid $usefulUserId
+	 */
+	private $usefulUserId;
+
+	/**
+	 * Useful constructor.
+	 * @param string|Uuid $newUsefulResourceId Id for the resource the useful is applying to
+	 * @param string|Uuid $newUsefulUserId Id for the user who is applying the useful
+	 */
+	public function __construct($newUsefulResourceId, $newUsefulUserId) {
+		try {
+			$this->setUsefulResourceId($newUsefulResourceId);
+			$this->setUsefulUserId($newUsefulUserId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+	}
+	/**
+	 * Accessor for usefulResourceId Not Null
+	 * foreign key
+	 *
+	 * @return Uuid Foreign Key usefulResourceId
+	 */
+	public function getUsefulResourceId(): Uuid {
+	return $this->usefulResourceId;
+}
+
+/**
+ * Mutator for usefulResourceId Not Null
+ * Foreign Key
+ *
+ * @param $newUsefulResourceId
+ * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
+ */
+	/**
+	 * @param Uuid $usefulResourceId
+	 */
+	public function setUsefulResourceId(Uuid $usefulResourceId): void {
+		//convert to Uuid or throw exception
+		try {
+			$uuid = self::validateUuid($usefulResourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//store usefulResourceId
+		$this->usefulResourceId = $uuid;
+	}
+
+}

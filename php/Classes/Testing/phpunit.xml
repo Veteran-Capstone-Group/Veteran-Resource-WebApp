@@ -1,0 +1,15 @@
+<phpunit>
+	<testsuites>
+		<testsuite name="Veteran Data Design">
+			<file>CategoryTest.php</file>
+			<file>UserTest.php</file>
+			<file>ResourceTest.php</file>
+			<file>UsefulTest.php</file>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">..</directory>
+		</whitelist>
+	</filter>
+</phpunit>

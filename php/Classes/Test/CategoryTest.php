@@ -7,7 +7,6 @@ use VeteranResource\Resource\Category;
 
 // grab the class we are testing
 require_once(dirname(__DIR__, 2) . "/Classes/autoload.php");
-
 // grab the uuid generator
 require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
 require_once(dirname(__DIR__, 2) . "/Classes/Test/VeteranResourceTest.php");

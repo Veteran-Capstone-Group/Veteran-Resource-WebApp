@@ -99,5 +99,15 @@ class Useful {
 		$this->usefulUserId = $uuid;
 	}
 
-
+	/**
+	 * converts Uuids to strings to serialize
+	 *
+	 * @return array converts Uuids to strings
+	 */
+	public function jsonSerialize() : array {
+		$fields = get_object_vars( $this );
+		$fields["usefulUserId"] = $this->usefulUserId->toString();
+		$fields["usefulResourceId"] = $this->usefulResourceId->toString();
+		return($fields);
+	}
 }

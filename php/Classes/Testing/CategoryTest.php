@@ -23,10 +23,10 @@ require_once(dirname(__DIR__, 2) . "../lib/uuid.php");
  */
 class CategoryTest extends VeteranResourceTest {
 	/**
-	 * Invalid and valid test names for categoryName
+	 * Invalid and valid test types for categoryName
 	 */
-	protected $VALID_CATEGORY_NAME = "Test";
-	protected $INVALID_CATEGORY_NAME = 1234;
+	protected $VALID_CATEGORY_TYPE = "Test";
+	protected $INVALID_CATEGORY_TYPE = 1234;
 	/**
 	 * Invalid test uuid for categoryId
 	 */
@@ -50,8 +50,15 @@ public function testInsertValidCategory(): void {
 
 	//create a new Category and insert it into mySQL
 	$categoryId = generateUuidV4();
-	$category = new Category($categoryId, $this->VALID_CATEGORY_NAME);
+	$category = new Category($categoryId, $this->VALID_CATEGORY_TYPE);
 	$category->insert($this->getPDO());
 
+	//grab data from mySQL and assert the fields match expectations
+	$pdoCategory = Category::getCategoryByCategoryId($this->getPDO(), $category->getCategoryId());
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("category"));
+	$this->assertEquals($pdoCategory->getCategoryId(), $categoryId);
+	$this->assertEquals($pdoCategory->getCategoryType(), $this->VALID_CATEGORY_TYPE);
 }
+
+
 }

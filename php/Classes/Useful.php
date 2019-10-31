@@ -58,13 +58,10 @@ class Useful {
  * @param $newUsefulResourceId
  * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
  */
-	/**
-	 * @param Uuid $usefulResourceId
-	 */
-	public function setUsefulResourceId(Uuid $usefulResourceId): void {
+	public function setUsefulResourceId($newUsefulResourceId): void {
 		//convert to Uuid or throw exception
 		try {
-			$uuid = self::validateUuid($usefulResourceId);
+			$uuid = self::validateUuid($newUsefulResourceId);
 		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
 			$exceptionType = get_class($exception);
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
@@ -72,5 +69,35 @@ class Useful {
 		//store usefulResourceId
 		$this->usefulResourceId = $uuid;
 	}
+
+	/**
+	 * Accessor for usefulUserId Not Null
+	 * foreign key
+	 *
+	 * @return Uuid Foreign Key usefulUserId
+	 */
+	public function getUsefulUserId(): Uuid {
+		return $this->usefulUserId;
+	}
+
+	/**
+	 * Mutator for usefulUserId Not Null
+	 * Foreign Key
+	 *
+	 * @param $newUsefulUserId
+	 * @throws \Exception if $newUsefulUserId is an invalid argument, an invalid range, a type error, or another type of exception
+	 */
+	public function setUsefulUserId($newUsefulUserId): void {
+		//convert to Uuid or throw exception
+		try {
+			$uuid = self::validateUuid($newUsefulUserId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			$exceptionType = get_class($exception);
+			throw(new $exceptionType($exception->getMessage(), 0, $exception));
+		}
+		//store usefulUserId
+		$this->usefulUserId = $uuid;
+	}
+
 
 }

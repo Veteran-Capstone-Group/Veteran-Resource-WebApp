@@ -1,9 +1,10 @@
 <?php
 
 namespace VeteranResource\Resource;
+
 use Ramsey\Uuid\Uuid;
 
-require_once (dirname(__DIR__) . "/vendor/autoload.php");
+require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
 /**
  * Creating class Useful, this ia an analog to "likes" that will apply to resources
@@ -41,6 +42,7 @@ class Useful {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 	}
+
 	/**
 	 * Accessor for usefulResourceId Not Null
 	 * foreign key
@@ -48,16 +50,16 @@ class Useful {
 	 * @return Uuid Foreign Key usefulResourceId
 	 */
 	public function getUsefulResourceId(): Uuid {
-	return $this->usefulResourceId;
-}
+		return $this->usefulResourceId;
+	}
 
-/**
- * Mutator for usefulResourceId Not Null
- * Foreign Key
- *
- * @param $newUsefulResourceId
- * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
- */
+	/**
+	 * Mutator for usefulResourceId Not Null
+	 * Foreign Key
+	 *
+	 * @param string | Uuid $newUsefulResourceId Refers to resourceId, is a foreign key
+	 * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
+	 */
 	public function setUsefulResourceId($newUsefulResourceId): void {
 		//convert to Uuid or throw exception
 		try {
@@ -84,7 +86,7 @@ class Useful {
 	 * Mutator for usefulUserId Not Null
 	 * Foreign Key
 	 *
-	 * @param $newUsefulUserId
+	 * @param string|Uuid $newUsefulUserId refers to userId, is a foreign key
 	 * @throws \Exception if $newUsefulUserId is an invalid argument, an invalid range, a type error, or another type of exception
 	 */
 	public function setUsefulUserId($newUsefulUserId): void {
@@ -139,10 +141,10 @@ class Useful {
 	 *
 	 * @return array converts Uuids to strings
 	 */
-	public function jsonSerialize() : array {
-		$fields = get_object_vars( $this );
+	public function jsonSerialize(): array {
+		$fields = get_object_vars($this);
 		$fields["usefulUserId"] = $this->usefulUserId->toString();
 		$fields["usefulResourceId"] = $this->usefulResourceId->toString();
-		return($fields);
+		return ($fields);
 	}
 }

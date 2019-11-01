@@ -2,6 +2,7 @@
 
 namespace VeteranResource\Resource;
 
+use phpDocumentor\Reflection\Types\Integer;
 use Ramsey\Uuid\Uuid;
 
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
@@ -134,6 +135,35 @@ class Useful {
 		//bind the member variables to the placeholder in the template
 		$parameters = ["usefulResourceId" => $this->usefulResourceId->getBytes(), "usefulUserId" => $this->usefulUserId->getBytes()];
 		$statement->execute($parameters);
+	}
+
+	public function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
+		//Validate usefulResourceId
+		try {
+			$usefulResourceId = self::validateUuid($usefulResourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT COUNT (usefulResourceId) as total FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$statement = $pdo->prepare($query);
+		//bind usefulResourceId to placeholder in mySQL
+		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
+		try {
+			$usefulCount = null;
+			$statement->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
+			}
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($resource);
+		$statement->execute($parameters);
+		$usefulCount= new Integer($statement);
+		return $usefulCount;
 	}
 
 	/**

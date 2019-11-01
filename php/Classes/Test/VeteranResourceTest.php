@@ -89,7 +89,7 @@ abstract class VeteranResourceTest extends TestCase {
 		//if the connection hasn't been established, create it
 		if($this->connection === null) {
 			// connect to mySQL and provide the interface for PHPUnit
-			$secrets = new \Secrets("/etc/apache2/capstone_mysql/veteran.ini");
+			$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
 			$pdo = $secrets->getPdoObject();
 			$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
 		}

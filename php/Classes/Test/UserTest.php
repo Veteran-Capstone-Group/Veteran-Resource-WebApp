@@ -60,6 +60,18 @@ class UserTest extends VeteranResourceTest {
 	 */
 	protected $VALID_USER_USERNAME = "YouKnightTester1337";
 
-
+	/**
+	 * create dependencies before running each test
+	 */
+public final function setUp(): void {
+	//run the default setUp() method
+	parent::setUp();
+	//create generic password to test for has
+	$password = "abc123";
+	//hash generic password for testing purposes
+	$this->VALID_USER_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 384]);
+	//There are no parent objects to this class necessary to instantiate.
+	//There are no DateTime related variables requiring traits
+}
 
 }

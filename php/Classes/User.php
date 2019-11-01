@@ -3,7 +3,7 @@
 
 namespace VeteranResource\Resource;
 use Ramsey\Uuid\Uuid;
-//require_once("autoload.php");
+require_once(dirname(__DIR__) . "/Classes/autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 /**
  * Creating Class User for generating new users

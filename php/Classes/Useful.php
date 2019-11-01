@@ -145,27 +145,15 @@ class Useful {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT COUNT (usefulResourceId) as total FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$query = "SELECT usefulResourceId, usefulUserId FROM useful WHERE usefulResourceId = :usefulResourceId";
 		$statement = $pdo->prepare($query);
 		//bind usefulResourceId to placeholder in mySQL
 		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
-		try {
-			$usefulCount = null;
-			$statement->setFetchMode(PDO::FETCH_ASSOC);
-			$row = $statement->fetch();
-			if($row !== false) {
-				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
-			}
-		} catch(\Exception $exception) {
-			//if the row couldn't be converted, rethrow it
-			throw(new \PDOException($exception->getMessage(), 0, $exception));
-		}
-		return ($resource);
 		$statement->execute($parameters);
-		$usefulCount= new Integer($statement);
+		$usefulCount = $statement->rowCount();
 		return $usefulCount;
 	}
-
+//todo Week 11, Add getUsefulByUserId
 	/**
 	 * converts Uuids to strings to serialize
 	 *

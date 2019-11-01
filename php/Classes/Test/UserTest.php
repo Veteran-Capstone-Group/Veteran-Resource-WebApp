@@ -97,4 +97,25 @@ public function testInsertValidUser() : void {
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
 }
 
+/**
+ * test inserting, editing and updating a User object in MySQL
+ */
+public function testUpdateValidUser(): void {
+	//countrows and save for later
+	$num_rows = $this->getConnection()->getRowCount("category");
+
+	//Create a new User object and insert it into MySQL
+	$userId = generateUuidV4();
+	$user = new User($userId, $this->VALID_USER_ACTIVATIONTOKEN, $this->VALID_USER_EMAIL, $this->VALID_USER_HASH, $this->VALID_USER_NAME, $this->VALID_USER_USERNAME);
+	$user->insert($this->getPDO());
+
+	//edit UserEmail and update it in mySQL
+	$user->setUserEmail($this->VALID_USER_EMAIL2);
+	$user->update($this->getPDO());
+
+	// obtain data from MySQL and assert the fields to affirm they match our expectations
+	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
+	
+}
+
 }

@@ -55,6 +55,12 @@ class UserTest extends VeteranResourceTest {
 	 */
 	protected $VALID_USER_NAME = "PHPUnit TestyMcNamey";
 
+	/**
+	 * valid userUsername to create user object to run the update test against
+	 * @var string $VALID_USER_USERNAME
+	 */
+	protected $VALID_USER_USERNAME = "YouKnightTester1337";
+
 
 
 }

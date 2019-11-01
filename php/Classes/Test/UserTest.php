@@ -22,4 +22,18 @@ require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
  */
 class UserTest extends VeteranResourceTest {
 
+	/**
+	 * Invalid and Valid test types for User Class state variables
+	 *
+	 * valid userActivationToken to create user object to run the test against
+	 * @var string $VALID_USER_ACTIVATIONTOKEN
+	 */
+	protected $VALID_USER_ACTIVATIONTOKEN = "01234567890123456789012345678912";
+
+	/**
+	 * valid userEmail to create user object to run the test against
+	 * @var string $VALID_USER_EMAIL
+	 */
+	
+
 }

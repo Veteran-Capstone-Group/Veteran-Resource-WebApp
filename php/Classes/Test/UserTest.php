@@ -126,7 +126,7 @@ public function testUpdateValidUser(): void {
 /**
  * testing delete method and deleting a User object from MySQL
  */
-public function testDeleteValidUnit(): void {
+public function testDeleteValidUser(): void {
 	//countrows and save for later
 	$num_rows = $this->getConnection()->getRowCount("category");
 

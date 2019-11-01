@@ -123,6 +123,7 @@ public function testUpdateValidUser(): void {
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
 }
+
 /**
  * testing delete method and deleting a User object from MySQL
  */
@@ -143,6 +144,13 @@ public function testDeleteValidUser(): void {
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
 	$this->assertNull($pdoUser);
 	$this->assertEquals($numRows, $this->getConnection()->getRowCount("user"));
+}
+
+/**
+ * testing grabbing user by userUsername
+ */
+public function testGetValidUserByUsername(): void {
+	
 }
 
 }

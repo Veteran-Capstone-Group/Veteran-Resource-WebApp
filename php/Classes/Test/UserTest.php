@@ -115,7 +115,13 @@ public function testUpdateValidUser(): void {
 
 	// obtain data from MySQL and assert the fields to affirm they match our expectations
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
-	
+	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($pdoUser->getUserId(), $userId);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
 }
 
 }

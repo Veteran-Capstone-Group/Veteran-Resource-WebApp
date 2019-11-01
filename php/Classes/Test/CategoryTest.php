@@ -32,12 +32,12 @@ class CategoryTest extends VeteranResourceTest {
 	/**
 	 * The valid categoryId is generated in the methods and is an UUID
 	 */
-	/**public final function setUp(): void {
+	public final function setUp(): void {
 		//run the default setUp() method
 		parent::setUp();
 
 		//this is a strong entity, so no need to create other objects during setUp()
-	}*/
+	}
 
 	/**
 	 * test inserting a valid category and verify that mySQL data matches

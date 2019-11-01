@@ -1,15 +1,13 @@
 <?php
 
-
 namespace VeteranResource\Resource;
 
 use VeteranResource\Resource\Category;
 
 // grab the class we are testing
-require_once(dirname(__DIR__, 1) . "/autoload.php");
-// grab the uuid generator
+require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");
+require_once(dirname(__DIR__, 2) . "/Classes/autoload.php");
 require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
-require_once(dirname(__DIR__, 1) . "/Test/VeteranResourceTest.php");
 
 /**
  * Php test for the category class
@@ -19,7 +17,7 @@ require_once(dirname(__DIR__, 1) . "/Test/VeteranResourceTest.php");
  * @see Category
  * @author John Johnson-Rodgers
  */
-class CategoryTester extends VeteranResourceTest {
+class CategoryTest extends VeteranResourceTest {
 	/**
 	 * Invalid and valid test types for categoryName, type2 necessary for update
 	 */
@@ -34,12 +32,12 @@ class CategoryTester extends VeteranResourceTest {
 	/**
 	 * The valid categoryId is generated in the methods and is an UUID
 	 */
-	public final function setUp(): void {
+	/**public final function setUp(): void {
 		//run the default setUp() method
 		parent::setUp();
 
 		//this is a strong entity, so no need to create other objects during setUp()
-	}
+	}*/
 
 	/**
 	 * test inserting a valid category and verify that mySQL data matches
@@ -74,7 +72,7 @@ class CategoryTester extends VeteranResourceTest {
 
 		//edit the category and update in mySQL
 		$category->setCategoryType($this->VALID_CATEGORY_TYPE2);
-		$tweet->update($this->getPDO());
+		$category->update($this->getPDO());
 
 		//grab data from mySQL and assert the fields match expectations
 		// todo categoryId before $num_rows?
@@ -87,7 +85,7 @@ class CategoryTester extends VeteranResourceTest {
 	/**
 	 *test creating a category and deleting it
 	 */
-	public function testDeleteValidTweet(): void {
+	public function testDeleteValidCategory(): void {
 		// count the number of rows and save for later
 		$num_rows = $this->getConnection()->getRowCount("category");
 

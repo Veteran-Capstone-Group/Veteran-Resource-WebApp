@@ -5,8 +5,8 @@
 
 namespace VeteranResource\Resource;
 use Ramsey\Uuid\Uuid;
-//require_once("autoload.php");
-require_once(dirname(__DIR__) . "/vendor/autoload.php");
+require_once(dirname(__DIR__, 1)."/Classes/autoload.php");
+require_once(dirname(__DIR__, 1) . "/vendor/autoload.php");
 /**
  * Class Resource for Veteran Resource WebApp
  * @package VeteranResource\Resource

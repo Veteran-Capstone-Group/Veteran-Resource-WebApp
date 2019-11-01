@@ -1,6 +1,6 @@
 <?php
 namespace VeteranResource\Resource;
-require_once(dirname(__DIR__, 1) . "/lib/vendor/autoload.php");
+require_once(dirname(__DIR__, 1) . "/vendor/autoload.php");
 use Ramsey\Uuid\Uuid;
 /**
  * Trait to validate a uuid

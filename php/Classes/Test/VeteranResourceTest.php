@@ -2,14 +2,16 @@
 
 namespace VeteranResource\Resource;
 
-Use PHPUnit\Framework\TestCase;
-Use PHPUnit\DbUnit\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\DbUnit\TestCaseTrait;
 use PHPUnit\DbUnit\DataSet\QueryDataSet;
 use PHPUnit\DbUnit\Database\Connection;
 use PHPUnit\DbUnit\Operation\{Composite, Factory, Operation};
 
 // grab the encrypted properties file
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
+//grab the class we're testing
+require_once (dirname(__DIR__, 1) . "/autoload.php");
 
 require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
 
@@ -87,7 +89,7 @@ abstract class VeteranResourceTest extends TestCase {
 		//if the connection hasn't been established, create it
 		if($this->connection === null) {
 			// connect to mySQL and provide the interface for PHPUnit
-			$secrets = new Secrets("/etc/apache2/capstone_mysql/veteran.ini");
+			$secrets = new \Secrets("/etc/apache2/capstone_mysql/veteran.ini");
 			$pdo = $secrets->getPdoObject();
 			$this->connection = $this->createDefaultDBConnection($pdo, $secrets->getDatabase());
 		}

@@ -3,10 +3,12 @@
 
 namespace VeteranResource\Resource;
 use VeteranResource\Resource\User;
-//obtain User Class for testing
-require_once(dirname(__DIR__, 2) . "autoload.php");
+//obtain Class for testing
+require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");
+//obtain required dependencies for testing
+require_once(dirname(__DIR__, 2) . "/Classes/autoload.php");
 //grab Uuid generator
-require_once(dirname(__DIR__, 2) . "../lib/uuid.php");
+require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
 
 /**
  * PHPUnit test for Class User

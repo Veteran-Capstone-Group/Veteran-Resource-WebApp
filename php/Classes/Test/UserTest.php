@@ -74,4 +74,27 @@ public final function setUp(): void {
 	//There are no DateTime related variables requiring traits
 }
 
+/**
+ * testing INSERT method by inserting a valid user and verifying MySQL accepts it
+ */
+public function testInsertValidUser() : void {
+	//countrows and save for later
+	$num_rows = $this->getConnection()->getRowCount("category");
+
+	//Create a new User object and insert it into MySQL
+	$userId = generateUuidV4();
+	$user = new User($userId, $this->VALID_USER_ACTIVATIONTOKEN, $this->VALID_USER_EMAIL, $this->VALID_USER_HASH, $this->VALID_USER_NAME, $this->VALID_USER_USERNAME);
+	$user->insert($this->getPDO());
+
+	//grab data from MySQL and affirm the fields match our query
+	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
+	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($pdoUser->getUserId(), $userId);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_EMAIL);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
+}
+
 }

@@ -46,8 +46,7 @@ class UserTest extends VeteranResourceTest {
 	 * valid userHash to create user object to run the update test against
 	 * @var string $VALID_USER_HASH
 	 */
-	//TODO NEEDS A VALID HASH
-	protected $VALID_USER_HASH = "";
+	protected $VALID_USER_HASH;
 
 	/**
 	 * valid userName to create user object to run the update test against

@@ -34,6 +34,6 @@ class UserTest extends VeteranResourceTest {
 	 * valid userEmail to create user object to run the test against
 	 * @var string $VALID_USER_EMAIL
 	 */
-	
+	protected $VALID_USER_EMAIL = "google@gmail.com";
 
 }

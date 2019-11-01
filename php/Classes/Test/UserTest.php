@@ -123,5 +123,26 @@ public function testUpdateValidUser(): void {
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
 }
+/**
+ * testing delete method and deleting a User object from MySQL
+ */
+public function testDeleteValidUnit(): void {
+	//countrows and save for later
+	$num_rows = $this->getConnection()->getRowCount("category");
+
+	//Create a new User object and insert it into MySQL
+	$userId = generateUuidV4();
+	$user = new User($userId, $this->VALID_USER_ACTIVATIONTOKEN, $this->VALID_USER_EMAIL, $this->VALID_USER_HASH, $this->VALID_USER_NAME, $this->VALID_USER_USERNAME);
+	$user->insert($this->getPDO());
+
+	//delete user from MySQL
+	$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("user"));
+	$user->delete($this->getPDO());
+
+	//grab data from MySQL and assert that it no longer exists
+	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
+	$this->assertNull($pdoUser);
+	$this->assertEquals($numRows, $this->getConnection()->getRowCount("user"));
+}
 
 }

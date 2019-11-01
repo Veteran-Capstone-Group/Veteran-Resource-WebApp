@@ -6,10 +6,10 @@ namespace VeteranResource\Resource;
 use VeteranResource\Resource\Category;
 
 // grab the class we are testing
-require_once(dirname(__DIR__, 2) . "/Classes/autoload.php");
+require_once(dirname(__DIR__, 1) . "/autoload.php");
 // grab the uuid generator
 require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
-require_once(dirname(__DIR__, 2) . "/Classes/Test/VeteranResourceTest.php");
+require_once(dirname(__DIR__, 1) . "/Test/VeteranResourceTest.php");
 
 /**
  * Php test for the category class

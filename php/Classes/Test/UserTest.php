@@ -41,4 +41,20 @@ class UserTest extends VeteranResourceTest {
 	 * @var string $VALID_USER_EMAIL2
 	 */
 	protected $VALID_USER_EMAIL2 = "barricuda1993@yahoo.com";
+
+	/**
+	 * valid userHash to create user object to run the update test against
+	 * @var string $VALID_USER_HASH
+	 */
+	//TODO NEEDS A VALID HASH
+	protected $VALID_USER_HASH = "";
+
+	/**
+	 * valid userName to create user object to run the update test against
+	 * @var string $VALID_USER_NAME
+	 */
+	protected $VALID_USER_NAME = "PHPUnit TestyMcNamey";
+
+
+
 }

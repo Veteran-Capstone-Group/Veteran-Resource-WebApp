@@ -177,4 +177,34 @@ public function testGetValidUserByUsername(): void {
 	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
 }
 
+/**
+ * testing grabbing user by userActivationToken
+ */
+public function testGetValidUserByUserActivationToken(): void {
+	//count rows for later
+	$num_rows = $this->getConnection()->getRowCount("user");
+
+	//Create new user object to test and insert it into MySQL
+	$userId = generateUuidV4();
+	$user = new User($userId, $this->VALID_USER_ACTIVATIONTOKEN, $this->VALID_USER_EMAIL, $this->VALID_USER_HASH, $this->VALID_USER_NAME, $this->VALID_USER_USERNAME);
+	$user->insert($this->getPDO());
+
+	//grab data from MySQL and assert to check our data returns the expected match
+	$results = User::getUserByUserActivationToken($this->getPDO(), $user->getUserActivationToken());
+	$this->assertEqals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertCount(1, $results);
+
+	//enforce that no other objects are bleeding into our test
+	//TODO verify that this namespace is correct
+	$this->assertContainsOnlyInstancesOf("VeteranResource\\Resource\\User", $results);
+
+	//grab results from array and validate it
+	$pdoUser = $results[0];
+	$this->assertEquals($pdoUser->getUserId(), $userId);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
+}
 }

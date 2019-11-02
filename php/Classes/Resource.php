@@ -547,7 +547,7 @@ class Resource {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceCategoryId = :resourceCategoryId";
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl FROM resource WHERE resourceCategoryId = :resourceCategoryId";
 		$statement = $pdo->prepare($query);
 		//bind the resourceCategoryId to the place holder in MySQL
 		$parameters = ["resourceCategoryId" => $resourceCategoryId->getBytes()];
@@ -585,7 +585,7 @@ class Resource {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceId = :resourceId";
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl FROM resource WHERE resourceId = :resourceId";
 		$statement = $pdo->prepare($query);
 
 		//bind the resource Id to the placeholder
@@ -624,7 +624,7 @@ class Resource {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl WHERE resourceUserId = :resourceUserId";
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl FROM resource WHERE resourceUserId = :resourceUserId";
 		$statement = $pdo->prepare($query);
 		//bind the resourceUserId to the place holder in MySQL
 		$parameters = ["resourceUserId" => $resourceUserId->getBytes()];

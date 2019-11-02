@@ -1,9 +1,11 @@
 <?php
 
 namespace VeteranResource\Resource;
+
+use phpDocumentor\Reflection\Types\Integer;
 use Ramsey\Uuid\Uuid;
 
-require_once (dirname(__DIR__) . "/vendor/autoload.php");
+require_once(dirname(__DIR__) . "/vendor/autoload.php");
 
 /**
  * Creating class Useful, this ia an analog to "likes" that will apply to resources
@@ -41,6 +43,7 @@ class Useful {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 	}
+
 	/**
 	 * Accessor for usefulResourceId Not Null
 	 * foreign key
@@ -48,16 +51,16 @@ class Useful {
 	 * @return Uuid Foreign Key usefulResourceId
 	 */
 	public function getUsefulResourceId(): Uuid {
-	return $this->usefulResourceId;
-}
+		return $this->usefulResourceId;
+	}
 
-/**
- * Mutator for usefulResourceId Not Null
- * Foreign Key
- *
- * @param $newUsefulResourceId
- * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
- */
+	/**
+	 * Mutator for usefulResourceId Not Null
+	 * Foreign Key
+	 *
+	 * @param string | Uuid $newUsefulResourceId Refers to resourceId, is a foreign key
+	 * @throws \Exception if $newUsefulResourceId is an invalid argument, an invalid range, a type error, or another type of exception
+	 */
 	public function setUsefulResourceId($newUsefulResourceId): void {
 		//convert to Uuid or throw exception
 		try {
@@ -84,7 +87,7 @@ class Useful {
 	 * Mutator for usefulUserId Not Null
 	 * Foreign Key
 	 *
-	 * @param $newUsefulUserId
+	 * @param string|Uuid $newUsefulUserId refers to userId, is a foreign key
 	 * @throws \Exception if $newUsefulUserId is an invalid argument, an invalid range, a type error, or another type of exception
 	 */
 	public function setUsefulUserId($newUsefulUserId): void {
@@ -134,15 +137,32 @@ class Useful {
 		$statement->execute($parameters);
 	}
 
+	public function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
+		//Validate usefulResourceId
+		try {
+			$usefulResourceId = self::validateUuid($usefulResourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT usefulResourceId, usefulUserId FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$statement = $pdo->prepare($query);
+		//bind usefulResourceId to placeholder in mySQL
+		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
+		$statement->execute($parameters);
+		$usefulCount = $statement->rowCount();
+		return $usefulCount;
+	}
+//todo Week 11, Add getUsefulByUserId
 	/**
 	 * converts Uuids to strings to serialize
 	 *
 	 * @return array converts Uuids to strings
 	 */
-	public function jsonSerialize() : array {
-		$fields = get_object_vars( $this );
+	public function jsonSerialize(): array {
+		$fields = get_object_vars($this);
 		$fields["usefulUserId"] = $this->usefulUserId->toString();
 		$fields["usefulResourceId"] = $this->usefulResourceId->toString();
-		return($fields);
+		return ($fields);
 	}
 }

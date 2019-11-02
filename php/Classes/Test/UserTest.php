@@ -79,7 +79,7 @@ public final function setUp(): void {
  */
 public function testInsertValidUser() : void {
 	//countrows and save for later
-	$num_rows = $this->getConnection()->getRowCount("category");
+	$num_rows = $this->getConnection()->getRowCount("user");
 
 	//Create a new User object and insert it into MySQL
 	$userId = generateUuidV4();
@@ -102,7 +102,7 @@ public function testInsertValidUser() : void {
  */
 public function testUpdateValidUser(): void {
 	//countrows and save for later
-	$num_rows = $this->getConnection()->getRowCount("category");
+	$num_rows = $this->getConnection()->getRowCount("user");
 
 	//Create a new User object and insert it into MySQL
 	$userId = generateUuidV4();
@@ -118,10 +118,10 @@ public function testUpdateValidUser(): void {
 	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_EMAIL2);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_HASH);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
 }
 
 /**
@@ -129,7 +129,7 @@ public function testUpdateValidUser(): void {
  */
 public function testDeleteValidUser(): void {
 	//countrows and save for later
-	$num_rows = $this->getConnection()->getRowCount("category");
+	$num_rows = $this->getConnection()->getRowCount("user");
 
 	//Create a new User object and insert it into MySQL
 	$userId = generateUuidV4();
@@ -137,20 +137,44 @@ public function testDeleteValidUser(): void {
 	$user->insert($this->getPDO());
 
 	//delete user from MySQL
-	$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$user->delete($this->getPDO());
 
 	//grab data from MySQL and assert that it no longer exists
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
 	$this->assertNull($pdoUser);
-	$this->assertEquals($numRows, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($num_rows, $this->getConnection()->getRowCount("user"));
 }
 
 /**
  * testing grabbing user by userUsername
  */
 public function testGetValidUserByUsername(): void {
-	
+	//countrows and save for later
+	$num_rows = $this->getConnection()->getRowCount("user");
+
+	//Create a new User object and insert it into MySQL
+	$userId = generateUuidV4();
+	$user = new User($userId, $this->VALID_USER_ACTIVATIONTOKEN, $this->VALID_USER_EMAIL, $this->VALID_USER_HASH, $this->VALID_USER_NAME, $this->VALID_USER_USERNAME);
+	$user->insert($this->getPDO());
+
+	//grab data from MySQL and assert to check our expectations match
+	$results = User::getUserByUserUsername($this->getPDO(), $user->getUserId());
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertCount(1, $results);
+
+	//enforce that no other objects are bleeding into the test
+	//TODO verify that this namespace is correct
+	$this->assertContainsOnlyInstancesOf("VeteranResource\\Resource\\User", $results);
+
+	//grab the result from the array and validate it
+	$pdoUser = $results[0];
+	$this->assertEquals($pdoUser->getUserId(), $userId);
+	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
 }
 
 }

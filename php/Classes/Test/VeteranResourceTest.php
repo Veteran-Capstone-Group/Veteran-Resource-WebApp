@@ -25,7 +25,7 @@ require_once(dirname(__DIR__, 2) . "/vendor/autoload.php");
  *
  ** @see https://bootcamp-coders.cnm.edu/class-materials/unit-testing/phpunit/ to check if written correctly
  *
- * @author John Johnson-Rodgers <john@johnthe.dev
+ * @author John Johnson-Rodgers <john@johnthe.dev>
  */
 abstract class VeteranResourceTest extends TestCase {
 	use TestCaseTrait;

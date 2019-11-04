@@ -1,9 +1,9 @@
 <phpunit>
 	<testsuites>
 		<testsuite name="Veteran">
-			<file>CategoryTest.php</file>
-			<!--<file>UserTest.php</file>
-			<file>ResourceTest.php</file>
+			<!--<file>CategoryTest.php</file>-->
+			<file>UserTest.php</file>
+			<!--<file>ResourceTest.php</file>
 			<file>UsefulTest.php</file>-->
 		</testsuite>
 	</testsuites>

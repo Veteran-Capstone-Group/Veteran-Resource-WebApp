@@ -91,10 +91,10 @@ public function testInsertValidUser() : void {
 	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_EMAIL);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_HASH);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_NAME);
-	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_USERNAME);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL);
+	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
+	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
+	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
 }
 
 /**

@@ -198,6 +198,9 @@ class ResourceTest extends VeteranResourceTest {
 		$this->assertEquals($pdoResource->getResourceUrl(), $this->VALID_RESOURCE_URL);
 	}
 
+	/**
+	 * Test creating a resource, deleting it, and checking to make sure it was deleted
+	 */
 	public function testDeleteValidResource():void{
 		//count number of rows to save for later
 		$num_rows = $this->getConnection()->getRowCount("resource");
@@ -217,5 +220,14 @@ class ResourceTest extends VeteranResourceTest {
 		$this->assertEquals($num_rows, $this->getConnection()->getRowCount("resource"));
 	}
 
+	public function testGetResourceByResourceCategoryId():void{
+		//count number of rows and save for later
+		$numRows = $this->getConnection()->getRowCount("resource");
+
+		//create a new resource and insert it into mySQL
+		$resourceId = generateUuidV4();
+		$resource = new Resource($resourceId, $this->category->getCategoryId(), $this->user->getUserId(), $this->VALID_RESOURCE_ADDRESS, $this->VALID_RESOURCE_APPROVAL_STATUS, $this->VALID_RESOURCE_DESCRIPTION, $this->VALID_RESOURCE_EMAIL, $this->VALID_RESOURCE_IMAGE_URL, $this->VALID_RESOURCE_ORGANIZATION, $this->VALID_RESOURCE_PHONE, $this->VALID_RESOURCE_TITLE, $this->VALID_RESOURCE_URL);
+		$resource->insert($this->getPDO());
+	}
 
 }

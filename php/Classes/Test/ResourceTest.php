@@ -2,6 +2,7 @@
 
 namespace VeteranResource\Resource;
 
+use http\Env\Request;
 use VeteranResource\Resource\Resource;
 use VeteranResource\Resource\{Category, User};
 
@@ -228,6 +229,30 @@ class ResourceTest extends VeteranResourceTest {
 		$resourceId = generateUuidV4();
 		$resource = new Resource($resourceId, $this->category->getCategoryId(), $this->user->getUserId(), $this->VALID_RESOURCE_ADDRESS, $this->VALID_RESOURCE_APPROVAL_STATUS, $this->VALID_RESOURCE_DESCRIPTION, $this->VALID_RESOURCE_EMAIL, $this->VALID_RESOURCE_IMAGE_URL, $this->VALID_RESOURCE_ORGANIZATION, $this->VALID_RESOURCE_PHONE, $this->VALID_RESOURCE_TITLE, $this->VALID_RESOURCE_URL);
 		$resource->insert($this->getPDO());
+
+		//grab the data from mysql and check that the fields match expectations
+		$results = Resource::getResourceByResourceCategoryId($this->getPDO(), $resource->getResourceCategoryId());
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("resource"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Resource", $results);
+
+		//grab results from array and validate
+		$pdoResource=$results[0];
+
+		$this->assertEquals($pdoResource->getResourceId(), $resourceId);
+		$this->assertEquals($pdoResource->getResourceCategoryId(), $this->category->getCategoryId());
+		$this->assertEquals($pdoResource->getResourceUserId(), $this->user->getUserId());
+		$this->assertEquals($pdoResource->getResourceAddress(), $this->VALID_RESOURCE_ADDRESS);
+		$this->assertEquals($pdoResource->getResourceApprovalStatus(), $this->VALID_RESOURCE_APPROVAL_STATUS);
+		$this->assertEquals($pdoResource->getResourceDescription(), $this->VALID_RESOURCE_DESCRIPTION);
+		$this->assertEquals($pdoResource->getResourceEmail(), $this->VALID_RESOURCE_EMAIL);
+		$this->assertEquals($pdoResource->getResourceImageUrl(), $this->VALID_RESOURCE_IMAGE_URL);
+		$this->assertEquals($pdoResource->getResourceOrganization(), $this->VALID_RESOURCE_ORGANIZATION);
+		$this->assertEquals($pdoResource->getResourcePhone(), $this->VALID_RESOURCE_PHONE);
+		$this->assertEquals($pdoResource->getResourceTitle(), $this->VALID_RESOURCE_TITLE);
+		$this->assertEquals($pdoResource->getResourceUrl(), $this->VALID_RESOURCE_URL);
 	}
+
+	//
 
 }

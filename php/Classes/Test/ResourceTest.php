@@ -183,6 +183,7 @@ class ResourceTest extends VeteranResourceTest {
 
 		//enforce that the fields match expectations
 		$pdoResource = Resource::getResourceByResourceId($this->getPDO(), $resource->getResourceId());
+		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("resource"));
 		$this->assertEquals($pdoResource->getResourceId()->toString(), $resourceId->toString());
 		$this->assertEquals($pdoResource->getResourceCategoryId()->toString(), $resource->getResourceCategoryId()->toString());
 		$this->assertEquals($pdoResource->getResourceUserId()->toString(), $resource->getResourceUserId()->toString());
@@ -195,10 +196,25 @@ class ResourceTest extends VeteranResourceTest {
 		$this->assertEquals($pdoResource->getResourcePhone(), $this->VALID_RESOURCE_PHONE);
 		$this->assertEquals($pdoResource->getResourceTitle(), $this->VALID_RESOURCE_TITLE);
 		$this->assertEquals($pdoResource->getResourceUrl(), $this->VALID_RESOURCE_URL);
+	}
 
+	public function testDeleteValidResource():void{
+		//count number of rows to save for later
+		$num_rows = $this->getConnection()->getRowCount("resource");
 
+		//create new resource
+		$resourceId = generateUuidV4();
+		$resource = new Resource($resourceId, $this->category->getCategoryId(), $this->user->getUserId(), $this->VALID_RESOURCE_ADDRESS, $this->VALID_RESOURCE_APPROVAL_STATUS, $this->VALID_RESOURCE_DESCRIPTION, $this->VALID_RESOURCE_EMAIL, $this->VALID_RESOURCE_IMAGE_URL, $this->VALID_RESOURCE_ORGANIZATION, $this->VALID_RESOURCE_PHONE, $this->VALID_RESOURCE_TITLE, $this->VALID_RESOURCE_URL);
+		$resource->insert($this->getPDO());
 
+		//delete resource from MySQL
+		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("resource"));
+		$resource->delete($this->getPDO());
 
+		//Make sure resource no longer exists
+		$pdoResource = Resource::getResourceByResourceId($this->getPDO(), $resource->getResourceId());
+		$this->assertNull($pdoResource);
+		$this->assertEquals($num_rows, $this->getConnection()->getRowCount("resource"));
 	}
 
 

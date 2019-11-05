@@ -95,7 +95,7 @@ public function getUserId(): Uuid {
  * @param Uuid $newUserId new value of userId
  * @throws \TypeError if $newUserId is not a uuid or string
  */
-public function setUserId(Uuid $newUserId) {
+public function setUserId($newUserId) {
 	//verify if userId is valid
 	try {
 		$uuid = self::validateUuid($newUserId);
@@ -394,7 +394,6 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 			$row = $statement->fetch();
 
 			if($row !== false) {
-				var_dump($row["userId"]);
 				$user = new User($row["userId"], $row["userActivationToken"], $row["userEmail"], $row["userHash"], $row["userName"], $row["userUsername"]);
 			}
 		} catch(\Exception $exception) {

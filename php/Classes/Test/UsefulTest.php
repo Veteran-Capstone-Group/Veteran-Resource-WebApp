@@ -63,6 +63,7 @@ public function testInsertValidUseful() : void {
 	 $useful->delete($this->getPDO());
 
 	 //grab data from MySQL and assert that it no longer exists
+	 //TODO figure out how to run the insert without get useful by x method
 	 $pdoUser = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
 	 $this->assertNull($pdoUser);
 	 $this->assertEquals($num_rows, $this->getConnection()->getRowCount("useful"));

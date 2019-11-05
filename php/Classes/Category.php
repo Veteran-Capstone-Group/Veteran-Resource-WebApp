@@ -151,21 +151,19 @@ class Category implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT categoryId, categoryType FROM category WHERE  'categoryId' = :categoryId";
+		$query = "SELECT categoryId, categoryType FROM category WHERE  categoryId = :categoryId";
 		$statement = $pdo->prepare($query);
-		var_dump($pdo->prepare($query));
 
 		//set parameters to execute
-		$parameters = ['categoryId' => $categoryId->getBytes()];
+		$parameters = ["categoryId" => $categoryId->getBytes()];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {
 			$category = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
-			var_dump($statement->fetch());
 			if($row !== false) {
-				$category = new Category($row['$categoryId'], $row['$categoryType']);
+				$category = new Category($row["categoryId"], $row["categoryType"]);
 			}
 		} catch(\Exception $exception) {
 			//if row can't be converted rethrow it

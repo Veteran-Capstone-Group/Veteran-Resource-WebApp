@@ -1,7 +1,7 @@
 <?php
 
 
-namespace VeteranResource\Resource;
+namespace VeteranResource\Resource\Test;
 use VeteranResource\Resource\User;
 //obtain Class for testing
 require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");

@@ -1,6 +1,6 @@
 <?php
 
-namespace VeteranResource\Resource;
+namespace VeteranResource\Resource\Test;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;

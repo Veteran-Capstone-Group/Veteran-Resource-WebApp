@@ -11,7 +11,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  * @package VeteranResource\Resource
  * @Author Timothy Beck <barricuda1993@yahoo.com>
  */
-class Category{
+class Category implements \JsonSerializable {
 	use ValidateUuid;
 
 	/**
@@ -142,7 +142,7 @@ class Category{
 		$statement->execute($parameters);
 	}
 
-	public static function getCategoryByCategoryId(\PDO $pdo, $categoryId) : ?Category{
+	public static function getCategoryByCategoryId($pdo, $categoryId) : ?Category{
 		//sanitize uuid
 		try {
 			$categoryId = self::validateUuid($categoryId);

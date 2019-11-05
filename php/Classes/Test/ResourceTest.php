@@ -1,6 +1,6 @@
 <?php
 
-namespace VeteranResource\Resource;
+namespace VeteranResource\Resource\Test;
 
 use http\Env\Request;
 use VeteranResource\Resource\Resource;

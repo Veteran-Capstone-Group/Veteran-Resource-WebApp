@@ -15,7 +15,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  *
  * @author John Johnson-Rodgers
  */
-class Useful {
+class Useful implements \JsonSerializable {
 	use ValidateUuid;
 	/**
 	 * usefulResourceId, Foreign key that relates to resourceId, one of two foreign keys, Not Null

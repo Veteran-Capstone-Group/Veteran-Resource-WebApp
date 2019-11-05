@@ -17,7 +17,7 @@ require_once(dirname(__DIR__, 1) . "/vendor/autoload.php");
  * @author John Johnson-Rodgers <john@johnthe.dev>
  * @version 1.0.0
  */
-class Resource {
+class Resource implements \JsonSerializable {
 	use ValidateUuid;
 	/**
 	 * id for resource; Primary Key Not Null

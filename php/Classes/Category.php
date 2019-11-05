@@ -11,7 +11,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  * @package VeteranResource\Resource
  * @Author Timothy Beck <barricuda1993@yahoo.com>
  */
-class Category{
+class Category implements \JsonSerializable {
 	use ValidateUuid;
 
 	/**

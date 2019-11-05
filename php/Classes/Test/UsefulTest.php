@@ -27,7 +27,25 @@ class UsefulTest extends VeteranResourceTest {
 		parent::setUp();
 	}
 
+public function testInsertValidUseful() : void {
+	//count rows and save for later
+	$num_rows = $this->getConnection()->getRowCount("useful");
 
+	//Create a new Useful object and insert it into MySQL
+	//TODO change these variables to refrence resource ad user test variables
+	$usefulResourceId = generateUuidV4();
+	$usefulUserId = generateUuidV4();
+
+	$useful = new Useful($usefulResourceId, $usefulUserId);
+	$useful->insert($this->getPDO());
+
+	//grab data from MySQL and affirm the fields match our query
+	//TODO figure out how to run the insert without get useful by x method
+	$pdoUser = Useful::getUsefulByUsefulId($this->getPDO(), $useful->getUsefulResourceId());
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($pdoUser->getUsefulResourceId(), $usefulResourceId);
+	$this->assertEquals($pdoUser->getUsefulUserId(), $usefulUserId);
+}
 
 
 

@@ -64,7 +64,7 @@ private $userUsername;
 	 * @throws \TypeError if data types violate type hints
 	 */
 	//
-	public function __construct(Uuid $newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
+	public function __construct($newUserId, string $newUserActivationToken, string $newUserEmail, string $newUserHash, string $newUserName, string $newUserUsername) {
 		try {
 			$this->setUserId($newUserId);
 			$this->setUserActivationToken($newUserActivationToken);
@@ -394,6 +394,7 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 			$row = $statement->fetch();
 
 			if($row !== false) {
+				var_dump($row["userId"]);
 				$user = new User($row["userId"], $row["userActivationToken"], $row["userEmail"], $row["userHash"], $row["userName"], $row["userUsername"]);
 			}
 		} catch(\Exception $exception) {

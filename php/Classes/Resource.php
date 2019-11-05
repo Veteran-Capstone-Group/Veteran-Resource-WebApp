@@ -397,10 +397,6 @@ class Resource implements \JsonSerializable {
 		$newResourcePhone = trim($newResourcePhone);
 		//sanitizes string to get rid of harmful attacks
 		$newResourcePhone = filter_var($newResourcePhone, FILTER_SANITIZE_STRING,);
-		//Special "needs area code" exception
-		if(strlen($newResourcePhone) === 7|strlen($newResourcePhone) === 8) {
-			throw(new \RangeException("Phone Number Needs an Area Code."));
-		}
 		//General too many characters exception
 		if(strlen($newResourcePhone) > 20) {
 			throw(new \RangeException("Phone contains too many characters"));
@@ -491,7 +487,6 @@ class Resource implements \JsonSerializable {
 		//create query template
 		$query = "INSERT INTO resource(resourceId, resourceUserId, resourceCategoryId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceURL) VALUES(:resourceId, :resourceUserId, :resourceCategoryId, :resourceAddress, :resourceApprovalStatus, :resourceDescription, :resourceEmail, :resourceImageUrl, :resourceOrganization, :resourcePhone, :resourceTitle, :resourceUrl)";
 		$statement = $pdo->prepare($query);
-
 		//bind the member variables to the place holders in the template
 		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
 		$statement->execute($parameters);
@@ -523,7 +518,7 @@ class Resource implements \JsonSerializable {
 	 **/
 	public function update(\PDO $pdo): void {
 		//create query template
-		$query = "UPDATE resource SET resourceUserId = :resourceUserId, resourceCategoryId = :resourceCategoryId, resourceAddress = :resourceAddress, resourceApprovalStatus = :resourceApprovalStatus, resourceDescription = :resourceDescription, resourceEmail = :resourceEmail, resourceImageUrl = :resourceImageUrl, resourceOrganization = :resourceOrganization, resourcePhone = :resourcePhone, resourceTitle = :resourceTitle WHERE resourceId = :resourceId";
+		$query = "UPDATE resource SET resourceId = :resourceId, resourceUserId = :resourceUserId, resourceCategoryId = :resourceCategoryId, resourceAddress = :resourceAddress, resourceApprovalStatus = :resourceApprovalStatus, resourceDescription = :resourceDescription, resourceEmail = :resourceEmail, resourceImageUrl = :resourceImageUrl, resourceOrganization = :resourceOrganization, resourcePhone = :resourcePhone, resourceTitle = :resourceTitle WHERE resourceId = :resourceId";
 		$statement = $pdo->prepare($query);
 //bind member variables to the placeholders in the template
 		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
@@ -577,7 +572,7 @@ class Resource implements \JsonSerializable {
 	 * @throws /PDOException when MySQL related errors occur
 	 * @throws /TypeError when a variable is not the correct type
 	 */
-	public function getResourceByResourceId(\PDO $pdo, $resourceId): ?Resource {
+	public static function getResourceByResourceId(\PDO $pdo, $resourceId): ?Resource {
 		// Checks to see if it is a Uuid or changes string to Uuid
 		try {
 			$resourceId = self::validateUuid($resourceId);
@@ -595,7 +590,7 @@ class Resource implements \JsonSerializable {
 		// grab the resource from mySQL
 		try {
 			$resource = null;
-			$statement->setFetchMode(PDO::FETCH_ASSOC);
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
 				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);

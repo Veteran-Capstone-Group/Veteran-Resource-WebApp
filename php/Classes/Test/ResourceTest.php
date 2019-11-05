@@ -2,9 +2,7 @@
 
 namespace VeteranResource\Resource\Test;
 
-use http\Env\Request;
-use VeteranResource\Resource\Resource;
-use VeteranResource\Resource\{Category, User};
+use VeteranResource\Resource\{Category, User, Resource};
 
 // grab the class we are testing
 require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");
@@ -106,7 +104,7 @@ class ResourceTest extends VeteranResourceTest {
 	 * valid phone number for resource
 	 * @var string $VALID_RESOURCE_PHONE
 	 */
-	protected $VALID_RESOURCE_PHONE = "(505)340-6292 EXT 1001";
+	protected $VALID_RESOURCE_PHONE = "(505)340-6292";
 
 	/**
 	 * valid resource title
@@ -143,6 +141,9 @@ class ResourceTest extends VeteranResourceTest {
 	 * test inserting a valid resource and verify that MySQL matches
 	 */
 	public function testInsertValidResource(): void {
+		//count rows and save for later
+		$num_rows = $this->getConnection()->getRowCount("resource");
+
 		//create new resource and insert it
 		$resourceId = generateUuidV4();
 		$resource = new Resource($resourceId, $this->category->getCategoryId(), $this->user->getUserId(), $this->VALID_RESOURCE_ADDRESS, $this->VALID_RESOURCE_APPROVAL_STATUS, $this->VALID_RESOURCE_DESCRIPTION, $this->VALID_RESOURCE_EMAIL, $this->VALID_RESOURCE_IMAGE_URL, $this->VALID_RESOURCE_ORGANIZATION, $this->VALID_RESOURCE_PHONE, $this->VALID_RESOURCE_TITLE, $this->VALID_RESOURCE_URL);
@@ -153,6 +154,7 @@ class ResourceTest extends VeteranResourceTest {
 
 		//enforce that the fields match expectations
 		$this->assertEquals($pdoResource->getResourceId()->toString(), $resourceId->toString());
+		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("resource"));
 		$this->assertEquals($pdoResource->getResourceCategoryId()->toString(), $resource->getResourceCategoryId()->toString());
 		$this->assertEquals($pdoResource->getResourceUserId()->toString(), $resource->getResourceUserId()->toString());
 		$this->assertEquals($pdoResource->getResourceAddress(), $this->VALID_RESOURCE_ADDRESS);
@@ -237,7 +239,6 @@ class ResourceTest extends VeteranResourceTest {
 		$results = Resource::getResourceByResourceCategoryId($this->getPDO(), $resource->getResourceCategoryId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("resource"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Resource", $results);
 
 		//grab results from array and validate
 		$pdoResource = $results[0];
@@ -272,7 +273,6 @@ class ResourceTest extends VeteranResourceTest {
 		$results = Resource::getResourceByResourceUserId($this->getPDO(), $resource->getResourceUserId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("resource"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Resource", $results);
 
 		//grab results from array and validate
 		$pdoResource = $results[0];

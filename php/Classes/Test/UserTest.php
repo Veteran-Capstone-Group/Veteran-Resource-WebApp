@@ -52,7 +52,7 @@ class UserTest extends VeteranResourceTest {
 	 * valid userName to create user object to run the update test against
 	 * @var string $VALID_USER_NAME
 	 */
-	protected $VALID_USER_NAME = "PHPUnit TestyMcNamey";
+	protected $VALID_USER_NAME = "PHPUnitTesty";
 
 	/**
 	 * valid userUsername to create user object to run the update test against
@@ -89,7 +89,6 @@ public function testInsertValidUser() : void {
 	//grab data from MySQL and affirm the fields match our query
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
 	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
-
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
 	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL);
@@ -160,7 +159,7 @@ public function testGetValidUserByUsername(): void {
 	$user->insert($this->getPDO());
 
 	//grab data from MySQL and assert to check our expectations match
-	$pdoUser = User::getUserByUserUsername($this->getPDO(), $user->getUserId());
+	$pdoUser = User::getUserByUserUsername($this->getPDO(), $user->getUserUsername());
 	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);

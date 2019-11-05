@@ -341,10 +341,6 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
 	$userUsername = trim($userUsername);
 	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING);
-	// check is string is >24 characters
-	if(strlen($userUsername) > 24) {
-		throw(new \RangeException("Username must include less than 24 characters"));
-	}
 	//create query template
 	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE userUsername = :userUsername";
 	$statement = $pdo->prepare($query);

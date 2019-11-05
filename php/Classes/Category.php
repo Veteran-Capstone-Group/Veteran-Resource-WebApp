@@ -3,7 +3,7 @@
 
 namespace VeteranResource\Resource;
 use Ramsey\Uuid\Uuid;
-require_once("autoload.php");
+require_once(dirname(__DIR__) . "/Classes/autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 /**
  * Creating Class User for generating new categories
@@ -26,7 +26,7 @@ class Category implements \JsonSerializable {
 	 */
 	private $categoryType;
 
-	public function __construct(Uuid $categoryId,string $categoryType) {
+	public function __construct($categoryId,string $categoryType) {
 		try {
 			$this->setCategoryId($categoryId);
 			$this->setCategoryType($categoryType);
@@ -50,7 +50,7 @@ class Category implements \JsonSerializable {
 	 * this is the setter for category Id
 	 * @param Uuid $newCategoryId
 	 */
-	public function setCategoryId(Uuid $newCategoryId): void {
+	public function setCategoryId($newCategoryId): void {
 		//verify Uuid
 		try {
 			$uuid = self::validateUuid($newCategoryId);
@@ -142,7 +142,7 @@ class Category implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
-	public function getCategoryByCategoryId(\PDO $pdo, Uuid $categoryId) {
+	public static function getCategoryByCategoryId($pdo, $categoryId) : ?Category{
 		//sanitize uuid
 		try {
 			$categoryId = self::validateUuid($categoryId);
@@ -151,18 +151,19 @@ class Category implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT categoryId, categoryType FROM category WHERE 'categoryId' = :categoryId";
+		$query = "SELECT categoryId, categoryType FROM category WHERE  categoryId = :categoryId";
 		$statement = $pdo->prepare($query);
+
 		//set parameters to execute
-		$parameters = ['categoryId' => $categoryId->getBytes()];
+		$parameters = ["categoryId" => $categoryId->getBytes()];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {
 			$category = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-			$row =$statement->fetch();
+			$row = $statement->fetch();
 			if($row !== false) {
-				$category = new Category($row['$categoryId'], $row['$categoryType']);
+				$category = new Category($row["categoryId"], $row["categoryType"]);
 			}
 		} catch(\Exception $exception) {
 			//if row can't be converted rethrow it

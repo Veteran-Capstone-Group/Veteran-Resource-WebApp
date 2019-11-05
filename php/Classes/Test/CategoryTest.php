@@ -50,7 +50,6 @@ class CategoryTest extends VeteranResourceTest {
 		$categoryId = generateUuidV4();
 		$category = new Category($categoryId, $this->VALID_CATEGORY_TYPE);
 		$category->insert($this->getPDO());
-
 		//grab data from mySQL and assert the fields match expectations
 		$pdoCategory = Category::getCategoryByCategoryId($this->getPDO(), $category->getCategoryId());
 		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("category"));

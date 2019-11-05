@@ -11,7 +11,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  * @package VeteranResource\Resource
  * @Author Timothy Beck <barricuda1993@yahoo.com>
  */
-class User {
+class User implements \JsonSerializable {
 	use ValidateUuid;
 	/**
 	 * id for this user, this is the primary key
@@ -195,9 +195,9 @@ public function getUserHash(): string {
 public function setUserHash(string $newUserHash): void {
 	//check if hash is empty
 	$newUserHash = trim($newUserHash);
-	if(empty($newUserHash) !== true) {
+	/*if(empty($newUserHash) !== true) {
 	throw(new \InvalidArgumentException("hash is insecure or invalid"));
-	}
+	}*/
 	//check type of hash
 	$userHashInfo = password_get_info($newUserHash);
 	if($userHashInfo["algoName"] !== "argon2i") {
@@ -337,7 +337,7 @@ public function delete(\PDO $pdo): void {
 	 * @param \PDO $pdo
 	 * @param string $userUsername
 	 */
-public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
+public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
 	$userUsername = trim($userUsername);
 	$userUsername = filter_var($userUsername, FILTER_SANITIZE_STRING);
@@ -372,7 +372,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 * @param \PDO $pdo
 	 * @param Uuid $userId
 	 */
-	public function getUserByUserId(\PDO $pdo, Uuid $userId) {
+	public static function getUserByUserId(\PDO $pdo, Uuid $userId): ?User {
 		//sanitize uuid
 		try {
 			$userId = self::validateUuid($userId);
@@ -390,7 +390,7 @@ public function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 		try {
 			$user = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-			$row =$statement->fetch();
+			$row = $statement->fetch();
 			if($row !== false) {
 				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
 			}

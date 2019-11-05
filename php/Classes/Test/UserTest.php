@@ -1,7 +1,7 @@
 <?php
 
 
-namespace VeteranResource\Resource;
+namespace VeteranResource\Resource\Test;
 use VeteranResource\Resource\User;
 //obtain Class for testing
 require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");
@@ -58,7 +58,7 @@ class UserTest extends VeteranResourceTest {
 	 * valid userUsername to create user object to run the update test against
 	 * @var string $VALID_USER_USERNAME
 	 */
-	protected $VALID_USER_USERNAME = "YouKnightTester1337";
+	protected $VALID_USER_USERNAME = "YouKnightTester";
 
 	/**
 	 * create dependencies before running each test
@@ -78,7 +78,7 @@ public final function setUp(): void {
  * testing INSERT method by inserting a valid user and verifying MySQL accepts it
  */
 public function testInsertValidUser() : void {
-	//countrows and save for later
+	//count rows and save for later
 	$num_rows = $this->getConnection()->getRowCount("user");
 
 	//Create a new User object and insert it into MySQL
@@ -88,7 +88,8 @@ public function testInsertValidUser() : void {
 
 	//grab data from MySQL and affirm the fields match our query
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
-	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
 	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL);
@@ -115,7 +116,7 @@ public function testUpdateValidUser(): void {
 
 	// obtain data from MySQL and assert the fields to affirm they match our expectations
 	$pdoUser = User::getUserByUserId($this->getPDO(), $user->getUserId());
-	$this->asserEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
 	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
@@ -163,7 +164,7 @@ public function testGetValidUserByUsername(): void {
 	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
-	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL);
 	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
 	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
 	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);
@@ -186,7 +187,7 @@ public function testGetValidUserByUserActivationToken(): void {
 	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUserId(), $userId);
 	$this->assertEquals($pdoUser->getUserActivationToken(), $this->VALID_USER_ACTIVATIONTOKEN);
-	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL2);
+	$this->assertEquals($pdoUser->getUserEmail(), $this->VALID_USER_EMAIL);
 	$this->assertEquals($pdoUser->getUserHash(), $this->VALID_USER_HASH);
 	$this->assertEquals($pdoUser->getUserName(), $this->VALID_USER_NAME);
 	$this->assertEquals($pdoUser->getUserUsername(), $this->VALID_USER_USERNAME);

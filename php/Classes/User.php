@@ -346,18 +346,18 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 		throw(new \RangeException("Username must include less than 24 characters"));
 	}
 	//create query template
-	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userUsername' = :userUsername";
+	$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE userUsername = :userUsername";
 	$statement = $pdo->prepare($query);
 	//set parameters to execute
-	$parameters = ['userUsername' => $userUsername];
+	$parameters = ["userUsername" => $userUsername];
 	$statement->execute($parameters);
 	//grab user from MySQL
 	try {
 		$user = null;
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
-		$row =$statement->fetch();
+		$row = $statement->fetch();
 		if($row !== false) {
-			$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+			$user = new User($row["userId"], $row["userActivationToken"], $row["userEmail"], $row["userHash"], $row["userName"], $row["userUsername"]);
 		}
 	} catch(\Exception $exception) {
 		//if row can't be converted rethrow it
@@ -381,22 +381,24 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userId' = :userId";
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE userId = :userId";
 		$statement = $pdo->prepare($query);
 		//set parameters to execute
-		$parameters = ['userId' => $userId->getBytes()];
+
+		$parameters = ["userId" => $userId->getBytes()];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {
 			$user = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
+
 			if($row !== false) {
-				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+				$user = new User($row["userId"], $row["userActivationToken"], $row["userEmail"], $row["userHash"], $row["userName"], $row["userUsername"]);
 			}
 		} catch(\Exception $exception) {
 			//if row can't be converted rethrow it
-			throw(new \PDOException($exception->getMessage(), 0, $exception));
+			throw(new \PDOException($exception->getMessage(),0, $exception));
 		}
 		return($user);
 	}
@@ -407,10 +409,9 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 * @param \PDO $pdo
 	 * @param string userActivationToken
 	 */
-	public function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
+	public static function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
 		//sanitize activationToken
 		if($userActivationToken === null) {
-			$this->userActivationToken =null;
 			throw(new\TypeError("token is null"));
 		}
 		//checks if token is valid
@@ -423,10 +424,10 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 			throw(new \RangeException('token must be 32 characters in length'));
 		}
 		//create query template
-		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE 'userActivationToken' = :userActivationToken";
+		$query = "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user WHERE userActivationToken = :userActivationToken";
 		$statement = $pdo->prepare($query);
 		//set parameters to execute
-		$parameters = ['userActivationToken' => $userActivationToken];
+		$parameters = ["userActivationToken" => $userActivationToken];
 		$statement->execute($parameters);
 		//grab user from MySQL
 		try {
@@ -434,7 +435,7 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row =$statement->fetch();
 			if($row !== false) {
-				$user = new User($row['$userId'], $row['$userActivationToken'], $row['$userEmail'], $row['$userHash'], $row['$userName'], $row['$userUsername']);
+				$user = new User($row["userId"], $row["userActivationToken"], $row["userEmail"], $row["userHash"], $row["userName"], $row["userUsername"]);
 			}
 		} catch(\Exception $exception) {
 			//if row can't be converted rethrow it

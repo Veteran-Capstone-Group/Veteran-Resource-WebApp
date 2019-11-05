@@ -46,7 +46,7 @@ abstract class VeteranResourceTest extends TestCase {
 
 		//all tables go here IN THE ORDER THEY ARE CREATED
 		//user Needs second parameter because user is a reserved word in mySql
-		$dataset->addTable("user", "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM 'user'");
+		$dataset->addTable("user", "SELECT userId, userActivationToken, userEmail, userHash, userName, userUsername FROM user");
 		//category
 		$dataset->addTable("category");
 		//resource

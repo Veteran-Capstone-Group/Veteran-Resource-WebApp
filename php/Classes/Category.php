@@ -26,7 +26,7 @@ class Category{
 	 */
 	private $categoryType;
 
-	public function __construct(Uuid $categoryId,string $categoryType) {
+	public function __construct($categoryId,string $categoryType) {
 		try {
 			$this->setCategoryId($categoryId);
 			$this->setCategoryType($categoryType);
@@ -50,7 +50,7 @@ class Category{
 	 * this is the setter for category Id
 	 * @param Uuid $newCategoryId
 	 */
-	public function setCategoryId(Uuid $newCategoryId): void {
+	public function setCategoryId($newCategoryId): void {
 		//verify Uuid
 		try {
 			$uuid = self::validateUuid($newCategoryId);
@@ -142,7 +142,7 @@ class Category{
 		$statement->execute($parameters);
 	}
 
-	public function getCategoryByCategoryId(\PDO $pdo, Uuid $categoryId) {
+	public static function getCategoryByCategoryId(\PDO $pdo, $categoryId) : ?Category{
 		//sanitize uuid
 		try {
 			$categoryId = self::validateUuid($categoryId);

@@ -4,6 +4,8 @@
 namespace VeteranResource\Resource\Test;
 use VeteranResource\Resource\Useful;
 //obtain Class for testing
+require_once(dirname(__DIR__) . "/Test/UserTest.php");
+require_once(dirname(__DIR__) . "/Test/ResourceTest.php");
 require_once(dirname(__DIR__) . "/Test/VeteranResourceTest.php");
 //obtain required dependencies for testing
 require_once(dirname(__DIR__, 2) . "/Classes/autoload.php");
@@ -21,6 +23,7 @@ require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
  * @author Timothy Beck <barricuda1993@yahoo.com>
  */
 class UsefulTest extends VeteranResourceTest {
+
 
 	public final function setUp(): void {
 		//run the default setUp() method

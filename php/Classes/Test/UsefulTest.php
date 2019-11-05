@@ -32,7 +32,7 @@ public function testInsertValidUseful() : void {
 	$num_rows = $this->getConnection()->getRowCount("useful");
 
 	//Create a new Useful object and insert it into MySQL
-	//TODO change these variables to refrence resource ad user test variables
+	//TODO change these variables to reference resource and user test variables
 	$usefulResourceId = generateUuidV4();
 	$usefulUserId = generateUuidV4();
 
@@ -41,12 +41,32 @@ public function testInsertValidUseful() : void {
 
 	//grab data from MySQL and affirm the fields match our query
 	//TODO figure out how to run the insert without get useful by x method
-	$pdoUser = Useful::getUsefulByUsefulId($this->getPDO(), $useful->getUsefulResourceId());
+	$pdoUser = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
 	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
 	$this->assertEquals($pdoUser->getUsefulResourceId(), $usefulResourceId);
 	$this->assertEquals($pdoUser->getUsefulUserId(), $usefulUserId);
 }
+ public function testDeleteValidUseful(): void {
+	 //count rows and save for later
+	 $num_rows = $this->getConnection()->getRowCount("useful");
 
+	 //Create a new Useful object and insert it into MySQL
+	 //TODO change these variables to reference resource and user test variables
+	 $usefulResourceId = generateUuidV4();
+	 $usefulUserId = generateUuidV4();
+
+	 $useful = new Useful($usefulResourceId, $usefulUserId);
+	 $useful->insert($this->getPDO());
+
+	 //delete useful from MySQL
+	 $this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("useful"));
+	 $useful->delete($this->getPDO());
+
+	 //grab data from MySQL and assert that it no longer exists
+	 $pdoUser = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
+	 $this->assertNull($pdoUser);
+	 $this->assertEquals($num_rows, $this->getConnection()->getRowCount("useful"));
+ }
 
 
 

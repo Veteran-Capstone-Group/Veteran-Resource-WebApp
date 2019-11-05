@@ -3,7 +3,7 @@
 
 namespace VeteranResource\Resource;
 use Ramsey\Uuid\Uuid;
-require_once("autoload.php");
+require_once(dirname(__DIR__) . "/Classes/autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
 /**
  * Creating Class User for generating new categories
@@ -151,8 +151,10 @@ class Category implements \JsonSerializable {
 			throw(new $exceptionType($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT categoryId, categoryType FROM category WHERE 'categoryId' = :categoryId";
+		$query = "SELECT categoryId, categoryType FROM category WHERE  'categoryId' = :categoryId";
 		$statement = $pdo->prepare($query);
+		var_dump($pdo->prepare($query));
+
 		//set parameters to execute
 		$parameters = ['categoryId' => $categoryId->getBytes()];
 		$statement->execute($parameters);
@@ -160,7 +162,8 @@ class Category implements \JsonSerializable {
 		try {
 			$category = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-			$row =$statement->fetch();
+			$row = $statement->fetch();
+			var_dump($statement->fetch());
 			if($row !== false) {
 				$category = new Category($row['$categoryId'], $row['$categoryType']);
 			}

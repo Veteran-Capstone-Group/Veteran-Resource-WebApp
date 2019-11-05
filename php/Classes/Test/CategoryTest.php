@@ -75,7 +75,6 @@ class CategoryTest extends VeteranResourceTest {
 
 		//grab data from mySQL and assert the fields match expectations
 		// todo categoryId before $num_rows?
-		var_dump(Category::getCategoryByCategoryId($this->getPDO(), $category->getCategoryId()));
 		$pdoCategory = Category::getCategoryByCategoryId($this->getPDO(), $category->getCategoryId());
 		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("category"));
 		$this->assertEquals($pdoCategory->getCategoryId(), $categoryId);

@@ -26,6 +26,12 @@ class Category implements \JsonSerializable {
 	 */
 	private $categoryType;
 
+	/**
+	 * Category constructor.
+	 * @param $categoryId
+	 * @param string $categoryType
+	 * @throws \InvalidArgumentException | \RangeException | \TypeError | \Exception if setters don't work
+	 */
 	public function __construct($categoryId,string $categoryType) {
 		try {
 			$this->setCategoryId($categoryId);
@@ -49,6 +55,7 @@ class Category implements \JsonSerializable {
 	/**
 	 * this is the setter for category Id
 	 * @param Uuid $newCategoryId
+	 * @throws if uuid can't validate
 	 */
 	public function setCategoryId($newCategoryId): void {
 		//verify Uuid
@@ -73,6 +80,7 @@ class Category implements \JsonSerializable {
 	/**
 	 * this is the setter method for categoryType
 	 * @param string $newCategoryType
+	 * @throws \RangeException if username is too long
 	 */
 	public function setCategoryType(string $newCategoryType): void {
 		//sanitize string
@@ -142,6 +150,13 @@ class Category implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+	/**
+	 * Gets category by category id
+	 * @param $pdo
+	 * @param $categoryId
+	 * @return Category|null
+	 * @throws \PDOException if row can't be converted
+	 */
 	public static function getCategoryByCategoryId($pdo, $categoryId) : ?Category{
 		//sanitize uuid
 		try {

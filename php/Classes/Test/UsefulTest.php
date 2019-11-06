@@ -39,7 +39,11 @@ class UsefulTest extends VeteranResourceTest {
 	 * @var Resource $resource
 	 */
 	protected $resource;
-	
+	/**
+	 * valid hash to use for creating objects
+	 * @var $VALID_HASH
+	 */
+	protected $VALID_HASH;
 
 	public final function setUp(): void {
 		//run the default setUp() method
@@ -57,11 +61,11 @@ class UsefulTest extends VeteranResourceTest {
 		$this->category = new Category($validCategoryId, "example");
 		$this->category->insert(getPDO());
 		//create and insert generated user
-		$this->user = new User($validUserId, "01234567890123456789012345678912", "google@gmail.com", $VALID_HASH, "PHPUnitTesty", "YouKnightTester");
+		$this->user = new User($validUserId, "01234567890123456789012345678912", "google@gmail.com", $this->VALID_HASH, "PHPUnitTesty", "YouKnightTester");
 		$this->user->insert(getPDO());
 		//create and insert generated resource
-		$this->resource = new Resource(generateUuidV4(), );
-
+		$this->resource = new Resource($validResourceId, $validCategoryId, $validUserId, "01234567890123456789012345678912", true,"testdescriptionthiscanbeverylongbutIworksmartnothard","google@gmail.com", "http://picture.com/image.jpg", "testname", "18006541212", "title", "http://www.google.com");
+		$this->resource->insert(getPDO());
 	}
 
 public function testInsertValidUseful() : void {

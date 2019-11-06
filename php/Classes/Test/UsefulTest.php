@@ -45,6 +45,9 @@ class UsefulTest extends VeteranResourceTest {
 	 */
 	protected $VALID_HASH;
 
+	/**
+	 * create all dependencies before each test
+	 */
 	public final function setUp(): void {
 		//run the default setUp() method
 		parent::setUp();
@@ -68,30 +71,30 @@ class UsefulTest extends VeteranResourceTest {
 		$this->resource->insert($this->getPDO());
 	}
 
+	/**
+	 * test inserting a valid useful and verify that the mysql data matches
+	 */
 public function testInsertValidUseful() : void {
 	//count rows and save for later
 	$num_rows = $this->getConnection()->getRowCount("useful");
 
 	//Create a new Useful object and insert it into MySQL
-	$useful = new Useful($this->resource->getResourceId, $this->user->getUserId);
+	$useful = new Useful($this->resource->getResourceId(), $this->user->getUserId());
 	$useful->insert($this->getPDO());
 
 	//grab data from MySQL and affirm the fields match our query
-	$pdoUser = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
-	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("user"));
-	$this->assertEquals($pdoUser->getUsefulResourceId(), $usefulResourceId);
-	$this->assertEquals($pdoUser->getUsefulUserId(), $usefulUserId);
+	$pdoUseful = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
+	$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("useful"));
+	$this->assertEquals($pdoUseful->getUsefulResourceId(), $this->resource->getResourceId());
+	$this->assertEquals($pdoUseful->getUsefulUserId(), $this->user->getUserId());
 }
+
  public function testDeleteValidUseful(): void {
 	 //count rows and save for later
 	 $num_rows = $this->getConnection()->getRowCount("useful");
 
 	 //Create a new Useful object and insert it into MySQL
-	 //TODO change these variables to reference resource and user test variables
-	 $usefulResourceId = generateUuidV4();
-	 $usefulUserId = generateUuidV4();
-
-	 $useful = new Useful($usefulResourceId, $usefulUserId);
+	 $useful = new Useful($this->resource->getResourceId(), $this->user->getUserId());
 	 $useful->insert($this->getPDO());
 
 	 //delete useful from MySQL

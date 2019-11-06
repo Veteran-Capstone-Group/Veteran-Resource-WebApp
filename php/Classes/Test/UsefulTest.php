@@ -85,8 +85,10 @@ class UsefulTest extends VeteranResourceTest {
 		$useful->insert($this->getPDO());
 
 		//grab data from MySQL and affirm the fields match our query
-		$pdoUseful = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
+		$results = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
 		$this->assertEquals($num_rows + 1, $this->getConnection()->getRowCount("useful"));
+
+		$pdoUseful = $results[0];
 		$this->assertEquals($pdoUseful->getUsefulResourceId(), $this->resource->getResourceId());
 		$this->assertEquals($pdoUseful->getUsefulUserId(), $this->user->getUserId());
 	}
@@ -108,7 +110,7 @@ class UsefulTest extends VeteranResourceTest {
 
 		//grab data from MySQL and assert that it no longer exists
 		$pdoUseful = Useful::getUsefulByUsefulResourceId($this->getPDO(), $useful->getUsefulResourceId());
-		$this->assertNull($pdoUseful);
+		$this->assertEmpty($pdoUseful);
 		$this->assertEquals($num_rows, $this->getConnection()->getRowCount("useful"));
 	}
 

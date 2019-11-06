@@ -26,11 +26,24 @@ class UsefulTest extends VeteranResourceTest {
 	public final function setUp(): void {
 		//run the default setUp() method
 		parent::setUp();
-		//create and insert generated category
-		
-		//create and insert generated resource
 
+		$password = "123abc";
+		$this->VALID_HASH = password_hash($password, PASSWORD_ARGON2I, ["time_cost" => 384]);
+
+		$validCategoryId = generateUuidV4();
+		$validUserId = generateUuidV4();
+		$validResourceId = generateUuidV4();
+
+
+		//create and insert generated category
+		$this->category = new Category($validCategoryId, "example");
+		$this->category->insert(getPDO());
 		//create and insert generated user
+		$this->user = new User($validUserId, "01234567890123456789012345678912", "google@gmail.com", $VALID_HASH, "PHPUnitTesty", "YouKnightTester");
+		$this->user->insert(getPDO());
+		//create and insert generated resource
+		$this->resource = new Resource(generateUuidV4(), );
+
 	}
 
 public function testInsertValidUseful() : void {

@@ -142,7 +142,7 @@ class Useful implements \JsonSerializable {
 	 * @param string|uuid $usefulResourceId
 	 * @return int
 	 */
-	public function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
+	public static function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
 		//Validate usefulResourceId
 		try {
 			$usefulResourceId = self::validateUuid($usefulResourceId);
@@ -166,7 +166,7 @@ class Useful implements \JsonSerializable {
 	 * @param string|Uuid $usefulResourceId
 	 * @return \SplFixedArray
 	 */
-	public function getUsefulByUsefulResourceId(\PDO $pdo, $usefulResourceId): \SplFixedArray {
+	public static function getUsefulByUsefulResourceId(\PDO $pdo, $usefulResourceId): \SplFixedArray {
 		//Validate usefulResourceId
 		try {
 			$usefulResourceId = self::validateUuid($usefulResourceId);

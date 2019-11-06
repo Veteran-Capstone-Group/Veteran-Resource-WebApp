@@ -59,13 +59,13 @@ class UsefulTest extends VeteranResourceTest {
 
 		//create and insert generated category
 		$this->category = new Category($validCategoryId, "example");
-		$this->category->insert(getPDO());
+		$this->category->insert($this->getPDO());
 		//create and insert generated user
 		$this->user = new User($validUserId, "01234567890123456789012345678912", "google@gmail.com", $this->VALID_HASH, "PHPUnitTesty", "YouKnightTester");
-		$this->user->insert(getPDO());
+		$this->user->insert($this->getPDO());
 		//create and insert generated resource
 		$this->resource = new Resource($validResourceId, $validCategoryId, $validUserId, "01234567890123456789012345678912", true,"testdescriptionthiscanbeverylongbutIworksmartnothard","google@gmail.com", "http://picture.com/image.jpg", "testname", "18006541212", "title", "http://www.google.com");
-		$this->resource->insert(getPDO());
+		$this->resource->insert($this->getPDO());
 	}
 
 public function testInsertValidUseful() : void {
@@ -73,7 +73,7 @@ public function testInsertValidUseful() : void {
 	$num_rows = $this->getConnection()->getRowCount("useful");
 
 	//Create a new Useful object and insert it into MySQL
-	$useful = new Useful($this->resource->resourceId, $this->user->userId);
+	$useful = new Useful($this->resource->getResourceId, $this->user->getUserId);
 	$useful->insert($this->getPDO());
 
 	//grab data from MySQL and affirm the fields match our query

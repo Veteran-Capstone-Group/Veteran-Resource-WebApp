@@ -318,7 +318,7 @@ public function update(\PDO $pdo): void {
  * deletes user from MySQL database
  *
  * @param \PDO $pdo PDO connection object
- * @throws \PDOException when myswl related errors occur
+ * @throws \PDOException when mysql related errors occur
  * @throws \TypeError when $pdo is not a PDO object
  */
 public function delete(\PDO $pdo): void {
@@ -336,6 +336,8 @@ public function delete(\PDO $pdo): void {
 	 *
 	 * @param \PDO $pdo
 	 * @param string $userUsername
+	 * @throws \PDOException when mysql related errors occur
+	 * @throws \TypeError when $pdo is not a PDO object
 	 */
 public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	//sanitize username
@@ -367,6 +369,8 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 *
 	 * @param \PDO $pdo
 	 * @param Uuid $userId
+	 * @throws \PDOException when mysql related errors occur
+	 * @throws \TypeError when variable doesn't follow typehints
 	 */
 	public static function getUserByUserId(\PDO $pdo, Uuid $userId): ?User {
 		//sanitize uuid
@@ -404,6 +408,10 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 *
 	 * @param \PDO $pdo
 	 * @param string userActivationToken
+	 * @throws \PDOException when mysql related errors occur
+	 * @throws \TypeError when variable doesn't follow typehints
+	 * @throws \InvalidArgumentException when activation token is not a hex variable
+	 * @throws \RangeException if token is not 32 characters
 	 */
 	public static function getUserByUserActivationToken(\PDO $pdo, string $userActivationToken) {
 		//sanitize activationToken

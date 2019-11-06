@@ -137,7 +137,36 @@ class Useful implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+	/**
+	 * @param \PDO $pdo
+	 * @param string|uuid $usefulResourceId
+	 * @return int
+	 */
 	public function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
+		//Validate usefulResourceId
+		try {
+			$usefulResourceId = self::validateUuid($usefulResourceId);
+		} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		//create query template
+		$query = "SELECT COUNT (usefulUserId) FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$statement = $pdo->prepare($query);
+		//bind usefulResourceId to placeholder in mySQL
+		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
+		$statement->execute($parameters);
+		$usefulCount = $statement;
+		return $usefulCount;
+	}
+
+	/**
+	 * method to get Useful by Resource Id, allows unit test and can be used to see who useful'd week 11
+	 *
+	 * @param \PDO $pdo
+	 * @param string|Uuid $usefulResourceId
+	 * @return \SplFixedArray
+	 */
+	public function getUsefulByUsefulResourceId(\PDO $pdo, $usefulResourceId): \SplFixedArray {
 		//Validate usefulResourceId
 		try {
 			$usefulResourceId = self::validateUuid($usefulResourceId);
@@ -150,9 +179,22 @@ class Useful implements \JsonSerializable {
 		//bind usefulResourceId to placeholder in mySQL
 		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
 		$statement->execute($parameters);
-		$usefulCount = $statement->rowCount();
-		return $usefulCount;
+		//build an array of usefuls
+		$usefuls = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$useful = new Useful($row["usefulResourceId"], $row["usefulUserId"]);
+				$usefuls[$usefuls->key()] = $useful;
+				$usefuls->next();
+			} catch(\Exception $exception) {
+				//if the row can't be converted, throw it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($usefuls);
 	}
+
 //todo Week 11, Add getUsefulByUserId
 	/**
 	 * converts Uuids to strings to serialize

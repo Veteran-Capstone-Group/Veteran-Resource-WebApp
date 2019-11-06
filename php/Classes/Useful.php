@@ -150,12 +150,12 @@ class Useful implements \JsonSerializable {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT usefulResourceId, usefulUserId FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$query = "SELECT COUNT (usefulUserId) FROM useful WHERE usefulResourceId = :usefulResourceId";
 		$statement = $pdo->prepare($query);
 		//bind usefulResourceId to placeholder in mySQL
 		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
 		$statement->execute($parameters);
-		$usefulCount = $statement->rowCount();
+		$usefulCount = $statement;
 		return $usefulCount;
 	}
 

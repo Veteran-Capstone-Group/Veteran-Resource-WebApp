@@ -24,3 +24,29 @@ $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
 
+try {
+	//grab the mySQL connection
+	$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
+	$pdo = $secrets->getPdoObject();
+
+	//determine which HTTP method was used
+	$method = $_SERVER["HTTP_X_HTTP_METHOD"] ?? $_SERVER["REQUEST_METHOD"];
+	 //sanitize input
+	$categoryId = filter_input(INPUT_GET, "categoryId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	//todo check if we need to know that id needs to be valid for get method
+
+	if ($method === "GET") {
+		//set the xsrf cookie
+		setXsrfCookie();
+
+		//Check if an id is passed
+		if(empty($id)=== false) {
+			$reply->data = Category::getCategoryByCategoryId($pdo, $categoryId);
+		}
+	}
+
+
+} catch (\Exception | \TypeError $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+}

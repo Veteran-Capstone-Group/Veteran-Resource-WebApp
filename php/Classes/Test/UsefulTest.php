@@ -22,6 +22,24 @@ require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
  */
 class UsefulTest extends VeteranResourceTest {
 
+	/**
+	 * Category that's required for resources this is for foreign key relations
+	 * @var Category $category
+	 */
+	protected $category;
+
+	/**
+	 * User that's required for resources this is for foreign key relations
+	 * @var User $user
+	 */
+	protected $user;
+
+	/**
+	 * Resource that's required for Useful, this is for foreign key relations
+	 * @var Resource $resource
+	 */
+	protected $resource;
+	
 
 	public final function setUp(): void {
 		//run the default setUp() method

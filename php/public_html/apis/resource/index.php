@@ -54,8 +54,20 @@ try {
 			throw (new InvalidArgumentException("Input Required", 400));
 		}
 
-
 	} elseif($method === "POST") {
+		//enforce xsrf token
+		verifyXsrf();
+		//make sure user is signed in
+		if(empty($_SESSION["user"])=== true) {
+			throw(new \InvalidArgumentException("You must be signed in to post a resource, please sign in to continue.", 401));
+		}
+
+		//retrieves JSON package that was sent by the user and stores it in $requestContent using file_get_contents
+		$requestContent = file_get_contents("php://input");
+
+		//Decodes content and stores result in $requestContent
+		$requestContent = json_decode($requestContent);
+
 
 	} else {
 		throw (new InvalidArgumentException("Invalid HTTP method request", 405));

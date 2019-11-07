@@ -36,6 +36,14 @@ try {
 	$resourceCategoryId = filter_input(INPUT_GET, "resourceCategoryId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$resourceUserId = filter_input(INPUT_GET, "resourceUserId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
+	if($method === "GET"){
+
+	} elseif($method === "POST" | $method === "PUT") {
+
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP method request", 418));
+	}
+	//update the $reply->status $reply->message
 } catch (\Exception|\TypeError $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();

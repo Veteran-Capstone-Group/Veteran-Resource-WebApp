@@ -43,9 +43,11 @@ try {
 		if(empty($id)=== false) {
 			$reply->data = Category::getCategoryByCategoryId($pdo, $categoryId);
 		}
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP method request", 418));
 	}
 
-
+	//update the $reply->status $reply->message
 } catch (\Exception | \TypeError $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();

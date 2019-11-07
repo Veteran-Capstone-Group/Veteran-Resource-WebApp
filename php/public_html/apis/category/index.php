@@ -10,7 +10,7 @@ require_once dirname(__DIR__, 3)."/lib/uuid.php";
 use VeteranResource\Resource\{Category};
 
 /**
- * api for the category test
+ * api for category
  *
  * @author John Johnson-Rodgers <john@johnthe.dev>
  */

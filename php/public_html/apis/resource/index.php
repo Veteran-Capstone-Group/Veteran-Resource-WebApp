@@ -37,11 +37,28 @@ try {
 	$resourceUserId = filter_input(INPUT_GET, "resourceUserId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 	if($method === "GET"){
+		//set xsrf cookie
+		setXsrfCookie();
 
-	} elseif($method === "POST" | $method === "PUT") {
+
+		if(empty($resourceId) === false) {
+			//get resource using resourceId
+			$reply->data = Resource::getResourceByResourceId($pdo, $resourceId);
+		} elseif( empty($resourceCategoryId) === false) {
+			//get resource using resourceCategoryId
+			$reply->data = Resource::getResourceByResourceCategoryId($pdo, $resourceCategoryId);
+		} elseif(empty($resourceUserId)===false) {
+			//get a resource using resourceUserId
+			$reply->data = Resource::getResourceByResourceUserId($pdo, $resourceUserId);
+		} else {
+			throw (new InvalidArgumentException("Input Required", 400));
+		}
+
+
+	} elseif($method === "POST") {
 
 	} else {
-		throw (new InvalidArgumentException("Invalid HTTP method request", 418));
+		throw (new InvalidArgumentException("Invalid HTTP method request", 405));
 	}
 	//update the $reply->status $reply->message
 } catch (\Exception|\TypeError $exception) {

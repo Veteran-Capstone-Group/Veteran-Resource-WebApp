@@ -534,7 +534,7 @@ class Resource implements \JsonSerializable {
 	 * @throws \PDOException when MySQL Errors happen
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public function getResourceByResourceCategoryId(\PDO $pdo, $resourceCategoryId): \SplFixedArray {
+	public static function getResourceByResourceCategoryId(\PDO $pdo, $resourceCategoryId): \SplFixedArray {
 		//Validate resourceCategoryId
 		try {
 			$resourceCategoryId = self::validateUuid($resourceCategoryId);
@@ -611,7 +611,7 @@ class Resource implements \JsonSerializable {
 	 * @throws \PDOException when MySQL Errors happen
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public function getResourceByResourceUserId(\PDO $pdo, $resourceUserId): \SplFixedArray {
+	public static function getResourceByResourceUserId(\PDO $pdo, $resourceUserId): \SplFixedArray {
 		//Validate resourceUserId
 		try {
 			$resourceUserId = self::validateUuid($resourceUserId);

@@ -140,10 +140,10 @@ class Useful implements \JsonSerializable {
 	/**
 	 * @param \PDO $pdo
 	 * @param string|uuid $usefulResourceId
-	 * @return int
+	 * @return string
 	 * @throws \PDOException when mysql related errors occur
 	 */
-	public static function getUsefulCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Integer {
+	public static function getCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): String {
 		//Validate usefulResourceId
 		try {
 			$usefulResourceId = self::validateUuid($usefulResourceId);
@@ -151,13 +151,23 @@ class Useful implements \JsonSerializable {
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		//create query template
-		$query = "SELECT COUNT (usefulUserId) FROM useful WHERE usefulResourceId = :usefulResourceId";
+		$query = "SELECT COUNT(*) AS usefulCount FROM useful WHERE usefulResourceId = :usefulResourceId";
 		$statement = $pdo->prepare($query);
 		//bind usefulResourceId to placeholder in mySQL
 		$parameters = ["usefulResourceId" => $usefulResourceId->getBytes()];
 		$statement->execute($parameters);
-		$usefulCount = $statement;
-		return $usefulCount;
+
+		try {
+			$count = 0;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			if($row =$statement->fetch()) {
+				$count = $row['usefulCount'];
+			}
+		} catch(\Exception $exception) {
+			//if row can't be converted rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($count);
 	}
 
 	/**

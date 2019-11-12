@@ -103,4 +103,22 @@ class CategoryTest extends VeteranResourceTest {
 		$this->assertEquals($num_rows, $this->getConnection()->getRowCount("category"));
 	}
 
+	public function testGetAllCategories(): void {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("category");
+		// create a new Category and insert to into mySQL
+		$categoryId = generateUuidV4();
+		$category = new Category($categoryId, $this->VALID_CATEGORY_TYPE);
+		$category->insert($this->getPDO());
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Category::getAllCategories($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("category"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("VeteranResource\\Resource\\Category", $results);
+		// grab the result from the array and validate it
+		$pdoCategory = $results[0];
+		$this->assertEquals($pdoCategory->getCategoryId(), $categoryId);
+		$this->assertEquals($pdoCategory->getCategoryType(), $this->VALID_CATEGORY_TYPE);
+
+	}
 }

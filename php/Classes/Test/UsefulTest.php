@@ -136,4 +136,25 @@ class UsefulTest extends VeteranResourceTest {
 		$this->assertEquals($pdoUseful->getUsefulResourceId(), $this->resource->getResourceId());
 		$this->assertEquals($pdoUseful->getUsefulUserId(), $this->user->getUserId());
 	}
+
+	/**
+	 * test counting usefuls by resource Id
+	 */
+	public function testGetCountByUsefulResourceId(): void {
+		//count rows and save for later
+		$num_rows = $this->getConnection()->getRowCount("useful");
+		//create a second useful
+		$two = new User(generateUuidV4(), "01274567890123456789012345678912", "john@johnthe.dev", $this->VALID_HASH, "johnthedev", "johnTheDev");
+		$two->insert($this->getPDO());
+
+		//Create a new Useful object and insert it into MySQL
+		$useful = new Useful($this->resource->getResourceId(), $this->user->getUserId());
+		$usefulTwo = new Useful($this->resource->getResourceId(), $two->getUserId());
+		$useful->insert($this->getPDO());
+		$usefulTwo->insert($this->getPDO());
+
+		//grab data from MySQL and affirm the fields match our query
+		$this->assertEquals(strval($num_rows + 2), Useful::getCountByUsefulResourceId($this->getPDO(), $this->resource->getResourceId()));
+
+	}
 }

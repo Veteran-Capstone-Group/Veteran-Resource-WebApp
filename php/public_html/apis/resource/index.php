@@ -99,7 +99,7 @@ try {
 
 		//update reply
 		$reply->message = "Resource created! Thank you for helping out Albuquerque's Veterans!";
-	} else {
+	}  else {
 		throw (new InvalidArgumentException("Invalid HTTP method request", 405));
 	}
 	//update the $reply->status $reply->message

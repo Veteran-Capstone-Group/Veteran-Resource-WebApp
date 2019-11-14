@@ -39,16 +39,31 @@ try {
 		$requestObject = json_decode($requestContent);
 
 		//user Email is a required field
-		if(empty($requestObject->profileAtHandle) === true) {
-			throw(new \InvalidArgumentException ("No profile @handle", 405));
+		if(empty($requestObject->userEmail) === true) {
+			throw(new \InvalidArgumentException ("No email entered.", 405));
 		}
+
 		//verify password is there
+		if(empty($requestObject->userPassword)=== true) {
+			throw(new \InvalidArgumentException("A valid password is required.", 405));
+		}
 
 		//verify that confirm password is there
+		if(empty($requestObject->userPasswordConfirm)=== true) {
+			throw(new \InvalidArgumentException("Please confirm your password.", 405));
+		}
 
 		//user Name is a required field
+		if(empty($requestObject->userName) === true) {
+			throw(new \InvalidArgumentException ("No name entered.", 405));
+		}
 
 		//user Username is a required field
+		if(empty($requestObject->userUsername) === true) {
+			throw(new \InvalidArgumentException ("No username entered.", 405));
+		}
+
+		//make sure userPassword and userPasswordConfirm match
 	}
 
 } catch() {

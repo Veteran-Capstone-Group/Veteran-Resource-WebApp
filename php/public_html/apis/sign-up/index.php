@@ -97,12 +97,19 @@ try {
 		$message = <<< EOF
 <h2>Welcome to the Albuquerque Veteran Resource Application!</h2>
 <br>
-<p>Once you have clicked the link below you will have successfully signed up with the Albuquerque Veteran Resource Application! Our mission is to increase awareness of tools that Albuquerque Veterans can use. You are a vital part of this mission! By signing up, usefulling the resources you find beneficial, and contributing information about resources that you know of, you are helping men and women who have served our nation. Thank you for joining us, we hope you find our site useful!</p>
+<p>Hello $requestObject->userName,</p>
+<br>
+<p>Once you have clicked the link below you will have successfully signed up with the Albuquerque Veteran Resource 
+Application! Our mission is to increase awareness of tools that Albuquerque Veterans can use. You are a vital part of 
+this mission! By signing up, useful'ing the resources you find beneficial, and contributing information about resources 
+that you know of, you are helping men and women who have served our nation. Thank you $requestObject->userName for 
+joining us, we hope you find our site useful!</p>
 <br>
 <p><a href = "$confirmLink">$confirmLink</a></p>
 <br>
 <br>
 <p>Thank you again!</p>
+<br>
 <p>Veteran Resource Application Team</p>
 EOF;
 		//create swift email
@@ -117,8 +124,58 @@ EOF;
 		 * this includes the recipient's real name, as that helps reduce possibility of email being marked as spam
 		 */
 		//define recipient
+		$recipient = [$requestObject->userEmail => $requestObject->userName];
+
+		//set recipient to the swift message
+		$swiftMessage->setTo($recipient);
+
+		//attach the subject line to the swift message
+		$swiftMessage->setSubject($messageSubject);
+
+		/**
+		 * attach message to the email.
+		 * set two versions of the message: an html formatted version and a filter_var()ed version aka plain text.
+		 * this tactic displays the url as plaintext for users not viewing html content
+		 */
+		//attach html version for the message
+		$swiftMessage->setBody($message, "text/html");
+
+		//attach plain text version
+		$swiftMessage->addPart(html_entity_decode($message), "text/plain");
+
+		/**
+		 * send the Email via SMTP; the SMTP server is configured to relay everything upstream via CNM and may or may not
+		 * be available with all hosts; SwiftMailer supports many different transport methods; SMTP was chosen because
+		 * it's the most compatible and has the best error handling
+		 * @see http://swiftmailer.org/docs/sending.html Sending Messages - Documentation - SwitftMailer
+		 * todo: look at the documentation for our server host to see if this configuration works
+		 */
+		//setup smtp
+		$smtp = new Swift_SmtpTransport("localhost", 25);
+		$mailer = new Swift_Mailer($smtp);
+
+		//send the message
+		$numSent = $mailer->send($swiftMessage, $failedRecipients);
+
+		/**
+		 * the send method returns the number of recipients that accepted the email, so create an exception if the number
+		 * sent doesn't equal the number accepted.
+		 */
+		if($numSent !== count($recipient)) {
+			throw(new RuntimeException("Unable to send email to " . $failedRecipients[0] . "."));
+		}
+
+		//update reply
+		$reply->message = "Thank you for creating a profile with the Albuquerque Veteran Resource Application!";
+	} else {
+		throw(new InvalidArgumentException("Invalid http request"));
 	}
 
-} catch() {
-
+} catch(\Exception | \TypeError $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+	$reply->trace = $exception->getTraceAsString();
 }
+
+header("Content-type: application/json");
+echo json_encode($reply);

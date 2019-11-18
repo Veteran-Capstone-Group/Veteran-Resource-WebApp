@@ -76,8 +76,8 @@ try {
 	$reply->status = $exception->getCode();
 	$reply->data = $exception->getMessage();
 }catch(TypeError $typeError) {
-	$reply->status = $exception->getCode();
-	$reply->status = $exception->getMessage();
+	$reply->status = $typeError->getCode();
+	$reply->status = $typeError->getMessage();
 }
 
 //prepare and send the reply

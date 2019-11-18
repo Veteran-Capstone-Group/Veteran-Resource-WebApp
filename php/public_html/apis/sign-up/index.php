@@ -16,7 +16,7 @@ use VeteranResource\Resource\User;
  */
 
 //verify session
-if(session_start() !== PHP_SESSION_ACTIVE) {
+if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
 }
 

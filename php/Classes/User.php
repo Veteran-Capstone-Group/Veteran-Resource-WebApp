@@ -124,7 +124,7 @@ public function getUserEmail(): string {
 	 * @throws \RangeException if string is longer than 124 characters
 	 * @throws \TypeError if Email is not a string
 	 */
-public function setUserEmail($newUserEmail): void{
+public function setUserEmail(string $newUserEmail): void{
 	//sanitize email
 	$newUserEmail = trim($newUserEmail);
 	$newUserEmail = filter_var($newUserEmail, FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE);

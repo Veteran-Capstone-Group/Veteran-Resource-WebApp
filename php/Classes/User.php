@@ -156,7 +156,7 @@ public function getUserActivationToken(): string {
  * @throws \RangeException if token is not exactly 32 chars
  * @throws \TypeError if the token is not a string
  */
-public function setUserActivationToken(string $newUserActivationToken): void {
+public function setUserActivationToken(?string $newUserActivationToken): void {
 	//if null return null
 	if($newUserActivationToken === null) {
 		$this->userActivationToken =null;

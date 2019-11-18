@@ -91,7 +91,7 @@ try {
 		$urlGlue = $basePath . "/apis/activation/activation=" . $userActivationToken;
 
 		//create the redirect link
-		$confirmLink = "https://" . _SERVER["SERVER_NAME"] . $urlGlue;
+		$confirmLink = "https://" . $_SERVER["SERVER_NAME"] . $urlGlue;
 
 		//compose message to send with email
 		$message = <<< EOF

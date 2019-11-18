@@ -98,26 +98,20 @@ try {
 <h2>Welcome to the Albuquerque Veteran Resource Application!</h2>
 <br>
 <p>Hello $requestObject->userName,</p>
-<br>
 <p>Once you have clicked the link below you will have successfully signed up with the Albuquerque Veteran Resource 
 Application! Our mission is to increase awareness of tools that Albuquerque Veterans can use. You are a vital part of 
-this mission! By signing up, useful'ing the resources you find beneficial, and contributing information about resources 
+this mission! By signing up, indicating the resources you find useful, and contributing information about resources 
 that you know of, you are helping men and women who have served our nation. Thank you $requestObject->userName for 
 joining us, we hope you find our site useful!</p>
-<br>
 <p><a href = "$confirmLink">$confirmLink</a></p>
-<br>
-<br>
 <p>Thank you again!</p>
-<br>
 <p>Veteran Resource Application Team</p>
 EOF;
 		//create swift email
 		$swiftMessage = new Swift_Message();
 		//attach sender to message
 		//this takes the form of an associative array where the email is keyed to a real name
-		//todo: when URL is purchased, replace with new valid email
-		$swiftMessage->setFrom(["replaceThis@email.com" => "With Valid Email"]);
+		$swiftMessage->setFrom(["Admin@ABQVet.org" => "ABQ Veteran Resources"]);
 
 		/**
 		 * attach recipient to the message

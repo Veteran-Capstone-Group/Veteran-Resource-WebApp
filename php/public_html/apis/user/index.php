@@ -35,7 +35,6 @@ try {
 
 	//sanitize input
 	$userId = filter_input(INPUT_GET, "userId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	//this does stuff
 	$userActivationToken = filter_input(INPUT_GET, "userActivationToken", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$userEmail = filter_input(INPUT_GET, "userEmail", FILTER_SANITIZE_EMAIL, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$userHash = filter_input(INPUT_GET, "userHash", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
@@ -117,9 +116,15 @@ try {
 		//verify the XSRF Token
 		verifyXsrf();
 
+		//retrieve user to be deleted
+		$user = User::getUserByUserId($pdo, $userId);
+		if($user === null) {
+			throw(new RuntimeException("Profile does not exist", 404));
+		}
+
 		//make sure user is siged in
-		if(empty($_SESSION["user"]) === true) {
-			throw(new \InvalidArgumentException("You must be signed in to post a resource, please sign in to continue.", 401));
+		if(empty($_SESSION["user"]) === true || $_SESSION["user"]->getUserId()->toString() !== $user->getUserId()->toString()) {
+			throw(new \InvalidArgumentException("You must be signed in to delete yourself, please sign in to continue.", 401));
 		}
 
 		//enforce that the user has a JWT token
@@ -131,14 +136,23 @@ try {
 		//Decodes content and stores result in $requestContent
 		$requestObject = json_decode($requestContent);
 
-		//retrieve user to be updated
-		$user = User::getUserByUserId($pdo, $userId);
-		if($user === null) {
-			throw(new RuntimeException("Profile does not exist", 404));
-		}
-		
+		//delete the user from the database
+		$user->delete($pdo);
+		$reply->message = "User Deleted";
+
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP request", 400));
 	}
-
-
+//catch any exceptions that were thrown
+} catch(\Exception | \TypeError $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
 }
+
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+// encode and return reply to front end caller
+echo json_encode($reply);
 

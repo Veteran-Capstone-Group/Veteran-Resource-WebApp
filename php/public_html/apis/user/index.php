@@ -43,7 +43,7 @@ try {
 	$userUsername = filter_input(INPUT_GET, "userUsername", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 
 	if(($method === "DELETE" || $method === "PUT") && (empty($userId) === true)) {
-		throw(new InvalidArgumentException("id caan not be empty", 402));
+		throw(new InvalidArgumentException("id can not be empty", 402));
 	}
 
 	if($method === "GET") {
@@ -61,7 +61,84 @@ try {
 		}  else {
 			throw (new InvalidArgumentException("Input Required", 400));
 		}
+	} elseif($method == "PUT") {
+		//enforce xsrf token
+		verifyXsrf();
 
+		//make sure user is siged in
+		if(empty($_SESSION["user"]) === true) {
+			throw(new \InvalidArgumentException("You must be signed in to post a resource, please sign in to continue.", 401));
+		}
+
+		//enforce that the user has a JWT token
+		validateJwtHeader();
+
+		//retrieve json package that was sent by the user and store it in in a variable using file_get_contents
+		$requestContent = file_get_contents("php://input");
+
+		//Decodes content and stores result in $requestContent
+		$requestObject = json_decode($requestContent);
+
+		//retrieve user to be updated
+		$user = User::getUserByUserId($pdo, $userId);
+		if($user === null) {
+			throw(new RuntimeException("Profile does not exist", 404));
+		}
+
+		//makes sure required fields are available
+		if(empty($requestObject->userEmail) === true) {
+			$requestObject->userEmail = $user->getUserEmail();
+		}
+		if(empty($requestObject->userName) === true) {
+			$requestObject->userName = $user->getUserName();
+		}
+		//user username | if null use username from MySQL
+		if(empty($requestObject->userUsername) === true) {
+			$requestObject->userUsername = $user->getUserUsername();
+		}
+
+		$user->setUserEmail($requestObject->userEmail);
+		$user->setUserUsername($requestObject->userUsername);
+		$user->setUserName($requestObject->userName);
+		$user->update($pdo);
+
+		//update reply
+		$reply->message = "Your User information has been updated";
+
+		//enforce that the user is signed in
+		if(empty($_SESSION["user"]) === true) {
+			throw(new \InvalidArgumentException("you must be logged in to post Resources", 403));
+		}
+
+
+
+	} elseif($method === "DELETE") {
+
+		//verify the XSRF Token
+		verifyXsrf();
+
+		//make sure user is siged in
+		if(empty($_SESSION["user"]) === true) {
+			throw(new \InvalidArgumentException("You must be signed in to post a resource, please sign in to continue.", 401));
+		}
+
+		//enforce that the user has a JWT token
+		validateJwtHeader();
+
+		//retrieve json package that was sent by the user and store it in in a variable using file_get_contents
+		$requestContent = file_get_contents("php://input");
+
+		//Decodes content and stores result in $requestContent
+		$requestObject = json_decode($requestContent);
+
+		//retrieve user to be updated
+		$user = User::getUserByUserId($pdo, $userId);
+		if($user === null) {
+			throw(new RuntimeException("Profile does not exist", 404));
+		}
+		
 	}
+
+
 }
 

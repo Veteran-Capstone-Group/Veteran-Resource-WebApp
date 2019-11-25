@@ -7,7 +7,7 @@ require_once dirname(__DIR__, 3) . "/lib/xsrf.php";
 require_once dirname(__DIR__, 3) . "/lib/jwt.php";
 require_once dirname(__DIR__, 3) . "/lib/uuid.php";
 
-use VeteranResource\Resource\{User};
+use VeteranResource\Resource\{User, Category, Resource, Useful};
 use phpDocumentor\Reflection\Types\Resource_;
 
 /**
@@ -31,3 +31,15 @@ try {
 
 	//determine which HTTP method was used
 	$method = $_SERVER["HTTP_X_HTTP_METHOD"] ?? $_SERVER["REQUEST_METHOD"];
+
+	//sanitize search parameters
+	$usefulUserId = filter_input(INPUT_GET, "usefulUserId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+	$usefulResourceId = filter_input(INPUT_GET, "usefulResourceId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
+
+	if($method === "GET") {
+		//set XSRF cookie
+		setXsrfCookie();
+		
+	}
+
+}

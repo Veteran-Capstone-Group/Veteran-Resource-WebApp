@@ -36,7 +36,9 @@ try {
 	$resourceId = filter_input(INPUT_GET, "resourceId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$resourceCategoryId = filter_input(INPUT_GET, "resourceCategoryId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$resourceUserId = filter_input(INPUT_GET, "resourceUserId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true)) {
+
+	//check if resource is empty and method is delete or put
+	if(($method === "DELETE" || $method === "PUT") && (empty($resourceId) === true)) {
 		throw(new InvalidArgumentException("id can not be empty", 402));
 	}
 
@@ -86,7 +88,7 @@ try {
 		}
 
 		//enforce that the user is signed in
-		if(empty($_SESSION["profile"]) === true) {
+		if(empty($_SESSION["user"]) === true) {
 			throw(new \InvalidArgumentException("you must be logged in to post Resources", 403));
 		}
 

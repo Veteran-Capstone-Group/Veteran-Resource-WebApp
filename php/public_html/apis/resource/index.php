@@ -36,14 +36,8 @@ try {
 	$resourceId = filter_input(INPUT_GET, "resourceId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$resourceCategoryId = filter_input(INPUT_GET, "resourceCategoryId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$resourceUserId = filter_input(INPUT_GET, "resourceUserId", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceAddress = filter_input(INPUT_GET, "resourceCategoryAddress", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceDescription = filter_input(INPUT_GET, "resourceDescription", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceEmail = filter_input(INPUT_GET, "resourceEmail", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceImageUrl = filter_input(INPUT_GET, "resourceImageUrl", FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceOrganization = filter_input(INPUT_GET, "resourceOrganization", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourcePhone = filter_input(INPUT_GET, "resourcePhone", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceTitle = filter_input(INPUT_GET, "resourceTitle", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
-	$resourceUrl = filter_input(INPUT_GET, "resourceUrl", FILTER_SANITIZE_URL, FILTER_FLAG_NO_ENCODE_QUOTES);
+
+	//check if resource is empty and method is delete or put
 	if(($method === "DELETE" || $method === "PUT") && (empty($resourceId) === true)) {
 		throw(new InvalidArgumentException("id can not be empty", 402));
 	}

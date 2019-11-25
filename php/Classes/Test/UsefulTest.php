@@ -20,7 +20,7 @@ require_once(dirname(__DIR__, 2) . "/lib/uuid.php");
  *
  * @package VeteranResource\Resource
  * @see Useful
- * @author Timothy Beck <barricuda1993@yahoo.com>
+ * @author Timothy Beck <dev@timothybeck.com>
  */
 class UsefulTest extends VeteranResourceTest {
 

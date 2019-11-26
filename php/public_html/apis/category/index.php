@@ -3,14 +3,14 @@
 require_once dirname(__DIR__, 3)."/vendor/autoload.php";
 require_once dirname(__DIR__, 3)."/Classes/autoload.php";
 require_once("/etc/apache2/capstone-mysql/Secrets.php");
-require_once dirname(__DIR__, 3)."/lib/xrsf.php";
+require_once dirname(__DIR__, 3)."/lib/xsrf.php";
 require_once dirname(__DIR__, 3)."/lib/jwt.php";
 require_once dirname(__DIR__, 3)."/lib/uuid.php";
 
 use VeteranResource\Resource\{Category};
 
 /**
- * api for the category test
+ * api for category
  *
  * @author John Johnson-Rodgers <john@johnthe.dev>
  */
@@ -43,9 +43,11 @@ try {
 		if(empty($id)=== false) {
 			$reply->data = Category::getCategoryByCategoryId($pdo, $categoryId);
 		}
+	} else {
+		throw (new InvalidArgumentException("Invalid HTTP method request", 405));
 	}
 
-
+	//update the $reply->status $reply->message
 } catch (\Exception | \TypeError $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();

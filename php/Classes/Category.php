@@ -2,6 +2,7 @@
 
 
 namespace VeteranResource\Resource;
+use Couchbase\Exception;
 use Ramsey\Uuid\Uuid;
 require_once(dirname(__DIR__) . "/Classes/autoload.php");
 require_once(dirname(__DIR__) . "/vendor/autoload.php");
@@ -9,7 +10,7 @@ require_once(dirname(__DIR__) . "/vendor/autoload.php");
  * Creating Class User for generating new categories
  *
  * @package VeteranResource\Resource
- * @Author Timothy Beck <barricuda1993@yahoo.com>
+ * @Author Timothy Beck <dev@timothybeck.com>
  */
 class Category implements \JsonSerializable {
 	use ValidateUuid;
@@ -187,6 +188,27 @@ class Category implements \JsonSerializable {
 		return($category);
 	}
 
+	public static function getAllCategories($pdo) : \SPLFixedArray{
+		//create query template
+		$query = "SELECT categoryId, categoryType from category";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		//build an array of categories
+		$categories = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while((($row = $statement->fetch())!==false)) {
+			try {
+				$category = new Category($row["categoryId"], $row["categoryType"]);
+				$categories[$categories->key()]= $category;
+				$categories->next();
+			}catch(\Exception $exception) {
+				//if row can't be converted rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($categories);
+	}
 
 	//JsonSerialize
 	/**

@@ -1,4 +1,6 @@
 .DS_Store
+/idea
+*/vendor
 /.sync-config.cson
 /.idea
 /vendor

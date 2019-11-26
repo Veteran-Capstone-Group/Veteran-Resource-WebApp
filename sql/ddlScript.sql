@@ -5,7 +5,7 @@ drop table if exists user;
 
 create table user(
    userId binary(16) not null,
-   userActivationToken char(32) not null,
+   userActivationToken char(32),
    userEmail varchar(124) not null,
    userHash char(97) not null,
    userName varchar(64) not null,

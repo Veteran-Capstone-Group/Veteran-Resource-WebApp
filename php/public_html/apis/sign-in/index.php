@@ -23,7 +23,7 @@ $reply->data = null;
 try {
 
 	if(session_status() !== PHP_SESSION_ACTIVE) {
-		session_status();
+		session_start();
 	}
 	//grab the MySQL connection
 	$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");

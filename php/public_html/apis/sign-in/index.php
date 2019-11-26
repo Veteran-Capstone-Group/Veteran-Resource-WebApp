@@ -71,9 +71,21 @@ try {
 		$_SESSION["user"] = $user;
 
 		//create authentincation payload
+		$authObject = (object)[
+			"userId" => $user->getUserId(),
+			"userUsername" => $user->getUserUsername()
+		];
+		//create JWT TOKEN
+		setJwtAndAuthHeader("auth", $authObject);
 
-
-
-
+		$reply->message = "Sign in was successful.";
+	} else {
+		throw(new \InvalidArgumentException("Invalid HTTP method request", 418));
 	}
+	//catch exceptions
+} catch(Exception | TypeError $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
 }
+header("Content-type: application/json");
+echo json_encode($reply);

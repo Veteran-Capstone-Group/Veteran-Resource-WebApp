@@ -15,16 +15,16 @@ use phpDocumentor\Reflection\Types\Resource_;
  *
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
-if(session_status() !== PHP_SESSION_ACTIVE) {
-	session_status();
-}
-
 //prepare an empty reply
 $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
 
 try {
+
+	if(session_status() !== PHP_SESSION_ACTIVE) {
+		session_status();
+	}
 	//grab the MySQL connection
 	$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
 	$pdo = $secrets->getPdoObject();

@@ -43,7 +43,7 @@ try {
 		if(empty($requestObject->userUsername) === true) {
 			throw(new \InvalidArgumentException("Please provide your username", 401));
 		} else {
-			$userEmail = filter_var($requestObject->userUsername, FILTER_SANITIZE_STRING);
+			$userUsername = filter_var($requestObject->userUsername, FILTER_SANITIZE_STRING);
 		}
 
 		if(empty($requestObject->userPassword) === true) {

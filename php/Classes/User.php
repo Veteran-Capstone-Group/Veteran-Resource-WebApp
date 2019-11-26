@@ -368,11 +368,11 @@ public static function getUserByUserUsername(\PDO $pdo, string $userUsername) {
 	 * get user information by userId
 	 *
 	 * @param \PDO $pdo
-	 * @param Uuid $userId
+	 * @param Uuid or string $userId
 	 * @throws \PDOException when mysql related errors occur
 	 * @throws \TypeError when variable doesn't follow typehints
 	 */
-	public static function getUserByUserId(\PDO $pdo, Uuid $userId): ?User {
+	public static function getUserByUserId(\PDO $pdo, $userId): ?User {
 		//sanitize uuid
 		try {
 			$userId = self::validateUuid($userId);

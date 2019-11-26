@@ -57,7 +57,7 @@ try {
 		if(empty($user) === true) {
 			throw(new InvalidArgumentException("Invalid Username", 401));
 		}
-		$user->setUserActivationToken('null');
+		$user->setUserActivationToken(null);
 		$user->update($pdo);
 
 		//verify hash is correct

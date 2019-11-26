@@ -159,7 +159,7 @@ public function getUserActivationToken(): string {
 public function setUserActivationToken(?string $newUserActivationToken): void {
 	//if null return null
 	if($newUserActivationToken === null) {
-		$this->userActivationToken =null;
+		$this->userActivationToken = null;
 		return;
 	}
 	//checks if token is valid

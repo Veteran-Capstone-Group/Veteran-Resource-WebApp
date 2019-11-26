@@ -68,7 +68,7 @@ class ResourceTest extends VeteranResourceTest {
 	 * valid approval status for resource
 	 * @var bool $VALID_RESOURCE_APPROVAL_STATUS
 	 */
-	protected $VALID_RESOURCE_APPROVAL_STATUS = true;
+	protected $VALID_RESOURCE_APPROVAL_STATUS = false;
 
 	/**
 	 * valid resource description

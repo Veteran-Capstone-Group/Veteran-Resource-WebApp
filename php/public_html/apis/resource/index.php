@@ -77,7 +77,7 @@ try {
 		if(empty($requestObject->resourceCategoryId) === true) {
 			throw(new \InvalidArgumentException("The Category field is empty.", 405));
 		}
-		if(empty($requestObject->resourceDesription) === true) {
+		if(empty($requestObject->resourceDescription) === true) {
 			throw(new \InvalidArgumentException("The Description field is empty.", 405));
 		}
 		if(empty($requestObject->resourceTitle) === true) {
@@ -109,3 +109,5 @@ try {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
 }
+header("Content-type: application/json");
+echo json_encode($reply);

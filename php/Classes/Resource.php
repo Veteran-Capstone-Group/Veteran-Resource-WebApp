@@ -95,7 +95,7 @@ class Resource implements \JsonSerializable {
 	 * @param string $newResourceTitle Title for this resource or null if new resource
 	 * @param string $newResourceUrl URL source for this resource or null if new resource
 	 */
-	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, ?bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
 		try {
 			$this->setResourceId($newResourceId);
 			$this->setResourceCategoryId($newResourceCategoryId);
@@ -243,12 +243,12 @@ class Resource implements \JsonSerializable {
 	 *
 	 * @param bool $newResourceApprovalStatus not null
 	 */
-	public function setResourceApprovalStatus(bool $newResourceApprovalStatus = false): void {
-		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-		//Checks if null
-		if($newResourceApprovalStatus === null) {
-			//if approval status is null, set to false
-			$this->resourceApprovalStatus = false;
+	public function setResourceApprovalStatus(?bool $newResourceApprovalStatus): void {
+		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN);
+		//Checks if true
+		if($newResourceApprovalStatus !== true) {
+			//if approval status is not true, set to false
+			$this->resourceApprovalStatus = FALSE;
 			return;
 		}
 		$this->resourceApprovalStatus = $newResourceApprovalStatus;

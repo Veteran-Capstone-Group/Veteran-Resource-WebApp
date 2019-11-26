@@ -124,7 +124,7 @@ try {
 
 		//make sure user is siged in
 		if(empty($_SESSION["user"]) === true || $_SESSION["user"]->getUserId()->toString() !== $user->getUserId()->toString()) {
-			throw(new \InvalidArgumentException("You must be signed in to delete yourself, please sign in to continue.", 401));
+			throw(new \InvalidArgumentException("You better check yourself, before you wreck yourself. (not logged in)", 401));
 		}
 
 		//enforce that the user has a JWT token

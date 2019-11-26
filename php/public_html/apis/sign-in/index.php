@@ -70,7 +70,7 @@ try {
 
 		$_SESSION["user"] = $user;
 
-		//create authentincation payload
+		//create authentication payload
 		$authObject = (object)[
 			"userId" => $user->getUserId(),
 			"userUsername" => $user->getUserUsername()

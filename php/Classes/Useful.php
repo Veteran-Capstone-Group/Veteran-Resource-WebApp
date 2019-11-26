@@ -208,6 +208,51 @@ class Useful implements \JsonSerializable {
 		return ($usefuls);
 	}
 
+	/**
+	 * gets the useful by usefulResourceId and usefulUserId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $usefulResourceId usefulResourceId that will be searched for
+	 * @param string $usefulUserId usefulUserId that will be searched for
+	 * @return Useful|null useful found or null if not found
+	 */
+public static function getUsefulByUsefulResourceIdAndUsefulUserId(\PDO $pdo, string $usefulResourceId, string $usefulUserId) : ?Useful {
+	//validate usefulResourceId
+	try {
+		$usefulResourceId = self::validateUuid($usefulResourceId);
+	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+	throw (new \PDOException($exception->getMessage(), 0, $exception));
+	}
+
+	//validate usefulUserId
+	try {
+		$usefulUserId = self::validateUuid($usefulUserId);
+	} catch(\InvalidArgumentException | \RangeException | \Exception | \TypeError $exception) {
+		throw (new \PDOException($exception->getMessage(), 0, $exception));
+	}
+
+	//create query template
+	$query = "SELECT usefulResourceId, usefulUserId from 'useful' WHERE usefulResourceId = :usefulResourceId AND usefulUserId = :usefulUserId";
+	$statement = $pdo->prepare($query);
+
+	//bind the usefulResourceId and the usefulUserId to the place holder in the template
+	$parameters = ["usefulResourceId"=> $usefulResourceId->getBytes(), "usefulUserId"=>$usefulUserId->getBytes()];
+	$statement->execute($parameters);
+
+	//retrieve the useful from MySQL
+	try {
+		$useful = null;
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		$row = $statement->fetch();
+		if ($row !== false) {
+			$useful = new Useful($row["usefulResourceId"], $row["usefulUserId"]);
+		}
+	} catch(\Exception $exception) {
+		//if row could not be converted then rethrow
+		throw(new \PDOException($exception->getMessage(), 0, $exception));
+	}
+	return ($useful);
+}
 //todo Week 11, Add getUsefulByUserId
 	/**
 	 * converts Uuids to strings to serialize

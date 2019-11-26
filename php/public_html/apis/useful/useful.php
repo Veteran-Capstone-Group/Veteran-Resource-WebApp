@@ -39,7 +39,85 @@ try {
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie();
-		
-	}
 
+		//get a count of usefuls on resource by usefulResourceId
+		if ($usefulResourceId !== null) {
+			$useful = Useful::getCountByUsefulResourceId($pdo, $usefulResourceId);
+
+			//return count
+			if($useful !== null) {
+				$reply->data = $useful;
+			}
+
+			//if search parameters aren't met scream at user
+		} elseif(empty($usefulResourceId) !== true) {
+			throw (new InvalidArgumentException("incorrect search parameters", 404));
+		}
+	} elseif ($method === "POST" || $method === "PUT") {
+
+		//decode the response from the front end
+		$requestContent = file_get_contents("php://input");
+		$requestObject = json_decode($requestContent);
+
+		if(empty($requestObject->usefulUserId) === true) {
+			throw (new \InvalidArgumentException("No User for this Useful", 405));
+		}
+
+		if(empty($requestObject->usefulResourceId) === true) {
+			throw (new \InvalidArgumentException("No Resource for this Useful", 405));
+		}
+
+		if($method === "POST") {
+			//enforce that the end user has a XSRF token.
+			verifyXsrf();
+
+			// enforce the user is signed in
+			if(empty($_SESSION["user"]) === true) {
+				throw(new \InvalidArgumentException("you must be logged in to useful resources", 403));
+			}
+
+			validateJwtHeader();
+
+			$useful = new Useful($_SESSION["user"]->getUserId(), $requestObject->usefulUserId);
+			$useful->insert($pdo);
+			$reply->message = "Resource has been Useful\'d";
+		} elseif($method === "PUT") {
+			//enforce the end user has a XSRF token.
+			verifyXsrf();
+
+			//enforce the end user has a JWT token
+			validateJwtHeader();
+
+
+			//get useful to delete by composite id
+			$useful = Useful::getUsefulByUsefulUserIdAndUsefulResourceId($pdo, $requestObject->usefulUserId, $requestObject->usefulResourceId);
+			if($useful === null) {
+				throw (new RuntimeException("Useful Does Not Exist"));
+			}
+
+			//USER NEEDS TO BE SIGNED IN
+			if(empty($_SESSION["user"]) === true || $_SESSION["user"]->getUserId()->toString() !== $user->getUserId()->toString()) {
+				throw(new \InvalidArgumentException("You must be signed in to delete your useful", 401));
+			}
+
+			//delete useful
+			$useful->delete($pdo);
+
+			//update message
+			$reply->message = "Useful has been deleted.";
+		}
+		// if any other HTTP request is sent throw an exception
+	} else {
+		throw new \InvalidArgumentException("invalid http request", 400);
+	}
+	//catch any exceptions that is thrown and update the reply status and message
+} catch(\Exception | \TypeError $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
 }
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+// encode and return reply to front end caller
+echo json_encode($reply);

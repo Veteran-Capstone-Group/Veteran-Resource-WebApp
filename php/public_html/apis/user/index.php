@@ -17,7 +17,7 @@ use phpDocumentor\Reflection\Types\Resource_;
  */
 //verify session, start session if session doesn't exist
 if(session_status() !== PHP_SESSION_ACTIVE) {
-	session_status();
+	session_start();
 }
 
 //prepare an empty reply

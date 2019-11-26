@@ -16,7 +16,7 @@ use phpDocumentor\Reflection\Types\Resource_;
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
 if(session_status() !== PHP_SESSION_ACTIVE) {
-	session_status();
+	session_start();
 }
 
 //prepare a null reply

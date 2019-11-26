@@ -138,6 +138,23 @@ class UsefulTest extends VeteranResourceTest {
 	}
 
 	/**
+	 * test getUsefulByUsefulResourceIdAndUsefulUserId
+	 */
+	 public function testGetUsefulByUsefulResourceIdAndUsefulUserId(): void {
+	 	// count rows and save for later
+		 $numRows = $this->getConnection()->getRowCount("useful");
+
+		 //create a new useful and insert into MySQL
+		 $useful = new Useful($this->resource->getResourceId(), $this->user->getUserId());
+		 $useful->insert($this->getPDO());
+
+		 //grab data from MySQL and compare
+		 $pdoUseful = Useful::getUsefulByUsefulResourceIdAndUsefulUserId($this->getPDO(), $this->resource->getResourceId(),$this->user->getUserId());
+		 $this->assertEquals($pdoUseful->getUsefulResourceId(), $this->resource->getResourceId());
+		 $this->assertEquals($pdoUseful->getUsefulUserId(), $this->user->getUserId());
+	 }
+
+	/**
 	 * test counting usefuls by resource Id
 	 */
 	public function testGetCountByUsefulResourceId(): void {

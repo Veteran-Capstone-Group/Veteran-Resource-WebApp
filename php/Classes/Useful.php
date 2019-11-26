@@ -232,7 +232,7 @@ public static function getUsefulByUsefulResourceIdAndUsefulUserId(\PDO $pdo, str
 	}
 
 	//create query template
-	$query = "SELECT usefulResourceId, usefulUserId from 'useful' WHERE usefulResourceId = :usefulResourceId AND usefulUserId = :usefulUserId";
+	$query = "SELECT usefulResourceId, usefulUserId from useful WHERE usefulResourceId = :usefulResourceId AND usefulUserId = :usefulUserId";
 	$statement = $pdo->prepare($query);
 
 	//bind the usefulResourceId and the usefulUserId to the place holder in the template

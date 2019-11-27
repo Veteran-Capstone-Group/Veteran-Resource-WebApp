@@ -244,14 +244,15 @@ class Resource implements \JsonSerializable {
 	 * @param bool $newResourceApprovalStatus not null
 	 */
 	public function setResourceApprovalStatus(?bool $newResourceApprovalStatus): void {
-		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN);
+		$newResourceApprovalStatus = filter_var($newResourceApprovalStatus, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 		//Checks if true
-		if($newResourceApprovalStatus !== true) {
-			//if approval status is not true, set to false
-			$this->resourceApprovalStatus = FALSE;
+		if($newResourceApprovalStatus === true) {
+			//if approval status is true, set to true
+			$this->resourceApprovalStatus = $newResourceApprovalStatus;
 			return;
 		}
-		$this->resourceApprovalStatus = $newResourceApprovalStatus;
+		//else set to false
+		$this->resourceApprovalStatus = 0;
 	}
 
 	/**

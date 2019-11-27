@@ -78,9 +78,9 @@ try {
 
 			validateJwtHeader();
 
-			$useful = new Useful($_SESSION["user"]->getUserId(), $requestObject->usefulUserId);
+			$useful = new Useful($requestObject->usefulResourceId, $_SESSION["user"]->getUserId());
 			$useful->insert($pdo);
-			$reply->message = "Resource has been Useful\'d";
+			$reply->message = "Resource has been Useful'd";
 		} elseif($method === "PUT") {
 			//enforce the end user has a XSRF token.
 			verifyXsrf();
@@ -96,7 +96,7 @@ try {
 			}
 
 			//USER NEEDS TO BE SIGNED IN
-			if(empty($_SESSION["user"]) === true || $_SESSION["user"]->getUserId()->toString() !== $user->getUserId()->toString()) {
+			if(empty($_SESSION["user"]) === true || $_SESSION["user"]->getUserId()->toString() !== $requestObject->usefulUserId) {
 				throw(new \InvalidArgumentException("You must be signed in to delete your useful", 401));
 			}
 

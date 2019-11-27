@@ -90,7 +90,7 @@ try {
 
 
 			//get useful to delete by composite id
-			$useful = Useful::getUsefulByUsefulUserIdAndUsefulResourceId($pdo, $requestObject->usefulUserId, $requestObject->usefulResourceId);
+			$useful = Useful::getUsefulByUsefulResourceIdAndUsefulUserId($pdo, $requestObject->usefulResourceId, $requestObject->usefulUserId);
 			if($useful === null) {
 				throw (new RuntimeException("Useful Does Not Exist"));
 			}

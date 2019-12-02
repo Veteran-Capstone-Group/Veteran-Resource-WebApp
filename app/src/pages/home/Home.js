@@ -13,17 +13,17 @@ export const Home = () => {
 	const inputs = [];
 
 	useEffect(effects,inputs);
-
+//TODO UNFUCKIFY THIS SHIT
 	return (
 		<>
 			<h1>Home Test</h1>
 			{categories.map(category => {
 				return(
-					<Div id={{homepageCategory}} key={category.categoryId}>
+					<div id={{homepageCategory}} key={category.categoryId}>
 						<a id={`${category.categoryType}-link`} href={'test.com'}> /**/
 							<img id={`${category.categoryType}-image`} src={`../../../../documentation/svg-icons/${category.categoryType}.svg`} alt={category.categoryType} />
 						</a>
-					</Div>
+					</div>
 				)
 			})}
 		</>

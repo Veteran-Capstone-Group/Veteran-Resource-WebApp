@@ -1,6 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
+import {BrowserRouter} from "react-router-dom";
+import {Route, Switch} from "react-router";
+import {FourOhFour} from "./pages/FourOhFour";
+import {Home} from "./pages/Home";
 
-const App = () => ( <h1 className="text-info">hello world</h1> );
-ReactDOM.render(<App/>, document.querySelector('#root'));
+const Routing = () => (
+	<>
+		<BrowserRouter>
+			<Switch>
+				<Route exact path="/" component={Home}/>
+				<Route component={FourOhFour}/>
+			</Switch>
+		</BrowserRouter>
+	</>
+);
+ReactDOM.render(<Routing/>, document.querySelector('#root'));

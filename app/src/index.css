@@ -1,4 +1,14 @@
 .category-image {
-	max-width: 25%;
-	height: auto;
+	width: auto;
+	max-height: -webkit-fill-available;
+}
+.categoryButton {
+	height: 8vh;
+	border-radius: 3%;
+	border: solid 2px black;
+	background-color: #FFFFFF;
+	margin: 1rem 0;
+}
+body {
+	background-color: #BF0A30;
 }

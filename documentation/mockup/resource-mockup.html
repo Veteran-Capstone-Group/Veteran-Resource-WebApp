@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+			integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="style.css"/>
+
+	<!-- LINK YOUR CSS FILES DOWN HERE -->
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			  crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+			  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+			  crossorigin="anonymous"></script>
+
+	<title>Resource Component</title>
+</head>
+<body>
+<!--desktop view-->
+<div class="container d-none d-lg-block">
+	<div class="row border border-primary rounded my-4 py-2 px-2">
+		<div class="col-3 d-inline">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/600px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png" class="img-fluid" alt="Employment Icon">
+		</div>
+		<div class="col-9 d-inline">
+			<div class="row border-bottom border-primary py-0 align-items-end">
+				<h3 class="font-weight-bold col-8 align-bottom pb-0 mb-0 pt-2 d-block text-truncate">National Employment
+					Resources</h3>
+				<p class="col-4 align-bottom align-bottom pb-0 mb-0 pt-2 d-block text-truncate">US Department of Veteran
+					Affairs</p>
+			</div>
+			<div class="row pt-1">
+				<div class="col align-bottom">
+					<div class="row py-0 mt-1">
+						<p class="col-6 text-left d-block text-truncate py-0 my-0 font-weight-light">Disabled American
+							Veterans</p>
+						<p class="col-6 text-right d-block text-truncate py-0 my-0 font-weight-light">500 Gold Avenue, SW, Rm
+							3116</p>
+					</div>
+					<div class="row py-0 mt-1">
+						<p class="col-6 text-left d-block text-truncate py-0 my-0 font-weight-light">(505) 346-4864</p>
+						<p class="col-6 text-right d-block text-truncate py-0 my-0 font-weight-light">
+							sample.email@email.com</p>
+					</div>
+					<div class="row pt-2">
+						<p>VA's Education and Career Counseling program is a great opportunity for Servicemembers, Veterans
+							and
+							dependents to get personalized counseling and support to help guide their career paths, ensure most
+							effective use of their VA benefits, and achieve their goals.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Mobile view without image-->
+<div class="container d-lg-none h-25">
+	<div class="border border-primary rounded my-4 py-2 px-2 mh-100">
+		<div class="row">
+			<div class="col d-inline">
+				<div class="row border-bottom border-primary mx-1 py-0 pr-1">
+					<p class="font-weight-bold col align-bottom mb-0 p-0 mx-1 d-block text-truncate text-left">National
+						Employment Resources</p>
+				</div>
+				<div class="row pt-1 mx-1 small">
+					<p>VA's Education and Career Counseling program is a great opportunity for Servicemembers, Veterans and
+						dependents to get personalized counseling and support to help guide their career paths, ensure most
+						effective use of their VA benefits, and achieve their goals.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-around">
+			<button type="button" class="btn btn-primary">Directions</button>
+			<button type="button" class="btn btn-primary">Call: (505) 346-4864</button>
+		</div>
+	</div>
+</div>
+<!--mobile view w/ thumbnail image-->
+<div class="container d-lg-none h-25">
+	<div class="border border-primary rounded my-4 py-2 px-2 mh-100">
+		<div>
+			<div class="row">
+				<div class="col d-inline">
+					<div class="row border-bottom border-primary py-0 px-1 mx-1">
+						<div class="col-2 pb-1 px-0">
+							<img class="img-fluid d-inline border-primary" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Seal_of_the_U.S._Department_of_Veterans_Affairs.svg/600px-Seal_of_the_U.S._Department_of_Veterans_Affairs.svg.png" alt="icon for resource"/>
+						</div>
+						<div class="col-10 my-0 p-0 mr-0 d-flex align-items-end">
+							<p class="font-weight-bold align-bottom mb-0 pl-2 py-0 pr-0 d-block text-truncate text-left">National Employment Services</p>
+						</div>
+					</div>
+					<div class="row pt-1 mx-1 small">
+						<p>VA's Education and Career Counseling program is a great opportunity for Servicemembers, Veterans
+							and dependents to get personalized counseling and support to help guide their career paths, ensure
+							most effective use of their VA benefits, and achieve their goals.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row d-flex justify-content-around">
+				<button type="button" class="btn btn-primary">Directions</button>
+				<button type="button" class="btn btn-primary">Call: (505) 346-4864</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

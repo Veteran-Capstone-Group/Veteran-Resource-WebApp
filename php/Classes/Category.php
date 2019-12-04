@@ -89,7 +89,7 @@ class Category implements \JsonSerializable {
 		$newCategoryType = filter_var($newCategoryType, FILTER_SANITIZE_STRING);
 		// check is string is >16 characters
 		if(strlen($newCategoryType) > 16) {
-			throw(new \RangeException("Username must include less than 16 characters"));
+			throw(new \RangeException("CategoryType must include less than 16 characters"));
 		}
 		//return string
 		$this->categoryType = $newCategoryType;

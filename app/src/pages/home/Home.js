@@ -37,62 +37,86 @@ export const Home = () => {
 				<Container className={`d-flex justify-content-around`}>
 					<Container>
 						<Row justify-content-center>
-							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-										<a id={`clothing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-											<img className={`category-image`} src={clothingImage} alt={'clothing'} />
+							<Col xs={6} sm={6} md={3}>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Food/Clothing</h2>
+									<div className={`categoryButton`}>
+											<a id={`clothing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+												<img className={`category-image`} src={clothingImage} alt={'clothing'} />
+											</a>
+									</div>
+								</div>
+							</Col>
+							<Col xs={6} sm={6} md={3}>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Disability</h2>
+									<div className={`categoryButton`}>
+										<a id={`disability-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={disabilityImage} alt={'disability'} />
 										</a>
+									</div>
 								</div>
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`disability-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={disabilityImage} alt={'disability'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Education</h2>
+									<div className={`categoryButton`}>
+										<a id={`education-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={educationImage} alt={'education'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`education-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={educationImage} alt={'education'} />
-									</a>
-								</div>
-							</Col>
-							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`employment-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={employmentImage} alt={'employment'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Employment</h2>
+									<div className={`categoryButton`}>
+										<a id={`employment-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={employmentImage} alt={'employment'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 						</Row>
 						<Row justify-content-center>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`food-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={foodImage} alt={'food'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Mental Health</h2>
+									<div className={`categoryButton`}>
+										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`healthcare-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={healthcareImage} alt={'healthcare'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Healthcare</h2>
+									<div className={`categoryButton`}>
+										<a id={`healthcare-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={healthcareImage} alt={'healthcare'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`housing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={housingImage} alt={'housing'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Housing</h2>
+									<div className={`categoryButton`}>
+										<a id={`housing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={housingImage} alt={'housing'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
-								<div className={`categoryButton`}>
-									<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
-										<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
-									</a>
+								<div className={`d-flex flex-column justify-content-center`}>
+									<h2>Miscellaneous</h2>
+									<div className={`categoryButton`}>
+										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
+										</a>
+									</div>
 								</div>
 							</Col>
 						</Row>

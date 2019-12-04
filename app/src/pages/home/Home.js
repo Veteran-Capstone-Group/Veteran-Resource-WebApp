@@ -13,7 +13,7 @@ import foodImage from "../../shared/img/food.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
-//import miscImage from "../../shared/img/clothing.svg";
+//import miscImage from "../../shared/img/misc.svg";
 import stylesheet from "../../index.css";
 
 export const Home = () => {

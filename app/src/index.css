@@ -13,7 +13,7 @@ body {
 	background-color: #BF0A30;
 }
 
-h2 {
+.categoryTitle {
 	margin-bottom: 0.2rem;
 	color: white;
 	text-align: center;

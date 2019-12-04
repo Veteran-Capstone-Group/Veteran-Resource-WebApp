@@ -39,7 +39,7 @@ export const Home = () => {
 						<Row justify-content-center>
 							<Col xs={6} sm={6} md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Food/Clothing</h2>
+									<h2 className={`categoryTitle`}>Food/Clothing</h2>
 									<div className={`categoryButton`}>
 											<a id={`clothing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 												<img className={`category-image`} src={clothingImage} alt={'clothing'} />
@@ -49,7 +49,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6} md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Disability</h2>
+									<h2 className={`categoryTitle`}>Disability</h2>
 									<div className={`categoryButton`}>
 										<a id={`disability-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={disabilityImage} alt={'disability'} />
@@ -59,7 +59,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Education</h2>
+									<h2 className={`categoryTitle`}>Education</h2>
 									<div className={`categoryButton`}>
 										<a id={`education-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={educationImage} alt={'education'} />
@@ -69,7 +69,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Employment</h2>
+									<h2 className={`categoryTitle`}>Employment</h2>
 									<div className={`categoryButton`}>
 										<a id={`employment-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={employmentImage} alt={'employment'} />
@@ -81,7 +81,7 @@ export const Home = () => {
 						<Row justify-content-center>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Mental Health</h2>
+									<h2 className={`categoryTitle`}>Mental Health</h2>
 									<div className={`categoryButton`}>
 										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
@@ -91,7 +91,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Healthcare</h2>
+									<h2 className={`categoryTitle`}>Healthcare</h2>
 									<div className={`categoryButton`}>
 										<a id={`healthcare-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={healthcareImage} alt={'healthcare'} />
@@ -101,7 +101,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Housing</h2>
+									<h2 className={`categoryTitle`}>Housing</h2>
 									<div className={`categoryButton`}>
 										<a id={`housing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={housingImage} alt={'housing'} />
@@ -111,7 +111,7 @@ export const Home = () => {
 							</Col>
 							<Col xs={6} sm={6}   md={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
-									<h2>Miscellaneous</h2>
+									<h2 className={`categoryTitle`}>Miscellaneous</h2>
 									<div className={`categoryButton`}>
 										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
 											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />

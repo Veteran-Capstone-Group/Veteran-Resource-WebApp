@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {SignUpFormContent} from "SignUpFormContent.js";
-import {httpConfig} from "../../shared/utils/http-config";
+import {SignUpFormContent} from "./SignUpFormContent";
+import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";
 
 //define 'state variables' to be used in sign up form
 export const SignUpForm = () => {
+
 	const signUp = {
 		userEmail: "",
 		userPassword: "",
@@ -13,8 +14,6 @@ export const SignUpForm = () => {
 		userName: "",
 		userUsername: ""
 	};
-	//set status and setStatus to null initial state
-	const [status, setStatus] = useState(null);
 
 	// initiate yup validator
 	const validator = Yup.object().shape({
@@ -32,13 +31,14 @@ export const SignUpForm = () => {
 		userUsername: Yup.string()
 			.required("Username is required.")
 	});
-	const submitSignUp = (values, {resetForm}) => {
+	const submitSignUp = (values, {resetForm, setStatus}) => {
 		httpConfig.post("/apis/sign-up/", values)
 			.then(reply => {
 					let {message, type} = reply;
 					setStatus({message, type});
 					if(reply.status === 200) {
 						resetForm();
+						setStatus({message, type});
 					}
 				}
 			);

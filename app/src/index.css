@@ -24,10 +24,12 @@ body {
 
 }
 
+/*margin fix for last menu item*/
 #bottomMenuItem {
 	margin-bottom: 0.75rem;
 }
 
+/*Dropdown menu for desktop header*/
 .dropdown-menu {
 	left: -1rem;
 	min-width: 16.666667vw;

@@ -28,11 +28,9 @@ export const Home = () => {
 
 	useEffect(effects,inputs);
 	*/
-
-//TODO UNFUCKIFY THIS SHIT
+	
 	return (
 		<>
-			<h1>Home Test</h1>
 			<div className={`categoryTray`}>
 				<Container className={`d-flex justify-content-around`}>
 					<Container>

@@ -4,10 +4,12 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import {UseWindowWidth} from "../../../utils/UseWindowWidth.js";
 
 
 export const Header = () => {
-	const isMobile = window.innerWidth < 480;
+	const isMobile = UseWindowWidth() < 991;
+
 	if(isMobile) {//create mobile header
 
 	} else {//create desktop header

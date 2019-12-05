@@ -23,3 +23,14 @@ body {
 #DesktopHeader {
 
 }
+
+#bottomMenuItem {
+	margin-bottom: 0.75rem;
+}
+
+.dropdown-menu {
+	left: -1rem;
+	min-width: 16.666667vw;
+	padding: 0;
+	margin: 0;
+}

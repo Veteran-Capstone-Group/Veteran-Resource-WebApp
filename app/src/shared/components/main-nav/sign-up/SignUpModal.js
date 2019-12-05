@@ -1,21 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import {SignUpForm} from "./SignUpForm";
-
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export const SignUpModal = () => {
+
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 	return (
-		<main className="d-block align-items-center">
-			<Container fluid="false">
-				<Row>
-					<Col>
-						<SignUpForm/>
-					</Col>
-				</Row>
-			</Container>
-		</main>
+		<>
+			<Button variant="primary" onClick={handleShow}>
+				Sign Up
+			</Button>
+
+			<Modal show={show} onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Sign Up</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<SignUpForm/>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button variant="secondary" onClick={handleClose}>
+						Close
+					</Button>
+					<Button variant="primary" onClick={handleClose}>
+						Sign Up
+					</Button>
+				</Modal.Footer>
+			</Modal>
+		</>
 	);
 };
+
+export default SignUpModal;
 

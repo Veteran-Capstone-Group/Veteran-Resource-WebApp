@@ -6,6 +6,8 @@ import {Route, Switch} from "react-router";
 import {FourOhFour} from "./pages/four-oh-four/FourOhFour";
 import {Home} from "./pages/home/Home";
 import {Header} from "./shared/components/main-nav/header/Header";
+import {SignUpModal} from "./shared/components/main-nav/sign-up/SignUpModal";
+
 
 const Routing = () => (
 	<>
@@ -14,6 +16,7 @@ const Routing = () => (
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				<Route component={FourOhFour}/>
+				<Route exact path="/sign-up" component={SignUpModal}/>>
 			</Switch>
 		</BrowserRouter>
 	</>

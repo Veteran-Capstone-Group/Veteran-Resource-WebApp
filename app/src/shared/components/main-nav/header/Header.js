@@ -25,7 +25,7 @@ export const Header = () => {
 									<NavDropdown.Item href="#action/3.5">Mental Health</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item href="#action/3.6">Healthcare</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item href="#action/3.7">Housing</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item id={`bottomMenuItem`} href="#action/3.8">Miscellaneous</Nav><Dropdown.Item>
+									<NavDropdown.Item id={`bottomMenuItem`} href="#action/3.8">Miscellaneous</NavDropdown.Item>
 								</NavDropdown>
 						</Col>
 						<Col xs={8}>

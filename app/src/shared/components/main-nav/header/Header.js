@@ -16,7 +16,7 @@ export const Header = () => {
 				<Navbar collapseOnSelect expand="md" className={`p-0 border border-dark bg-light`}>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav"/>
 					<Navbar.Collapse id="responsive-navbar-nav">
-						<Col xs={2} className={`border border-dark`}>
+						<Col xs={2} id="navDropdownButton">
 								<NavDropdown title="$CategoryTitle" id="collasible-nav-dropdown" className={`text-dark`}>
 									<NavDropdown.Item href="#action/3.1">Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item href="#action/3.2">Disability</NavDropdown.Item><NavDropdown.Divider/>
@@ -29,7 +29,7 @@ export const Header = () => {
 								</NavDropdown>
 						</Col>
 						<Col xs={8}>
-							<Navbar.Brand className={"col-12 text-center font-weight-bold text-dark"} id="DesktopHeader" href="#home">React-Bootstrap</Navbar.Brand>
+							<Navbar.Brand className={"col-12 text-center font-weight-bold text-dark"} id="DesktopHeader" href="#home">ABQ Veterans</Navbar.Brand>
 						</Col>
 						<Col xs={2}>
 							<span></span>

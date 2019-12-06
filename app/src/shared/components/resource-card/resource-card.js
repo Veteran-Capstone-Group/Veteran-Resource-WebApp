@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {httpConfig} from "../../utils/http-config";
 import 'bootstrap/dist/css/bootstrap.css';
 import {UseJwt, UseJwtUserId} from "../../utils/JwtHelpers";
@@ -6,36 +6,35 @@ import {useSelector, useDispatch} from "react-redux";
 import {handleSessionTimeout} from "../../utils/handle-session-timeout";
 import Usefuls from "../../utils/Usefuls";
 import {UseWindowWidth} from "../../utils/UseWindowWidth"
-import {getCountByUsefulResourceId} from "../../actions/get-useful.js"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {getCountByUsefulResourceId} from "../../actions/get-useful";
 
 
 //export component
-export const	ResourceCard = ($re) =>{
+export const	ResourceCard = (resource) =>{
 
 	//Store screen width on resize event to allow different views on mobile vs desktop
 	const width = UseWindowWidth();
 
 	//grab JWT Token for logged in users
 	const jwt = UseJwt();
-
-//returns the resource store from redux and assigns it to the resource variable
-	const resource = useSelector(state => (state.resource ? state.resource : []));
+	const userId = UseJwtUserId;
 
 	//assign values for variables of resource
 	const {$resourceId, $resourceTitle, $resourceOrganization, $resourceEmail, $resourceAddress, $resourcePhone, $resourceUrl, $resourceImageUrl, $resourceDescription} = resource;
 	console.log($resourceTitle);
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux
-	const dispatch = useDispatch();
-	const effects = () => {dispatch(getCountByUsefulResourceId($resourceId));};
+	// const dispatch = useDispatch();
+	// const effects = () => {dispatch(getCountByUsefulResourceId($resourceId));};
 
 	//Declare any inputs that will be used by functions that are declared in sideEffects.
 	const inputs = [$resourceId];
 
-	useEffect(effects, inputs);
+	// useEffect(effects, inputs);
 	return (
 		<>
 			{width > 991 ? (
@@ -50,7 +49,7 @@ export const	ResourceCard = ($re) =>{
 							<h3 className="font-weight-bold col-8 align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
 								{$resourceTitle}
 							</h3>
-							<p className="col-4 align-bottom text-right font-weight-bold pb-0 mb-0 pt-2 d-block text-truncate text-success">234 Usefuls</p>
+							<Usefuls/>
 						</Row>
 						<div className="row pt-1">
 							<div className="col align-bottom">

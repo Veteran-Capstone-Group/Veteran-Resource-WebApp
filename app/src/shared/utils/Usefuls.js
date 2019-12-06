@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import {createSelector} from 'reselect';
 import {httpConfig} from "./http-config";
-import {UseJwt} from "JwtHelpers";
+import {UseJwt} from "./JwtHelpers";
 import {handleSessionTimeout} from "./handle-session-timeout";
 import _ from "lodash";
 import {getCountByUsefulResourceId} from "../actions/get-useful";
@@ -17,13 +18,14 @@ export const Useful = ({userId, resourceId}) => {
 	const [isUsefulled, setIsUsefulled] = useState(null);
 	const [usefulCount, setUsefulCount] = useState(0);
 
-	//return all usefuls from Redux Store
-	const usefuls = useSelector(state => (state.usefuls ? state.usefuls : []));
+
 
 	const effects = () => {
 		initializeUsefuls(userId);
 		countUsefuls(resourceId);
 	};
+	//return all usefuls from Redux Store
+	const usefuls = useSelector(state => ((state.usefuls ? state.usefuls : [])));
 
 	//add usefuls to inputs, informing React that the usefuls are being updated from redux
 	const inputs = [usefuls, userId, resourceId];
@@ -105,3 +107,4 @@ export const Useful = ({userId, resourceId}) => {
 
 
 };
+export default Useful;

@@ -1,5 +1,5 @@
 .category-image {
-	width: auto;
+	width: -webkit-fill-available;
 	max-height: -webkit-fill-available;
 }
 .categoryButton {

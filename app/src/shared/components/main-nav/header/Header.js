@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {UseWindowWidth} from "../../../utils/UseWindowWidth.js";
+import logo from "../../../img/logo.png";
 
 
 export const Header = () => {
@@ -16,7 +17,7 @@ export const Header = () => {
 				<Navbar className={`p-0 border border-dark bg-light`}>
 					<Navbar.Toggle aria-controls="navbar-nav"/>
 					<Navbar.Collapse id="navbar-nav">
-						<Col xs={10} id="navDropdownButton">
+						<Col id="navDropdownButton">
 							<NavDropdown title="$CategoryTitle" id="collapsible-nav-dropdown" className={`mobile-fix text-dark`}>
 								<Col xs={10}>
 									<NavDropdown.Item href="#action/3.1">Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
@@ -33,9 +34,7 @@ export const Header = () => {
 								</Col>
 							</NavDropdown>
 						</Col>
-						<Col xs={2}>
-							<span></span>
-						</Col>
+							<img src={logo} className={'img-fluid d-inline'} id={"logoimage"} alt={"ABQ Veterans Logo"}/>
 					</Navbar.Collapse>
 				</Navbar>
 			</>

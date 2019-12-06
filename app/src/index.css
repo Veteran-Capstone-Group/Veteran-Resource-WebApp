@@ -43,7 +43,7 @@ body {
 	margin: 0;
 }
 
-/*Dropdown menu for desktop header*/
+/*Dropdown menu for mobile header*/
 .mobile-fix > div.dropdown-menu{
 	left: 0;
 	min-width: 16.666667vw;
@@ -61,5 +61,10 @@ body {
 	color: black;
 	font-weight: bold;
 	font-size: 1.5rem;
+}
+
+#logoimage {
+	height: 10vh;
+	width: auto;
 }
 

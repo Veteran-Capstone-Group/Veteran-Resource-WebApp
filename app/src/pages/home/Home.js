@@ -13,7 +13,12 @@ import foodImage from "../../shared/img/food.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
+import Footer from "../../shared/components/main-nav/footer/footer"
+import ResourceCard from "../../shared/components/resource-card/ResourceCard"
+//import miscImage from "../../shared/img/clothing.svg";
+
 //import miscImage from "../../shared/img/misc.svg";
+
 import stylesheet from "../../index.css";
 
 export const Home = () => {
@@ -28,9 +33,23 @@ export const Home = () => {
 
 	useEffect(effects,inputs);
 	*/
-	
+	const testResource= {
+			"resourceId": "02357c37-4310-4ebd-a124-69bf314339d9",
+			"resourceCategoryId": "a48077fe-3955-460d-9bb8-e04e48aad125",
+			"resourceUserId": "ca38847b-1449-41b7-b794-6232ffcccc74",
+			"resourceAddress": "500 Gold Ave. SW, Suite 3104",
+			"resourceApprovalStatus": true,
+			"resourceDescription": "The program provides financial aid grants of up to $1,500 to assist with basic life needs in the form of a grant - not a loan - so no repayment is required.",
+			"resourceEmail": "unmetneeds@vfw.org",
+			"resourceImageUrl": "https:\/\/seeklogo.com\/images\/V\/VFW-logo-D1627FAE12-seeklogo.com.png",
+			"resourceOrganization": "Veterans of Foreign Wars",
+			"resourcePhone": "(505) 346-4881",
+			"resourceTitle": "Financial Grants",
+			"resourceUrl": "https:\/\/www.vfw.org\/assistance\/financial-grants"
+		};
 	return (
 		<>
+			<ResourceCard resource={testResource}/>
 			<div className={`categoryTray`}>
 				<Container className={`d-flex justify-content-around`}>
 					<Container>

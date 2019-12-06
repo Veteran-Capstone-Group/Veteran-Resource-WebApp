@@ -15,6 +15,9 @@ import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
 import Footer from "../../shared/components/main-nav/footer/footer"
 //import miscImage from "../../shared/img/clothing.svg";
+
+//import miscImage from "../../shared/img/misc.svg";
+
 import stylesheet from "../../index.css";
 
 export const Home = () => {
@@ -29,16 +32,14 @@ export const Home = () => {
 
 	useEffect(effects,inputs);
 	*/
-
-//TODO UNFUCKIFY THIS SHIT
+	
 	return (
 		<>
-			<h1>Home Test</h1>
 			<div className={`categoryTray`}>
 				<Container className={`d-flex justify-content-around`}>
 					<Container>
 						<Row justify-content-center>
-							<Col xs={6} sm={6} md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Food/Clothing</h2>
 									<div className={`categoryButton`}>
@@ -48,7 +49,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6} md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Disability</h2>
 									<div className={`categoryButton`}>
@@ -58,7 +59,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Education</h2>
 									<div className={`categoryButton`}>
@@ -68,7 +69,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Employment</h2>
 									<div className={`categoryButton`}>
@@ -80,7 +81,7 @@ export const Home = () => {
 							</Col>
 						</Row>
 						<Row justify-content-center>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Mental Health</h2>
 									<div className={`categoryButton`}>
@@ -90,7 +91,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Healthcare</h2>
 									<div className={`categoryButton`}>
@@ -100,7 +101,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Housing</h2>
 									<div className={`categoryButton`}>
@@ -110,7 +111,7 @@ export const Home = () => {
 									</div>
 								</div>
 							</Col>
-							<Col xs={6} sm={6}   md={3}>
+							<Col xs={6} sm={6} md={6} lg={3}>
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Miscellaneous</h2>
 									<div className={`categoryButton`}>

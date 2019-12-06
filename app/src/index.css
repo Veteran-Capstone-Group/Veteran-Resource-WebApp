@@ -19,3 +19,57 @@ body {
 	text-align: center;
 	font-size: 1.3rem;
 }
+
+#DesktopHeader {
+	font-weight: bold;
+	font-size: 2.5rem;
+}
+
+/*margin fix for last menu item*/
+#bottomMenuItem {
+	margin-bottom: 0.75rem;
+}
+
+#navDropdownButton {
+	border-right: solid 1px black;
+}
+
+/*Dropdown menu for desktop header*/
+.dropdown-menu {
+	left: -1rem;
+	min-width: 16.666667vw;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/*Dropdown menu for mobile header*/
+.mobile-fix > div.dropdown-menu{
+	left: 0;
+	min-width: 16.666667vw;
+	width: 100%;
+	padding: 0 1rem;
+	margin: 0;
+}
+
+/*flex fix for dropdown menu main text*/
+#collapsible-nav-dropdown {
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+/*flex fix for dropdown mobile menu main text*/
+.mobile-fix > #collapsible-nav-dropdown {
+	justify-content: left;
+}
+
+#logoimage {
+	height: 10vh;
+	width: auto;
+}
+

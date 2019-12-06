@@ -104,4 +104,4 @@ export const Useful = ({userId, resourceId}) => {
 	)
 
 
-}
+};

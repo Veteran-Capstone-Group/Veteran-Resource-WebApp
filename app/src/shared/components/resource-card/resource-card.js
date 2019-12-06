@@ -27,7 +27,7 @@ export const	ResourceCard = ({resource}) =>{
 	return (
 		<>
 			{width > 991 ? (
-			<!--desktop view-->
+			// <!--desktop view-->
 			<Container className="d-block">
 				<Row className="border border-primary rounded my-4 py-2 px-2">
 					<Col xs={3} className="d-inline">
@@ -61,7 +61,7 @@ export const	ResourceCard = ({resource}) =>{
 				</Row>
 			</Container>
 				):( $resourceImageUrl === "" ?(
-			<!-- Mobile view without image-->
+			// <!-- Mobile view without image-->
 			<div className="container d-lg-none h-25">
 				<div className="border border-primary rounded my-4 py-2 px-2 mh-100">
 					<div className="row">
@@ -84,7 +84,7 @@ export const	ResourceCard = ({resource}) =>{
 				</div>
 			</div>
 				):(
-			<!--mobile view w/ thumbnail image-->
+			// <!--mobile view w/ thumbnail image-->
 			<div className="container d-lg-none h-25">
 				<div className="border border-primary rounded my-4 py-2 px-2 mh-100">
 					<div>
@@ -117,3 +117,4 @@ export const	ResourceCard = ({resource}) =>{
 	)
 
 };
+export default ResourceCard;

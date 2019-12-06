@@ -9,8 +9,11 @@ import {Header} from "./shared/components/main-nav/header/Header";
 import {SignUpModal} from "./shared/components/main-nav/sign-up/SignUpModal";
 import {Footer} from "./shared/components/main-nav/footer/footer";
 import {ResourceCard} from "./shared/components/resource-card/resource-card";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal} from '@fortawesome/free-solid-svg-icons';
 
 
+library.add(faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal);
 const Routing = () => (
 	<>
 		<BrowserRouter>

@@ -14,6 +14,7 @@ import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
 import Footer from "../../shared/components/main-nav/footer/footer"
+import ResourceCard from "../../shared/components/resource-card/resource-card"
 //import miscImage from "../../shared/img/clothing.svg";
 
 //import miscImage from "../../shared/img/misc.svg";
@@ -35,6 +36,7 @@ export const Home = () => {
 	
 	return (
 		<>
+			<ResourceCard/>
 			<div className={`categoryTray`}>
 				<Container className={`d-flex justify-content-around`}>
 					<Container>

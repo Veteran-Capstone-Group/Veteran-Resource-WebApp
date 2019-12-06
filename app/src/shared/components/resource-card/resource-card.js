@@ -3,7 +3,7 @@ import {httpConfig} from "../../utils/http-config";
 import 'bootstrap/dist/css/bootstrap.css';
 import {useSelector, useDispatch} from "react-redux";
 import {UseWindowWidth} from "../../utils/UseWindowWidth"
-import {getUsefulCountByUsefulResourceId} from "../../actions/get-useful.js"
+import {getCountByUsefulResourceId} from "../../actions/get-useful.js"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,7 +18,7 @@ export const	ResourceCard = ({resource}) =>{
 	const width = UseWindowWidth();
 
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux
-	const effects = () => {dispatch(getUsefulCountByUsefulResourceId);};
+	const effects = () => {dispatch(getCountByUsefulResourceId);};
 
 	//Declare any inputs that will be used by functions that are declared in sideEffects.
 	const inputs = [$resourceId];

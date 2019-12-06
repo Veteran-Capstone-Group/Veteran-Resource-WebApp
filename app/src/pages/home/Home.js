@@ -13,6 +13,7 @@ import foodImage from "../../shared/img/food.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
+import Footer from "../../shared/components/main-nav/footer/footer"
 //import miscImage from "../../shared/img/clothing.svg";
 import stylesheet from "../../index.css";
 
@@ -123,6 +124,7 @@ export const Home = () => {
 					</Container>
 				</Container>
 			</div>
+			<Footer/>
 		</>
 	)
 };

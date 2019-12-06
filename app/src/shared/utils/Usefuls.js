@@ -98,7 +98,7 @@ export const Useful = ({userId, resourceId}) => {
 
 	return (
 		<>
-			<Button variant="outline-danger" size="sm" className={`resource-useful-bts ${(isUsefulled !== null ? isUsefulled : "")}`} disabled={!jwt && true} onClick={clickUseful}>
+			<Button variant="outline-danger" className={`resource-useful-bts ${(isUsefulled !== null ? isUsefulled : "")}`} disabled={!jwt && true} onClick={clickUseful}>
 				<FontAwesomeIcon icon="medal"/>&nbsp;
 				<Badge variant="danger">{usefulCount}</Badge>
 			</Button>

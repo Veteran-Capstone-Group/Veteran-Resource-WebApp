@@ -11,16 +11,11 @@ export const Footer = () => {
 		<>
 			<Container>
 			<Row className="justify-content-center">
-				<Col>
 					<SignUpModal/>
-				</Col>
-				<Col>
-				{/*	sign-in goes here*/}
-				</Col>
 			</Row>
 			<Row>
 				<p className="col-12 text-center small">
-					<a href="https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp" className="text-muted bg-light" target="_blank" rel="noopener noreferrer">Learn More on GitHub</a>
+					<a href="https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp" className="text-white" target="_blank" rel="noopener noreferrer">Learn More on <u>Github</u>.</a>
 				</p>
 			</Row>
 			</Container>

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {SignInForm} from "./SignInForm";
-;
+
 
 //create signInModal JSX to serve SignInForm
 export const SignInModal = () => {

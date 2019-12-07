@@ -3,6 +3,12 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {SignInForm} from "./SignInForm";
 
+/**
+ * JSX Sign in modal
+ *
+ * @returns {*} JSX sign-in modal built from this component and signInFormContent component
+ * @author Timothy Beck <Dev@TimothyBeck.com>
+ */
 
 //create signInModal JSX to serve SignInForm
 export const SignInModal = () => {

@@ -42,7 +42,7 @@ export const SignUpForm = () => {
 					}
 				}
 			);
-	}
+	};
 
 	return (
 		<Formik

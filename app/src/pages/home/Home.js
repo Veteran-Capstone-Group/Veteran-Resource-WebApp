@@ -1,25 +1,29 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllCategories} from "../../shared/actions/category";
+//Homepage component bootstrap styling
 import 'bootstrap/dist/css/bootstrap.css';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+//IMAGES
 import clothingImage from "../../shared/img/clothing.svg";
 import disabilityImage from "../../shared/img/disability.svg";
 import educationImage from "../../shared/img/education.svg";
 import employmentImage from "../../shared/img/employment.svg";
 import foodImage from "../../shared/img/food.svg";
+//TODO add food/clothing image
+//import foodClothingImage from "../../shared/img/foodclothing.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
-import Footer from "../../shared/components/main-nav/footer/footer"
-import ResourceCard from "../../shared/components/resource-card/ResourceCard"
+//TODO add misc image
+//import miscImage from "../../shared/img/misc.svg";
 //import miscImage from "../../shared/img/clothing.svg";
 
-//import miscImage from "../../shared/img/misc.svg";
+import Footer from "../../shared/components/main-nav/footer/footer"
+import ResourceCard from "../../shared/components/resource-card/ResourceCard"
 
-import stylesheet from "../../index.css";
 
 export const Home = () => {
 	/*const categories = useSelector(state => state.categories);

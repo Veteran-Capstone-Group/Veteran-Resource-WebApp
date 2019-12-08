@@ -28,7 +28,6 @@ export const ResourcesInCategory = ({match}) => {
 
 	// Define the side effects that will occur in the application, e.g., code that handles dispatches to redux, API requests, or timers.
 	// The dispatch function takes actions as arguments to make changes to the store/redux.
-	console.log(match.params.resourceCategoryId);
 	const effects = () => {
 		dispatch(resourceList);
 	};
@@ -38,17 +37,18 @@ export const ResourcesInCategory = ({match}) => {
 
 	//pass side effects with inputs to useEffect
 	useEffect(effects, inputs);
-	console.log(resources);
+	const resourceArray = [];
+	for (let i = 0; i<Object.keys(resources).length; i++) {
+		resourceArray.push(resources[i]);
+	}
+
 	return (
 		<>
-			<Container>
-				<Col>
-					<p>hello</p>
-
-					{resources.map(resource =>
-						<ResourceCard resource={resource} key={resources.resourceId}/>
+			<Container fluid="true">
+					{resourceArray.map((resourceItem) => {
+						return <ResourceCard resource={resourceItem} key={resourceItem}/>;
+					}
 					)}
-				</Col>
 			</Container>
 
 

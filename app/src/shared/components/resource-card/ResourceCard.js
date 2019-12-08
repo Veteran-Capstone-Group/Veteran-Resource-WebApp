@@ -16,27 +16,25 @@ import {getCountByUsefulResourceId} from "../../actions/get-useful";
 
 
 //export component
-export const	ResourceCard = (resourceId) =>{
-
-
-
+export const	ResourceCard = ({resource}) =>{
 	//Store screen width on resize event to allow different views on mobile vs desktop
 	const width = UseWindowWidth();
 
 	//grab JWT Token for logged in users
 	const jwt = UseJwt();
 	const userId = UseJwtUserId;
-	const resource = getResourceByResourceId(resourceId);
+
 	//assign values for variables of resource
+	console.log(resource);
 	const {id, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
-	console.log(resourceTitle);
+
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux
 	// const dispatch = useDispatch();
 	// const effects = () => {dispatch(getCountByUsefulResourceId(resourceId));};
 
 	//Declare any inputs that will be used by functions that are declared in sideEffects.
 	//const inputs = [resourceId];
-	const googleMapsSearch = "https://www.google.com/maps/place/" + resourceAddress.split(" ").join("+");
+	const googleMapsSearch = ("https://www.google.com/maps/place/" + resourceAddress.split(" ").join("+"));
 	// useEffect(effects, inputs);
 	return (
 		<>
@@ -50,7 +48,7 @@ export const	ResourceCard = (resourceId) =>{
 					<Col xs={9} className="col-9 d-inline">
 						<Row className="border-bottom border-primary py-0 align-items-end">
 							<h3 className="font-weight-bold col-8 align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
-								{resourceTitle}
+								<a href={resourceUrl}>{resourceTitle}</a>
 							</h3>
 							<Usefuls resourceId={id}/>
 						</Row>
@@ -82,7 +80,7 @@ export const	ResourceCard = (resourceId) =>{
 						<div className="col d-inline">
 							<div className="row border-bottom border-primary mx-1 py-0 pr-1">
 								<p className="font-weight-bold col align-bottom mb-0 p-0 mx-1 d-block text-truncate text-left">
-									{resourceTitle}</p>
+									<a href={resourceUrl}>{resourceTitle}</a></p>
 								<Usefuls resourceId={id}/>
 							</div>
 							<div className="row pt-1 mx-1 small">
@@ -91,8 +89,12 @@ export const	ResourceCard = (resourceId) =>{
 						</div>
 					</div>
 					<div className="row d-flex justify-content-around">
+						{resourceAddress === "" ? (""):
 						<a href={googleMapsSearch}><button type="button" className="btn btn-primary">Directions</button></a>
-						<button type="button" className="btn btn-primary">Call: (505) 346-4864</button>
+							}
+						{resourcePhone === "" ? ("") :
+							<a href="tel:{resourcePhone}"><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
+						}
 					</div>
 				</div>
 			</div>
@@ -107,11 +109,16 @@ export const	ResourceCard = (resourceId) =>{
 									<div className="col-2 pb-1 px-0">
 										<img className="img-fluid d-inline border-primary" src={resourceImageUrl} alt="icon for resource"/>
 									</div>
-									<div className="col-10 my-0 p-0 mr-0 d-flex align-items-end">
-										<p className="font-weight-bold align-bottom mb-0 pl-2 py-0 pr-0 d-block text-truncate text-left">
-											{resourceTitle}
+									<div className="col-10 my-0 p-0 pr-3">
+										<Row>
+											<p className="text-white">.</p>
+										</Row>
+										<Row>
+										<p className="font-weight-bold col align-bottom mb-0 pl-4 py-0 pr-0 d-block text-truncate text-left">
+											<a href={resourceUrl}>{resourceTitle}</a>
 										</p>
 										<Usefuls resourceId={id}/>
+										</Row>
 									</div>
 								</div>
 								<div className="row pt-1 mx-1 small">
@@ -120,8 +127,12 @@ export const	ResourceCard = (resourceId) =>{
 							</div>
 						</div>
 						<div className="row d-flex justify-content-around">
+							{resourceAddress === "" ? (""):
 							<a href={googleMapsSearch}><button type="button" className="btn btn-primary">Directions</button></a>
-							<button type="button" className="btn btn-primary">Call: (505) 346-4864</button>
+							}
+							{resourcePhone === "" ? ("") :
+								<a href="tel:{resourcePhone}"><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
+								}
 						</div>
 					</div>
 				</div>

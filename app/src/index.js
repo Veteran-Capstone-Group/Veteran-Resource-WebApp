@@ -10,6 +10,7 @@ import {FourOhFour} from "./pages/four-oh-four/FourOhFour";
 import {Home} from "./pages/home/Home";
 import {Header} from "./shared/components/main-nav/header/Header";
 import {Footer} from "./shared/components/main-nav/footer/footer";
+import {Education} from "./pages/category/Education";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal} from '@fortawesome/free-solid-svg-icons';
 import {applyMiddleware, createStore} from "redux";
@@ -24,6 +25,7 @@ const Routing = () => (
 			<Provider store={store}>
 			<Switch>
 				<Route exact path="/" component={Home}/>
+				<Route exact path="/Category/:categoryId" component={Education}/>
 				<Route component={FourOhFour}/>
 			</Switch>
 			</Provider>

@@ -11,7 +11,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export const ResourcesInCategory = (categoryId) => {
+export const ResourcesInCategory = ({match}) => {
 	/*
 * const width holds the value of the screen width on the resize event.
 * See: UseWindowWidth
@@ -24,28 +24,31 @@ export const ResourcesInCategory = (categoryId) => {
 
 	//assigns useDispatch to dispatch variable
 	const dispatch = useDispatch();
+	const resourceList = getResourceByResourceCategory(match.params.resourceCategoryId);
 
 	// Define the side effects that will occur in the application, e.g., code that handles dispatches to redux, API requests, or timers.
 	// The dispatch function takes actions as arguments to make changes to the store/redux.
 	const effects = () => {
-		dispatch(getResourceByResourceCategory());
+		dispatch(resourceList);
 	};
 
 	//declare inputs
-	const inputs = [categoryId];
+	const inputs = [match.params.resourceCategoryId];
 
 	//pass side effects with inputs to useEffect
 	useEffect(effects, inputs);
+	const resourceArray = [];
+	for (let i = 0; i<Object.keys(resources).length; i++) {
+		resourceArray.push(resources[i]);
+	}
 
 	return (
 		<>
-			<Container>
-				<Col>
-					<p>hello</p>
-					{resources.map(resource =>
-						<ResourceCard resource={resource} key={resources.resourceId}/>
+			<Container fluid="true">
+					{resourceArray.map((resourceItem) => {
+						return <ResourceCard resource={resourceItem} key={resourceItem}/>;
+					}
 					)}
-				</Col>
 			</Container>
 
 

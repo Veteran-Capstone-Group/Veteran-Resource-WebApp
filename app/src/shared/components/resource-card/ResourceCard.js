@@ -9,13 +9,14 @@ import {UseWindowWidth} from "../../utils/UseWindowWidth"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {getResourceByResourceId} from "../../actions/get-resource";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {getCountByUsefulResourceId} from "../../actions/get-useful";
 
 
 //export component
-export const	ResourceCard = ({resource}) =>{
+export const	ResourceCard = (resourceId) =>{
 
 
 
@@ -25,9 +26,9 @@ export const	ResourceCard = ({resource}) =>{
 	//grab JWT Token for logged in users
 	const jwt = UseJwt();
 	const userId = UseJwtUserId;
-
+	const resource = getResourceByResourceId(resourceId);
 	//assign values for variables of resource
-	const {resourceId, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
+	const {id, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
 	console.log(resourceTitle);
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux
 	// const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export const	ResourceCard = ({resource}) =>{
 							<h3 className="font-weight-bold col-8 align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
 								{resourceTitle}
 							</h3>
-							<Usefuls/>
+							<Usefuls resourceId={id}/>
 						</Row>
 						<div className="row pt-1">
 							<div className="col align-bottom">
@@ -82,6 +83,7 @@ export const	ResourceCard = ({resource}) =>{
 							<div className="row border-bottom border-primary mx-1 py-0 pr-1">
 								<p className="font-weight-bold col align-bottom mb-0 p-0 mx-1 d-block text-truncate text-left">
 									{resourceTitle}</p>
+								<Usefuls resourceId={id}/>
 							</div>
 							<div className="row pt-1 mx-1 small">
 								<p>{resourceDescription}</p>
@@ -109,6 +111,7 @@ export const	ResourceCard = ({resource}) =>{
 										<p className="font-weight-bold align-bottom mb-0 pl-2 py-0 pr-0 d-block text-truncate text-left">
 											{resourceTitle}
 										</p>
+										<Usefuls resourceId={id}/>
 									</div>
 								</div>
 								<div className="row pt-1 mx-1 small">

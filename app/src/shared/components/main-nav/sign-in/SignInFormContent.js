@@ -12,8 +12,9 @@ export const SignInFormContent = (props) => {
 	const {
 		status,
 		values,
-		errors,
-
+		dirty,
+		isSubmitting,
+		handleReset,
 		handleChange,
 		handleBlur,
 		handleSubmit
@@ -65,6 +66,17 @@ export const SignInFormContent = (props) => {
 							</div>
 						</div>
 					</div>
+
+				<div className="form-group">
+					<button className="btn btn-primary mb-2" type="submit">Submit</button>
+
+					<button
+						className="btn btn-primary mb-2"
+						onClick={handleReset}
+						disabled={!dirty || isSubmitting}
+					>Reset
+					</button>
+				</div>
 
 				<FormDebugger {...props}/>
 			</form>

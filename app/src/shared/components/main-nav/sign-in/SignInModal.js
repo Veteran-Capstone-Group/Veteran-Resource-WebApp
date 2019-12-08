@@ -17,6 +17,7 @@ export const SignInModal = () => {
 	//function hides modal
 	const handleClose = () => setShow(false);
 	//function shows modal
+	const handleShow = () => setShow(true);
 
 	return (
 		<>

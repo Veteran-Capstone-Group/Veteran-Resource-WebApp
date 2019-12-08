@@ -8,7 +8,7 @@ import React from "react";
  * @author Timothy Beck <Dev@TimothyBeck.com
  */
 
-export const SignUpFormContent = (props) => {
+export const SignInFormContent = (props) => {
 	const {
 		status,
 		values,

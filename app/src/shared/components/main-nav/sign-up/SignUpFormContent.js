@@ -69,7 +69,6 @@ export const SignUpFormContent = (props) => {
 							<div className="alert alert-danger">{errors.userPassword}</div>
 						)}
 					</div>
-
 				</div>
 				{/*controlId must match what is passed to the initialValues prop*/}
 				<div className="form-group">

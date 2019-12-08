@@ -25,6 +25,7 @@ try {
 	if(session_status() !== PHP_SESSION_ACTIVE) {
 		session_start();
 	}
+
 	//grab the MySQL connection
 	$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
 	$pdo = $secrets->getPdoObject();
@@ -36,6 +37,7 @@ try {
 	if($method === "POST") {
 		//make sure the XSRF Token is valid
 		verifyXsrf();
+
 		//process the request content and decode the json object into a php object
 		$requestContent = file_get_contents("php://input");
 		$requestObject = json_decode($requestContent);
@@ -75,6 +77,7 @@ try {
 			"userId" => $user->getUserId(),
 			"userUsername" => $user->getUserUsername()
 		];
+
 		//create JWT TOKEN
 		setJwtAndAuthHeader("auth", $authObject);
 

@@ -25,15 +25,18 @@ export const SignInForm = () => {
 			.required("Username is required."),
 		userPassword: Yup.string()
 			.required("Password is required.")
+			.min(8, "Password must be at least eight characters")
 	});
+
 	const submitSignIn = (values, {resetForm, setStatus}) => {
 		httpConfig.post("/apis/sign-in/", values)
 			.then(reply => {
 				let {message, type} = reply;
 				setStatus({message, type});
-				if(reply.status === 200) {
+				if(reply.status === 200 && reply.headers['x-jwt-token']) {
+					window.localStorage.removeItem('jwt-token');
+					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
 					resetForm();
-					setStatus({message, type});
 				}
 			})
 	};

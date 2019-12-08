@@ -2,6 +2,7 @@ import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllCategories} from "../../shared/actions/category";
 //Homepage component bootstrap styling
+import Stylesheet from "../../index.css"
 import 'bootstrap/dist/css/bootstrap.css';
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -23,7 +24,6 @@ import mentalhealthImage from "../../shared/img/mentalhealth.svg";
 
 import Footer from "../../shared/components/main-nav/footer/footer"
 import ResourceCard from "../../shared/components/resource-card/ResourceCard"
-import Stylesheet from "../../index.css"
 
 export const Home = () => {
 	/*const categories = useSelector(state => state.categories);

@@ -139,7 +139,10 @@ export const SignUpFormContent = (props) => {
 						<div className="alert alert-danger">{errors.userUsername}</div>
 					)}
 				</div>
+
 				<div className="form-group">
+					<button className="btn btn-primary mb-2" type="submit">Submit</button>
+
 					<button
 						className="btn btn-primary mb-2"
 						onClick={handleReset}
@@ -147,6 +150,7 @@ export const SignUpFormContent = (props) => {
 						>Reset
 					</button>
 				</div>
+
 				<FormDebugger {...props}/>
 			</form>
 			{console.log(submitStatus)}

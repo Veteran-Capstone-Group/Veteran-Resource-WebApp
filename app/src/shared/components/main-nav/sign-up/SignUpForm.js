@@ -14,7 +14,7 @@ export const SignUpForm = () => {
 		userName: "",
 		userUsername: ""
 	};
-
+ const [status, setStatus] = useState(null);
 	// initiate yup validator
 	const validator = Yup.object().shape({
 		userEmail: Yup.string()
@@ -31,14 +31,14 @@ export const SignUpForm = () => {
 		userUsername: Yup.string()
 			.required("Username is required.")
 	});
-	const submitSignUp = (values, {resetForm, setStatus}) => {
+	const submitSignUp = (values, {resetForm}) => {
 		httpConfig.post("/apis/sign-up/", values)
 			.then(reply => {
 					let {message, type} = reply;
 					setStatus({message, type});
 					if(reply.status === 200) {
+						console.log(`status: ${message}`);
 						resetForm();
-						setStatus({message, type});
 					}
 				}
 			);

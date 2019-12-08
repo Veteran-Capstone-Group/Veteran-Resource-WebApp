@@ -12,6 +12,8 @@ export const SignInFormContent = (props) => {
 	const {
 		status,
 		values,
+		errors,
+
 		handleChange,
 		handleBlur,
 		handleSubmit

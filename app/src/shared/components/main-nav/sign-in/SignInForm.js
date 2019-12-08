@@ -31,7 +31,9 @@ export const SignInForm = () => {
 			.then(reply => {
 				let {message, type} = reply;
 				setStatus({message, type});
-				if(reply.status === 200) {
+				if(reply.status === 200 && reply.headers['x-jwt-token']) {
+					window.localStorage.removeItem('jwt-token');
+					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
 					resetForm();
 					setStatus({message, type});
 				}

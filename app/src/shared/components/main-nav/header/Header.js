@@ -94,7 +94,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 						</Col>
 						<Col xs={8}>
 							<Navbar.Brand className={"col-12 text-center font-weight-bold text-dark"} id="DesktopHeader"
-											  href="#home">ABQ Veterans</Navbar.Brand>
+											  href="/">ABQ Veterans</Navbar.Brand>
 						</Col>
 						<Col xs={2}>
 							<a href="/"><img src={logo} className={'img-fluid d-inline'} id={"logoimage"}

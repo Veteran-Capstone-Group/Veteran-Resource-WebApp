@@ -3,6 +3,7 @@ import {CreateResourceFormConten} from "./CreateResourceFormContent";
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";
+import {SignInFormContent} from "../sign-in/SignInFormContent";
 
 /**
  * CreateResourceFormConten validation and API Logic
@@ -50,4 +51,30 @@ export const CreateResourceForm = () => {
 		resourceImageUrl: Yup.string()
 			.max(255, "URL can not be longer than 255 characters.")
 	})
+
+	const submitCreateResource = (values, {resetForm, setStatus}) => {
+		httpConfig.post("/apis/resource/", values)
+			.then(reply => {
+				let {message, type} = reply;
+				setStatus({message, type});
+				//TODO maybe add stuff here
+				if(reply.status === 200 && reply.headers['x-jwt-token']) {
+					window.localStorage.removeItem('jwt-token');
+					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
+					resetForm();
+				}
+			})
+	};
+
+	return (
+		<Formik onSubmit={submitCreateResource} initialValues={createResource} validationSchema={validator}>
+			{CreateResourceFormContent}
+		</Formik>
+	)
+
+
+
+
+
+
 };

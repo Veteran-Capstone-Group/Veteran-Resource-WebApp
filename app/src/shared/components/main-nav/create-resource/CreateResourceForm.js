@@ -4,6 +4,7 @@ import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {CreateResourceFormContent} from "../create-resource/CreateResourceFormContent";
+import {handleSessionTimeout} from "../../../utils/handle-session-timeout";
 
 /**
  * CreateResourceFormContent validation and API Logic

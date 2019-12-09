@@ -56,6 +56,7 @@ export const Useful = ({userId, resourceId}) => {
 		setIsUsefulled(isUsefulled === null ? "active" : null)
 	};
 	const submitUseful = () => {
+		console.log(resourceId);
 		const headers = {'X-JWT-TOKEN': jwt};
 		httpConfig.post("/apis/useful/", data, {
 			headers: headers

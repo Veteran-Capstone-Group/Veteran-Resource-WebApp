@@ -31,7 +31,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 					<Navbar.Toggle aria-controls="navbar-nav"/>
 					<Navbar.Collapse id="navbar-nav">
 						<Col id="navDropdownButton">
-							<NavDropdown title={title} id="collapsible-nav-dropdown"
+							<NavDropdown title={window.location.pathname === "/" ? "Home" : title} id="collapsible-nav-dropdown"
 											 className={`mobile-fix text-dark`}>
 								<Col xs={10}>
 									<NavDropdown.Item

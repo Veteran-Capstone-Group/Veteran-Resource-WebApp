@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {SignInFormContent} from "./SignInFormContent";
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
@@ -11,8 +11,11 @@ import {Formik} from "formik";
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
 
+
 //define signin state variable to utilize in sign-in form
 export const SignInForm = () => {
+	//start php session
+	useEffect(() => {httpConfig.get("/apis/purple-passion-tea/")}, []);
 
 	const signIn = {
 		userUsername: "",

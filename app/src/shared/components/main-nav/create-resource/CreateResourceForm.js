@@ -6,7 +6,7 @@ import {Formik} from "formik";
 import {SignInFormContent} from "../sign-in/SignInFormContent";
 
 /**
- * CreateResourceFormConten validation and API Logic
+ * CreateResourceFormContent validation and API Logic
  *
  * @returns {*} formik create resource Form
  * @author Timothy Beck <Dev@TimothyBeck.com>

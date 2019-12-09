@@ -27,7 +27,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 	if(isMobile) {//create mobile header
 		return (
 			<>
-				<Navbar className={`p-0 border border-dark bg-light`}>
+				<Navbar className={`p-0 border border-dark bg-light sticky-top`} id="header">
 					<Navbar.Toggle aria-controls="navbar-nav"/>
 					<Navbar.Collapse id="navbar-nav">
 						<Col id="navDropdownButton">
@@ -67,7 +67,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 	} else {//create desktop header
 		return (
 			<>
-				<Navbar collapseOnSelect expand="md" className={`p-0 border border-dark bg-light`}>
+				<Navbar collapseOnSelect expand="md" className={`p-0 border border-dark bg-light sticky-top`} id="header">
 					<Navbar.Toggle aria-controls="responsive-navbar-nav"/>
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Col xs={2} id="navDropdownButton">

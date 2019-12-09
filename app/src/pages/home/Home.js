@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {getAllCategories} from "../../shared/actions/category";
 //Homepage component bootstrap styling
@@ -24,6 +24,7 @@ import mentalhealthImage from "../../shared/img/mentalhealth.svg";
 
 import Footer from "../../shared/components/main-nav/footer/footer"
 import ResourceCard from "../../shared/components/resource-card/ResourceCard"
+import {httpConfig} from "../../shared/utils/http-config";
 
 export const Home = () => {
 	/*const categories = useSelector(state => state.categories);

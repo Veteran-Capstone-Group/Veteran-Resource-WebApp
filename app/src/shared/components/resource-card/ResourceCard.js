@@ -25,7 +25,7 @@ export const	ResourceCard = ({resource}) =>{
 	const userId = UseJwtUserId;
 
 	//assign values for variables of resource
-	const {id, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
+	const {resourceId, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
 
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux
 	// const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export const	ResourceCard = ({resource}) =>{
 							<h3 className="font-weight-bold col align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
 								<a href={resourceUrl}>{resourceTitle}</a>
 							</h3>
-							<Usefuls resourceId={id}/>
+							<Usefuls resourceId={resourceId} userId={userId()}/>
 						</Row>
 						<div className="row pt-1">
 							<div className="col align-bottom">
@@ -82,7 +82,7 @@ export const	ResourceCard = ({resource}) =>{
 							<div className="row border-bottom border-primary mx-1 py-0 pr-1">
 								<p className="font-weight-bold col align-bottom mb-0 p-0 mx-1 d-block text-truncate text-left">
 									<a href={resourceUrl}>{resourceTitle}</a></p>
-								<Usefuls resourceId={id}/>
+								<Usefuls resourceId={resourceId} userId={userId()}/>
 							</div>
 							<div className="row pt-1 mx-1 small">
 								<p>{resourceDescription}</p>
@@ -118,7 +118,7 @@ export const	ResourceCard = ({resource}) =>{
 										<p className="font-weight-bold col align-bottom mb-0 pl-4 py-0 pr-0 d-block text-truncate text-left">
 											<a href={resourceUrl}>{resourceTitle}</a>
 										</p>
-										<Usefuls resourceId={id}/>
+										<Usefuls resourceId={resourceId} userId={userId()}/>
 										</Row>
 									</div>
 								</div>

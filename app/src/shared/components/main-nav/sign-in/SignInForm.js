@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SignInFormContent} from "./SignInFormContent";
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
@@ -36,6 +36,9 @@ export const SignInForm = () => {
 					window.localStorage.removeItem('jwt-token');
 					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
 					resetForm();
+					setTimeout(() => {
+						window.location = "/";
+					}, 750);
 				} setStatus({message, type})
 			})
 	};

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {SignInModal} from "../sign-in/SignInModal";
+import {CreateResourceModal} from "../create-resource/CreateResourceModal";
 
 export const Footer = () => {
 
@@ -14,6 +15,7 @@ export const Footer = () => {
 			<Row className="justify-content-center">
 					<SignUpModal/>
 					<SignInModal/>
+					<CreateResourceModal/>
 			</Row>
 			<Row>
 				<p className="col-12 text-center small">

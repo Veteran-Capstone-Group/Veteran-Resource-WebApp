@@ -3,7 +3,7 @@ import {CreateResourceFormConten} from "./CreateResourceFormContent";
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";
-import {SignInFormContent} from "../sign-in/SignInFormContent";
+import {CreateResourceFormContent} from "../create-resource/CreateResourceFormContent";
 
 /**
  * CreateResourceFormContent validation and API Logic

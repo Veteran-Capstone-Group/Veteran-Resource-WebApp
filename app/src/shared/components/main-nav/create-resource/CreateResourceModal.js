@@ -30,7 +30,7 @@ export const CreateResourceModal = () => {
 					<Modal.Title>Add New Resource</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<SignInForm/>
+					<CreateResourceForm/>
 				</Modal.Body>
 			</Modal>
 		</>

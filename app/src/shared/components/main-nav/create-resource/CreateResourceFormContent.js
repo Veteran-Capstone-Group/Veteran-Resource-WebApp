@@ -1,6 +1,8 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../../utils/FormDebugger";
 import React from "react";
+import Form from "react-bootstrap/Form";
+
 
 /**
  * @param props properties of inputs
@@ -13,6 +15,8 @@ export const CreateResourceFormContent = (props) => {
 		status,
 		values,
 		dirty,
+		touched,
+		errors,
 		isSubmitting,
 		handleReset,
 		handleChange,
@@ -42,14 +46,14 @@ export const CreateResourceFormContent = (props) => {
 							onChange={handleChange}
 							onBlur={handleBlur}
 						>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>
-							<option>8</option>
+							<option value="501c7665-a4b1-47ab-a157-13d198f67d97">Food/Clothing</option>
+							<option value="b20fe0cd-43e4-4878-9d29-a4ecb57678a3">Disability</option>
+							<option value="b2b19ae1-7c88-4f5d-baa2-b2ebf964cd2a">Education</option>
+							<option value="faef9afc-61e2-4238-a634-b15164ebdbae">Employment</option>
+							<option value="0535ca67-9c12-4cc9-9450-e2faa89b91db">Mental Health</option>
+							<option value="34b09b0c-08a9-46a5-829b-0e5b7f385f5a">Healthcare</option>
+							<option value="8167caec-0d53-47c7-8a86-9b226a325eae">Housing</option>
+							<option value="a48077fe-3955-460d-9bb8-e04e48aad125">Miscellaneous</option>
 						</Form.Control>
 					</div>
 					{errors.resourceCategoryId && touched.resourceCategoryId && (
@@ -71,7 +75,7 @@ export const CreateResourceFormContent = (props) => {
 							id="resourceTitle"
 							type="text"
 							value={values.resourceTitle}
-							placeholder="Title"
+							placeholder="Resource Title"
 							onChange={handleChange}
 							onBlur={handleBlur}
 						/>
@@ -95,7 +99,7 @@ export const CreateResourceFormContent = (props) => {
 							id="resourceOrganization"
 							type="text"
 							value={values.resourceOrganization}
-							placeholder="Organization"
+							placeholder="Organization Name"
 							onChange={handleChange}
 							onBlur={handleBlur}
 						/>
@@ -119,7 +123,7 @@ export const CreateResourceFormContent = (props) => {
 							id="resourceUrl"
 							type="text"
 							value={values.resourceUrl}
-							placeholder="Url"
+							placeholder="Website Url"
 							onChange={handleChange}
 							onBlur={handleBlur}
 						/>
@@ -219,7 +223,7 @@ export const CreateResourceFormContent = (props) => {
 							id="resourceEmail"
 							type="text"
 							value={values.resourceEmail}
-							placeholder="Email"
+							placeholder="Contact Email"
 							onChange={handleChange}
 							onBlur={handleBlur}
 						/>

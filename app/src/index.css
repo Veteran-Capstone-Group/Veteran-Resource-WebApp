@@ -1,5 +1,5 @@
 .category-image {
-	height:9.3vh;
+	height:9.4vh;
 
 
 	background:rgba(191,10,48,1);
@@ -25,7 +25,7 @@
 	position: absolute;
 	bottom: 0;
 	width: 100vw;
-	height: 20vh;
+	height: 15vh;
 	background: white;
 }
 #header {

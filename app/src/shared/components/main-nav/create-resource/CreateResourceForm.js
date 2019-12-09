@@ -12,8 +12,13 @@ import {CreateResourceFormContent} from "../create-resource/CreateResourceFormCo
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
 
+
+
 //define create resource state variable to utilize in create resource form
 export const CreateResourceForm = () => {
+
+
+
 
 	const createResource = {
 		resourceCategoryId: "",
@@ -50,18 +55,25 @@ export const CreateResourceForm = () => {
 			.max(255, "URL can not be longer than 255 characters."),
 		resourceImageUrl: Yup.string()
 			.max(255, "URL can not be longer than 255 characters.")
-	})
+	});
+
+	const jwt = UseJwt();
+	const userId = UseJwtUserId();
+
 
 	const submitCreateResource = (values, {resetForm, setStatus}) => {
-		httpConfig.post("/apis/resource/", values)
+		const headers = {'X-JWT-Token': jwt};
+		const params = {id: resource.resourceId};
+		httpConfig.post("/apis/resource/", values, headers, params)
 			.then(reply => {
 				let {message, type} = reply;
-				setStatus({message, type});
-				//TODO maybe add stuff here
-				if(reply.status === 200 && reply.headers['x-jwt-token']) {
-					window.localStorage.removeItem('jwt-token');
-					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
-					resetForm();
+
+				if(reply.status === 200) {
+					window.locaction.reload();
+				}
+				//if theres an issue with xsrf or session
+				if(reply.status === 401) {
+					handleSessionTimeout();
 				}
 			})
 	};

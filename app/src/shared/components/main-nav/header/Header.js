@@ -35,6 +35,8 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 											 className={`mobile-fix text-dark`}>
 								<Col xs={10}>
 									<NavDropdown.Item
+										href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item
 										href={"/Category/"+clothingAndFood}>Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
 										href={"/Category/"+disability}>Disability</NavDropdown.Item><NavDropdown.Divider/>
@@ -70,6 +72,8 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Col xs={2} id="navDropdownButton">
 							<NavDropdown title={window.location.pathname === "/" ? "Home" : title} id="collapsible-nav-dropdown" className={`text-dark`}>
+								<NavDropdown.Item
+									href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
 									href={"/Category/"+clothingAndFood}>Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item

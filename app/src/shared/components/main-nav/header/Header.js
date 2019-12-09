@@ -37,21 +37,21 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 									<NavDropdown.Item
 										href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+clothingAndFood}>Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
+										href={"/Category/"+clothingAndFood} className="dropdownText">Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+disability}>Disability</NavDropdown.Item><NavDropdown.Divider/>
+										href={"/Category/"+disability} className="dropdownText">Disability</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+education}>Education</NavDropdown.Item><NavDropdown.Divider/>
+										href={"/Category/"+education} className="dropdownText">Education</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+employment}>Employment</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item href={"/Category/"+mentalHealth}>Mental
+										href={"/Category/"+employment} className="dropdownText">Employment</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+mentalHealth} className="dropdownText">Mental
 										Health</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+healthcare}>Healthcare</NavDropdown.Item><NavDropdown.Divider/>
+										href={"/Category/"+healthcare} className="dropdownText">Healthcare</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item
-										href={"/Category/"+housing}>Housing</NavDropdown.Item><NavDropdown.Divider/>
+										href={"/Category/"+housing} className="dropdownText">Housing</NavDropdown.Item><NavDropdown.Divider/>
 									<NavDropdown.Item id={`bottomMenuItem`}
-															href={"/Category/"+miscellaneous}>Miscellaneous</NavDropdown.Item>
+															href={"/Category/"+miscellaneous} className="dropdownText">Miscellaneous</NavDropdown.Item>
 								</Col>
 								<Col xs={2}>
 									<span></span>
@@ -75,21 +75,21 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 								<NavDropdown.Item
 									href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+clothingAndFood}>Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
+									href={"/Category/"+clothingAndFood} className="dropdownText">Clothing/Food</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+disability}>Disability</NavDropdown.Item><NavDropdown.Divider/>
+									href={"/Category/"+disability} className="dropdownText">Disability</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+education}>Education</NavDropdown.Item><NavDropdown.Divider/>
+									href={"/Category/"+education} className="dropdownText">Education</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+employment}>Employment</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item href={"/Category/"+mentalHealth}>Mental
+									href={"/Category/"+employment} className="dropdownText">Employment</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+mentalHealth} className="dropdownText">Mental
 									Health</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+healthcare}>Healthcare</NavDropdown.Item><NavDropdown.Divider/>
+									href={"/Category/"+healthcare} className="dropdownText">Healthcare</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item
-									href={"/Category/"+housing}>Housing</NavDropdown.Item><NavDropdown.Divider/>
+									href={"/Category/"+housing} className="dropdownText">Housing</NavDropdown.Item><NavDropdown.Divider/>
 								<NavDropdown.Item id={`bottomMenuItem`}
-														href={"/Category/"+miscellaneous}>Miscellaneous</NavDropdown.Item>
+														href={"/Category/"+miscellaneous} className="dropdownText">Miscellaneous</NavDropdown.Item>
 							</NavDropdown>
 						</Col>
 						<Col xs={8}>

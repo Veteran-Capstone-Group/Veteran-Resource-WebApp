@@ -1,20 +1,25 @@
 .category-image {
-	width: -webkit-fill-available;
-	max-height: -webkit-fill-available;
+	height:9.3vh;
+
+
+	background:rgba(191,10,48,1);
 }
 .categoryButton {
-	height: 8vh;
+	height: 9.8vh;
 	border-radius: 3%;
 	border: solid 2px black;
 	background-color: #FFFFFF;
 	margin: 0 0 1rem 0;
+}
+#collapsible-nav-dropdown{
+	font-size: x-large !important;
 }
 #resourceTray{
 	padding-top: 5rem;
 }
 #categoryTray {
 	padding-bottom: 20vh;
-	padding-top: 5rem;
+	padding-top: 1rem;
 }
 #footer {
 	position: absolute;
@@ -42,7 +47,7 @@ body {
 	color: white;
 	text-align: center;
 	font-size: 1.3rem;
-	background: rgba(0, 0, 255, .8);
+	background: rgba(0, 40, 104, .8);
 }
 
 #DesktopHeader {

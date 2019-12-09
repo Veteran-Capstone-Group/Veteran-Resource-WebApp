@@ -63,6 +63,7 @@ export const CreateResourceForm = () => {
 				let {message, type} = reply;
 				setStatus({message, type});
 
+
 				if(reply.status === 200) {
 					resetForm();
 					setStatus({message, type});

@@ -5,15 +5,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {SignInModal} from "../sign-in/SignInModal";
-import {UseJwt} from "../../../utils/JwtHelpers";
+import {UseJwt, UseJwtUserId} from "../../../utils/JwtHelpers";
 import {CreateResourceModal} from "../create-resource/CreateResourceModal";
 
+console.log(window.localStorage.getItem("x-jwt-token"));
 export const Footer = () => {
 
 	return (
 		<>
 			<Container fluid="true" id="footer">
-				{UseJwt === null ? (
+				{window.localStorage.getItem("jwt-token")!== null ? (
 					<Row className="justify-content-center">
 						<CreateResourceModal/>
 					</Row>) : (

@@ -68,6 +68,7 @@ export const CreateResourceForm = () => {
 			.then(reply => {
 				let {message, type} = reply;
 
+
 				if(reply.status === 200) {
 					window.locaction.reload();
 				}

@@ -31,7 +31,6 @@
 #header {
 	width: 100vw;
 	height:5rem;
-
 }
 body {
 	background-image: url("shared/img/flag-background.jpg");
@@ -53,6 +52,7 @@ body {
 #DesktopHeader {
 	font-weight: bold;
 	font-size: 2.5rem;
+
 }
 
 /*margin fix for last menu item*/

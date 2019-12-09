@@ -58,7 +58,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 								</Col>
 							</NavDropdown>
 						</Col>
-						<a href="/"><img src={logo} className={'img-fluid d-inline'} id={"logoimage"}
+						<a href="/"><img src={logo} className={'img-fluid d-inline pr-2'} id={"logoimage"}
 											  alt={"ABQ Veterans Logo"}/></a>
 					</Navbar.Collapse>
 				</Navbar>

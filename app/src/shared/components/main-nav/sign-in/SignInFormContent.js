@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../../utils/FormDebugger";
-import React from "react";
+import React, {useState} from "react";
 
 /**
  * @param props properties of inputs
@@ -13,10 +13,13 @@ export const SignInFormContent = (props) => {
 		status,
 		values,
 		dirty,
+		touched,
+		errors,
 		isSubmitting,
 		handleReset,
 		handleChange,
 		handleBlur,
+		handleClose,
 		handleSubmit
 	} = props;
 
@@ -42,6 +45,13 @@ export const SignInFormContent = (props) => {
 							onBlur={handleBlur}
 						/>
 					</div>
+					{
+						errors.userUsername && touched.userUsername &&(
+							<div className="alert alert-danger">
+								{errors.userUsername}
+							</div>
+						)
+					}
 				</div>
 
 					{/*Password Field*/}
@@ -64,11 +74,18 @@ export const SignInFormContent = (props) => {
 									onBlur={handleBlur}
 								/>
 							</div>
+							{
+								errors.userPassword && touched.userPassword &&(
+									<div className="alert alert-danger">
+										{errors.userPassword}
+									</div>
+								)
+							}
 						</div>
 					</div>
 
 				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit">Submit</button>
+					<button className="btn btn-primary mb-2" type="submit" onClick={handleClose}>Submit</button>
 
 					<button
 						className="btn btn-primary mb-2"

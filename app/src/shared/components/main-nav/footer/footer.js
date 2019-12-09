@@ -5,10 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {SignUpModal} from "../sign-up/SignUpModal";
 import {SignInModal} from "../sign-in/SignInModal";
-<<<<<<< HEAD
-=======
 import {UseJwt} from "../../../utils/JwtHelpers";
->>>>>>> integration
 import {CreateResourceModal} from "../create-resource/CreateResourceModal";
 
 export const Footer = () => {

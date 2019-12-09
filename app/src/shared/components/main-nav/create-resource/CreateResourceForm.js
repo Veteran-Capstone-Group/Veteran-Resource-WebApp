@@ -18,8 +18,6 @@ import {CreateResourceFormContent} from "../create-resource/CreateResourceFormCo
 export const CreateResourceForm = () => {
 
 
-
-
 	const createResource = {
 		resourceCategoryId: "",
 		resourceTitle: "",
@@ -57,25 +55,28 @@ export const CreateResourceForm = () => {
 			.max(255, "URL can not be longer than 255 characters.")
 	});
 
-	const jwt = UseJwt();
-	const userId = UseJwtUserId();
-
-
 	const submitCreateResource = (values, {resetForm, setStatus}) => {
-		const headers = {'X-JWT-Token': jwt};
-		const params = {id: resource.resourceId};
-		httpConfig.post("/apis/resource/", values, headers, params)
+		const headers = {'X-JWT-Token': window.localStorage.getItem("jwt-token")};
+
+		httpConfig.post("/apis/resource/", values, {headers: headers})
 			.then(reply => {
 				let {message, type} = reply;
+				setStatus({message, type});
 
 				if(reply.status === 200) {
-					window.locaction.reload();
+					resetForm();
+					setStatus({message, type});
+
+					/*TODO: find a better way to re-render the post component!*/
+					setTimeout(() => {
+						window.location.reload();
+					}, 1500);
 				}
-				//if theres an issue with xsrf or session
+				// if there's an issue with a $_SESSION mismatch with xsrf or jwt, alert user and do a sign out
 				if(reply.status === 401) {
 					handleSessionTimeout();
 				}
-			})
+			});
 	};
 
 	return (
@@ -83,10 +84,6 @@ export const CreateResourceForm = () => {
 			{CreateResourceFormContent}
 		</Formik>
 	)
-
-
-
-
 
 
 };

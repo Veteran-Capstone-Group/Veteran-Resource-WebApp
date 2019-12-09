@@ -35,11 +35,13 @@ export const SignInForm = () => {
 		httpConfig.post("/apis/sign-in/", values)
 			.then(reply => {
 				let {message, type} = reply;
-				setStatus({message, type});
 				if(reply.status === 200 && reply.headers['x-jwt-token']) {
 					window.localStorage.removeItem('jwt-token');
 					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
 					resetForm();
+					setTimeout(() => {
+						window.location = "/";
+					}, 750);
 				} setStatus({message, type})
 			})
 	};

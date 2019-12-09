@@ -42,12 +42,14 @@ export const	ResourceCard = ({resource}) =>{
 			// <!--desktop view-->
 			<Container className="d-block">
 				<Row className="border border-primary rounded bg-light my-4 py-2 px-2">
-					<Col xs={3} className="d-inline">
-						<img src={resourceImageUrl} className="img-fluid" alt="Employment Icon"/>
-					</Col>
-					<Col xs={9} className="col-9 d-inline">
-						<Row className="border-bottom border-primary py-0 align-items-end">
-							<h3 className="font-weight-bold col-8 align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
+					{resourceImageUrl === "" ? ("") : (
+						<Col xs={3} className="d-inline">
+							<img src={resourceImageUrl} className="img-fluid" alt="Employment Icon"/>
+						</Col>
+					)}
+					<Col className="d-inline">
+						<Row className="border-bottom border-primary py-0 d-flex align-content-between">
+							<h3 className="font-weight-bold col align-bottom pb-0 mb-0 pt-2 d-block text-truncate">
 								<a href={resourceUrl}>{resourceTitle}</a>
 							</h3>
 							<Usefuls resourceId={id}/>

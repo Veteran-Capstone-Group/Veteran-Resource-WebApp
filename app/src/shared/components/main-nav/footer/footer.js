@@ -8,7 +8,6 @@ import {SignInModal} from "../sign-in/SignInModal";
 import {UseJwt, UseJwtUserId} from "../../../utils/JwtHelpers";
 import {CreateResourceModal} from "../create-resource/CreateResourceModal";
 
-console.log(window.localStorage.getItem("x-jwt-token"));
 export const Footer = () => {
 
 	return (

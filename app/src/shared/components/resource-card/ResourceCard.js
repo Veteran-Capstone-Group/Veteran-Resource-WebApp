@@ -25,7 +25,6 @@ export const	ResourceCard = ({resource}) =>{
 	const userId = UseJwtUserId;
 
 	//assign values for variables of resource
-	console.log(resource);
 	const {id, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
 
 	//define side effects that will occur in application. Dispatch takes actions as arguments to make changes to Store/Redux

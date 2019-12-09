@@ -10,14 +10,14 @@ export const Footer = () => {
 
 	return(
 		<>
-			<Container>
+			<Container fluid="true" id="footer">
 			<Row className="justify-content-center">
 					<SignUpModal/>
 					<SignInModal/>
 			</Row>
 			<Row>
 				<p className="col-12 text-center small">
-					<a href="https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp" className="text-white" target="_blank" rel="noopener noreferrer">Learn More on <u>Github</u>.</a>
+					<a href="https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp" className="text-primary" target="_blank" rel="noopener noreferrer">Learn More on <u>Github</u>.</a>
 				</p>
 			</Row>
 			</Container>

@@ -49,7 +49,7 @@ export const Home = () => {
 	return (
 		<>
 			{/*<ResourceCard resource={"02357c37-4310-4ebd-a124-69bf314339d9"}/>*/}
-			<div className={`categoryTray`}>
+			<div className={`categoryTray`} id="categoryTray">
 				<Container className={`d-flex justify-content-around`}>
 					<Container>
 						<Row justify-content-center>
@@ -139,6 +139,7 @@ export const Home = () => {
 					</Container>
 				</Container>
 			</div>
+			<Footer/>
 		</>
 	)
 };

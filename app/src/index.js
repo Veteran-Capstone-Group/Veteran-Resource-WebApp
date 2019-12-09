@@ -31,7 +31,7 @@ const Routing = () => (
 					<Route exact path="/Category/:resourceCategoryId" component={ResourcesInCategory} resourceCategoryId=":resourceCategoryId"/>
 					<Route component={FourOhFour}/>
 				</Switch>
-				<Footer/>
+				{/*<Footer/>*/}
 			</BrowserRouter>
 		</Provider>
 	</>

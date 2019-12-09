@@ -9,8 +9,32 @@
 	background-color: #FFFFFF;
 	margin: 0 0 1rem 0;
 }
+#resourceTray{
+	padding-top: 5rem;
+}
+#categoryTray {
+	padding-bottom: 20vh;
+	padding-top: 5rem;
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	height: 20vh;
+	background: white;
+}
+#header {
+	width: 100vw;
+	height:5rem;
+
+}
 body {
-	background-color: #BF0A30;
+	background-image: url("shared/img/flag-background.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	position: relative;
+	min-height: 100vh;
 }
 
 .categoryTitle {
@@ -18,6 +42,7 @@ body {
 	color: white;
 	text-align: center;
 	font-size: 1.3rem;
+	background: rgba(0, 0, 255, .8);
 }
 
 #DesktopHeader {

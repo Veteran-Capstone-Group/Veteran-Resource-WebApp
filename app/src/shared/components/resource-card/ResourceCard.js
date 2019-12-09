@@ -40,7 +40,7 @@ export const	ResourceCard = ({resource}) =>{
 		<>
 			{width > 991 ? (
 			// <!--desktop view-->
-			<Container className="d-block">
+			<Container className="d-block" id="resourceTray">
 				<Row className="border border-primary rounded bg-light my-4 py-2 px-2">
 					{resourceImageUrl === "" ? ("") : (
 						<Col xs={3} className="d-inline">
@@ -76,7 +76,7 @@ export const	ResourceCard = ({resource}) =>{
 			</Container>
 				):( resourceImageUrl === "" ?(
 			// <!-- Mobile view without image-->
-			<div className="container d-lg-none h-25">
+			<div className="container d-lg-none h-25" id="resourceTray">
 				<div className="border border-primary rounded my-4 py-2 px-2 mh-100 bg-light">
 					<div className="row">
 						<div className="col d-inline">
@@ -102,7 +102,7 @@ export const	ResourceCard = ({resource}) =>{
 			</div>
 				):(
 			// <!--mobile view w/ thumbnail image-->
-			<div className="container d-lg-none h-25">
+			<div className="container d-lg-none h-25" id="resourceTray">
 				<div className="border border-primary rounded my-4 py-2 px-2 mh-100 bg-light">
 					<div>
 						<div className="row">

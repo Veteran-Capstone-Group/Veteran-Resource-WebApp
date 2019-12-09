@@ -58,11 +58,11 @@ export const CreateResourceForm = () => {
 				let {message, type} = reply;
 				setStatus({message, type});
 				//TODO maybe add stuff here
-				if(reply.status === 200 && reply.headers['x-jwt-token']) {
-					window.localStorage.removeItem('jwt-token');
-					window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
-					resetForm();
-				}
+				// if(reply.status === 200 && reply.headers['x-jwt-token']) {
+				// 	window.localStorage.removeItem('jwt-token');
+				// 	window.localStorage.setItem("jwt-token", reply.headers['x-jwt-token']);
+				// 	resetForm();
+				// }
 			})
 	};
 

@@ -37,6 +37,14 @@ export const Home = () => {
 
 	useEffect(effects,inputs);
 	*/
+	const clothingAndFood = "501c7665-a4b1-47ab-a157-13d198f67d97";
+	const disability = "b20fe0cd-43e4-4878-9d29-a4ecb57678a3";
+	const education = "b2b19ae1-7c88-4f5d-baa2-b2ebf964cd2a";
+	const employment= "faef9afc-61e2-4238-a634-b15164ebdbae";
+	const mentalHealth = "0535ca67-9c12-4cc9-9450-e2faa89b91db";
+	const healthcare = "34b09b0c-08a9-46a5-829b-0e5b7f385f5a";
+	const housing = "8167caec-0d53-47c7-8a86-9b226a325eae";
+	const miscellaneous = "a48077fe-3955-460d-9bb8-e04e48aad125";
 
 	return (
 		<>
@@ -49,7 +57,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Food/Clothing</h2>
 									<div className={`categoryButton`}>
-											<a id={`clothing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+											<a id={`clothing-link`} className={`d-flex justify-content-center`} href={'/Category/'+clothingAndFood}>
 												<img className={`category-image`} src={clothingImage} alt={'clothing'} />
 											</a>
 									</div>
@@ -59,7 +67,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Disability</h2>
 									<div className={`categoryButton`}>
-										<a id={`disability-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`disability-link`} className={`d-flex justify-content-center`} href={'/Category/'+disability}>
 											<img className={`category-image`} src={disabilityImage} alt={'disability'} />
 										</a>
 									</div>
@@ -69,7 +77,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Education</h2>
 									<div className={`categoryButton`}>
-										<a id={`education-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`education-link`} className={`d-flex justify-content-center`} href={'/Category/'+education}>
 											<img className={`category-image`} src={educationImage} alt={'education'} />
 										</a>
 									</div>
@@ -79,7 +87,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Employment</h2>
 									<div className={`categoryButton`}>
-										<a id={`employment-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`employment-link`} className={`d-flex justify-content-center`} href={'/Category/'+employment}>
 											<img className={`category-image`} src={employmentImage} alt={'employment'} />
 										</a>
 									</div>
@@ -91,7 +99,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Mental Health</h2>
 									<div className={`categoryButton`}>
-										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'/Category/'+mentalHealth}>
 											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
 										</a>
 									</div>
@@ -101,7 +109,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Healthcare</h2>
 									<div className={`categoryButton`}>
-										<a id={`healthcare-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`healthcare-link`} className={`d-flex justify-content-center`} href={'/Category/'+healthcare}>
 											<img className={`category-image`} src={healthcareImage} alt={'healthcare'} />
 										</a>
 									</div>
@@ -111,7 +119,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Housing</h2>
 									<div className={`categoryButton`}>
-										<a id={`housing-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`housing-link`} className={`d-flex justify-content-center`} href={'/Category/'+housing}>
 											<img className={`category-image`} src={housingImage} alt={'housing'} />
 										</a>
 									</div>
@@ -121,7 +129,7 @@ export const Home = () => {
 								<div className={`d-flex flex-column justify-content-center`}>
 									<h2 className={`categoryTitle`}>Miscellaneous</h2>
 									<div className={`categoryButton`}>
-										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'test.com'}>
+										<a id={`mentalhealth-link`} className={`d-flex justify-content-center`} href={'/Category/'+miscellaneous}>
 											<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'} />
 										</a>
 									</div>

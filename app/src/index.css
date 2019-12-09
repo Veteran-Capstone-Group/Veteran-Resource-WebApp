@@ -1,7 +1,5 @@
 .category-image {
 	height:9.4vh;
-
-
 	background:rgba(191,10,48,1);
 }
 .categoryButton {
@@ -9,6 +7,7 @@
 	border-radius: 3%;
 	border: solid 2px black;
 	background-color: #FFFFFF;
+	overflow: hidden;
 	margin: 0 0 1rem 0;
 }
 #collapsible-nav-dropdown{
@@ -30,8 +29,6 @@
 }
 #header {
 	width: 100vw;
-	height:5rem;
-
 }
 body {
 	background-image: url("shared/img/flag-background.jpg");
@@ -43,16 +40,17 @@ body {
 }
 
 .categoryTitle {
-	margin-bottom: 0.2rem;
+	margin-bottom: 0;
 	color: white;
 	text-align: center;
 	font-size: 1.3rem;
-	background: rgba(0, 40, 104, .8);
+	background: rgba(0, 40, 104, 1);
 }
 
 #DesktopHeader {
 	font-weight: bold;
 	font-size: 2.5rem;
+
 }
 
 /*margin fix for last menu item*/

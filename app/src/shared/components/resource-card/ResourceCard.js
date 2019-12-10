@@ -22,7 +22,7 @@ export const	ResourceCard = ({resource}) =>{
 
 	//grab JWT Token for logged in users
 	// const jwt = UseJwt();
-	const userId = "ca38847b-1449-41b7-b794-6232ffcccc74";
+	const userId = UseJwtUserId;
 
 	//assign values for variables of resource
 	const {resourceId, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;

@@ -1,9 +1,9 @@
 .category-image {
-	height:9.4vh;
+	height:8.4vh;
 	background:rgba(191,10,48,1);
 }
 .categoryButton {
-	height: 9.8vh;
+	height: 8.8vh;
 	border-radius: 3%;
 	border: solid 2px black;
 	background-color: #FFFFFF;
@@ -14,29 +14,31 @@
 	font-size: x-large !important;
 }
 #resourceTray{
-	padding-top: 5rem;
+	padding-top: 0;
 }
 #categoryTray {
-	padding-bottom: 20vh;
 	padding-top: 1rem;
 }
 #footer {
 	position: absolute;
 	bottom: 0;
 	width: 100vw;
-	height: 15vh;
 	background: white;
 }
 #header {
 	width: 100vw;
 }
-body {
+#mainContent {
 	background-image: url("shared/img/flag-background.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
+	padding-top: 0.25rem;
 	position: relative;
-	min-height: 100vh;
+	min-height: 72vh;
+}
+#slider {
+	height:30vh;
 }
 
 .categoryTitle {
@@ -101,3 +103,7 @@ body {
 	width: auto;
 }
 
+#mobileSlider > .container > .border-primary {
+	padding-top: 0;
+	margin-top: 0;
+}

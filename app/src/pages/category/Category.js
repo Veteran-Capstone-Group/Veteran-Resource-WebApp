@@ -1,24 +1,21 @@
 import React, {useEffect} from "react";
-import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 
 import {ResourceCard} from "../../shared/components/resource-card/ResourceCard";
-import {UseWindowWidth} from "../../shared/utils/UseWindowWidth";
-import {UseJwt, UseJwtUserId} from "../../shared/utils/JwtHelpers";
 import {getResourceByResourceCategory} from "../../shared/actions/get-resource";
 
 import Container from "react-bootstrap/Container";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {getUsefulsAndResources} from "../../shared/actions/get-useful";
 
 
+
 export const ResourcesInCategory = ({match}) => {
 
-	const resources = useSelector(state => {
-		console.log(state);
-		return state.resource ? state.resource : []
-	});
+	const resources = useSelector(state => (state.resource ? state.resource : []));
+
 
 	//assigns useDispatch to dispatch variable
 	const dispatch = useDispatch();
@@ -31,6 +28,7 @@ export const ResourcesInCategory = ({match}) => {
 
 
 	//pass side effects with inputs to useEffect
+
 	useEffect(() => {
 		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));
 	}, [match.params.resourceCategoryId]);
@@ -38,18 +36,16 @@ export const ResourcesInCategory = ({match}) => {
 
 	return (
 		<>
+		<div>
 			<Container fluid="true">
 					{resources.map((resourceItem) => {
 						return <ResourceCard resource={resourceItem} key={resourceItem.resourceId} />;
-
 					}
 					)}
-			</Container>
-
-
+				</Container>
+			</div>
 		</>
 	)
-
 
 
 };

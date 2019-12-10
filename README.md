@@ -1,6 +1,6 @@
 #ABQ Veterans
 
-This repository is for the construction of a Veteran's Resource application for the local Albuquerque area, it shall included information on social services and employment to help ease veterans into civilian life and combat homelessness, drug addiction, and suicide rates among the Veteran population of the local Albuquerque area.
+This repository is for the construction of a Veteran's Resource application for the local Albuquerque area(and a toolkit to allow others to quickly deploy similar webapps for their local area), it shall included information on social services and employment to help ease veterans into civilian life and combat homelessness, drug addiction, and suicide rates among the Veteran population of the local Albuquerque area.
 
 Authors: Timothy Beck & John Johnson-Rodgers  
 [Visit our Live App](abqveterans.com)  
@@ -118,7 +118,21 @@ Languages:
 ---
 ##About Us
 
-//TODO add about us section
+Timothy Beck and John Johnson-Rodgers at the time of writing this are students at CNM Ingenuity's Deep Dive Coding bootcamp intensively studying Web Development. As developers we are creating this application as practice to improve our proficiency with a number of languages and frameworks to make ourselves more desirable developers in the programming industry. As members of this community, we are developing this resourceful application to make life easier for others and to improve the local community we are a part of and love.
+
+###Timothy Beck
+Email: Dev@TimothyBeck.com  
+Website: https://www.timothybeck.com  
+LinkedIn: https://www.linkedin.com/in/timothymbeck/  
+
+###John Johnson-Rodgers
+Email: John@JohnThe.dev  
+Website: https://www.JohnThe.dev  
+LinkedIn: https://www.linkedin.com/in/johnthe-dev/  
+
+//TODO: add picture of us together
+
+
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

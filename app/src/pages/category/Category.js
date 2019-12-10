@@ -1,25 +1,14 @@
 import React, {useEffect} from "react";
-import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 
 import {ResourceCard} from "../../shared/components/resource-card/ResourceCard";
-import {UseWindowWidth} from "../../shared/utils/UseWindowWidth";
-import {UseJwt, UseJwtUserId} from "../../shared/utils/JwtHelpers";
 import {getResourceByResourceCategory} from "../../shared/actions/get-resource";
 
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 
 export const ResourcesInCategory = ({match}) => {
-	/*
-* const width holds the value of the screen width on the resize event.
-* See: UseWindowWidth
-* */
-	const width = UseWindowWidth();
 
-	// grab jwt for logged in users
-	const jwt = UseJwt();
 	const resources = useSelector(state => (state.resource ? state.resource : []));
 
 	//assigns useDispatch to dispatch variable
@@ -38,23 +27,22 @@ export const ResourcesInCategory = ({match}) => {
 	//pass side effects with inputs to useEffect
 	useEffect(effects, inputs);
 	const resourceArray = [];
-	for (let i = 0; i<Object.keys(resources).length; i++) {
+	for(let i = 0; i < Object.keys(resources).length; i++) {
 		resourceArray.push(resources[i]);
 	}
 
 	return (
 		<>
-			<Container fluid="true">
+			<div id="mainContent">
+				<Container fluid="true">
 					{resourceArray.map((resourceItem) => {
-						return <ResourceCard resource={resourceItem} key={resourceItem}/>;
-					}
+							return <ResourceCard resource={resourceItem} key={resourceItem}/>;
+						}
 					)}
-			</Container>
-
-
+				</Container>
+			</div>
 		</>
 	)
-
 
 
 };

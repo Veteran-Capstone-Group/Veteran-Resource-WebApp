@@ -73,7 +73,24 @@ export const	ResourceCard = ({resource}) =>{
 					</Col>
 				</Row>
 			</Container>
-				):( resourceImageUrl === "" ?(
+			):( window.location.pathname === "/" ?(
+				<div className="container d-none" id="resourceTray">
+					<div className="border border-primary rounded my-4 py-0 px-2 mh-100 bg-light">
+						<div className="row">
+							<div className="col d-inline">
+								<div className="row border-bottom border-primary mx-1 py-0 pr-1">
+									<p className="font-weight-bold col align-bottom mb-0 p-0 mx-1 d-block text-truncate text-left">
+										<a href={resourceUrl}>{resourceTitle}</a></p>
+									<Usefuls resourceId={resourceId} userId={userId()}/>
+								</div>
+								<div className="row pt-1 mx-1 small">
+									<p>{resourceDescription}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			):( resourceImageUrl === "" ?(
 			// <!-- Mobile view without image-->
 			<div className="container d-lg-none h-25" id="resourceTray">
 				<div className="border border-primary rounded my-4 py-2 px-2 mh-100 bg-light">
@@ -138,7 +155,7 @@ export const	ResourceCard = ({resource}) =>{
 					</div>
 				</div>
 			</div>
-				))}
+				)))}
 		</>
 	)
 

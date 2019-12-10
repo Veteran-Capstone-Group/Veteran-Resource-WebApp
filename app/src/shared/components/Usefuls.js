@@ -28,7 +28,6 @@ export const Useful = ({userId, resourceId}) => {
 	const dispatch = useDispatch();
 
 	const effects = () => {
-		dispatch(getUsefulByUsefulResourceId(resourceId));
 		initializeUsefuls(userId);
 		countUsefuls(resourceId);
 	};

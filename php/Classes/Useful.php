@@ -143,7 +143,7 @@ class Useful implements \JsonSerializable {
 	 * @return string
 	 * @throws \PDOException when mysql related errors occur
 	 */
-	public static function getCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): String {
+	public static function getCountByUsefulResourceId(\PDO $pdo, $usefulResourceId): Array {
 		//Validate usefulResourceId
 		try {
 			$usefulResourceId = self::validateUuid($usefulResourceId);
@@ -167,7 +167,8 @@ class Useful implements \JsonSerializable {
 			//if row can't be converted rethrow it
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($count);
+		$countObj["count"] = $count;
+		return($countObj);
 	}
 
 	/**

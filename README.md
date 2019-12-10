@@ -19,9 +19,8 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * [Links to resources for further development](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Resources-for-Further-Development)
 * [About Us](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#About-Us)
 ---
-
-//TODO add logo  
-![ABQ Veterans Logo]()
+ 
+![ABQ Veterans Logo](https://raw.githubusercontent.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/integration/app/src/shared/img/flagofcodewithlogo.png)
 
 ---
 ##Application Description

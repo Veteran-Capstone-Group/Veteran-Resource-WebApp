@@ -8,16 +8,16 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ---
 ###Table of Contents
 
-* [Application Description]()
-* [Feature List]()
-* [Upcoming Features and Changes]()
-* [Demo]()
-* [Code Coverage and Code Examples]()
-* [API Documentation]()
-* [Datasets Documentation]()
-* [Cloning and Deployment Instructions]()
-* [Links to resources for further development]()
-* [About Us]()
+* [Application Description](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Application-Description)
+* [Feature List](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Feature-List)
+* [Upcoming Features and Changes](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Upcoming-Features-and-Changes)
+* [Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Demo)
+* [Code Coverage and Code Examples](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Code-Coverage-and-Code-Excerpts)
+* [API Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Doc)
+* [Datasets Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Free-Open-Dataset-Documentation)
+* [Cloning and Deployment Instructions](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Cloning-and-Deploying-Instructions)
+* [Links to resources for further development](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Resources-for-Further-Development)
+* [About Us](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#About-Us)
 ---
 
 //TODO add logo  
@@ -80,6 +80,13 @@ At a future release interation we will be making our dataset public for download
 ##Cloning and Deploying Instructions
 
 //TODO create instructions and supporting documents for cloning our repo, application, and starting this project for another region.
+
+[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+
+---
+##Resources for Further Development
+
+//TODO Add documentation for tools, libraries, and frameworks for anyone planning to develop this application
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

@@ -1,4 +1,4 @@
-#ABQ Veterans
+# ABQ Veterans
 
 This repository is for the construction of a Veteran's Resource application for the local Albuquerque area(and a toolkit to allow others to quickly deploy similar webapps for their local area), it shall included information on social services and employment to help ease veterans into civilian life and combat homelessness, drug addiction, and suicide rates among the Veteran population of the local Albuquerque area.
 
@@ -6,7 +6,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [Visit our Live App](abqveterans.com)  
 
 ---
-###Table of Contents
+### Table of Contents
 
 * [Application Description](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Application-Description)
 * [Feature List](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Feature-List)
@@ -23,14 +23,14 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ![ABQ Veterans Logo](https://raw.githubusercontent.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/integration/app/src/shared/img/flagofcodewithlogo.png)
 
 ---
-##Application Description
+## Application Description
 
 //TODO add application description
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Feature List
+## Feature List
 
 * Find local social resources by predesignated categories
 * Useful (similarly to 'Like') resources to rank them by most useful
@@ -41,7 +41,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Upcoming Features and Changes
+## Upcoming Features and Changes
 
 * Change Icons for categories to cleaner more professional icons
 * Dynamically export our resource dataset, on a scheduled basis, as JSON and CSV file formats and provide them as free open data
@@ -54,21 +54,21 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Demo
+## Demo
 
 //TODO add Demo
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Code-Coverage and Code Excerpts
+## Code-Coverage and Code Excerpts
 
 //TODO add code coverage and examples of some fun and interesting code we wrote
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##API Doc
+## API Doc
 
  [Click here to view our API Documentation]()
  
@@ -78,22 +78,21 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-
-##Free Open Dataset Documentation
+## Free Open Dataset Documentation
 
 At a future release interation we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Cloning and Deploying Instructions
+## Cloning and Deploying Instructions
 
 //TODO create instructions and supporting documents for cloning our repo, application, and starting this project for another region.
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##Resources for Further Development
+## Resources for Further Development
 
 Tools, Libraries, and Frameworks:
 * [npm](https://docs.npmjs.com/)
@@ -116,16 +115,16 @@ Languages:
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-##About Us
+## About Us
 
 Timothy Beck and John Johnson-Rodgers at the time of writing this are students at CNM Ingenuity's Deep Dive Coding bootcamp intensively studying Web Development. As developers we are creating this application as practice to improve our proficiency with a number of languages and frameworks to make ourselves more desirable developers in the programming industry. As members of this community, we are developing this resourceful application to make life easier for others and to improve the local community we are a part of and love.
 
-###Timothy Beck
+### Timothy Beck
 Email: Dev@TimothyBeck.com  
 Website: https://www.timothybeck.com  
 LinkedIn: https://www.linkedin.com/in/timothymbeck/  
 
-###John Johnson-Rodgers
+### John Johnson-Rodgers
 Email: John@JohnThe.dev  
 Website: https://www.JohnThe.dev  
 LinkedIn: https://www.linkedin.com/in/johnthe-dev/  

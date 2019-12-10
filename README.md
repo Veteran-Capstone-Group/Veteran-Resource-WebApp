@@ -32,12 +32,24 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ---
 ##Feature List
 
-//TODO add Feature List
+* Find local social resources by predesignated categories
+* Useful (similarly to 'Like') resources to rank them by most useful
+* Sign up and log into your account
+* Submit resources to our database, to benifit the community and help individuals get their needs met
+
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ##Upcoming Features and Changes
+
+* Change Icons for categories to cleaner more professional icons
+* Dynamically export our resource dataset, on a scheduled basis, as JSON and CSV file formats and provide them as free open data
+* Secure our API and provide public documentation for others to access it
+* Create a carousel for homepage displaying most useful'd resources in a better UI/UX format
+* Add a moderator trait giving users the ability to be moderators that can change the approval status or resources
+* Add search capabilities to filter through our dataset as it grows
+* Add a user profile, logging and allowing users to quickly find resources they have useful'd or submitted
 
 //TODO add upcoming features and changes
 

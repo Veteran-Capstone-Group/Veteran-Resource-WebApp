@@ -51,8 +51,6 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * Add search capabilities to filter through our dataset as it grows
 * Add a user profile, logging and allowing users to quickly find resources they have useful'd or submitted
 
-//TODO add upcoming features and changes
-
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
@@ -97,7 +95,23 @@ At a future release interation we will be making our dataset public for download
 ---
 ##Resources for Further Development
 
-//TODO Add documentation for tools, libraries, and frameworks for anyone planning to develop this application
+Tools, Libraries, and Frameworks:
+* [npm](https://docs.npmjs.com/)
+* [React](https://reactjs.org/docs/getting-started.html)
+* [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+* [React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction) 
+* [Axios](https://www.npmjs.com/package/axios)
+* [Redux](https://redux.js.org/introduction/getting-started)
+* [React-Redux](https://react-redux.js.org/introduction/quick-start)
+* [Composer](https://getcomposer.org/doc/)
+* [PHPUnit](https://phpunit.readthedocs.io/en/8.5/)
+* [ramsey/uuid](https://github.com/ramsey/uuid)
+
+Languages:
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [PHP](https://www.php.net/docs.php)
+* [MySQL](https://dev.mysql.com/doc/)
+
 
 [(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

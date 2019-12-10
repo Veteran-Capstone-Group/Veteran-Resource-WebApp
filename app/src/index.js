@@ -21,14 +21,15 @@ import {faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal} from '@forta
 library.add(faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal);
 
 const store = createStore(reducers, applyMiddleware(thunk));
-const Routing = () => (
+const Routing = (store) => (
 	<>
 		<Provider store={store}>
 			<BrowserRouter>
 				<Header/>
 				<Switch>
-					<Route exact path="/" component={Home}/>
+
 					<Route exact path="/Category/:resourceCategoryId" component={ResourcesInCategory} resourceCategoryId=":resourceCategoryId"/>
+					<Route exact path="/" component={Home}/>
 					<Route component={FourOhFour}/>
 				</Switch>
 				{/*<Footer/>*/}

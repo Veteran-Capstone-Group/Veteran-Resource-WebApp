@@ -132,9 +132,9 @@ LinkedIn: https://www.linkedin.com/in/johnthe-dev/
 //TODO: add picture of us together
 
 
-<p align="center">
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
-</p>
+
+[<p align="center">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+
 
 
 

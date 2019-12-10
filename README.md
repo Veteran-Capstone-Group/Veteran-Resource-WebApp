@@ -27,7 +27,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 
 //TODO add application description
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Feature List
@@ -38,7 +38,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * Submit resources to our database, to benifit the community and help individuals get their needs met
 
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Upcoming Features and Changes
@@ -51,21 +51,21 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * Add search capabilities to filter through our dataset as it grows
 * Add a user profile, logging and allowing users to quickly find resources they have useful'd or submitted
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Demo
 
 //TODO add Demo
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Code-Coverage and Code Excerpts
 
 //TODO add code coverage and examples of some fun and interesting code we wrote
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## API Doc
@@ -75,21 +75,21 @@ Authors: Timothy Beck & John Johnson-Rodgers
 //TODO create API documentation
 
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Free Open Dataset Documentation
 
 At a future release interation we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Cloning and Deploying Instructions
 
 //TODO create instructions and supporting documents for cloning our repo, application, and starting this project for another region.
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## Resources for Further Development
@@ -112,7 +112,7 @@ Languages:
 * [MySQL](https://dev.mysql.com/doc/)
 
 
-[(Back to Top)](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 ## About Us
@@ -133,7 +133,7 @@ LinkedIn: https://www.linkedin.com/in/johnthe-dev/
 
 
 
-[<p align="center">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 
 

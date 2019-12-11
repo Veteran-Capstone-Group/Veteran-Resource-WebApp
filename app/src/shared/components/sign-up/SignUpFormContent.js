@@ -10,6 +10,7 @@ export const SignUpFormContent = (props) => {
 		dirty,
 		isSubmitting,
 		handleChange,
+		handleClose,
 		handleBlur,
 		handleSubmit,
 		handleReset
@@ -140,7 +141,7 @@ export const SignUpFormContent = (props) => {
 				</div>
 
 				<div className="form-group d-flex justify-content-center">
-					<button className="btn btn-primary mb-2 mx-4" type="submit">Submit</button>
+					<button className="btn btn-primary mb-2 mx-4" type="submit" onClick={handleClose}>Submit</button>
 
 					<button
 						className="btn btn-primary mb-2 mx-4"

@@ -1,19 +1,11 @@
-import React, {useEffect} from "react";
-import {httpConfig} from "../../utils/http-config";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import {UseJwt, UseJwtUserId} from "../../utils/JwtHelpers";
-import {useSelector, useDispatch} from "react-redux";
-import {handleSessionTimeout} from "../../utils/handle-session-timeout";
+import {UseJwtUserId} from "../../utils/JwtHelpers";
 import Usefuls from "../Usefuls";
 import {UseWindowWidth} from "../../utils/UseWindowWidth"
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {getResourceByResourceId} from "../../actions/get-resource";
-import Button from "react-bootstrap/Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getCountByUsefulResourceId} from "../../actions/get-useful";
-
 
 //export component
 export const	ResourceCard = ({resource}) =>{

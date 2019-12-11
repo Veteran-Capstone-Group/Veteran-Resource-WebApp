@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FormDebugger} from "../../../utils/FormDebugger";
-import React, {useState} from "react";
+import React from "react";
 
 /**
  * @param props properties of inputs

@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {CreateResourceFormConten} from "./CreateResourceFormContent";
+import React from 'react';
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";

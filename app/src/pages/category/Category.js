@@ -1,16 +1,8 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-
 import {ResourceCard} from "../../shared/components/resource-card/ResourceCard";
-import {getResourceByResourceCategory} from "../../shared/actions/get-resource";
-
 import Container from "react-bootstrap/Container";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {getUsefulsAndResources} from "../../shared/actions/get-useful";
-
-
 
 export const ResourcesInCategory = ({match}) => {
 
@@ -30,8 +22,7 @@ export const ResourcesInCategory = ({match}) => {
 	//pass side effects with inputs to useEffect
 
 	useEffect(() => {
-		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));
-	}, [match.params.resourceCategoryId]);
+		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, ); //[match.params.resourceCategoryId]
 	console.log(match.params);
 
 	return (

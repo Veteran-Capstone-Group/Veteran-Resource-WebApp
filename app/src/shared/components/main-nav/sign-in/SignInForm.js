@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {SignInFormContent} from "./SignInFormContent";
 import {httpConfig} from "../../../utils/http-config";
 import * as Yup from "yup";

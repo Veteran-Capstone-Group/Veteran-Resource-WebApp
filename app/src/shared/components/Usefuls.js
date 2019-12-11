@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {createSelector} from 'reselect';
+import {useSelector} from "react-redux";
 import {httpConfig} from "../utils/http-config";
 import {UseJwt, UseJwtUserId} from "../utils/JwtHelpers";
 import {handleSessionTimeout} from "../utils/handle-session-timeout";
 import _ from "lodash";
-import {getUsefulByUsefulResourceId} from "../actions/get-useful";
 
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
@@ -24,8 +22,6 @@ export const Useful = ({ resourceId}) => {
 	//get all usefuls from redux
 	const usefuls = useSelector(state => (state.useful ? state.useful : []));
 	console.log(usefuls);
-
-	const dispatch = useDispatch();
 
 	const effects = () => {
 		initializeUsefuls(userId, usefuls);
@@ -73,7 +69,6 @@ export const Useful = ({ resourceId}) => {
 			headers: headers
 		})
 			.then(reply => {
-				let {message, type} = reply;
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount + 1);
@@ -93,7 +88,6 @@ export const Useful = ({ resourceId}) => {
 			headers: headers
 		})
 			.then(reply => {
-				let {message, type} = reply;
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount > 0 ? usefulCount - 1 : 0);

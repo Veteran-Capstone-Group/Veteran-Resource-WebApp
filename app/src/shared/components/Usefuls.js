@@ -27,7 +27,7 @@ export const Useful = ({resourceId}) => {
 	const dispatch = useDispatch();
 
 	const effects = () => {
-		initializeUsefuls(userId, usefuls);
+		initializeUsefuls(userId, usefuls, resourceId);
 		countUsefuls(resourceId);
 	};
 
@@ -43,9 +43,10 @@ export const Useful = ({resourceId}) => {
 	 * already usefulled the post. "active" is a bootstrap class that will be added to the button.
 	 * See: Lodash at https://lodash.com
 	 */
-	const initializeUsefuls = (userId, usefuls) => {
-		const userUsefuls = _.find(usefuls, {'usefulUserId':userId});
-		return (_.isEmpty(userUsefuls) === false) && setIsUsefulled("active");
+	const initializeUsefuls = (userId, usefuls, resourceId) => {
+		const userUsefuls = _.filter(usefuls, {'usefulUserId':userId });
+		const resourceUsefuls = _.find(userUsefuls, {'usefulResourceId':resourceId});
+		return (_.isEmpty(resourceUsefuls) === false) && setIsUsefulled("active");
 	};
 	/**
 	 * this counts the usefuls for each resource
@@ -94,7 +95,6 @@ export const Useful = ({resourceId}) => {
 					toggleUseful();
 					setUsefulCount(usefulCount > 0 ? usefulCount - 1 : 0);
 				} else {
-					console.log("useful not deleted userId is "+ userId +" resourceId: " + resourceId);
 				}
 				// if there's an issue with a $_SESSION mismatch with xsrf or jwt, alert user and do a sign out
 				if(reply.status === 401) {

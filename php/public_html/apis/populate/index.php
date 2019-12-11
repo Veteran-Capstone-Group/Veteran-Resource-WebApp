@@ -71,7 +71,6 @@ try {
 		$requestObject = json_decode($requestContent[$i]);
 
 		//create new resource and insert it into the database
-		var_dump($CATEGORY_IDS[$requestObject->resourceCategory]);
 		$resource = new Resource(generateUuidV4(), $CATEGORY_IDS[$requestObject->resourceCategory], $user->getUserId(), $requestObject->resourceAddress, true, $requestObject->resourceDescription, $requestObject->resourceEmail, $requestObject->resourceImageUrl, $requestObject->resourceOrganization, $requestObject->resourcePhone, $requestObject->resourceTitle, $requestObject->resourceUrl);
 		$resource->insert($pdo);
 	}

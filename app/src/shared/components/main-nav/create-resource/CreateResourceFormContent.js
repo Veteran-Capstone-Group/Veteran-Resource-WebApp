@@ -33,7 +33,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="list"/>
 							</div>
 						</div>
 						<Form.Control
@@ -66,7 +66,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="heading"/>
 							</div>
 						</div>
 						<input
@@ -90,7 +90,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="suitcase"/>
 							</div>
 						</div>
 						<input
@@ -114,7 +114,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="laptop"/>
 							</div>
 						</div>
 						<input
@@ -140,7 +140,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="align-left"/>
 							</div>
 						</div>
 						<Form.Control
@@ -165,7 +165,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="image"/>
 							</div>
 						</div>
 						<input
@@ -189,7 +189,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="city"/>
 							</div>
 						</div>
 						<input
@@ -214,7 +214,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="envelope"/>
 							</div>
 						</div>
 						<input
@@ -238,7 +238,7 @@ export const CreateResourceFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="phone"/>
 							</div>
 						</div>
 						<input
@@ -257,11 +257,11 @@ export const CreateResourceFormContent = (props) => {
 				</div>
 
 				{/*submit/reset form buttons*/}
-				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit">Submit</button>
+				<div className="form-group d-flex justify-content-center">
+					<button className="btn btn-primary mb-2 mx-4" type="submit">Submit</button>
 
 					<button
-						className="btn btn-primary mb-2"
+						className="btn btn-primary mb-2 mx-4"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 					>Reset

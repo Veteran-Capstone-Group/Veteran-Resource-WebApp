@@ -31,7 +31,7 @@ export const SignInFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="user"/>
 							</div>
 						</div>
 						<input
@@ -83,11 +83,11 @@ export const SignInFormContent = (props) => {
 						</div>
 					</div>
 
-				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit" onClick={handleClose}>Submit</button>
+				<div className="form-group d-flex justify-content-center">
+					<button className="btn btn-primary mb-2 mx-4" type="submit" onClick={handleClose}>Submit</button>
 
 					<button
-						className="btn btn-primary mb-2"
+						className="btn btn-primary mb-2 mx-4"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 					>Reset

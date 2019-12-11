@@ -98,7 +98,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="user-plus"/>
 							</div>
 						</div>
 						<input
@@ -121,7 +121,7 @@ export const SignUpFormContent = (props) => {
 					<div className="input-group">
 						<div className="input-group-prepend">
 							<div className="input-group-text">
-								<FontAwesomeIcon icon="key"/>
+								<FontAwesomeIcon icon="user-plus"/>
 							</div>
 						</div>
 						<input
@@ -139,11 +139,11 @@ export const SignUpFormContent = (props) => {
 					)}
 				</div>
 
-				<div className="form-group">
-					<button className="btn btn-primary mb-2" type="submit">Submit</button>
+				<div className="form-group d-flex justify-content-center">
+					<button className="btn btn-primary mb-2 mx-4" type="submit">Submit</button>
 
 					<button
-						className="btn btn-primary mb-2"
+						className="btn btn-primary mb-2 mx-4"
 						onClick={handleReset}
 						disabled={!dirty || isSubmitting}
 						>Reset

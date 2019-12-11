@@ -42,7 +42,7 @@ try {
 
 		//get a count of usefuls on resource by usefulResourceId
 		if ($usefulResourceId !== null) {
-			$useful = Useful::getCountByUsefulResourceId($pdo, $usefulResourceId);
+			$useful = Useful::getUsefulByUsefulResourceId($pdo, $usefulResourceId)->toArray();
 
 			//return count
 			if($useful !== null) {

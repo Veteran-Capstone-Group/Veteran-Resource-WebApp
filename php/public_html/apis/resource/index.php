@@ -51,7 +51,7 @@ try {
 			$reply->data = Resource::getResourceByResourceId($pdo, $resourceId);
 		} elseif(empty($resourceCategoryId) === false) {
 			//get resource using resourceCategoryId
-			$reply->data = Resource::getResourceByResourceCategoryId($pdo, $resourceCategoryId);
+			$reply->data = Resource::getResourceByResourceCategoryId($pdo, $resourceCategoryId)->toArray();
 		} elseif(empty($resourceUserId) === false) {
 			//get a resource using resourceUserId
 			$reply->data = Resource::getResourceByResourceUserId($pdo, $resourceUserId);

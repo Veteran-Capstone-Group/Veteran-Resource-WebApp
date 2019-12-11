@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {SignUpFormContent} from "./SignUpFormContent";
-import {httpConfig} from "../../../utils/http-config";
+import {httpConfig} from "../../utils/http-config";
 import * as Yup from "yup";
 import {Formik} from "formik";
 

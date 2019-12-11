@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FormDebugger} from "../../../utils/FormDebugger";
+import {FormDebugger} from "../../utils/FormDebugger";
 import React from "react";
 
 export const SignUpFormContent = (props) => {

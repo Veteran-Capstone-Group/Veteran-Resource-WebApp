@@ -19,7 +19,7 @@ export const ResourcesInCategory = ({match}) => {
 	//pass side effects with inputs to useEffect
 
 	useEffect(() => {
-		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, ); //[match.params.resourceCategoryId]
+		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, [match.params.resourceCategoryId]);
 	console.log(match.params);
 
 	return (

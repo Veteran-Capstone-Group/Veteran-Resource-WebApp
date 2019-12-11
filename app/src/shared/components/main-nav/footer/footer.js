@@ -11,7 +11,7 @@ const jwt = UseJwt();
 	return (
 		<>
 			<Container fluid="true" id="footer">
-				{/*window.localStorage.getItem("jwt-token")*/jwt!== null ? (
+				{jwt!== null ? (
 					<Row className="justify-content-center">
 						<CreateResourceModal/>
 					</Row>) : (

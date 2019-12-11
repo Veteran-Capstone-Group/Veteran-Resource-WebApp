@@ -13,7 +13,6 @@ export const	ResourceCard = ({resource}) =>{
 	const width = UseWindowWidth();
 
 	//grab JWT Token for logged in users
-	// const jwt = UseJwt();
 	const userId = UseJwtUserId;
 
 	//assign values for variables of resource

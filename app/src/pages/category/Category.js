@@ -12,9 +12,6 @@ export const ResourcesInCategory = ({match}) => {
 	//assigns useDispatch to dispatch variable
 	const dispatch = useDispatch();
 
-	console.log("category  has loaded");
-
-
 	// Define the side effects that will occur in the application, e.g., code that handles dispatches to redux, API requests, or timers.
 	// The dispatch function takes actions as arguments to make changes to the store/redux.
 

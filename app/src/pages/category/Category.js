@@ -38,7 +38,7 @@ export const ResourcesInCategory = ({match}) => {
 
 	return (
 		<>
-		<div>
+		<div id="mainContent">
 			<Container fluid="true">
 					{sortedResources.map((resourceItem) => {
 						return <ResourceCard resource={resourceItem} key={resourceItem.resourceId} />;

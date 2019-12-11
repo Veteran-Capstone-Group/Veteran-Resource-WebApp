@@ -50,6 +50,7 @@ export const Useful = ({resourceId}) => {
 	/**
 	 * this counts the usefuls for each resource
 	 */
+
 	const countUsefuls = (resourceId) => {
 			const usefulResources = usefuls.filter(useful => useful.usefulResourceId === resourceId);
 			return (setUsefulCount(usefulResources.length));

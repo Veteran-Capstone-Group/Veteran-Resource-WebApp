@@ -9,5 +9,5 @@ $api = new stdClass();
 $api->randomKey = "change these";
 $api->anotherRandomKey = "change these";
 $config["api"] = json_encode($api);
-$hideSecrets = new \Secrets("/etc/apache2/capstone-mysql/veteranapp.ini");
+$hideSecrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
 $hideSecrets->setSecrets($config);

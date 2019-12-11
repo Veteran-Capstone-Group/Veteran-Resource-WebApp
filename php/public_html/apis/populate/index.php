@@ -42,7 +42,7 @@ try {
 	$userUsername = "Bladvacion";
 
 	//hash password for storage
-	$hash = password_hash($userPassword, PASSWORD_ARGON2I, ["time_cost" => 384]);
+	$hash = password_hash($userPassword, PASSWORD_ARGON2I, ["time_cost" => 7]);
 
 	//create activation token information
 	$userActivationToken = bin2hex(random_bytes(16));

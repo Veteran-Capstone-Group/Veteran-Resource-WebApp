@@ -16,6 +16,8 @@ import employmentImage from "../../shared/img/employment.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
+import miscImg from "../../shared/img/misc.svg"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 //TODO add misc image
 //import miscImage from "../../shared/img/misc.svg";
 //import miscImage from "../../shared/img/clothing.svg";
@@ -135,9 +137,9 @@ export const Home = () => {
 									<div className={`d-flex flex-column justify-content-center`}>
 										<h2 className={`categoryTitle`}>Miscellaneous</h2>
 										<div className={`categoryButton`}>
-											<a id={`mentalhealth-link`} className={`d-flex justify-content-center`}
+											<a id={`miscellaneous-link`} className={`d-flex justify-content-center`}
 												href={'/Category/' + miscellaneous}>
-												<img className={`category-image`} src={mentalhealthImage} alt={'mentalhealth'}/>
+												<img className={`category-image`} src={miscImg} alt={'miscellaneous'}/>
 											</a>
 										</div>
 									</div>

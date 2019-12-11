@@ -9,3 +9,6 @@
 /php/vendor
 /app/src/setupProxy.js
 /npm-debug.log
+*/docker-compose.env
+./docker-compose.env
+/docker-compose.env

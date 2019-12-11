@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createSelector} from 'reselect';
 import {httpConfig} from "../utils/http-config";
-import {UseJwt} from "../utils/JwtHelpers";
+import {UseJwt, UseJwtUserId} from "../utils/JwtHelpers";
 import {handleSessionTimeout} from "../utils/handle-session-timeout";
 import _ from "lodash";
 import {getUsefulByUsefulResourceId} from "../actions/get-useful";
@@ -11,11 +11,11 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const Useful = ({userId, resourceId}) => {
+export const Useful = ({ resourceId}) => {
 	//grab the JWT Token
 
-	const jwt = "blob";
-
+	const jwt = UseJwt();
+	const userId = UseJwtUserId();
 	console.log("a useful component has loaded")
 
 	const [isUsefulled, setIsUsefulled] = useState(null);
@@ -28,7 +28,7 @@ export const Useful = ({userId, resourceId}) => {
 	const dispatch = useDispatch();
 
 	const effects = () => {
-		initializeUsefuls(userId);
+		initializeUsefuls(userId, usefuls);
 		countUsefuls(resourceId);
 	};
 
@@ -63,6 +63,7 @@ export const Useful = ({userId, resourceId}) => {
 		usefulResourceId: resourceId,
 		usefulUserId: userId
 	};
+	console.log(data);
 	const toggleUseful = () => {
 		setIsUsefulled(isUsefulled === null ? "active" : null)
 	};
@@ -76,6 +77,8 @@ export const Useful = ({userId, resourceId}) => {
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount + 1);
+				} else {
+					console.log("useful not submitted userId is " + userId + " resourceId: " + resourceId);
 				}
 				/// if there is an issue with a session mismatch with xsrf or jwt, alert user and sign out
 				if(reply.status === 401) {
@@ -94,6 +97,8 @@ export const Useful = ({userId, resourceId}) => {
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount > 0 ? usefulCount - 1 : 0);
+				} else {
+					console.log("useful not deleted userId is "+ userId +" resourceId: " + resourceId);
 				}
 				// if there's an issue with a $_SESSION mismatch with xsrf or jwt, alert user and do a sign out
 				if(reply.status === 401) {

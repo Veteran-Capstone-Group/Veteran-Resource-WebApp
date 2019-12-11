@@ -1,29 +1,28 @@
 import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {createSelector} from 'reselect';
 import {httpConfig} from "../utils/http-config";
 import {UseJwt, UseJwtUserId} from "../utils/JwtHelpers";
 import {handleSessionTimeout} from "../utils/handle-session-timeout";
 import _ from "lodash";
-import {getUsefulByUsefulResourceId} from "../actions/get-useful";
+
 
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const Useful = ({ resourceId}) => {
+export const Useful = ({resourceId}) => {
 	//grab the JWT Token
 
 	const jwt = UseJwt();
 	const userId = UseJwtUserId();
-	console.log("a useful component has loaded")
+
 
 	const [isUsefulled, setIsUsefulled] = useState(null);
 	const [usefulCount, setUsefulCount] = useState(0);
 
 	//get all usefuls from redux
 	const usefuls = useSelector(state => (state.useful ? state.useful : []));
-	console.log(usefuls);
+
 
 	const dispatch = useDispatch();
 
@@ -38,7 +37,6 @@ export const Useful = ({ resourceId}) => {
 	const inputs =  [ usefuls, userId, resourceId];
 
 	useEffect(effects, inputs);
-	//console.log(usefuls.count);
 
 	/**
 	 * this function filters usefuls by resource ID and sets isUsefulled state variable to "active" if the user has
@@ -47,13 +45,11 @@ export const Useful = ({ resourceId}) => {
 	 */
 	const initializeUsefuls = (userId, usefuls) => {
 		const userUsefuls = _.find(usefuls, {'usefulUserId':userId});
-		//const usefulled = _.find(userUsefuls, {'usefulResourceId': resourceId});
 		return (_.isEmpty(userUsefuls) === false) && setIsUsefulled("active");
 	};
 	/**
 	 * this counts the usefuls for each resource
 	 */
-	// console.log(getCountByUsefulResourceId(resourceId));
 	const countUsefuls = (resourceId) => {
 			const usefulResources = usefuls.filter(useful => useful.usefulResourceId === resourceId);
 			return (setUsefulCount(usefulResources.length));
@@ -63,7 +59,7 @@ export const Useful = ({ resourceId}) => {
 		usefulResourceId: resourceId,
 		usefulUserId: userId
 	};
-	console.log(data);
+
 	const toggleUseful = () => {
 		setIsUsefulled(isUsefulled === null ? "active" : null)
 	};
@@ -78,7 +74,6 @@ export const Useful = ({ resourceId}) => {
 					toggleUseful();
 					setUsefulCount(usefulCount + 1);
 				} else {
-					console.log("useful not submitted userId is " + userId + " resourceId: " + resourceId);
 				}
 				/// if there is an issue with a session mismatch with xsrf or jwt, alert user and sign out
 				if(reply.status === 401) {

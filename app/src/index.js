@@ -13,7 +13,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {FourOhFour} from "./pages/four-oh-four/FourOhFour";
 import {Home} from "./pages/home/Home";
 import {Header} from "./shared/components/main-nav/header/Header";
-import {Footer} from "./shared/components/main-nav/footer/footer";
 import {ResourcesInCategory} from "./pages/category/Category";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal, faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +31,6 @@ const Routing = (store) => (
 					<Route exact path="/" component={Home}/>
 					<Route component={FourOhFour}/>
 				</Switch>
-				{/*<Footer/>*/}
 			</BrowserRouter>
 		</Provider>
 	</>

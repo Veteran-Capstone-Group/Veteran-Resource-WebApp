@@ -1,11 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {SignUpModal} from "../../sign-up/SignUpModal";
 import {SignInModal} from "../sign-in/SignInModal";
-import {UseJwt, UseJwtUserId} from "../../../utils/JwtHelpers";
+import {UseJwt} from "../../../utils/JwtHelpers";
 import {CreateResourceModal} from "../create-resource/CreateResourceModal";
 
 export const Footer = () => {
@@ -13,7 +11,7 @@ const jwt = UseJwt();
 	return (
 		<>
 			<Container fluid="true" id="footer">
-				{/*window.localStorage.getItem("jwt-token")*/jwt!== null ? (
+				{jwt!== null ? (
 					<Row className="justify-content-center">
 						<CreateResourceModal/>
 					</Row>) : (

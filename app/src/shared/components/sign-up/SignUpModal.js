@@ -4,10 +4,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 export const SignUpModal = () => {
-
+	//initializes form in hidden state
 	const [show, setShow] = useState(false);
-
+	//function hides modal
 	const handleClose = () => setShow(false);
+	//function shows modal
 	const handleShow = () => setShow(true);
 
 	return (

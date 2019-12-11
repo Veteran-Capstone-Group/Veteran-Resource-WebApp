@@ -9,3 +9,16 @@
 /php/vendor
 /app/src/setupProxy.js
 /npm-debug.log
+*/docker-compose.env
+./docker-compose.env
+/docker-compose.env
+./php/config/secrets/Secrets.php
+*/php/config/secrets/Secrets.php
+/php/config/secrets/Secrets.php
+./php/config/secrets/init.ini
+*/php/config/secrets/init.ini
+/php/config/secrets/init.ini
+/php/composer.lock
+./php/config/secrets/inifilename.php
+*/php/config/secrets/inifilename.php
+/php/config/secrets/inifilename.php

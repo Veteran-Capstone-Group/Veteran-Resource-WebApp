@@ -22,11 +22,11 @@ const itemTwo = {
 	"resourceApprovalStatus": true,
 	"resourceDescription": "The VIC believes in giving back and 85% of our donations are redistributed directly to the Veteran community we serve",
 	"resourceEmail": "",
-	"resourceImageUrl": "https:\/\/3j64pchzwf-flywheel.netdna-ssl.com\/wp-content\/uploads\/2019\/06\/New-VIC-Logo-200t.png",
+	"resourceImageUrl": "https://3j64pchzwf-flywheel.netdna-ssl.com/wp-content/uploads/2019/06/New-VIC-Logo-200t.png",
 	"resourceOrganization": "Veteran Integration Centers",
 	"resourcePhone": "(505) 265-0512",
 	"resourceTitle": "Free clothing and furniture for veterans",
-	"resourceUrl": "https:\/\/nmvic.org\/"
+	"resourceUrl": "https://nmvic.org/"
 };
 const itemThree = {
 	"resourceId": "058ee95f-b90d-45b4-83a2-7a4b0630e749",
@@ -40,7 +40,7 @@ const itemThree = {
 	"resourceOrganization": "",
 	"resourcePhone": "",
 	"resourceTitle": "G.I. Bill",
-	"resourceUrl": "https:\/\/www.va.gov\/education\/about-gi-bill-benefits\/"
+	"resourceUrl": "https://www.va.gov/education/about-gi-bill-benefits/"
 };
 
 export const Slider = () => {

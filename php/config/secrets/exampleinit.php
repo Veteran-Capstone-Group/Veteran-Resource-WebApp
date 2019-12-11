@@ -1,0 +1,13 @@
+<?php
+/**
+ * This file should live outside of the project and be manually added to the server
+ *
+ **/
+require_once("Secrets.php");
+$config = [];
+$api = new stdClass();
+$api->randomKey = "change these";
+$api->anotherRandomKey = "change these";
+$config["api"] = json_encode($api);
+$hideSecrets = new \Secrets("/etc/apache2/capstone-mysql/veteranapp.ini");
+$hideSecrets->setSecrets($config);

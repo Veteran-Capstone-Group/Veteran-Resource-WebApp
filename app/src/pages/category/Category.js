@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-
 import {ResourceCard} from "../../shared/components/resource-card/ResourceCard";
-
 import Container from "react-bootstrap/Container";
-
 import {getUsefulsAndResources} from "../../shared/actions/get-useful";
 import _ from 'lodash';
-
-
 
 export const ResourcesInCategory = ({match}) => {
 
@@ -26,8 +21,8 @@ export const ResourcesInCategory = ({match}) => {
 
 	//pass side effects with inputs to useEffect
 	useEffect(() => {
-		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));
-	}, [match.params.resourceCategoryId]);
+		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, [match.params.resourceCategoryId]);
+	console.log(match.params);
 
 	//count useful function for sorting
 	const countResourceUsefuls = (resourceId) => {

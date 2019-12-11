@@ -7,8 +7,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
-
 //export component
 export const	ResourceCard = ({resource}) =>{
 	//Store screen width on resize event to allow different views on mobile vs desktop

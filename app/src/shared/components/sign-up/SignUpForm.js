@@ -14,7 +14,7 @@ export const SignUpForm = () => {
 		userName: "",
 		userUsername: ""
 	};
- const [status, setStatus] = useState(null);
+ const [setStatus] = useState(null);
 	// initiate yup validator
 	const validator = Yup.object().shape({
 		userEmail: Yup.string()

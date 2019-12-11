@@ -13,7 +13,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * [Upcoming Features and Changes](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Upcoming-Features-and-Changes)
 * [Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Demo)
 * [Code Coverage and Code Examples](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Code-Coverage-and-Code-Excerpts)
-* [API Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Doc)
+* [API Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 * [Datasets Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Free-Open-Dataset-Documentation)
 * [Cloning and Deployment Instructions](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Cloning-and-Deploying-Instructions)
 * [Links to resources for further development](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Resources-for-Further-Development)
@@ -68,7 +68,7 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
-## API Doc
+## API Documentation
 
  [Click here to view our API Documentation]()
  

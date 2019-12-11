@@ -28,7 +28,7 @@ export const Useful = ({userId, resourceId}) => {
 	const dispatch = useDispatch();
 
 	const effects = () => {
-		initializeUsefuls(userId);
+		initializeUsefuls(userId, usefuls);
 		countUsefuls(resourceId);
 	};
 
@@ -76,6 +76,8 @@ export const Useful = ({userId, resourceId}) => {
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount + 1);
+				} else {
+					console.log("useful not submitted userId is "+userId+" resourceId: " + resourceId);
 				}
 				/// if there is an issue with a session mismatch with xsrf or jwt, alert user and sign out
 				if(reply.status === 401) {
@@ -94,6 +96,8 @@ export const Useful = ({userId, resourceId}) => {
 				if(reply.status === 200) {
 					toggleUseful();
 					setUsefulCount(usefulCount > 0 ? usefulCount - 1 : 0);
+				} else {
+					console.log("useful not deleted userId is "+userId+" resourceId: " + resourceId);
 				}
 				// if there's an issue with a $_SESSION mismatch with xsrf or jwt, alert user and do a sign out
 				if(reply.status === 401) {

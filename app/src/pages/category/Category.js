@@ -24,6 +24,9 @@ export const ResourcesInCategory = ({match}) => {
 		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, [match.params.resourceCategoryId]);
 	console.log(match.params);
 
+
+
+
 	//count useful function for sorting
 	const countResourceUsefuls = (resourceId) => {
 		const usefulResources = usefuls.filter(useful => useful.usefulResourceId === resourceId);

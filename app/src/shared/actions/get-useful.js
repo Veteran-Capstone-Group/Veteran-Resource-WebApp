@@ -16,6 +16,4 @@ export const getUsefulsAndResources = (resourceId) => async (dispatch, getState)
 		.uniq()
 		.forEach(id => dispatch(getUsefulByUsefulResourceId(id)))
 		.value()
-
-	console.log(getState())
 };

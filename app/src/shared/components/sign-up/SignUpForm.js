@@ -37,7 +37,6 @@ export const SignUpForm = () => {
 					let {message, type} = reply;
 					setStatus({message, type});
 					if(reply.status === 200) {
-						console.log(`status: ${message}`);
 						resetForm();
 					}
 				}

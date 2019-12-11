@@ -22,10 +22,6 @@ export const ResourcesInCategory = ({match}) => {
 	//pass side effects with inputs to useEffect
 	useEffect(() => {
 		dispatch(getUsefulsAndResources(match.params.resourceCategoryId));}, [match.params.resourceCategoryId]);
-	console.log(match.params);
-
-
-
 
 	//count useful function for sorting
 	const countResourceUsefuls = (resourceId) => {

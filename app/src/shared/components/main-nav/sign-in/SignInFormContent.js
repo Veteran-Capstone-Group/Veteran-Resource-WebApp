@@ -95,7 +95,6 @@ export const SignInFormContent = (props) => {
 				</div>
 
 			</form>
-			{console.log(status)}
 			{status && (<div className={status.type}>{status.message}</div>)}
 		</>
 	)

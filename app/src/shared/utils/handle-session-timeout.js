@@ -7,7 +7,6 @@ export const handleSessionTimeout = () => {
 		.then(reply => {
 			if(reply.status === 200) {
 				window.localStorage.removeItem("jwt-token");
-				console.log(reply);
 				setTimeout(() => {
 					window.location = "/";
 				}, 1000);

@@ -10,15 +10,11 @@ import clothingImage from "../../shared/img/clothing.svg";
 import disabilityImage from "../../shared/img/disability.svg";
 import educationImage from "../../shared/img/education.svg";
 import employmentImage from "../../shared/img/employment.svg";
-//import foodImage from "../../shared/img/food.svg";
-//TODO add food/clothing image
-//import foodClothingImage from "../../shared/img/foodclothing.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
-import miscImg from "../../shared/img/misc.svg"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-//TODO add misc image
+import miscImg from "../../shared/img/misc.svg";
+
 //import miscImage from "../../shared/img/misc.svg";
 //import miscImage from "../../shared/img/clothing.svg";
 
@@ -56,6 +52,7 @@ export const Home = () => {
 							<Row justify-content-center>
 								<Col xs={6} sm={6} md={6} lg={3}>
 									<div className={`d-flex flex-column justify-content-center`}>
+										<h2 className={`categoryTitle`}>Food and Clothing</h2>
 										<div className={`categoryButton`}>
 											<a id={`clothing-link`} className={`d-flex justify-content-center`}
 												href={'/Category/' + clothingAndFood}>

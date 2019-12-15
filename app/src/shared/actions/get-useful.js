@@ -8,8 +8,8 @@ export const getUsefulByUsefulResourceId = (resourceId) => async (dispatch) => {
 	dispatch({type: "GET_USEFUL_BY_USEFUL_RESOURCE_ID", payload : payload.data });
 };
 
-export const getUsefulsAndResources = (resourceId) => async (dispatch, getState) => {
-	await dispatch(getResourceByResourceCategory(resourceId));
+export const getUsefulsAndResources = (categoryId) => async (dispatch, getState) => {
+	await dispatch(getResourceByResourceCategory(categoryId));
 
 	_.chain(getState().resource)
 		.map("resourceId")

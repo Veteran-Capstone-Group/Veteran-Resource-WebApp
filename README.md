@@ -3,7 +3,7 @@
 This repository is for the construction of a Veteran's Resource application for the local Albuquerque area(and a toolkit to allow others to quickly deploy similar webapps for their local area), it shall included information on social services and employment to help ease veterans into civilian life and combat homelessness, drug addiction, and suicide rates among the Veteran population of the local Albuquerque area.
 
 Authors: Timothy Beck & John Johnson-Rodgers  
-[Visit our Live App](abqveterans.com)  
+[Visit our Live App](www.abqveterans.com)  
 
 ---
 ### Table of Contents

@@ -18,6 +18,7 @@ services:
          - ./docker-compose.env
       ports:
          - 8081:80
+         - 81:443
       volumes:
          - ./php/Classes:/var/www/Classes
          - ./php/public_html:/var/www/public_html
@@ -28,6 +29,7 @@ services:
          - php
       ports:
          - 80:80
+         - 8080:443
       volumes:
 #         - ./production.conf:/etc/nginx/conf.d/default.conf
 #         - ./public_html:/usr/share/nginx/html

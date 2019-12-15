@@ -204,7 +204,7 @@ public function setUserHash(string $newUserHash): void {
 		throw(new \InvalidArgumentException("author hash is not a valid hash"));
 	}
 	//check character length of hash
-	if(strlen($newUserHash) !== 96) {
+	if(strlen($newUserHash) !== 97) {
 		throw(new \InvalidArgumentException("hash must be the correct length"));
 	}
 	//return hash

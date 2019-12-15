@@ -12,11 +12,13 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * [Feature List](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Feature-List)
 * [Upcoming Features and Changes](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Upcoming-Features-and-Changes)
 * [Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Demo)
+* [Security Implementation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Security-Implementations)
 * [Code Coverage and Code Examples](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Code-Coverage-and-Code-Excerpts)
 * [API Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 * [Datasets Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Free-Open-Dataset-Documentation)
 * [Cloning and Deployment Instructions](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Cloning-and-Deploying-Instructions)
 * [Links to resources for further development](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Resources-for-Further-Development)
+* [How to Contribute](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#How-to-contribute-to-this-Application)
 * [About Us](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#About-Us)
 ---
  

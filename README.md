@@ -63,6 +63,14 @@ As several of our family members are veterans, and we are very passionate toward
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
+## Security Implementations
+
+//TODO document security features
+
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+
+---
+
 ## Code-Coverage and Code Excerpts
 
 //TODO add code coverage and examples of some fun and interesting code we wrote
@@ -94,6 +102,14 @@ At a future release interation we will be making our dataset public for download
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
+## How to contribute to this Application
+
+Until February, Pull request's won't be considered as we are participating in a contest with this application.  
+
+This section will be updated with a guide on how to contribute to our open-source project.
+
+---
+
 ## Resources for Further Development
 
 Tools, Libraries, and Frameworks:

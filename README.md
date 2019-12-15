@@ -25,7 +25,9 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ---
 ## Application Description
 
-//TODO add application description
+The ABQ Veterans team recognized a problem within our community of our veteran population having more than twice the rates of suicide and homelessness as the general population, despite resources being publicly available. We also recognize that there is no repository of social services provided to veterans who are trying to integrate back into society. 
+
+As several of our family members are veterans, and we are very passionate towards the concept of serving those who’ve served us, we aim to improve our community by creating an application that combats these issues. ABQ Veteran’s is an application where users can submit social services and rank those services based on how helpful they are. Our goal is to create an expansive library of resources available to veterans who may need assistance and provide those resources to them packaged in this mobile-friendly and Free and Open Source Software. We also plan to provide developers with APIs and Open Datasets and to encourage them to use our data for free to better their communities.
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
@@ -129,7 +131,8 @@ Email: John@JohnThe.dev
 Website: https://www.JohnThe.dev  
 LinkedIn: https://www.linkedin.com/in/johnthe-dev/  
 
-//TODO: add picture of us together
+![Picture of Timothy Beck and John Johnson-Rodgers celebrating their graduation](https://raw.githubusercontent.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/integration/documentation/IMG_18161.jpg)
+
 
 
 

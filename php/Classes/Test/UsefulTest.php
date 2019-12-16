@@ -171,7 +171,7 @@ class UsefulTest extends VeteranResourceTest {
 		$usefulTwo->insert($this->getPDO());
 
 		//grab data from MySQL and affirm the fields match our query
-		$this->assertEquals(strval($num_rows + 2), Useful::getCountByUsefulResourceId($this->getPDO(), $this->resource->getResourceId()));
+		$this->assertEquals($num_rows + 2, Useful::getCountByUsefulResourceId($this->getPDO(), $this->resource->getResourceId())['count']);
 
 	}
 }

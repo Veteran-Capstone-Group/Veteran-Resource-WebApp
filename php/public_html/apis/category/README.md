@@ -1,8 +1,7 @@
 # Category API
 
 #### API INFO
-* What is our API
-* How to use our API
+* What is our Category API
 
 #### ENDPOINTS
 * Get All Categories

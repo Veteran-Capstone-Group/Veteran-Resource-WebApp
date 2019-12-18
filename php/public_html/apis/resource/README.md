@@ -27,7 +27,9 @@ This API returns a specific resource by it's individual resource ID.
 
 **HTTP Method:** GET  
 
-**Required Input:** `resourceId: $resourceId`
+**Required Input:**  
+XSRF Token  
+`resourceId: $resourceId`
 
 **Optional Input:** N/A 
 
@@ -51,7 +53,9 @@ This API returns a set of resources under a single category.
 
 **HTTP Method:** GET  
 
-**Required Input:** `resourceCategoryId: $categoryId`
+**Required Input:**  
+XSRF Token  
+`resourceCategoryId: $categoryId`
 
 **Optional Input:** N/A 
 
@@ -75,7 +79,9 @@ This API returns a set of resources that were posted by an individual user.
 
 **HTTP Method:** GET  
 
-**Required Input:** `resourceUserId: $userId`
+**Required Input:**  
+XSRF Token  
+`resourceUserId: $userId`
 
 **Optional Input:** N/A 
 

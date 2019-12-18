@@ -36,7 +36,7 @@ try {
 
 	//verify that the activation token is a string value of hexadecimal
 	if(ctype_xdigit($activation) === false) {
-		throw(new \InvalidArgumentException("activation is empty or has non hexadecimal contents", 405));
+		throw(new \InvalidArgumentException("Activation is empty or has non hexadecimal contents", 405));
 	}
 
 	//handle the GET HTTP request
@@ -64,11 +64,11 @@ try {
 			}
 		} else{
 			//throw an exception if the token doesn't exist
-			throw(new RuntimeException("Profile with this activation token does not exist."));
+			throw(new RuntimeException("Profile with this activation token does not exist.", 304));
 		}
 	} else {
 		//throw an exception if the HTTP request is not a GET
-		throw(new InvalidArgumentException("Invalid HTTP request method."));
+		throw(new InvalidArgumentException("Invalid HTTP request method.", 405));
 	}
 
 	//update the reply status and message state variables if an exception or type error was thrown

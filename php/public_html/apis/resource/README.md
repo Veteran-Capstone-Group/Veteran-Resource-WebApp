@@ -118,9 +118,9 @@ This API endpoint allows a user to post a new resource
  XSRF Token  
  JWT Token  
 `resourceCategoryId: $categoryId,`   
-`resourceDescription: $resourceDescription, must be under 300 characters`  
-`resourceTitle: $resourceTitle, must be under`   
-`resourceUrl: $resourceUrl, must be under 255 characters`  
+`resourceDescription: $resourceDescription, //must be under 300 characters`  
+`resourceTitle: $resourceTitle, //must be under 64 characters`   
+`resourceUrl: $resourceUrl, //must be under 255 characters`  
 
 **Optional Input:**  
 

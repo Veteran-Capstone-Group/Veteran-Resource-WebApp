@@ -42,7 +42,9 @@ try {
 		throw(new InvalidArgumentException("id can not be empty", 402));
 	}
 
+	//if GET request check which data is provided to choose which GetBy Method to use
 	if($method === "GET") {
+		//TODO check documentation on set XSRF, are we reseting user's token every time they interact with something?
 		//set xsrf cookie
 		setXsrfCookie();
 

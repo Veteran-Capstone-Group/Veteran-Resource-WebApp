@@ -15,7 +15,7 @@
 ## Get All Categories
 
 **Endpoint:**   
-`TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/category/`
 
 **HTTP Method:** GET  
 
@@ -24,11 +24,11 @@
 **Optional Input:** N/A 
 
 **Expected Data:** 
+  
+ //TODO write expected data
  
 **Errors:**   
 * **Code: 405** - 'Invalid HTTP method request'  
-
-//TODO Write Get All Categories API info
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
 
@@ -37,7 +37,7 @@
 ## Get Category by Category ID
 
 **Endpoint:**   
-`TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/category/`
 
 **HTTP Method:** GET  
 
@@ -48,10 +48,10 @@
 
 **Expected Data:** 
  
+ //TODO write expected data
+ 
 **Errors:**   
 * **Code: 405** - 'Invalid HTTP method request'  
-
-//TODO Write Get All Categories API info
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
 

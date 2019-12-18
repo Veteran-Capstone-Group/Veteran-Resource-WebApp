@@ -88,7 +88,7 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
  * [Account Sign In API]()
  * [Account Sign Up API]()
  * [Resource Category API]()
- * [Resource API]()
+ * [Resource API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource)
  * [Useful API]()
  * [User Account API]()
  * [Dataset API]()

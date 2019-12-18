@@ -3,7 +3,7 @@
 This repository is for the construction of a Veteran's Resource application for the local Albuquerque area(and a toolkit to allow others to quickly deploy similar webapps for their local area), it shall included information on social services and employment to help ease veterans into civilian life and combat homelessness, drug addiction, and suicide rates among the Veteran population of the local Albuquerque area.
 
 Authors: Timothy Beck & John Johnson-Rodgers  
-[Visit our Live App](abqveterans.com)  
+[Visit our Live App](http://www.abqveterans.com)  
 
 ---
 ### Table of Contents
@@ -12,11 +12,13 @@ Authors: Timothy Beck & John Johnson-Rodgers
 * [Feature List](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Feature-List)
 * [Upcoming Features and Changes](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Upcoming-Features-and-Changes)
 * [Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Demo)
+* [Security Implementation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Security-Implementations)
 * [Code Coverage and Code Examples](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Code-Coverage-and-Code-Excerpts)
 * [API Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 * [Datasets Documentation](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Free-Open-Dataset-Documentation)
 * [Cloning and Deployment Instructions](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Cloning-and-Deploying-Instructions)
 * [Links to resources for further development](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#Resources-for-Further-Development)
+* [How to Contribute](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#How-to-contribute-to-this-Application)
 * [About Us](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#About-Us)
 ---
  
@@ -25,7 +27,9 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ---
 ## Application Description
 
-//TODO add application description
+The ABQ Veterans team recognized a problem within our community of our veteran population having more than twice the rates of suicide and homelessness as the general population, despite resources being publicly available. We also recognize that there is no repository of social services provided to veterans who are trying to integrate back into society. 
+
+As several of our family members are veterans, and we are very passionate towards the concept of serving those who’ve served us, we aim to improve our community by creating an application that combats these issues. ABQ Veteran’s is an application where users can submit social services and rank those services based on how helpful they are. Our goal is to create an expansive library of resources available to veterans who may need assistance and provide those resources to them packaged in this mobile-friendly and Free and Open Source Software. We also plan to provide developers with APIs and Open Datasets and to encourage them to use our data for free to better their communities.
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
@@ -61,6 +65,14 @@ Authors: Timothy Beck & John Johnson-Rodgers
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
+## Security Implementations
+
+//TODO document security features
+
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+
+---
+
 ## Code-Coverage and Code Excerpts
 
 //TODO add code coverage and examples of some fun and interesting code we wrote
@@ -70,8 +82,17 @@ Authors: Timothy Beck & John Johnson-Rodgers
 ---
 ## API Documentation
 
- [Click here to view our API Documentation]()
- 
+ABQ Veteran's utilizes REST APIs to communicate between our servers and externally with the end user. We have numerous end points for account management and web interactions that developers can utilize to interact with our web app and database.
+
+ * [Account Activation API]()
+ * [Account Sign In API]()
+ * [Account Sign Up API]()
+ * [Resource Category API]()
+ * [Resource API]()
+ * [Useful API]()
+ * [User Account API]()
+ * [Dataset API]()
+  
 //TODO create API documentation
 
 
@@ -92,6 +113,14 @@ At a future release interation we will be making our dataset public for download
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
+## How to contribute to this Application
+
+Until February, Pull request's won't be considered as we are participating in a contest with this application.  
+
+This section will be updated with a guide on how to contribute to our open-source project.
+
+---
+
 ## Resources for Further Development
 
 Tools, Libraries, and Frameworks:
@@ -129,7 +158,8 @@ Email: John@JohnThe.dev
 Website: https://www.JohnThe.dev  
 LinkedIn: https://www.linkedin.com/in/johnthe-dev/  
 
-//TODO: add picture of us together
+![Picture of Timothy Beck and John Johnson-Rodgers celebrating their graduation](https://raw.githubusercontent.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/integration/documentation/IMG_18161.jpg)
+
 
 
 

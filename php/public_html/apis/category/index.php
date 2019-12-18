@@ -41,7 +41,11 @@ try {
 
 		//Check if an id is passed
 		if(empty($categoryId)=== false) {
+			//if a categoryId is passed, return all categories with that ID
 			$reply->data = Category::getCategoryByCategoryId($pdo, $categoryId);
+		}else {
+			//if an id isn' passed return all categories
+			$reply->data = Category::getAllCategories($pdo);
 		}
 	} else {
 		throw (new InvalidArgumentException("Invalid HTTP method request", 405));

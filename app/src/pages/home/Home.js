@@ -10,15 +10,11 @@ import clothingImage from "../../shared/img/clothing.svg";
 import disabilityImage from "../../shared/img/disability.svg";
 import educationImage from "../../shared/img/education.svg";
 import employmentImage from "../../shared/img/employment.svg";
-//import foodImage from "../../shared/img/food.svg";
-//TODO add food/clothing image
-//import foodClothingImage from "../../shared/img/foodclothing.svg";
 import healthcareImage from "../../shared/img/healthcare.svg";
 import housingImage from "../../shared/img/housing.svg";
 import mentalhealthImage from "../../shared/img/mentalhealth.svg";
-import miscImg from "../../shared/img/misc.svg"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-//TODO add misc image
+import miscImg from "../../shared/img/misc.svg";
+
 //import miscImage from "../../shared/img/misc.svg";
 //import miscImage from "../../shared/img/clothing.svg";
 
@@ -37,14 +33,14 @@ export const Home = () => {
 
 	useEffect(effects,inputs);
 	*/
-	const clothingAndFood = "501c7665-a4b1-47ab-a157-13d198f67d97";
-	const disability = "b20fe0cd-43e4-4878-9d29-a4ecb57678a3";
-	const education = "b2b19ae1-7c88-4f5d-baa2-b2ebf964cd2a";
-	const employment = "faef9afc-61e2-4238-a634-b15164ebdbae";
-	const mentalHealth = "0535ca67-9c12-4cc9-9450-e2faa89b91db";
-	const healthcare = "34b09b0c-08a9-46a5-829b-0e5b7f385f5a";
-	const housing = "8167caec-0d53-47c7-8a86-9b226a325eae";
-	const miscellaneous = "a48077fe-3955-460d-9bb8-e04e48aad125";
+	const clothingAndFood = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
+	const disability = "9993a0c5-2247-4654-8f84-79daa9a8ef93";
+	const education = "bdf8061d-f359-4ece-b782-07b50ac9b015";
+	const employment = "c8a2c629-fc51-4a38-9eac-d75cd5685f58";
+	const mentalHealth = "100c162d-9a5e-4d51-ab75-75ccd3bd3253";
+	const healthcare = "60ea99d3-07d2-4284-a641-2ab39e1e708a";
+	const housing = "7e94b87a-4ee9-48c6-bd44-b0cb9ef218ad";
+	const miscellaneous = "3a55391b-fea6-4772-99b3-93e7cb6f4730";
 
 	return (
 		<>
@@ -56,7 +52,7 @@ export const Home = () => {
 							<Row justify-content-center>
 								<Col xs={6} sm={6} md={6} lg={3}>
 									<div className={`d-flex flex-column justify-content-center`}>
-										<h2 className={`categoryTitle`}>Food/Clothing</h2>
+										<h2 className={`categoryTitle`}>Food and Clothing</h2>
 										<div className={`categoryButton`}>
 											<a id={`clothing-link`} className={`d-flex justify-content-center`}
 												href={'/Category/' + clothingAndFood}>

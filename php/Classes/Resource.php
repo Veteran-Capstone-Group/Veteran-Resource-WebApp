@@ -220,7 +220,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceAddress = trim($newResourceAddress);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING,);
+		$newResourceAddress = filter_var($newResourceAddress, FILTER_SANITIZE_STRING);
 		//check if string length is appropriate
 		if(strlen($newResourceAddress) > 124) {
 			throw(new \RangeException("Address contains too many characters"));
@@ -276,7 +276,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceDescription = trim($newResourceDescription);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING,);
+		$newResourceDescription = filter_var($newResourceDescription, FILTER_SANITIZE_STRING);
 		//check if string length is appropriate
 		if(strlen($newResourceDescription) > 300) {
 			throw(new \RangeException("Description contains too many characters"));
@@ -306,7 +306,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceEmail = trim($newResourceEmail);
 		//sanitizes email to get rid of harmful attacks and ensure valid email address
-		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL,);
+		$newResourceEmail = filter_var($newResourceEmail, FILTER_SANITIZE_EMAIL);
 		//check if string length is appropriate
 		if(strlen($newResourceEmail) > 124) {
 			throw(new \RangeException("Email contains too many characters"));
@@ -336,7 +336,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceImageUrl = trim($newResourceImageUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL,);
+		$newResourceImageUrl = filter_var($newResourceImageUrl, FILTER_SANITIZE_URL);
 		//check if string length is appropriate
 		if(strlen($newResourceImageUrl) > 255) {
 			throw(new \RangeException("Image Url contains too many characters"));
@@ -366,7 +366,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceOrganization = trim($newResourceOrganization);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING,);
+		$newResourceOrganization = filter_var($newResourceOrganization, FILTER_SANITIZE_STRING);
 		//check if string length is appropriate
 		if(strlen($newResourceOrganization) > 124) {
 			throw(new \RangeException("Organization contains too many characters"));
@@ -397,7 +397,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourcePhone = trim($newResourcePhone);
 		//sanitizes string to get rid of harmful attacks
-		$newResourcePhone = filter_var($newResourcePhone, FILTER_SANITIZE_STRING,);
+		$newResourcePhone = filter_var($newResourcePhone, FILTER_SANITIZE_STRING);
 		//General too many characters exception
 		if(strlen($newResourcePhone) > 20) {
 			throw(new \RangeException("Phone contains too many characters"));
@@ -428,7 +428,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceTitle = trim($newResourceTitle);
 		//sanitizes string to get rid of harmful attacks
-		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING,);
+		$newResourceTitle = filter_var($newResourceTitle, FILTER_SANITIZE_STRING);
 		//Checks if string still has content after sanitization
 		if(empty($newResourceTitle) === true) {
 			//if string is empty, output error
@@ -463,7 +463,7 @@ class Resource implements \JsonSerializable {
 		//trims whitespace
 		$newResourceUrl = trim($newResourceUrl);
 		//sanitizes URL to get rid of harmful attacks
-		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL,);
+		$newResourceUrl = filter_var($newResourceUrl, FILTER_SANITIZE_URL);
 		//Checks if string still has content after sanitization
 		if(empty($newResourceUrl) === true) {
 			//if string is empty, output error

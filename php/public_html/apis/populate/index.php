@@ -35,11 +35,11 @@ try {
 	//grab the mySQL connection
 	$secrets = new \Secrets("/etc/apache2/capstone-mysql/veteran.ini");
 	$pdo = $secrets->getPdoObject();
-	$userEmail = "tester@johnthe.dev";
+	$userEmail = "tester3@johnthe.dev";
 	$userPassword = "password";
 	$userPasswordConfirm = "password";
 	$userName = "John Johnson-Rodgers";
-	$userUsername = "Bladvacion";
+	$userUsername = "Bladvacion3";
 
 	//hash password for storage
 	$hash = password_hash($userPassword, PASSWORD_ARGON2I, ["time_cost" => 7]);

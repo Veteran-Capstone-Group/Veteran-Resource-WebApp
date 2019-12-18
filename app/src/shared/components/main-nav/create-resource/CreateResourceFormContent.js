@@ -45,14 +45,14 @@ export const CreateResourceFormContent = (props) => {
 							onChange={handleChange}
 							onBlur={handleBlur}
 						>
-							<option value="501c7665-a4b1-47ab-a157-13d198f67d97">Food/Clothing</option>
-							<option value="b20fe0cd-43e4-4878-9d29-a4ecb57678a3">Disability</option>
-							<option value="b2b19ae1-7c88-4f5d-baa2-b2ebf964cd2a">Education</option>
-							<option value="faef9afc-61e2-4238-a634-b15164ebdbae">Employment</option>
-							<option value="0535ca67-9c12-4cc9-9450-e2faa89b91db">Mental Health</option>
-							<option value="34b09b0c-08a9-46a5-829b-0e5b7f385f5a">Healthcare</option>
-							<option value="8167caec-0d53-47c7-8a86-9b226a325eae">Housing</option>
-							<option value="a48077fe-3955-460d-9bb8-e04e48aad125">Miscellaneous</option>
+							<option value="777640f1-dac4-4ae1-9c31-ac9fd3f70e35">Food/Clothing</option>
+							<option value="9993a0c5-2247-4654-8f84-79daa9a8ef93">Disability</option>
+							<option value="bdf8061d-f359-4ece-b782-07b50ac9b015">Education</option>
+							<option value="c8a2c629-fc51-4a38-9eac-d75cd5685f58">Employment</option>
+							<option value="100c162d-9a5e-4d51-ab75-75ccd3bd3253">Mental Health</option>
+							<option value="60ea99d3-07d2-4284-a641-2ab39e1e708a">Healthcare</option>
+							<option value="7e94b87a-4ee9-48c6-bd44-b0cb9ef218ad">Housing</option>
+							<option value="3a55391b-fea6-4772-99b3-93e7cb6f4730">Miscellaneous</option>
 						</Form.Control>
 					</div>
 					{errors.resourceCategoryId && touched.resourceCategoryId && (

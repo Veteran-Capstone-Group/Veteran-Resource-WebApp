@@ -82,8 +82,16 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## API Documentation
 
- [Click here to view our API Documentation]()
- 
+ABQ Veteran's utilizes REST APIs to communicate between our servers and externally with the end user. We have numerous end points for account management and web interactions that developers can utilize to interact with our web app and database.
+
+ * [Account Activation API]()
+ * [Account Sign In API]()
+ * [Account Sign Up API]()
+ * [Resource Category API]()
+ * [Resource API]()
+ * [Useful API]()
+ * [User Account API]()
+  
 //TODO create API documentation
 
 

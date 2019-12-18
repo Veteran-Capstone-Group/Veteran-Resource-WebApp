@@ -17,6 +17,7 @@
 ## Get All Resources
 
 Not Yet Implemented
+
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
 
 ---

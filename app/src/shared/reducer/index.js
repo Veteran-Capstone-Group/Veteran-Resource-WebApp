@@ -5,7 +5,7 @@ import usefulReducer from "./usefulReducer";
 import jsonReducer from "./jsonReducer";
 
 export default combineReducers({
-	category:categoryReducer,
+	category: categoryReducer,
 	resource: resourceReducer,
 	useful: usefulReducer,
 	jsonDownload: jsonReducer

@@ -89,6 +89,7 @@ try {
 			throw(new \InvalidArgumentException("The Url field is empty.", 405));
 		}
 
+		//TODO WHY TWICE? LINE 68 - I can't make this change in this branch
 		//enforce that the user is signed in
 		if(empty($_SESSION["user"]) === true) {
 			throw(new \InvalidArgumentException("you must be logged in to post Resources", 403));

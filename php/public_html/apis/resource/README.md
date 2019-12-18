@@ -4,17 +4,20 @@
 * What is our Resource API
 
 #### ENDPOINTS
-* Get All Resources
-* Get Resource by Resource ID
-* Get Resource by Category ID
-* Get Resource by User ID
-* Post new Resource
+* [Get All Resources](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#get-all-resources)
+* [Get Resource by Resource ID](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#get-resource-by-resource-id)
+* [Get Resource by Category ID](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#get-resources-by-category-id)
+* [Get Resource by User ID](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#get-resources-by-user-id)
+* [Post new Resource](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#post-a-new-resource)
+
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 
 ## Get All Resources
 
-**Not Yet Implemented**
+Not Yet Implemented
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
 
 ---
 
@@ -23,7 +26,7 @@
 This API returns a specific resource by it's individual resource ID.
 
 **Endpoint:**   
-`TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/resource/`
 
 **HTTP Method:** GET  
 
@@ -42,6 +45,8 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
+
 ---
 
 ## Get Resources by Category Id
@@ -49,7 +54,7 @@ XSRF Token
 This API returns a set of resources under a single category.
 
 **Endpoint:**   
-`//TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/resource/`
 
 **HTTP Method:** GET  
 
@@ -68,6 +73,8 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
+
 ---
 
 ## Get Resources by User Id
@@ -75,7 +82,7 @@ XSRF Token
 This API returns a set of resources that were posted by an individual user.
 
 **Endpoint:**   
-`//TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/resource/`
 
 **HTTP Method:** GET  
 
@@ -94,6 +101,8 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
+
 ---
 
 ## Post A New Resource
@@ -101,7 +110,7 @@ XSRF Token
 This API endpoint allows a user to post a new resource
 
 **Endpoint:**   
-`//TODO Add Endpoint link`
+`https://abqveterans.com/Veteran-Capstone/php/public_html/apis/resource/`
 
 **HTTP Method:** POST  
 
@@ -126,5 +135,8 @@ This API endpoint allows a user to post a new resource
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 * **Code: 401** - 'You must be signed in to post a resource, please sign in to continue.'
-* **Code: 403** - 'you must be logged in to post Resources'
+* **Code: 403** - 'you must be logged in to post Resources'  
+
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource#Resource-API)
+
 ---

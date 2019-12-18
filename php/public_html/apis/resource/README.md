@@ -107,7 +107,9 @@ This API endpoint allows a user to post a new resource
 `resourceTitle: $resourceTitle, must be under`   
 `resourceUrl: $resourceUrl, must be under 255 characters`  
 
-**Optional Input:** N/A 
+**Optional Input:**  
+
+//TODO Write optional inputs
 
 **Expected Data:** 
 
@@ -118,5 +120,5 @@ This API endpoint allows a user to post a new resource
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 * **Code: 401** - 'You must be signed in to post a resource, please sign in to continue.'
-
+* **Code: 403** - 'you must be logged in to post Resources'
 ---

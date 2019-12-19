@@ -1,7 +1,7 @@
 # Sign-In API
 
 #### API INFO
-//TODO write What is our Sign-In API
+Our Sign-In API provides endpoints that handle account sign-in so that users can interact with our web app.
 
 #### ENDPOINTS
 * [Sign-In](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/sign-in#Sign-In)

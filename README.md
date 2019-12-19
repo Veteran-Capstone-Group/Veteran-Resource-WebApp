@@ -91,9 +91,7 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
  * [Resource API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource)
  * [Useful API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/useful)
  * [User Account API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user)
- * [Dataset API]() //not yet implemented
-  
-//TODO create API documentation
+ * [Dataset API]() //Dataset API not yet implemented
 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
@@ -101,7 +99,7 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
 ---
 ## Free Open Dataset Documentation
 
-At a future release interation we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
+At a future release iteration we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

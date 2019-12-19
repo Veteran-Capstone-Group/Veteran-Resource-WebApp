@@ -6,7 +6,7 @@ Our activation API utilizes the activation token emailed to the user after regis
  
 #### ENDPOINTS
 
-* [Activate User Account]()
+* [Activate User Account](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/activation#Activate-User-Account)
 
 [<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 

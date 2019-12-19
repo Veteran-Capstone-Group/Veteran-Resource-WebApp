@@ -6,7 +6,7 @@ Our Sign-In API provides endpoints that handle account sign-in so that users can
 #### ENDPOINTS
 * [Sign-In](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/sign-in#Sign-In)
 
-[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 
 ---
 

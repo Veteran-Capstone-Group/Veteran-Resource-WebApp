@@ -9,7 +9,7 @@ Our useful API manages interactions with our useful feature.
 * [Remove Useful from Resource](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/useful#Remove-Useful-from-Resource)
 
 
-[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 
 ---
 

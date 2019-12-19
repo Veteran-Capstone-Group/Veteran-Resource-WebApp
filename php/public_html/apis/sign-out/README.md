@@ -6,7 +6,7 @@ Our Sign-Out API provides endpoints that handle account sign-out so that users c
 #### ENDPOINTS
 * [Sign-Out](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/sign-out#Sign-Out)
 
-[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 
 ---
 

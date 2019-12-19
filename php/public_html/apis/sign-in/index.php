@@ -59,6 +59,7 @@ try {
 		if(empty($user) === true) {
 			throw(new InvalidArgumentException("Invalid Username", 401));
 		}
+		//TODO make account activation mandatory
 		$user->setUserActivationToken(null);
 		$user->update($pdo);
 
@@ -83,7 +84,7 @@ try {
 
 		$reply->message = "Sign in was successful.";
 	} else {
-		throw(new \InvalidArgumentException("Invalid HTTP method request", 418));
+		throw(new \InvalidArgumentException("Invalid HTTP method request", 405));
 	}
 	//catch exceptions
 } catch(Exception | TypeError $exception) {

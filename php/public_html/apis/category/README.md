@@ -8,7 +8,7 @@
 * [Get Category by Category ID](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Get-Category-by-Category-ID)
 * [Get Category by Category Type](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Get-Category-by-Category-Type) //Not yet Implemented
 
-[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 
 ---
 

@@ -8,7 +8,7 @@ Our activation API utilizes the activation token emailed to the user after regis
 
 * [Activate User Account]()
 
-[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+[<p align="right">(Back to Primary README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#API-Documentation)
 
 ---
 

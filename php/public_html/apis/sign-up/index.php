@@ -162,7 +162,7 @@ EOF;
 		//update reply
 		$reply->message = "Thank you for creating a profile with the Albuquerque Veteran Resource Application!";
 	} else {
-		throw(new InvalidArgumentException("Invalid http request"));
+		throw(new InvalidArgumentException("Invalid http request", 405));
 	}
 
 } catch(\Exception | \TypeError $exception) {

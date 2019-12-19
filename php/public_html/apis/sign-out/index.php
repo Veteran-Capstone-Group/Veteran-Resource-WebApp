@@ -32,7 +32,7 @@ try {
 		$reply->message = "You are now signed out.";
 	}
 	else {
-		throw (new \InvalidArgumentException("Invalid HTTP method request"));
+		throw (new \InvalidArgumentException("Invalid HTTP method request", 405));
 	} //determine what kind of error was thrown
 } catch(\Exception | \TypeError $exception) {
 	$reply->status = $exception->getCode();

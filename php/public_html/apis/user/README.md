@@ -4,11 +4,11 @@
 //TODO add What is our User API
 
 #### ENDPOINTS
-* [Get User by Username]()
-* [Get User by UserId]()
-* [Get User by User Activation Token]()
-* [Update User Information]()
-* [Delete User]()
+* [Get User by Username](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#Get-User-by-Username)
+* [Get User by UserId](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#Get-User-by-UserId)
+* [Get User by User Activation Token](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#Get-User-by-User-Activation-Token)
+* [Update User Information](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#Update-User-Info)
+* [Delete User](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#Delete-User)
 
 
 
@@ -37,7 +37,7 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
-[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#User-API)
 
 ---
 
@@ -62,7 +62,7 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
-[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#User-API)
 
 ---
 
@@ -87,7 +87,7 @@ XSRF Token
 * **Code: 405** - 'Invalid HTTP method request'  
 * **Code: 400** - 'Input Required'  
 
-[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#User-API)
 
 ---
 
@@ -119,7 +119,7 @@ JWT Token
 * **Code: 404** - 'Profile does not exist'   
 * **Code: 405** - 'Invalid HTTP method request'  
 
-[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#User-API)
 
 ---
 
@@ -148,8 +148,8 @@ JWT Token
    
  * **Code: 401** - 'You better check yourself, before you wreck yourself. (not logged in)'
  * **Code: 404** - 'Profile does not exist'   
- * **Code: 405** - 'Invalid HTTP method request' 
+ * **Code: 405** - 'Invalid HTTP method request'  
 
-[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category#Category-API)
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user#User-API)
 
 ---

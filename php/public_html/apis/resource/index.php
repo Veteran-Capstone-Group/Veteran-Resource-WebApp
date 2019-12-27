@@ -56,7 +56,8 @@ try {
 			//get a resource using resourceUserId
 			$reply->data = Resource::getResourceByResourceUserId($pdo, $resourceUserId);
 		} else {
-			throw (new InvalidArgumentException("Input Required", 400));
+			//get all resources
+			$reply->data = Resource::getAllResources($pdo);
 		}
 
 	} elseif($method === "POST") {

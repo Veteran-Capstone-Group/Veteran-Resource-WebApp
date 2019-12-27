@@ -4,6 +4,8 @@ export default (state = [], action) => {
 			return action.payload;
 		case "GET_RESOURCE_BY_ID":
 			return action.payload;
+		case "GET_ALL_RESOURCES":
+			return action.payload;
 		default:
 			return state;
 	}

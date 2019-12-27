@@ -42,7 +42,9 @@ try {
 		throw(new InvalidArgumentException("id can not be empty", 402));
 	}
 
+	//if GET request check which data is provided to choose which GetBy Method to use
 	if($method === "GET") {
+		//TODO check documentation on set XSRF, are we reseting user's token every time they interact with something?
 		//set xsrf cookie
 		setXsrfCookie();
 
@@ -88,6 +90,7 @@ try {
 			throw(new \InvalidArgumentException("The Url field is empty.", 405));
 		}
 
+		//TODO WHY TWICE? LINE 68 - I can't make this change in this branch
 		//enforce that the user is signed in
 		if(empty($_SESSION["user"]) === true) {
 			throw(new \InvalidArgumentException("you must be logged in to post Resources", 403));

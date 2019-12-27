@@ -82,8 +82,17 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## API Documentation
 
- [Click here to view our API Documentation]()
- 
+ABQ Veteran's utilizes REST APIs to communicate between our servers and externally with the end user. We have numerous end points for account management and web interactions that developers can utilize to interact with our web app and database.
+
+ * [Account Activation API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/activation)
+ * [Account Sign In API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/sign-in)
+ * [Account Sign Up API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/sign-up)
+ * [Resource Category API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/category)
+ * [Resource API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource)
+ * [Useful API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/useful)
+ * [User Account API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user)
+ * [Dataset API]() //not yet implemented
+  
 //TODO create API documentation
 
 

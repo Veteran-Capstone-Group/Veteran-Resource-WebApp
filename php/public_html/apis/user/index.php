@@ -84,7 +84,7 @@ try {
 			throw(new RuntimeException("Profile does not exist", 404));
 		}
 
-		//makes sure required fields are available
+		//makes sure required fields are available if null get them from MySQL
 		if(empty($requestObject->userEmail) === true) {
 			$requestObject->userEmail = $user->getUserEmail();
 		}
@@ -106,7 +106,7 @@ try {
 
 		//enforce that the user is signed in
 		if(empty($_SESSION["user"]) === true) {
-			throw(new \InvalidArgumentException("you must be logged in to post Resources", 403));
+			throw(new \InvalidArgumentException("You must be logged in to post Resources.", 403));
 		}
 
 
@@ -141,7 +141,7 @@ try {
 		$reply->message = "User Deleted";
 
 	} else {
-		throw (new InvalidArgumentException("Invalid HTTP request", 400));
+		throw (new InvalidArgumentException("Invalid HTTP method request", 405));
 	}
 //catch any exceptions that were thrown
 } catch(\Exception | \TypeError $exception) {

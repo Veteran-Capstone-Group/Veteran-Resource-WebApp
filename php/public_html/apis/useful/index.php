@@ -92,7 +92,7 @@ try {
 			//get useful to delete by composite id
 			$useful = Useful::getUsefulByUsefulResourceIdAndUsefulUserId($pdo, $requestObject->usefulResourceId, $requestObject->usefulUserId);
 			if($useful === null) {
-				throw (new RuntimeException("Useful Does Not Exist"));
+				throw (new RuntimeException("Useful Does Not Exist", 404));
 			}
 
 			//USER NEEDS TO BE SIGNED IN
@@ -108,7 +108,7 @@ try {
 		}
 		// if any other HTTP request is sent throw an exception
 	} else {
-		throw new \InvalidArgumentException("invalid http request", 400);
+		throw new \InvalidArgumentException("invalid http request", 405);
 	}
 	//catch any exceptions that is thrown and update the reply status and message
 } catch(\Exception | \TypeError $exception) {

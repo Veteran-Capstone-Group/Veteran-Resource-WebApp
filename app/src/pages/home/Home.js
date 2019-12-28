@@ -45,7 +45,7 @@ export const Home = () => {
 	return (
 		<>
 			<div id="mainContent" className="d-lg-block d-flex align-items-center justify-content-center">
-				<Slider className="pt-0"/>
+				<Slider itemOne="" itemTwo="" itemThree="" className="pt-0"/>
 				<div className={`categoryTray`} id="categoryTray">
 					<Container className={`d-flex justify-content-around`}>
 						<Container>

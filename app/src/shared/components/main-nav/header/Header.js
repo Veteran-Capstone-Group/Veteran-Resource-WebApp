@@ -32,24 +32,27 @@ export const Header= () => {
 	 * E.g when a network request to an api has completed and there is new data to display on the dom.
 	 **/
 	useEffect(effects, inputs);
+	//establish variable names for later use, required to not error out before state is populated
 	let categoryOne = categories[0];
-	let clothingAndFood = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let disability = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let education = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let employment= "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let mentalHealth = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let healthcare = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let housing = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
-	let miscellaneous = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
+	let categoryOneName, categoryTwoName, categoryThreeName, categoryFourName, categoryFiveName, categorySixName, categorySevenName, categoryEightName;
+	let categoryOneUuid, categoryTwoUuid, categoryThreeUuid, categoryFourUuid, categoryFiveUuid, categorySixUuid, categorySevenUuid, categoryEightUuid;
 	if(categoryOne) {
-		clothingAndFood = categories[0]["categoryId"];
-		disability = categories[1]["categoryId"];
-		education = categories[2]["categoryId"];
-		employment= categories[3]["categoryId"];
-		mentalHealth = categories[4]["categoryId"];
-		healthcare = categories[5]["categoryId"];
-		housing = categories[6]["categoryId"];
-		miscellaneous = categories[7]["categoryId"];
+		categoryOneName = categories[0]["categoryType"];
+		categoryTwoName = categories[1]["categoryType"];
+		categoryThreeName = categories[2]["categoryType"];
+		categoryFourName= categories[3]["categoryType"];
+		categoryFiveName = categories[4]["categoryType"];
+		categorySixName = categories[5]["categoryType"];
+		categorySevenName = categories[6]["categoryType"];
+		categoryEightName = categories[7]["categoryType"];
+		categoryOneUuid = categories[0]["categoryId"];
+		categoryTwoUuid = categories[1]["categoryId"];
+		categoryThreeUuid = categories[2]["categoryId"];
+		categoryFourUuid = categories[3]["categoryId"];
+		categoryFiveUuid = categories[4]["categoryId"];
+		categorySixUuid = categories[5]["categoryId"];
+		categorySevenUuid = categories[6]["categoryId"];
+		categoryEightUuid = categories[7]["categoryId"];
 		console.log(categories[3]["categoryId"]);
 	}
 
@@ -71,24 +74,15 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 							<NavDropdown title={window.location.pathname === "/" ? "Home" : title} id="collapsible-nav-dropdown"
 											 className={`mobile-fix text-dark`}>
 								<Col xs={10}>
-									<NavDropdown.Item
-										href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+clothingAndFood} className="dropdownText">Clothes & Food</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+disability} className="dropdownText">Disability</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+education} className="dropdownText">Education</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+employment} className="dropdownText">Employment</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item href={"/Category/"+mentalHealth} className="dropdownText">Mental
-										Health</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+healthcare} className="dropdownText">Healthcare</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item
-										href={"/Category/"+housing} className="dropdownText">Housing</NavDropdown.Item><NavDropdown.Divider/>
-									<NavDropdown.Item id={`bottomMenuItem`}
-															href={"/Category/"+miscellaneous} className="dropdownText">Miscellaneous</NavDropdown.Item>
+									<NavDropdown.Item href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categoryOneUuid} className="dropdownText">{categoryOneName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categoryTwoUuid} className="dropdownText">{categoryTwoName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categoryThreeUuid} className="dropdownText">{categoryThreeName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categoryFourUuid} className="dropdownText">{categoryFourName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categoryFiveUuid} className="dropdownText">{categoryFiveName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categorySixUuid} className="dropdownText">{categorySixName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item href={"/Category/"+categorySevenUuid} className="dropdownText">{categorySevenName}</NavDropdown.Item><NavDropdown.Divider/>
+									<NavDropdown.Item id={`bottomMenuItem`} href={"/Category/"+categoryEightUuid} className="dropdownText">{categoryEightName}</NavDropdown.Item>
 								</Col>
 								<Col xs={2}>
 									<span></span>
@@ -109,24 +103,15 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Col xs={2} id="navDropdownButton">
 							<NavDropdown title={window.location.pathname === "/" ? "Home" : title} id="collapsible-nav-dropdown" className={`text-dark`}>
-								<NavDropdown.Item
-									href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+clothingAndFood} className="dropdownText">Clothes & Food</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+disability} className="dropdownText">Disability</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+education} className="dropdownText">Education</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+employment} className="dropdownText">Employment</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item href={"/Category/"+mentalHealth} className="dropdownText">Mental
-									Health</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+healthcare} className="dropdownText">Healthcare</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item
-									href={"/Category/"+housing} className="dropdownText">Housing</NavDropdown.Item><NavDropdown.Divider/>
-								<NavDropdown.Item id={`bottomMenuItem`}
-														href={"/Category/"+miscellaneous} className="dropdownText">Miscellaneous</NavDropdown.Item>
+								<NavDropdown.Item href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categoryOneUuid} className="dropdownText">{categoryOneName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categoryTwoUuid} className="dropdownText">{categoryTwoName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categoryThreeUuid} className="dropdownText">{categoryThreeName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categoryFourUuid} className="dropdownText">{categoryFourName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categoryFiveUuid} className="dropdownText">{categoryFiveName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categorySixUuid} className="dropdownText">{categorySixName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item href={"/Category/"+categorySevenUuid} className="dropdownText">{categorySevenName}</NavDropdown.Item><NavDropdown.Divider/>
+								<NavDropdown.Item id={`bottomMenuItem`} href={"/Category/"+categoryEightUuid} className="dropdownText">{categoryEightName}</NavDropdown.Item>
 							</NavDropdown>
 						</Col>
 						<Col xs={8}>

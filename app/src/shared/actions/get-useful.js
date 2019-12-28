@@ -1,6 +1,6 @@
 import {httpConfig} from "../utils/http-config";
 import  _ from "lodash"
-import {getResourceByResourceCategory} from "./get-resource";
+import {getResourceByResourceCategory, getAllResources} from "./get-resource";
 
 export const getUsefulByUsefulResourceId = (resourceId) => async (dispatch) => {
 
@@ -10,6 +10,16 @@ export const getUsefulByUsefulResourceId = (resourceId) => async (dispatch) => {
 
 export const getUsefulsAndResources = (categoryId) => async (dispatch, getState) => {
 	await dispatch(getResourceByResourceCategory(categoryId));
+
+	_.chain(getState().resource)
+		.map("resourceId")
+		.uniq()
+		.forEach(id => dispatch(getUsefulByUsefulResourceId(id)))
+		.value()
+};
+
+export const getUsefulsAndAllResources = () => async (dispatch, getState) => {
+	await dispatch(getAllResources());
 
 	_.chain(getState().resource)
 		.map("resourceId")

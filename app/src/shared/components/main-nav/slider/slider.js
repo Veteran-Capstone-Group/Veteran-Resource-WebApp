@@ -45,38 +45,8 @@ let itemThree = {
 	"resourceTitle": "G.I. Bill",
 	"resourceUrl": "https://www.va.gov/education/about-gi-bill-benefits/"
 };
-let initialSort = false;
 export const Slider = () => {
 
-	const resources = useSelector(state => (state.resource ? state.resource : []));
-	const usefuls = useSelector(state => state.useful ? state.useful : []);
-
-	//assigns useDispatch to dispatch variable
-	const dispatch = useDispatch();
-
-	// Define the side effects that will occur in the application, e.g., code that handles dispatches to redux, API requests, or timers.
-	// The dispatch function takes actions as arguments to make changes to the store/redux.
-
-
-	//pass side effects with inputs to useEffect
-	useEffect(() => {
-		dispatch(getUsefulsAndAllResources());});
-
-	//count useful function for sorting
-	const countResourceUsefuls = (resourceId) => {
-		const usefulResources = usefuls.filter(useful => useful.usefulResourceId === resourceId);
-		return (usefulResources.length);
-	};
-
-	//sorts resources, most usefuls first.
-	let sortedResources = _.sortBy(resources,[function(o) {return 0-countResourceUsefuls(o.resourceId)}]);
-	if (!initialSort){
-		if(sortedResources[0]) {
-			itemTwo = sortedResources[0];
-			itemThree = sortedResources[1];
-		}
-		initialSort = true;
-	}
 	const width = UseWindowWidth();
 	return (
 		<>

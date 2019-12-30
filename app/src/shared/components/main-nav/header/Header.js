@@ -36,7 +36,9 @@ export const Header= () => {
 	let categoryOne = categories[0];
 	let categoryOneName, categoryTwoName, categoryThreeName, categoryFourName, categoryFiveName, categorySixName, categorySevenName, categoryEightName;
 	let categoryOneUuid, categoryTwoUuid, categoryThreeUuid, categoryFourUuid, categoryFiveUuid, categorySixUuid, categorySevenUuid, categoryEightUuid;
+	let selectedCategory;
 	if(categoryOne) {
+		//sets values for navigation menu dynamically
 		categoryOneName = categories[0]["categoryType"];
 		categoryTwoName = categories[1]["categoryType"];
 		categoryThreeName = categories[2]["categoryType"];
@@ -53,16 +55,11 @@ export const Header= () => {
 		categorySixUuid = categories[5]["categoryId"];
 		categorySevenUuid = categories[6]["categoryId"];
 		categoryEightUuid = categories[7]["categoryId"];
-		console.log(categories[3]["categoryId"]);
+		//sets selected category for title
+		selectedCategory = window.location.pathname === "/" ? "Home" : categories.find(category => category["categoryId"] === window.location.pathname.split("/Category/")[1])["categoryType"];
 	}
 
-	const arrayOfCategoryTitles = {"777640f1-dac4-4ae1-9c31-ac9fd3f70e35":"Clothing/Food",
-		"9993a0c5-2247-4654-8f84-79daa9a8ef93":"Disability", "bdf8061d-f359-4ece-b782-07b50ac9b015": "Education",
-		"c8a2c629-fc51-4a38-9eac-d75cd5685f58": "Employment", "100c162d-9a5e-4d51-ab75-75ccd3bd3253": "Mental Health",
-		"60ea99d3-07d2-4284-a641-2ab39e1e708a": "Healthcare", "7e94b87a-4ee9-48c6-bd44-b0cb9ef218ad":"Housing",
-		"3a55391b-fea6-4772-99b3-93e7cb6f4730":"Miscellaneous"};
-
-let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1]];
+let title = selectedCategory;
 
 	if(isMobile) {//create mobile header
 		return (
@@ -71,7 +68,7 @@ let title = arrayOfCategoryTitles[window.location.pathname.split("/Category/")[1
 					<Navbar.Toggle aria-controls="navbar-nav"/>
 					<Navbar.Collapse id="navbar-nav">
 						<Col id="navDropdownButton">
-							<NavDropdown title={window.location.pathname === "/" ? "Home" : title} id="collapsible-nav-dropdown"
+							<NavDropdown title={title} id="collapsible-nav-dropdown"
 											 className={`mobile-fix text-dark`}>
 								<Col xs={10}>
 									<NavDropdown.Item href={"/"}>Home</NavDropdown.Item><NavDropdown.Divider/>

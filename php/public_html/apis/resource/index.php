@@ -59,7 +59,7 @@ try {
 			$reply->data = Resource::getResourceByResourceUserId($pdo, $resourceUserId);
 		} else {
 			//get all resources
-			$reply->data = Resource::getAllResources($pdo);
+			$reply->data = Resource::getAllResources($pdo)->toArray();
 		}
 
 	} elseif($method === "POST") {

@@ -56,10 +56,10 @@ export const Header= () => {
 		categorySevenUuid = categories[6]["categoryId"];
 		categoryEightUuid = categories[7]["categoryId"];
 		//sets selected category for title
-		selectedCategory = window.location.pathname === "/" ? "Home" : categories.find(category => category["categoryId"] === window.location.pathname.split("/Category/")[1])["categoryType"];
+		//selectedCategory = window.location.pathname === "/" ? "Home" : categories.find(category => category["categoryId"] === window.location.pathname.split("/Category/")[1])["categoryType"];
 	}
 
-let title = selectedCategory;
+let title = "selectedCategory";
 
 	if(isMobile) {//create mobile header
 		return (

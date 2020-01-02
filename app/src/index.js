@@ -14,7 +14,7 @@ import {FourOhFour} from "./pages/four-oh-four/FourOhFour";
 import {Home} from "./pages/home/Home";
 import {Header} from "./shared/components/main-nav/header/Header";
 import {ResourcesInCategory} from "./pages/category/Category";
-import {JsonDownloader} from "./pages/downloader/JsonDownloader";
+import {ResourcesInJson} from "./shared/components/data-downloaders/ResourcesInJson";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faDove, faEnvelope, faKey, faPhone, faStroopwafel, faMedal, faArrowLeft, faArrowRight, faBookOpen, faCity, faImage, faAlignLeft, faLaptop, faSuitcase, faHeading, faList, faUser, faUserPlus, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 
@@ -30,7 +30,7 @@ const Routing = (store) => (
 
 					<Route exact path="/Category/:resourceCategoryId" component={ResourcesInCategory} resourceCategoryId=":resourceCategoryId"/>
 					<Route exact path="/" component={Home}/>
-					<Route component={JsonDownloader} exact path={"/john"}/>
+					<Route component={ResourcesInJson} exact path={"/john"}/>
 					<Route component={FourOhFour}/>
 
 				</Switch>

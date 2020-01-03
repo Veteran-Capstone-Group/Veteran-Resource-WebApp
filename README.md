@@ -79,9 +79,7 @@ We utilize sanitization in our APIs to make certain that the information we reci
 
 **Back-End security -**
 
-We utilize sanitization and prepared statements with every user interaction in our PHP and MySQL calls to ascertain that the user can not give us data we are not expecting or inject data into our database by making sure that every data base call is made using exactly the information we expect to be using.
-
-//TODO document security features
+We utilize sanitization and prepared statements with every user interaction in our PHP and MySQL calls to ascertain that the user can not give us data we are not expecting or inject data into our database by making sure that every data base call is made using exactly the information we expect to be using. We have also utilized argon2i hashing to securely utilize sensitive user data through one way encryption without having to store that data in our database, allowing user passwords to never actually be saved in our database. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

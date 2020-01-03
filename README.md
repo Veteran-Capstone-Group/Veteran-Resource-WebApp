@@ -67,6 +67,20 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## Security Implementations
 
+We've included security minded implementations at every level of our codebase, making sure not to stare any sensitive user data and to sanitize all user input at every level of our application in order to make sure that our user's data is secure at every point.
+
+**Front-End security -**
+
+We utilize sanitization in all fields on our front end to make certain that the information our users are giving us is expected, not malicious in intent, and meets the proper requirements for those fields.
+
+**API security -**
+
+We utilize sanitization in our APIs to make certain that the information we recieve from the front-end or end user and what we give to our back-end interface is not malicious in intent and is what we are excpecting our users to be giving us.
+
+**Back-End security -**
+
+We utilize sanitization and prepared statements with every user interaction in our PHP and MySQL calls to ascertain that the user can not give us data we are not expecting or inject data into our database by making sure that every data base call is made using exactly the information we expect to be using.
+
 //TODO document security features
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)

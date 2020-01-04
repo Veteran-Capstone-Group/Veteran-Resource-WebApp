@@ -125,7 +125,7 @@ At a future release iteration we will be making our dataset public for download 
 ---
 ## How to contribute to this Application
 
-Until February, Pull request's won't be considered as we are participating in a contest with this application.  
+Until February, Pull requests won't be considered as we are participating in a contest with this application.  
 
 1. Establish a point of contact with the primary developers of this project and discuss the changes you wish to make.
 

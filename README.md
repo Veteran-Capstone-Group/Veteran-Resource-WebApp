@@ -127,7 +127,7 @@ At a future release iteration we will be making our dataset public for download 
 
 Until February, Pull request's won't be considered as we are participating in a contest with this application.  
 
-This section will be updated with a guide on how to contribute to our open-source project.
+[Click here to view our Contribution Guidelines](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/contributing.md)
 
 ---
 

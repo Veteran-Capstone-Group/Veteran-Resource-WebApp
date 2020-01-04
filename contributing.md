@@ -12,4 +12,4 @@ When contributing to this repository, please first discuss the change you wish t
 
 4. Document your code, every couple of lines, to ensure we can read through what your code is doing at a reasonable speed without having to decipher every line.
 
-5. After making your changes contact the primary developers for this project and discuss al the changes you've made, letting them know you are ready for a code review and merge.
+5. After making your changes contact the primary developers for this project and discuss all the changes you've made, letting them know you are ready for a code review and merge.

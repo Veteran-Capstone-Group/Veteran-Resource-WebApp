@@ -127,7 +127,18 @@ At a future release iteration we will be making our dataset public for download 
 
 Until February, Pull request's won't be considered as we are participating in a contest with this application.  
 
-[Click here to view our Contribution Guidelines](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/master/contributing.md)
+1. Establish a point of contact with the primary developers of this project and discuss the changes you wish to make.
+
+2. Ensure any install or build dependencies are removed before submitting a request. Likewise, remove any and all sensitive data, any merge containing commits with sensitive data will be declined.
+
+3. Update the README.md with details of all changes to the interface.
+
+4. Document your code, every couple of lines, to ensure we can read through what your code is doing at a reasonable speed without having to decipher every line.
+
+5. After making your changes contact the primary developers for this project and discuss all the changes you've made, letting them know you are ready for a code review and merge.
+
+
+[Click here to view our Contribution Guidelines](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/master/contributing.md) [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 

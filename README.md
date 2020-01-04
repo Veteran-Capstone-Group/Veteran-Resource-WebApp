@@ -127,7 +127,7 @@ At a future release iteration we will be making our dataset public for download 
 
 Until February, Pull requests won't be considered as we are participating in a contest with this application.  
 
-1. Establish a point of contact with the primary developers of this project and discuss the changes you wish to make.
+1. Establish a point of contact with the primary developers of this project and discuss the changes you wish to make, either on github or through email or slack.
 
 2. Ensure any install or build dependencies are removed before submitting a request. Likewise, remove any and all sensitive data, any merge containing commits with sensitive data will be declined.
 

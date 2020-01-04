@@ -13,3 +13,5 @@ When contributing to this repository, please first discuss the change you wish t
 4. Document your code, every couple of lines, to ensure we can read through what your code is doing at a reasonable speed without having to decipher every line.
 
 5. After making your changes contact the primary developers for this project and discuss all the changes you've made, letting them know you are ready for a code review and merge.
+
+[<p align="right">(Back to README)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)

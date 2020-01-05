@@ -119,7 +119,9 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
 ---
 ## Free Open Dataset Documentation
 
-At a future release iteration we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
+[Dataset Downloader](https://abqveterans.com/data-resources)
+
+To utilize our free and open dataset follow the above link to our online data downloader to copy our data in JSON or CSV formats. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

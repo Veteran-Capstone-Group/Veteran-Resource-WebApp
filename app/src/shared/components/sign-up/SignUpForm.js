@@ -31,7 +31,7 @@ export const SignUpForm = () => {
 		userUsername: Yup.string()
 			.required("Username is required.")
 	});
-	const submitSignUp = (values, {resetForm}) => {
+	const submitSignUp = (values, {resetForm, setStatus}) => {
 		httpConfig.post("/apis/sign-up/", values)
 			.then(reply => {
 					let {message, type} = reply;

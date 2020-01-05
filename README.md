@@ -60,7 +60,15 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## Demo
 
-//TODO add Demo
+Demo Video  
+[![Youtube Demo for ABQ Veterans App](http://img.youtube.com/vi/5_9DHNyQcIY/0.jpg)](http://www.youtube.com/watch?v=5_9DHNyQcIY "")
+
+Demo Gifs (Warning: very large files)
+* [Creating New Resource Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/creating%20new%20resource.gif?raw=true)
+* [Calling and Opening Maps Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/opening%20maps%20and%20calling%20demo.gif?raw=true)
+* [Registering New Account and Signing In Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/registering%20and%20signing%20in%20demo%20gif.gif?raw=true)
+* [Usefulling a Resource and Sorting by Most Useful Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/usefulling%20and%20sorting.gif?raw=true)
+
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

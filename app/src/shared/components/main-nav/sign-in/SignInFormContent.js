@@ -89,7 +89,7 @@ export const SignInFormContent = (props) => {
 					<button
 						className="btn btn-primary mb-2 mx-4"
 						onClick={handleReset}
-						disabled={!dirty || isSubmitting}
+						disabled={!dirty}
 					>Reset
 					</button>
 				</div>

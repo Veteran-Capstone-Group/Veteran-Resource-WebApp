@@ -34,7 +34,14 @@ $SEED_CATEGORY_IDS=
 	6 => "3a55391b-fea6-4772-99b3-93e7cb6f4730",
 	7 => "c8a2c629-fc51-4a38-9eac-d75cd5685f58"];
 
-$CATEGORY_IDS = [];
+$CATEGORY_IDS = ["Education" => "60ea99d3-07d2-4284-a641-2ab39e1e708a",
+	"Employment" => "777640f1-dac4-4ae1-9c31-ac9fd3f70e35",
+	"Housing" => "bdf8061d-f359-4ece-b782-07b50ac9b015",
+	"Clothes-Food" => "100c162d-9a5e-4d51-ab75-75ccd3bd3253",
+	"Mental Health" => "7e94b87a-4ee9-48c6-bd44-b0cb9ef218ad",
+	"Healthcare" => "9993a0c5-2247-4654-8f84-79daa9a8ef93",
+	"Disability" => "3a55391b-fea6-4772-99b3-93e7cb6f4730",
+	"Miscellaneous" => "c8a2c629-fc51-4a38-9eac-d75cd5685f58"];
 $UserId = "a144a25fb6144342ae3945cae3cc6d22";
 //prepare an empty reply
 $reply = new stdClass();
@@ -67,7 +74,6 @@ try {
 		$uuid = generateUuidV4();
 		$category = new Category($SEED_CATEGORY_IDS[$i], $SEED_CATEGORIES[$i]);
 		$category->insert($pdo);
-		$CATEGORY_IDS[$SEED_CATEGORIES[$i]] = $SEED_CATEGORY_IDS[$i];
 	}
 
 

@@ -48,8 +48,6 @@ As several of our family members are veterans, and we are very passionate toward
 ## Upcoming Features and Changes
 
 * Change Icons for categories to cleaner more professional icons
-* Dynamically export our resource dataset, on a scheduled basis, as JSON and CSV file formats and provide them as free open data
-* Secure our API and provide public documentation for others to access it
 * Create a carousel for homepage displaying most useful'd resources in a better UI/UX format
 * Add a moderator trait giving users the ability to be moderators that can change the approval status or resources
 * Add search capabilities to filter through our dataset as it grows
@@ -60,7 +58,15 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## Demo
 
-//TODO add Demo
+Demo Video  
+[![Youtube Demo for ABQ Veterans App](http://img.youtube.com/vi/5_9DHNyQcIY/0.jpg)](http://www.youtube.com/watch?v=5_9DHNyQcIY "")
+
+Demo Gifs (Warning: very large files)
+* [Creating New Resource Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/creating%20new%20resource.gif?raw=true)
+* [Calling and Opening Maps Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/opening%20maps%20and%20calling%20demo.gif?raw=true)
+* [Registering New Account and Signing In Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/registering%20and%20signing%20in%20demo%20gif.gif?raw=true)
+* [Usefulling a Resource and Sorting by Most Useful Demo](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/documentation/documentation/demo-gifs/usefulling%20and%20sorting.gif?raw=true)
+
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
@@ -111,7 +117,9 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
 ---
 ## Free Open Dataset Documentation
 
-At a future release iteration we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
+[Dataset Downloader](https://abqveterans.com/data-resources)
+
+To utilize our free and open dataset follow the above link to our online data downloader to copy our data in JSON or CSV formats. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 

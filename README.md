@@ -67,7 +67,19 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## Security Implementations
 
-//TODO document security features
+We've included security minded implementations at every level of our codebase, making sure not to stare any sensitive user data and to sanitize all user input at every level of our application in order to make sure that our user's data is secure at every point.
+
+**Front-End security -**
+
+We utilize sanitization in all fields on our front end to make certain that the information our users are giving us is expected, not malicious in intent, and meets the proper requirements for those fields.
+
+**API security -**
+
+We utilize sanitization in our APIs to make certain that the information we recieve from the front-end or end user and what we give to our back-end interface is not malicious in intent and is what we are excpecting our users to be giving us.
+
+**Back-End security -**
+
+We utilize sanitization and prepared statements with every user interaction in our PHP and MySQL calls to ascertain that the user can not give us data we are not expecting or inject data into our database by making sure that every data base call is made using exactly the information we expect to be using. We have also utilized argon2i hashing to securely utilize sensitive user data through one way encryption without having to store that data in our database, allowing user passwords to never actually be saved in our database. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
@@ -91,9 +103,7 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
  * [Resource API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/resource)
  * [Useful API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/useful)
  * [User Account API](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/tree/master/php/public_html/apis/user)
- * [Dataset API]() //not yet implemented
-  
-//TODO create API documentation
+
 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
@@ -101,7 +111,7 @@ ABQ Veteran's utilizes REST APIs to communicate between our servers and external
 ---
 ## Free Open Dataset Documentation
 
-At a future release interation we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
+At a future release iteration we will be making our dataset public for download and free to use and will be providing it as datasets in JSON and CSV formats. 
 
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
@@ -115,9 +125,20 @@ At a future release interation we will be making our dataset public for download
 ---
 ## How to contribute to this Application
 
-Until February, Pull request's won't be considered as we are participating in a contest with this application.  
+Until February, Pull requests won't be considered as we are participating in a contest with this application.  
 
-This section will be updated with a guide on how to contribute to our open-source project.
+1. Establish a point of contact with the primary developers of this project and discuss the changes you wish to make, either on github or through email or slack.
+
+2. Ensure any install or build dependencies are removed before submitting a request. Likewise, remove any and all sensitive data, any merge containing commits with sensitive data will be declined.
+
+3. Update the README.md with details of all changes to the interface.
+
+4. Document your code, every couple of lines, to ensure we can read through what your code is doing at a reasonable speed without having to decipher every line.
+
+5. After making your changes contact the primary developers for this project and discuss all the changes you've made, letting them know you are ready for a code review and merge.
+
+
+[Click here to view our Contribution Guidelines](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp/blob/master/contributing.md) [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---
 

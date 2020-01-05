@@ -65,7 +65,6 @@ export const Home = () => {
 		categorySixUuid = categories[5]["categoryId"];
 		categorySevenUuid = categories[6]["categoryId"];
 		categoryEightUuid = categories[7]["categoryId"];
-		console.log(categories[3]["categoryId"]);
 	}
 	const clothingAndFood = "777640f1-dac4-4ae1-9c31-ac9fd3f70e35";
 	const disability = "9993a0c5-2247-4654-8f84-79daa9a8ef93";

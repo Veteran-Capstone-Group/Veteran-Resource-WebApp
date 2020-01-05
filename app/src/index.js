@@ -30,7 +30,7 @@ const Routing = (store) => (
 
 					<Route exact path="/Category/:resourceCategoryId" component={ResourcesInCategory} resourceCategoryId=":resourceCategoryId"/>
 					<Route exact path="/" component={Home}/>
-					<Route component={ResourcesInJson} exact path={"/john"}/>
+					<Route component={ResourcesInJson} exact path={"/data-resources"}/>
 					<Route component={FourOhFour}/>
 
 				</Switch>

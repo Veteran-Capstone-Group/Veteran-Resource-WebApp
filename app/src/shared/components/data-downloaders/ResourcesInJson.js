@@ -68,7 +68,7 @@ export const ResourcesInJson = ({match}) => {
 			<div id="mainContent">
 				<Container fluid="true">
 					<Row>
-						<Col lg="6" style={{height: "500px"}}>
+						<Col lg="6" className="py-2" style={{height: "500px"}}>
 							<Card className="h-100 overflow-auto">
 								<h5 className="card-title">
 									Json Resources
@@ -85,7 +85,7 @@ export const ResourcesInJson = ({match}) => {
 								}
 							</Card>
 						</Col>
-						<Col lg="6" style={{maxHeight: "1000px"}}>
+						<Col lg="6" className="py-2" style={{height: "500px"}}>
 							<Card className="h-100 overflow-auto">
 								<h5 className="card-title">
 									CSV Resources

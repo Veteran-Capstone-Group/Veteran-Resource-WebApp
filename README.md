@@ -48,8 +48,6 @@ As several of our family members are veterans, and we are very passionate toward
 ## Upcoming Features and Changes
 
 * Change Icons for categories to cleaner more professional icons
-* Dynamically export our resource dataset, on a scheduled basis, as JSON and CSV file formats and provide them as free open data
-* Secure our API and provide public documentation for others to access it
 * Create a carousel for homepage displaying most useful'd resources in a better UI/UX format
 * Add a moderator trait giving users the ability to be moderators that can change the approval status or resources
 * Add search capabilities to filter through our dataset as it grows

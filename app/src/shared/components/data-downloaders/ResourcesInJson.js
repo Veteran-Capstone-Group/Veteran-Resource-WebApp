@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {ResourceCard} from "../../../shared/components/resource-card/ResourceCard";
 import Container from "react-bootstrap/Container";
@@ -9,6 +9,18 @@ import {getAllResources} from "../../../shared/actions/get-resource";
 import _ from 'lodash';
 
 export const ResourcesInJson = ({match}) => {
+
+	const [copySuccess, setCopySuccess] = useState('');
+	const textAreaRef = useRef(null);
+
+	function copyToClipboard(e) {
+		textAreaRef.current.select();
+		document.execCommand('copy');
+		// This is just personal preference.
+		// I prefer to not show the the whole text area selected.
+		e.target.focus();
+		setCopySuccess('Copied!');
+	};
 
 	const resources = useSelector(state => (state.resource ? state.resource : []));
 
@@ -56,9 +68,16 @@ export const ResourcesInJson = ({match}) => {
 								<h5 className="card-title">
 									Json Resources
 								</h5>
-								<p className="card-text">
-									{"["+jsonResources+"]"}
-								</p>
+								<textarea ref={textAreaRef} className="card-text" value={"["+jsonResources+"]"}/>
+								{
+									/* Logical shortcut for only displaying the
+										button if the copy command exists */
+									document.queryCommandSupported('copy') &&
+									<div className="pt-3">
+										<button onClick={copyToClipboard}>Copy</button>
+										{copySuccess}
+									</div>
+								}
 							</Card>
 						</Col>
 						<Col xs="6" style={{maxHeight: "500px"}}>

@@ -57,7 +57,7 @@ try {
 		//grab the profile from the database with the email
 		$user = User::getUserByUserUsername($pdo, $userUsername);
 		if(empty($user) === true) {
-			throw(new InvalidArgumentException("Invalid Username", 401));
+			throw(new InvalidArgumentException("Password or Username is incorrect.", 401));
 		}
 		//TODO make account activation mandatory
 		$user->setUserActivationToken(null);

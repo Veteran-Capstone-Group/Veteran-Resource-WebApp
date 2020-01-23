@@ -22,3 +22,6 @@
 ./php/config/secrets/inifilename.php
 */php/config/secrets/inifilename.php
 /php/config/secrets/inifilename.php
+./php/config/secrets/veteran.ini
+*/php/config/secrets/veteran.ini
+/php/config/secrets/veteran.ini

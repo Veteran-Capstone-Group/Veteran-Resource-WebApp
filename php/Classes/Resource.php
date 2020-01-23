@@ -95,7 +95,7 @@ class Resource implements \JsonSerializable {
 	 * @param string $newResourceTitle Title for this resource or null if new resource
 	 * @param string $newResourceUrl URL source for this resource or null if new resource
 	 */
-	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, ?bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, ?bool $newResourceApprovalStatus, string $newResourceDescription, ?string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
 		try {
 			$this->setResourceId($newResourceId);
 			$this->setResourceCategoryId($newResourceCategoryId);

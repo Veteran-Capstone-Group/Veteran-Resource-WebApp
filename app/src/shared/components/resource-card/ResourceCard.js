@@ -18,7 +18,7 @@ export const	ResourceCard = ({resource}) =>{
 	//assign values for variables of resource
 	const {resourceId, resourceTitle, resourceOrganization, resourceEmail, resourceAddress, resourcePhone, resourceUrl, resourceImageUrl, resourceDescription} = resource;
 	const googleMapsSearch = ("https://www.google.com/maps/place/" + resourceAddress.split(" ").join("+"));
-
+	const callHref = "tel: " + resourcePhone;
 if (width>991) {
 	return (
 		<>
@@ -101,7 +101,7 @@ return(
 								<a href={googleMapsSearch}><button type="button" className="btn btn-primary">Directions</button></a>
 							}
 							{resourcePhone === "" ? ("") :
-								<a href="tel:{resourcePhone}"><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
+								<a href={callHref}><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
 							}
 						</div>
 					</div>
@@ -141,7 +141,7 @@ return(
 									<a href={googleMapsSearch}><button type="button" className="btn btn-primary">Directions</button></a>
 								}
 								{resourcePhone === "" ? ("") :
-									<a href="tel:{resourcePhone}"><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
+									<a href={callHref}><button type="button" className="btn btn-primary">Call: {resourcePhone}</button></a>
 								}
 							</div>
 						</div>

@@ -1,4 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import{useSelector, useDispatch} from "react-redux";
+import{getUsefulsAndAllResources} from "../../../actions/get-useful";
+import _ from 'lodash';
 import Carousel from "react-bootstrap/Carousel";
 import ResourceCard from "../../resource-card/ResourceCard";
 import {UseWindowWidth} from "../../../utils/UseWindowWidth";
@@ -14,7 +17,7 @@ const itemOne = {
 	"resourceUrl": "https://www.fcc.gov/general/lifeline-program-low-income-consumers",
 	"resourceImageUrl": "https://transition.fcc.gov/files/logos/fcc-logo_black-on-white.jpg"
 };
-const itemTwo = {
+let itemTwo = {
 	"resourceId": "338a143c-a2bd-4ed3-a380-be0d12261d85",
 	"resourceCategoryId": "501c7665-a4b1-47ab-a157-13d198f67d97",
 	"resourceUserId": "ca38847b-1449-41b7-b794-6232ffcccc74",
@@ -28,7 +31,7 @@ const itemTwo = {
 	"resourceTitle": "Free clothing and furniture for veterans",
 	"resourceUrl": "https://nmvic.org/"
 };
-const itemThree = {
+let itemThree = {
 	"resourceId": "058ee95f-b90d-45b4-83a2-7a4b0630e749",
 	"resourceCategoryId": "b2b19ae1-7c88-4f5d-baa2-b2ebf964cd2a",
 	"resourceUserId": "ca38847b-1449-41b7-b794-6232ffcccc74",
@@ -42,8 +45,8 @@ const itemThree = {
 	"resourceTitle": "G.I. Bill",
 	"resourceUrl": "https://www.va.gov/education/about-gi-bill-benefits/"
 };
-
 export const Slider = () => {
+
 	const width = UseWindowWidth();
 	return (
 		<>

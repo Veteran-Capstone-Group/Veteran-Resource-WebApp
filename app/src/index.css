@@ -20,8 +20,6 @@
 	padding-top: 1rem;
 }
 #footer {
-	position: absolute;
-	bottom: 0;
 	width: 100vw;
 	background: white;
 }
@@ -33,7 +31,8 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
-	padding-top: 0.25rem;
+	padding-top: 0.125rem;
+	padding-bottom: 0.125rem;
 	position: relative;
 	min-height: 72vh;
 }

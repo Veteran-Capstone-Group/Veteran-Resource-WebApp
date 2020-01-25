@@ -4,9 +4,9 @@ import resourceReducer from "./resourceReducer";
 import usefulReducer from "./usefulReducer";
 
 export default combineReducers({
-	category:categoryReducer,
+	category: categoryReducer,
 	resource: resourceReducer,
-	useful: usefulReducer
+	useful: usefulReducer,
 	}
 
 )

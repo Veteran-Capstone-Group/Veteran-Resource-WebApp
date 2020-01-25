@@ -95,7 +95,7 @@ class Resource implements \JsonSerializable {
 	 * @param string $newResourceTitle Title for this resource or null if new resource
 	 * @param string $newResourceUrl URL source for this resource or null if new resource
 	 */
-	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, ?bool $newResourceApprovalStatus, string $newResourceDescription, string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
+	public function __construct($newResourceId, $newResourceCategoryId, $newResourceUserId, ?string $newResourceAddress, ?bool $newResourceApprovalStatus, string $newResourceDescription, ?string $newResourceEmail, ?string $newResourceImageUrl, ?string $newResourceOrganization, ?string $newResourcePhone, string $newResourceTitle, string $newResourceUrl) {
 		try {
 			$this->setResourceId($newResourceId);
 			$this->setResourceCategoryId($newResourceCategoryId);
@@ -524,6 +524,35 @@ class Resource implements \JsonSerializable {
 //bind member variables to the placeholders in the template
 		$parameters = ["resourceId" => $this->resourceId->getBytes(), "resourceUserId" => $this->resourceUserId->getBytes(), "resourceCategoryId" => $this->resourceCategoryId->getBytes(), "resourceAddress" => $this->resourceAddress, "resourceApprovalStatus" => $this->resourceApprovalStatus, "resourceDescription" => $this->resourceDescription, "resourceEmail" => $this->resourceEmail, "resourceImageUrl" => $this->resourceImageUrl, "resourceOrganization" => $this->resourceOrganization, "resourcePhone" => $this->resourcePhone, "resourceTitle" => $this->resourceTitle, "resourceUrl" => $this->resourceUrl];
 		$statement->execute($parameters);
+	}
+
+	/**
+	 * Gets all resources.
+	 *
+	 * @param \PDO $pdo
+	 * @return \SplFixedArray
+	 * @throws \PDOException when MySQL Errors happen
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getAllResources(\PDO $pdo): \SplFixedArray {
+		//create query template
+		$query = "SELECT resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl FROM resource";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+		//build an array of resources
+		$resources = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$resource = new Resource($row["resourceId"], $row["resourceCategoryId"], $row["resourceUserId"], $row["resourceAddress"], $row["resourceApprovalStatus"], $row["resourceDescription"], $row["resourceEmail"], $row["resourceImageUrl"], $row["resourceOrganization"], $row["resourcePhone"], $row["resourceTitle"], $row["resourceUrl"]);
+				$resources[$resources->key()] = $resource;
+				$resources->next();
+			} catch(\Exception $exception) {
+				//if the row can't be converted, throw it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($resources);
 	}
 
 	/**

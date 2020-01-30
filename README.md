@@ -56,7 +56,7 @@ As several of our family members are veterans, and we are very passionate toward
 #### Known Bugs
 
 * Background is not centered when length of resource page exceeds a certain limit
-* 
+* Resource Images frequently do not show up
 *
 *
 *

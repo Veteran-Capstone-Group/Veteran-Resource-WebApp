@@ -50,6 +50,18 @@ export const ResourcesInJson = ({match}) => {
 		return JSON.stringify(resourceItem);
 	});
 	let csvResources = resources.map((resourceItem) => {
+
+		//if resource item contains a doublequote, close it for csv interpreter
+		if(resourceItem.includes("\"")) {
+			resourceItem.replace(/"/g, '""');
+		}
+
+		//if resource item contains a comma add surround quotes for csv interpreter
+		if(resourceItem.includes(",")) {
+			resourceItem = "\"" + resourceItem + "\"";
+		}
+
+		//build csv file line by line
 		csvObject = resourceItem.resourceId + ", " + resourceItem.resourceCategoryId + ", " + resourceItem.resourceUserId
 			+ ", " + resourceItem.resourceAddress + ", " + resourceItem.resourceApprovalStatus + ", " +
 			resourceItem.resourceDescription + ", " + resourceItem.resourceEmail + ", " + resourceItem.resourceImageUrl +

@@ -46,14 +46,8 @@ export const ResourcesInJson = ({match}) => {
 	let csvObject = "";
 	let csvResult = "";
 	let csvTitle="resourceId, resourceCategoryId, resourceUserId, resourceAddress, resourceApprovalStatus, resourceDescription, resourceEmail, resourceImageUrl, resourceOrganization, resourcePhone, resourceTitle, resourceUrl";
-	let jsonResources = resources.map((resourceItem, index) => {
-		// if (index !== 0) {
-		// 	results = ", "
-		// }
-		//TODO: Remove this if it being commented out fixes json data.
-		results = results + JSON.stringify(resourceItem);
-		return results;
-	});
+	let jsonResources = JSON.stringify(resourceItem);
+	
 	let csvResources = resources.map((resourceItem) => {
 		csvObject = resourceItem.resourceId + ", " + resourceItem.resourceCategoryId + ", " + resourceItem.resourceUserId
 			+ ", " + resourceItem.resourceAddress + ", " + resourceItem.resourceApprovalStatus + ", " +

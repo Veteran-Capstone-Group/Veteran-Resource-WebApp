@@ -53,6 +53,22 @@ As several of our family members are veterans, and we are very passionate toward
 * Add search capabilities to filter through our dataset as it grows
 * Add a user profile, logging and allowing users to quickly find resources they have useful'd or submitted
 
+#### Known Bugs
+
+* Background is not centered when length of resource page exceeds a certain limit
+* 
+*
+*
+*
+
+#### In Testing
+
+* Bug Fix: CSV Data Downloader, Text interpretation is incorrect when dealing with commas and quotes
+* Bug Fix: Json Data Downloader, Json rows are ending with an extra comma
+* Bug Fix: Resources being added to wrong category - waiting for deployment
+*
+*
+
 [<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
 
 ---

@@ -47,18 +47,35 @@ As several of our family members are veterans, and we are very passionate toward
 ---
 ## Upcoming Features and Changes
 
-* Expand contribution guidelines in documentation with complete guide on forking, pull requests, and git/documentation best practices
-* Create 'More details' sections to resources with Resource profiles including expanded descriptions and more information
-* Add 'progressive web app' functionality for offline use
-* Change Icons for categories to cleaner more professional icons
-* Create a carousel for homepage displaying most useful'd resources in a better UI/UX format
+#### Moderation Sprint
+
 * Add a moderator trait giving users the ability to be moderators that can change the approval status or resources
+* Expand contribution guidelines in documentation with complete guide on forking, pull requests, and git/documentation best practices
+
+#### Resource Expansion Sprint
+
+* Create 'More details' sections to resources with Resource profiles including expanded descriptions and more information
 * Create SuggestedEdits class to allow users to suggest changes to resource information that a moderator can approve.
+
+#### Data Integration Sprint
+
 * Add search capabilities to filter through our dataset as it grows
+
+
+#### User Interaction Sprint
+
 * Add a user profile, logging and allowing users to quickly find resources they have useful'd or submitted
 * Add contribution data to users to allow easily identification of power users who contribute high-quality content and changes
 
-#### Known Bugs
+#### Future Sprint Features
+
+* Add 'progressive web app' functionality to allow limited offline use
+* Change Icons for categories to cleaner more professional icons
+* Create a carousel for homepage displaying most useful'd resources in a better UI/UX format
+
+[<p align="right">(Back to Top)</p>](https://github.com/Veteran-Capstone-Group/Veteran-Resource-WebApp#ABQ-Veterans)
+
+### Known Bugs
 
 * Background is not centered when length of resource page exceeds a certain limit
 * Resource Images frequently do not show up

@@ -60,7 +60,9 @@ As several of our family members are veterans, and we are very passionate toward
 #### Data Integration Sprint
 
 * Add search capabilities to filter through our dataset as it grows
-
+* Clean up resource data we currently have
+* Populate our categories with more data
+* Find most optimized solution for data transfers between dev cycles.
 
 #### User Interaction Sprint
 

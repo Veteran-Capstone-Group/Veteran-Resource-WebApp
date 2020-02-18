@@ -37,7 +37,7 @@ $SEED_CATEGORY_IDS=
 $CATEGORY_IDS = ["Education" => "60ea99d3-07d2-4284-a641-2ab39e1e708a",
 	"Employment" => "777640f1-dac4-4ae1-9c31-ac9fd3f70e35",
 	"Housing" => "bdf8061d-f359-4ece-b782-07b50ac9b015",
-	"Food/Clothing" => "100c162d-9a5e-4d51-ab75-75ccd3bd3253",
+	"Clothes-Food" => "100c162d-9a5e-4d51-ab75-75ccd3bd3253",
 	"Mental Health" => "7e94b87a-4ee9-48c6-bd44-b0cb9ef218ad",
 	"Healthcare" => "9993a0c5-2247-4654-8f84-79daa9a8ef93",
 	"Disability" => "3a55391b-fea6-4772-99b3-93e7cb6f4730",
